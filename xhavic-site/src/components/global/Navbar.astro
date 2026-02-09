@@ -297,19 +297,21 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: 1px solid transparent;
     z-index: 111;
     width: 100%;
-    padding: 12px 44px;
-    transition: background 0.35s ease, border-color 0.35s ease;
+    padding: 14px 44px;
+    transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
   }
 
   .navbar.is-scrolled {
-    background: rgba(0, 0, 0, 0.92);
-    border-bottom-color: rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
   }
 
   /* ========== LOGO ========== */
@@ -376,17 +378,16 @@ const currentPath = Astro.url.pathname;
     color: #fff;
   }
 
-  /* Active indicator dot */
+  /* Active indicator — clean underline */
   .nav-link.is-active::after {
     content: '';
     position: absolute;
     bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #2262ff;
+    left: 14px;
+    right: 14px;
+    height: 1.5px;
+    border-radius: 1px;
+    background: rgba(255, 255, 255, 0.6);
   }
 
   .nav-chevron {
@@ -406,9 +407,9 @@ const currentPath = Astro.url.pathname;
     top: 60px;
     left: 0;
     right: 0;
-    background: rgba(3, 8, 20, 0.96);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
+    background: rgba(0, 0, 0, 0.97);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding: 0;
     opacity: 0;

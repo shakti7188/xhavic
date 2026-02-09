@@ -8,19 +8,19 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 >
 
   <!-- ════════════════════════════════════════════════════════════════
-       HERO — Dark gradient mesh + grid pattern + gradient text
+       1. HERO — Dark, heading-display, SVG diagram, generous padding
        ════════════════════════════════════════════════════════════════ -->
-  <section class="relative bg-dark text-white overflow-hidden py-20 md:py-30">
+  <section class="bg-dark text-white overflow-hidden py-24 md:py-36">
     <div class="container">
-      <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
+      <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[60vh]">
 
         <!-- Left: Copy -->
         <div class="max-w-xl" data-reveal>
-          <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-none">
+          <h1 class="heading-display mb-6">
             <span class="gradient-text-static">How Xhavic</span><br />
             <span class="gradient-text-static">Works</span>
           </h1>
-          <p class="text-lg md:text-xl text-gray-300/90 mb-10 max-w-lg leading-relaxed">
+          <p class="prose-editorial-dark mb-10 max-w-lg">
             Xhavic is an Ethereum Layer-2 execution network built on optimistic rollup architecture.
             It processes transactions off-chain and settles the results on Ethereum, adding a third dimension
             no other L2 offers: protocol-level transaction risk routing.
@@ -124,18 +124,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       WHAT IS XHAVIC — Editorial prose layout, large type, pull quote
-       Background: white / transparent (after dark hero)
+       2. WHAT IS XHAVIC — section-bordered + grid-40-60
        ════════════════════════════════════════════════════════════════ -->
-  <section class="pt-30 pb-20 md:pt-36 md:pb-30" data-reveal>
+  <section class="section-bordered pt-28" data-reveal>
     <div class="container">
-      <div class="max-w-container-xs mx-auto">
-        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-ink mb-10 leading-tight">
-          What is Xhavic?
-        </h2>
+      <div class="grid-40-60">
+        <!-- Left: Label + heading -->
+        <div>
+          <span class="label-mono">01 — OVERVIEW</span>
+          <h2 class="heading-section text-ink mt-4">
+            What is Xhavic?
+          </h2>
+        </div>
 
-        <div class="space-y-6 text-lg md:text-xl text-muted leading-relaxed">
-          <p>
+        <!-- Right: Prose -->
+        <div class="prose-editorial">
+          <p class="mb-6">
             Xhavic is a Layer-2 rollup designed to scale Ethereum. It executes transactions off-chain
             and settles the results on Ethereum, enabling faster throughput and lower transaction costs
             without requiring changes to the underlying protocol.
@@ -163,65 +167,46 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       WHY ANOTHER L2 — Bento grid on surface bg
-       Background: surface (after white)
+       3. WHY ANOTHER L2 — section-bordered + section-number + grid-3 card-feature
        ════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 md:py-30 bg-surface" data-reveal>
+  <section class="section-bordered section-numbered" data-reveal>
     <div class="container">
-      <div class="max-w-container-xs mx-auto text-center mb-12 md:mb-16">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink mb-4">
-          Why Another L2?
-        </h2>
-        <p class="text-base md:text-lg text-muted max-w-2xl mx-auto">
-          Existing Layer-2 networks treat every transaction identically.
-          Xhavic addresses three gaps no other L2 has solved.
-        </p>
-      </div>
+      <span class="section-number">02 — DIFFERENTIATORS</span>
+      <h2 class="heading-section text-ink mb-4">
+        Why Another L2?
+      </h2>
+      <p class="prose-editorial mb-12">
+        Existing Layer-2 networks treat every transaction identically.
+        Xhavic addresses three gaps no other L2 has solved.
+      </p>
 
-      <div class="bento-grid max-w-container mx-auto" data-reveal-stagger>
-        <!-- Dual Wallet — Large card spanning 2 cols -->
-        <div class="bento-lg accent-card group">
-          <div class="flex items-start gap-4 mb-5">
-            <div class="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-            </div>
-            <div>
-              <h3 class="text-xl md:text-2xl font-bold mb-1 group-hover:text-primary transition-colors">Risk-Uniform Execution</h3>
-              <p class="text-xs text-primary font-semibold uppercase tracking-wider">Dual Wallet System</p>
-            </div>
-          </div>
-          <p class="text-muted leading-relaxed">
+      <div class="grid-3" data-reveal-stagger>
+        <!-- Card 1: Risk-Uniform Execution -->
+        <div class="card-feature">
+          <span class="card-number">01</span>
+          <h3 class="heading-sub text-ink mb-3">Risk-Uniform Execution</h3>
+          <p class="text-sm text-muted leading-relaxed">
             Every L2 processes a $50 token swap and a $5M treasury transfer through the same pipeline.
             Xhavic's Dual Wallet System routes them differently at the sequencer level.
             Instant Wallet for composable DeFi. Secured Wallet with 24-hour reversal for institutional operations.
           </p>
         </div>
 
-        <!-- Oracle — Standard card -->
-        <div class="accent-card group">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Bolted-On Oracles</h3>
-          <p class="text-muted text-sm leading-relaxed">
+        <!-- Card 2: Bolted-On Oracles -->
+        <div class="card-feature">
+          <span class="card-number">02</span>
+          <h3 class="heading-sub text-ink mb-3">Bolted-On Oracles</h3>
+          <p class="text-sm text-muted leading-relaxed">
             Most L2s depend on external oracle providers, adding latency and third-party risk.
             Xhavic provides native oracle infrastructure via precompile addresses.
           </p>
         </div>
 
-        <!-- AI — Standard card -->
-        <div class="accent-card group">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">No AI-Native Support</h3>
-          <p class="text-muted text-sm leading-relaxed">
+        <!-- Card 3: No AI-Native Support -->
+        <div class="card-feature">
+          <span class="card-number">03</span>
+          <h3 class="heading-sub text-ink mb-3">No AI-Native Support</h3>
+          <p class="text-sm text-muted leading-relaxed">
             AI is treated as a dApp vertical on other chains. Xhavic enshrines AI agent execution
             as a protocol-level primitive with deterministic ordering and gas-metered compute.
           </p>
@@ -232,23 +217,23 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       THREE DIFFERENTIATORS — Split sections, alternating
-       Background: white (after surface)
+       4. THREE DIFFERENTIATORS — section-inset dark, split sections
        ════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 md:py-30">
+  <section class="section-inset" data-reveal>
     <div class="container">
-      <div class="max-w-container-xs mx-auto text-center mb-16 md:mb-20" data-reveal>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink">
+      <div class="text-center mb-16 md:mb-20">
+        <span class="label-mono-dark">CORE ARCHITECTURE</span>
+        <h2 class="heading-section mt-4">
           What Makes Xhavic Different
         </h2>
       </div>
 
       <!-- Differentiator 1: Dual Wallet System -->
-      <div class="split-section mb-20 md:mb-30" data-reveal>
+      <div class="grid-40-60 mb-16 md:mb-24" data-reveal>
         <div>
-          <div class="text-7xl md:text-8xl font-extrabold text-primary/10 mb-4 leading-none">01</div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">Dual Wallet System</h3>
-          <p class="text-muted leading-relaxed mb-6">
+          <span class="label-mono-dark">DIFFERENTIATOR 01</span>
+          <h3 class="heading-sub mt-3 mb-4">Dual Wallet System</h3>
+          <p class="prose-editorial-dark mb-6">
             Two execution paths separated at the sequencer level. Instant Wallet for composable DeFi.
             Secured Wallet with 24-hour reversal for institutional operations.
           </p>
@@ -257,7 +242,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </a>
         </div>
         <div class="flex items-center justify-center">
-          <!-- Visual: Dual wallet diagram -->
           <svg viewBox="0 0 320 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-xs">
             <!-- Sequencer box -->
             <rect x="110" y="10" width="100" height="40" rx="10" fill="rgba(34,98,255,0.12)" stroke="rgba(34,98,255,0.4)" stroke-width="1.5"/>
@@ -282,12 +266,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
       </div>
 
-      <!-- Differentiator 2: 6-Layer Architecture (reversed) -->
-      <div class="split-section reverse mb-20 md:mb-30" data-reveal>
+      <hr class="hr-subtle-dark" />
+
+      <!-- Differentiator 2: 6-Layer Architecture -->
+      <div class="grid-40-60 my-16 md:my-24" data-reveal>
         <div>
-          <div class="text-7xl md:text-8xl font-extrabold text-primary/10 mb-4 leading-none">02</div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">6-Layer Modular Architecture</h3>
-          <p class="text-muted leading-relaxed mb-6">
+          <span class="label-mono-dark">DIFFERENTIATOR 02</span>
+          <h3 class="heading-sub mt-3 mb-4">6-Layer Modular Architecture</h3>
+          <p class="prose-editorial-dark mb-6">
             Six independent layers — execution, sequencing, settlement, data availability,
             oracle + AI agents, governance — each independently upgradeable.
           </p>
@@ -296,7 +282,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </a>
         </div>
         <div class="flex items-center justify-center">
-          <!-- Visual: Stacked layers -->
           <svg viewBox="0 0 280 260" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-xs">
             <rect x="20" y="10" width="240" height="32" rx="8" fill="rgba(34,98,255,0.05)" stroke="rgba(34,98,255,0.12)" stroke-width="1"/>
             <text x="140" y="31" text-anchor="middle" fill="#667085" font-size="10" font-weight="600">L6 &mdash; GOVERNANCE</text>
@@ -314,12 +299,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
       </div>
 
+      <hr class="hr-subtle-dark" />
+
       <!-- Differentiator 3: Native Oracle + AI Execution -->
-      <div class="split-section" data-reveal>
+      <div class="grid-40-60 mt-16 md:mt-24" data-reveal>
         <div>
-          <div class="text-7xl md:text-8xl font-extrabold text-primary/10 mb-4 leading-none">03</div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">Native Oracle + AI Execution</h3>
-          <p class="text-muted leading-relaxed mb-6">
+          <span class="label-mono-dark">DIFFERENTIATOR 03</span>
+          <h3 class="heading-sub mt-3 mb-4">Native Oracle + AI Execution</h3>
+          <p class="prose-editorial-dark mb-6">
             Oracle data accessible via precompile addresses (0x00...F0-FF). AI agents execute with
             deterministic ordering, programmatic wallet control, and gas-metered compute.
           </p>
@@ -328,7 +315,6 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </a>
         </div>
         <div class="flex items-center justify-center">
-          <!-- Visual: Oracle + AI composition -->
           <svg viewBox="0 0 300 220" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-xs">
             <!-- Oracle node -->
             <circle cx="90" cy="80" r="45" fill="rgba(34,98,255,0.06)" stroke="rgba(34,98,255,0.25)" stroke-width="1.5"/>
@@ -354,54 +340,79 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       DESIGN PHILOSOPHY — Timeline on light bg
-       Background: surface (after white)
+       5. DESIGN PHILOSOPHY — section-bordered, numbered timeline steps
        ════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 md:py-30 bg-surface" data-reveal>
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+      <div class="grid-40-60">
         <!-- Left: Header -->
         <div class="lg:sticky lg:top-30">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-ink mb-6">
+          <span class="label-mono">03 — PRINCIPLES</span>
+          <h2 class="heading-section text-ink mt-4 mb-6">
             Design Philosophy
           </h2>
-          <p class="text-muted text-lg leading-relaxed">
+          <p class="prose-editorial">
             Five principles guide every protocol decision. Each one is non-negotiable
             and directly reflected in the architecture.
           </p>
         </div>
 
-        <!-- Right: Timeline -->
-        <div class="timeline timeline-light" data-reveal-stagger>
-          <div class="timeline-item">
-            <h3 class="text-lg font-bold text-ink mb-1">Ethereum Alignment</h3>
-            <p class="text-muted leading-relaxed">
-              Xhavic inherits security from Ethereum through settlement. It does not create an independent security model.
-            </p>
+        <!-- Right: Numbered steps timeline -->
+        <div class="space-y-8" data-reveal-stagger>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center">
+              <span class="label-mono text-primary" style="margin:0;font-size:12px;">01</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-1">Ethereum Alignment</h3>
+              <p class="prose-editorial">
+                Xhavic inherits security from Ethereum through settlement. It does not create an independent security model.
+              </p>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h3 class="text-lg font-bold text-ink mb-1">Security Inheritance</h3>
-            <p class="text-muted leading-relaxed">
-              State commitments posted to Ethereum, fraud proofs verified on L1, censorship resistance via forced inclusion.
-            </p>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center">
+              <span class="label-mono text-primary" style="margin:0;font-size:12px;">02</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-1">Security Inheritance</h3>
+              <p class="prose-editorial">
+                State commitments posted to Ethereum, fraud proofs verified on L1, censorship resistance via forced inclusion.
+              </p>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h3 class="text-lg font-bold text-ink mb-1">Modularity</h3>
-            <p class="text-muted leading-relaxed">
-              Six independent layers, each upgradeable without affecting the others. No monolithic codebase.
-            </p>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center">
+              <span class="label-mono text-primary" style="margin:0;font-size:12px;">03</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-1">Modularity</h3>
+              <p class="prose-editorial">
+                Six independent layers, each upgradeable without affecting the others. No monolithic codebase.
+              </p>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h3 class="text-lg font-bold text-ink mb-1">Progressive Decentralization</h3>
-            <p class="text-muted leading-relaxed">
-              Phase I operates with a permissioned sequencer. Phase II introduces multi-sequencer and full DAO governance.
-            </p>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center">
+              <span class="label-mono text-primary" style="margin:0;font-size:12px;">04</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-1">Progressive Decentralization</h3>
+              <p class="prose-editorial">
+                Phase I operates with a permissioned sequencer. Phase II introduces multi-sequencer and full DAO governance.
+              </p>
+            </div>
           </div>
-          <div class="timeline-item">
-            <h3 class="text-lg font-bold text-ink mb-1">Practical Focus</h3>
-            <p class="text-muted leading-relaxed">
-              Features serve verifiable use cases. No speculative roadmap items presented as current capabilities.
-            </p>
+          <div class="flex gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full border border-primary/30 flex items-center justify-center">
+              <span class="label-mono text-primary" style="margin:0;font-size:12px;">05</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-1">Practical Focus</h3>
+              <p class="prose-editorial">
+                Features serve verifiable use cases. No speculative roadmap items presented as current capabilities.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -410,17 +421,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       ROADMAP — Full-width dark section with gradient mesh,
-       horizontal timeline, glass cards
-       Background: dark (after surface)
+       6. ROADMAP — Full-width bg-dark, horizontal timeline
        ════════════════════════════════════════════════════════════════ -->
   <section class="py-20 md:py-30 bg-dark text-white" data-reveal>
     <div class="container">
       <div class="text-center mb-14 md:mb-18">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold gradient-text-static mb-4">
+        <span class="label-mono-dark">04 — TIMELINE</span>
+        <h2 class="heading-section mt-4 mb-4">
           Development Timeline
         </h2>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        <p class="prose-editorial-dark mx-auto" style="text-align:center;">
           A phased approach to building, decentralizing, and scaling the network.
         </p>
       </div>
@@ -428,7 +438,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       <div class="timeline-horizontal" data-reveal-stagger>
         <!-- Phase I -->
         <div class="timeline-h-item px-3 md:px-4">
-          <div class="glass-card text-left mt-6">
+          <div class="card-dark-solid text-left mt-6 p-6">
             <div class="text-primary text-xs font-bold uppercase tracking-wider mb-1">Phase I</div>
             <div class="text-white/50 text-sm mb-3">Q1 &ndash; Q2 2026</div>
             <h3 class="text-lg font-bold mb-4 text-white">Foundation</h3>
@@ -455,7 +465,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
         <!-- Phase II -->
         <div class="timeline-h-item px-3 md:px-4">
-          <div class="glass-card text-left mt-6">
+          <div class="card-dark-solid text-left mt-6 p-6">
             <div class="text-primary text-xs font-bold uppercase tracking-wider mb-1">Phase II</div>
             <div class="text-white/50 text-sm mb-3">Q3 &ndash; Q4 2026</div>
             <h3 class="text-lg font-bold mb-4 text-white">Decentralization</h3>
@@ -482,7 +492,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
         <!-- Phase III -->
         <div class="timeline-h-item px-3 md:px-4">
-          <div class="glass-card text-left mt-6">
+          <div class="card-dark-solid text-left mt-6 p-6">
             <div class="text-primary text-xs font-bold uppercase tracking-wider mb-1">Phase III</div>
             <div class="text-white/50 text-sm mb-3">2027</div>
             <h3 class="text-lg font-bold mb-4 text-white">Scale</h3>
@@ -509,7 +519,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
         <!-- Phase IV -->
         <div class="timeline-h-item px-3 md:px-4">
-          <div class="glass-card text-left mt-6">
+          <div class="card-dark-solid text-left mt-6 p-6">
             <div class="text-primary text-xs font-bold uppercase tracking-wider mb-1">Phase IV</div>
             <div class="text-white/50 text-sm mb-3">2028+</div>
             <h3 class="text-lg font-bold mb-4 text-white">Maturity</h3>
@@ -539,49 +549,47 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       CHALLENGES & LIMITATIONS — Dark section with glass cards
-       Background: dark-card (stays dark, but different shade from roadmap)
+       7. CHALLENGES — section-compact editorial
        ════════════════════════════════════════════════════════════════ -->
-  <section class="py-20 md:py-30 bg-dark-card text-white" data-reveal>
-    <div class="container">
-      <div class="max-w-container-xs mx-auto text-center mb-12 md:mb-16">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
-          Challenges & Limitations
-        </h2>
-        <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-          Transparency about current limitations is essential for protocol credibility.
-          These are documented in the whitepaper and actively being addressed.
-        </p>
-      </div>
+  <section class="section-bordered" data-reveal>
+    <div class="section-compact container">
+      <span class="label-mono">05 — TRANSPARENCY</span>
+      <h2 class="heading-section text-ink mt-4 mb-6">
+        Challenges & Limitations
+      </h2>
+      <p class="prose-editorial mb-8">
+        Transparency about current limitations is essential for protocol credibility.
+        These are documented in the whitepaper and actively being addressed.
+      </p>
 
-      <div class="grid md:grid-cols-2 gap-5 max-w-container-sm mx-auto" data-reveal-stagger>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg text-white mb-3">Data Availability Costs</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+      <div class="space-y-6">
+        <div class="card-arch">
+          <h3 class="font-bold text-ink mb-2">Data Availability Costs</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Posting transaction data to Ethereum remains the primary cost driver. EIP-4844 blob transactions reduce this, but costs scale with throughput.
           </p>
         </div>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg text-white mb-3">Withdrawal Latency</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+        <div class="card-arch">
+          <h3 class="font-bold text-ink mb-2">Withdrawal Latency</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Standard withdrawals require a 7-day challenge period for fraud proof verification. LP fast exit services provide instant alternatives.
           </p>
         </div>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg text-white mb-3">Sequencer Centralization (Phase I)</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+        <div class="card-arch">
+          <h3 class="font-bold text-ink mb-2">Sequencer Centralization (Phase I)</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Phase I operates with a permissioned sequencer set. Multi-sequencer rotation is planned for Phase II.
           </p>
         </div>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg text-white mb-3">Bridge Complexity</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+        <div class="card-arch">
+          <h3 class="font-bold text-ink mb-2">Bridge Complexity</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Cross-chain asset movement introduces contract risk at bridge endpoints. Formal verification and audits mitigate this.
           </p>
         </div>
       </div>
 
-      <p class="footnote text-center mt-8 text-gray-500">
+      <p class="footnote mt-8 text-muted text-sm">
         Source: XHAVIC Technical Whitepaper v1.0, Section 20 &mdash; Challenges and Future Directions
       </p>
     </div>
@@ -589,24 +597,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ════════════════════════════════════════════════════════════════
-       CTA — Full-bleed gradient section
-       Background: gradient primary (after dark)
+       8. CTA — section-inset, centered heading + button
        ════════════════════════════════════════════════════════════════ -->
-  <section class="py-22 md:py-30 relative overflow-hidden bg-primary" data-reveal>
-
-    <div class="container relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-6 max-w-3xl mx-auto leading-tight">
+  <section class="section-inset text-center" data-reveal>
+    <div class="container">
+      <h2 class="heading-section mb-6 max-w-3xl mx-auto">
         Read the Full Technical Specification
       </h2>
-      <p class="text-white/80 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed">
+      <p class="prose-editorial-dark mb-10 mx-auto" style="text-align:center;">
         The XHAVIC Technical Whitepaper contains complete protocol specifications,
         performance benchmarks, security analysis, and architectural documentation.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="/whitepaper" class="btn bg-white text-primary px-8 py-3.5 font-semibold rounded-pill hover:bg-gray-50 hover:shadow-lg transition-all active:scale-[0.98]">
+        <a href="/whitepaper" class="btn-primary">
           Read the Whitepaper
         </a>
-        <a href="/protocol/architecture" class="btn bg-white/15 text-white border border-white/30 px-8 py-3.5 font-semibold rounded-pill hover:bg-white/25 transition-all active:scale-[0.98]">
+        <a href="/protocol/architecture" class="btn bg-white/10 text-white border border-white/20 px-8 py-3.5 font-semibold rounded-pill hover:bg-white/25 transition-all active:scale-[0.98]">
           View Architecture &rarr;
         </a>
       </div>

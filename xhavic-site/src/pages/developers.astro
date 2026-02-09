@@ -7,11 +7,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   description="Deploy Solidity and Vyper contracts without modification. EVM-compatible execution, native oracle precompiles, AI agent support, and xhv_* RPC extensions."
 >
   <!-- ============================================================
-       1. HERO — Dark gradient mesh + grid pattern, split layout
+       1. HERO — bg-dark, split: left heading-display, right terminal
        ============================================================ -->
   <section class="bg-dark text-white py-20 md:py-32 lg:py-40">
     <div class="container">
-      <div class="split-section">
+      <div class="grid-40-60" style="align-items: center;">
         <!-- Left: Copy -->
         <div>
           <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8">
@@ -20,11 +20,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <span class="text-gray-300">Developers</span>
           </nav>
 
-          <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.08] tracking-tight mb-6">
-            <span class="gradient-text-static">Your Ethereum contracts run without changes.</span>
+          <p class="label-mono-dark mb-5">BUILD ON XHAVIC</p>
+
+          <h1 class="heading-display text-white mb-6">
+            Your Ethereum contracts run without changes.
           </h1>
 
-          <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed">
+          <p class="prose-editorial-dark mb-10">
             Xhavic is EVM-compatible at the bytecode level. Solidity, Vyper, and all standard opcodes
             work as expected. Deploy the same way you deploy to Ethereum — then use what's new.
           </p>
@@ -43,7 +45,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
 
         <!-- Right: Terminal -->
-        <div class="terminal" style="animation: float-slow 6s ease-in-out infinite;">
+        <div class="terminal">
           <div class="terminal-header">
             <span class="terminal-dot terminal-dot--red"></span>
             <span class="terminal-dot terminal-dot--yellow"></span>
@@ -75,70 +77,71 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================
-       2. EVM COMPATIBILITY — White bg, bento grid
+       2. EVM COMPATIBILITY — section-bordered + grid-40-60
        ============================================================ -->
-  <section class="section" data-reveal>
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Full EVM Compatibility</h2>
-        <p class="section-subtitle">
-          Xhavic executes EVM bytecode natively. No transpilation, no modified opcodes, no compatibility layers.
-        </p>
-      </div>
+      <div class="grid-40-60">
+        <!-- Left: Label + heading -->
+        <div>
+          <p class="label-mono mb-4">EVM COMPATIBILITY</p>
+          <h2 class="heading-section text-ink mb-4">Full EVM Compatibility</h2>
+          <p class="prose-editorial">
+            Xhavic executes EVM bytecode natively. No transpilation, no modified opcodes, no compatibility layers.
+          </p>
+        </div>
 
-      <div class="bento-grid" data-reveal-stagger>
-        <!-- Large card spanning 2 cols -->
-        <div class="accent-card bento-lg">
-          <div class="flex items-start gap-5">
-            <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Right: Feature cards -->
+        <div class="grid-2" data-reveal-stagger>
+          <div class="card-feature">
+            <span class="card-number">01</span>
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
               </svg>
             </div>
-            <div>
-              <h3 class="text-xl md:text-2xl font-bold mb-3 text-ink">Solidity &amp; Vyper</h3>
-              <p class="text-muted leading-relaxed">
-                Both languages compile to the same EVM bytecode Xhavic executes. Use your existing
-                compiler toolchain, OpenZeppelin libraries, and audit reports. Zero contract modifications needed —
-                your verified Ethereum contracts deploy identically.
-              </p>
+            <h3 class="heading-sub text-ink mb-2">Solidity &amp; Vyper</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Both languages compile to the same EVM bytecode Xhavic executes. Use your existing
+              compiler toolchain, OpenZeppelin libraries, and audit reports. Zero contract modifications needed —
+              your verified Ethereum contracts deploy identically.
+            </p>
+          </div>
+
+          <div class="card-feature">
+            <span class="card-number">02</span>
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
             </div>
+            <h3 class="heading-sub text-ink mb-2">All Standard Opcodes</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              256-bit word size, 1024 stack depth, identical gas semantics for standard operations.
+              CREATE2, DELEGATECALL, and all precompiles work as specified.
+            </p>
           </div>
-        </div>
 
-        <!-- Small card: Opcodes -->
-        <div class="accent-card">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
+          <div class="card-feature">
+            <span class="card-number">03</span>
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+              </svg>
+            </div>
+            <h3 class="heading-sub text-ink mb-2">Same Tooling</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Hardhat, Foundry, Remix, ethers.js, web3.py — all work by pointing to the Xhavic RPC endpoint.
+              No SDK lock-in or proprietary toolchain.
+            </p>
           </div>
-          <h3 class="text-lg font-bold mb-2 text-ink">All Standard Opcodes</h3>
-          <p class="text-muted text-sm leading-relaxed">
-            256-bit word size, 1024 stack depth, identical gas semantics for standard operations.
-            CREATE2, DELEGATECALL, and all precompiles work as specified.
-          </p>
-        </div>
 
-        <!-- Small card: Tooling -->
-        <div class="accent-card">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 text-ink">Same Tooling</h3>
-          <p class="text-muted text-sm leading-relaxed">
-            Hardhat, Foundry, Remix, ethers.js, web3.py — all work by pointing to the Xhavic RPC endpoint.
-            No SDK lock-in or proprietary toolchain.
-          </p>
-        </div>
-
-        <!-- Single-row card spanning full width (hidden feature highlight) -->
-        <div class="accent-card bento-lg">
-          <div class="flex items-center gap-3 text-sm text-muted">
-            <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>
-            <span><strong class="text-ink">Chain ID 7849</strong> (mainnet) &nbsp;/&nbsp; <strong class="text-ink">Chain ID 7850</strong> (testnet) &nbsp;&mdash;&nbsp; Add to MetaMask or any EIP-3085 compatible wallet.</span>
+          <div class="card-feature">
+            <span class="card-number">04</span>
+            <div class="flex items-center gap-3 text-sm text-muted">
+              <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>
+              <span><strong class="text-ink">Chain ID 7849</strong> (mainnet) &nbsp;/&nbsp; <strong class="text-ink">Chain ID 7850</strong> (testnet) &nbsp;&mdash;&nbsp; Add to MetaMask or any EIP-3085 compatible wallet.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -146,26 +149,23 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================
-       3. WHAT'S NEW — Three split-section blocks, alternating
+       3. WHAT'S NEW — Three section-bordered blocks
        ============================================================ -->
 
-  <!-- 3a. xhv_* RPC Methods — transparent bg -->
-  <section class="section" data-reveal>
+  <!-- 3a. xhv_* RPC Methods -->
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">What's New on Xhavic</h2>
-        <p class="section-subtitle">
+      <div class="mb-10">
+        <p class="label-mono mb-2">NEW RPC METHODS</p>
+        <h2 class="heading-section text-ink mb-3">What's New on Xhavic</h2>
+        <p class="prose-editorial">
           Everything above the standard EVM. These are protocol-level additions available to all contracts.
         </p>
       </div>
 
-      <div class="split-section">
+      <div class="grid-40-60">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            RPC Extensions
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">xhv_* RPC Methods</h3>
+          <h3 class="heading-sub text-ink mb-4">xhv_* RPC Methods</h3>
           <p class="text-muted leading-relaxed mb-6">
             Extended RPC namespace for Xhavic-specific operations. Query wallet types,
             check escrow status, read oracle data, and interact with AI agent state.
@@ -211,16 +211,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 3b. Oracle Precompiles — bg-surface, reversed layout -->
-  <section class="bg-surface rounded-2xl mx-4 md:mx-8 section" data-reveal>
+  <!-- 3b. Oracle Precompiles -->
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="split-section reverse">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            Native Oracles
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">Oracle Precompiles</h3>
+      <div class="grid-40-60" style="direction: rtl;">
+        <div style="direction: ltr;">
+          <p class="label-mono mb-2">ORACLE PRECOMPILES</p>
+          <h3 class="heading-sub text-ink mb-4">Oracle Precompiles</h3>
           <p class="text-muted leading-relaxed mb-6">
             Native oracle data accessible via precompile addresses <code class="text-primary bg-primary/10 px-1.5 py-0.5 rounded text-xs">0x00...F0-FF</code>.
             No external oracle contracts, no middleware, no additional trust assumptions.
@@ -249,7 +246,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             </div>
           </div>
         </div>
-        <div class="terminal">
+        <div class="terminal" style="direction: ltr;">
           <div class="terminal-header">
             <span class="terminal-dot terminal-dot--red"></span>
             <span class="terminal-dot terminal-dot--yellow"></span>
@@ -278,16 +275,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- 3c. AI Agent Support — transparent bg -->
-  <section class="section" data-reveal>
+  <!-- 3c. AI Agent Support -->
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="split-section">
+      <div class="grid-40-60">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            Protocol-Level Agents
-          </div>
-          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">AI Agent Support</h3>
+          <p class="label-mono mb-2">AI AGENTS</p>
+          <h3 class="heading-sub text-ink mb-4">AI Agent Support</h3>
           <p class="text-muted leading-relaxed mb-6">
             AI agents execute as first-class protocol participants with deterministic ordering,
             programmatic wallet control, and gas-metered compute cycles.
@@ -354,17 +348,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================
-       4. QUICK DEPLOY — Dark gradient mesh, tabbed terminal
+       4. QUICK DEPLOY — section-inset dark, terminal aesthetic
        ============================================================ -->
-  <section class="bg-dark text-white py-20 md:py-28" data-reveal>
+  <section class="section-inset" data-reveal>
     <div class="container max-w-5xl">
       <div class="text-center mb-14">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-semibold mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-          Ship Fast
-        </div>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Deploy in Minutes</h2>
-        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+        <p class="label-mono-dark mb-4">SHIP FAST</p>
+        <h2 class="heading-section text-white mb-4">Deploy in Minutes</h2>
+        <p class="prose-editorial-dark mx-auto">
           Add the Xhavic network to your Hardhat config and deploy. That's it.
         </p>
       </div>
@@ -425,19 +416,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================
-       5. DUAL WALLET INTEGRATION — bg-surface, split-section
+       5. DUAL WALLET INTEGRATION — section-bordered, split
        ============================================================ -->
-  <section class="bg-surface rounded-2xl mx-4 md:mx-8 section" data-reveal>
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="split-section">
+      <div class="grid-35-65">
         <!-- Left: Text -->
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
-            Two Paths
-          </div>
-          <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 text-ink">Dual Wallet Integration</h2>
-          <p class="text-muted leading-relaxed mb-6">
+          <p class="label-mono mb-4">TWO PATHS</p>
+          <h2 class="heading-section text-ink mb-4">Dual Wallet Integration</h2>
+          <p class="prose-editorial mb-6">
             Your contracts interact with two execution paths. The wallet type is determined by the
             originating address, not by contract logic.
           </p>
@@ -450,7 +438,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
         <!-- Right: Two styled cards -->
         <div class="space-y-5">
-          <div class="bg-white rounded-2xl p-6 border-l-4 border-l-primary shadow-sm">
+          <div class="card-arch" style="border-left: 3px solid #2262ff;">
             <div class="flex items-center gap-3 mb-3">
               <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                 <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -464,7 +452,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <code class="text-xs text-primary bg-primary/5 px-2 py-1 rounded font-mono">xhv_getWalletType(address) → "instant"</code>
           </div>
 
-          <div class="bg-white rounded-2xl p-6 border-l-4 border-l-amber-500 shadow-sm">
+          <div class="card-arch" style="border-left: 3px solid #c4a35a;">
             <div class="flex items-center gap-3 mb-3">
               <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
                 <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
@@ -483,20 +471,21 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================
-       6. RESOURCES GRID — White bg, staggered accent cards
+       6. RESOURCES — section-bordered, grid of card-arch
        ============================================================ -->
-  <section class="section" data-reveal>
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Developer Resources</h2>
-        <p class="section-subtitle">
+      <div class="mb-10">
+        <p class="label-mono mb-2">RESOURCES</p>
+        <h2 class="heading-section text-ink mb-3">Developer Resources</h2>
+        <p class="prose-editorial">
           Everything you need to build, test, and deploy on Xhavic.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
-        <a href="/docs" class="accent-card group cursor-pointer block">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5  transition-all duration-300">
+      <div class="grid-3" data-reveal-stagger>
+        <a href="/docs" class="card-arch group cursor-pointer block">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
             </svg>
@@ -508,8 +497,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <a href="https://github.com/xhavic" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5  transition-all duration-300">
+        <a href="https://github.com/xhavic" class="card-arch group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
             <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
@@ -521,8 +510,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <a href="https://faucet.xhavic.io" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5  transition-all duration-300">
+        <a href="https://faucet.xhavic.io" class="card-arch group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
             </svg>
@@ -534,8 +523,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <a href="https://explorer.xhavic.io" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5  transition-all duration-300">
+        <a href="https://explorer.xhavic.io" class="card-arch group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
             </svg>
@@ -547,8 +536,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <a href="https://bridge.xhavic.io" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5  transition-all duration-300">
+        <a href="https://bridge.xhavic.io" class="card-arch group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
             </svg>
@@ -560,7 +549,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <div class="accent-card">
+        <div class="card-arch">
           <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
@@ -583,14 +572,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- ============================================================
-       7. CTA — Dark gradient mesh, generous padding
+       7. CTA — bg-dark centered
        ============================================================ -->
   <section class="bg-dark text-white py-20 md:py-30" data-reveal>
     <div class="container text-center">
-      <h2 class="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-6">
-        <span class="gradient-text-static">Start Building</span>
+      <h2 class="heading-display text-white mb-6">
+        Start Building
       </h2>
-      <p class="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
+      <p class="prose-editorial-dark mx-auto mb-10">
         The documentation covers deployment guides, RPC reference, oracle integration,
         Dual Wallet development patterns, and AI agent specifications.
       </p>

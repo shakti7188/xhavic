@@ -7,20 +7,21 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   description="XHAVIC Technical Whitepaper v1.0 — complete protocol specification covering architecture, execution, settlement, tokenomics, governance, and security."
 >
   <!-- Hero -->
-  <section class="section bg-dark text-white">
+  <section class="bg-dark text-white" style="padding:6rem 0 5rem;" data-reveal>
     <div class="container">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
-          <span class="gradient-text-static">Xhavic Technical Whitepaper</span>
+      <div style="max-width:720px;">
+        <p class="label-mono-dark" style="margin-bottom:1.5rem;">Whitepaper</p>
+        <h1 class="heading-display" style="margin-bottom:1.5rem;">
+          Xhavic Technical Whitepaper
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 mb-2">
+        <p style="font-size:18px;color:rgba(255,255,255,0.5);margin-bottom:0.5rem;">
           January 2026
         </p>
-        <p class="text-gray-400 mb-8 max-w-2xl leading-relaxed">
+        <p class="prose-editorial-dark" style="margin-bottom:2.5rem;">
           Complete protocol specification: architecture, execution model, settlement,
           tokenomics, governance, and security analysis.
         </p>
-        <div class="flex flex-wrap gap-4">
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
           <a href="#content" class="btn-primary">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
@@ -39,14 +40,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </section>
 
   <!-- Sticky TOC + Content -->
-  <section class="bg-white" id="content">
-    <div class="container py-16 lg:py-24">
+  <div class="section-bordered" id="content">
+    <div class="container">
       <div class="lg:grid lg:grid-cols-[280px_1fr] lg:gap-16 xl:grid-cols-[300px_1fr]">
 
         <!-- Sidebar TOC (sticky on desktop) -->
         <aside class="hidden lg:block">
           <nav class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4 pb-8" id="wp-toc">
-            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Contents</p>
+            <p class="label-mono" style="margin-bottom:1rem;">Contents</p>
             <ul class="space-y-1 text-sm border-l border-gray-200">
               <li><a href="#abstract" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">Abstract</a></li>
               <li><a href="#s1" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">1. Introduction</a></li>
@@ -870,7 +871,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </article>
       </div>
     </div>
-  </section>
+  </div>
 
   <style>
     .wp-table {

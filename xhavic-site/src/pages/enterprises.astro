@@ -6,10 +6,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   title="Enterprises — Xhavic"
   description="Protocol-level transaction safety for institutional operations. Secured Wallet with 24-hour reversal, RWA-ready architecture, and Ethereum-settled finality."
 >
-  <!-- ===================== HERO ===================== -->
+  <!-- ============================================================
+       1. HERO — bg-dark, gold accent line above heading, shield SVG
+       ============================================================ -->
   <section class="bg-dark text-white pt-32 pb-20 md:pt-40 md:pb-28">
     <div class="container">
-      <div class="grid lg:grid-cols-[1fr_auto] gap-12 items-center">
+      <div class="grid-40-60" style="align-items: center;">
         <!-- Left: Copy -->
         <div class="max-w-2xl">
           <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8">
@@ -17,15 +19,21 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <span class="text-gray-600">/</span>
             <span class="text-white font-medium">Enterprises</span>
           </nav>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.08] tracking-tight mb-6">
-            <span class="gradient-text-static">Protocol-level transaction safety</span>
-            <br class="hidden md:block" />
-            <span class="text-white">for institutional operations</span>
+
+          <div class="w-16 h-[3px] mb-6" style="background: #c4a35a;"></div>
+
+          <h1 class="heading-display text-white mb-3">
+            Protocol-level transaction safety
           </h1>
-          <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed">
+          <h1 class="heading-display text-white mb-6">
+            for institutional operations
+          </h1>
+
+          <p class="prose-editorial-dark mb-10 max-w-xl">
             Xhavic's Secured Wallet provides a 24-hour reversal window for high-value transactions,
             enforced at the sequencer level. This is infrastructure, not a dApp feature.
           </p>
+
           <div class="flex flex-wrap gap-4">
             <a href="#contact" class="btn-primary">Request Technical Brief</a>
             <a href="/protocol/dual-wallet" class="btn-dark">Dual Wallet System</a>
@@ -77,55 +85,29 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </svg>
         </div>
       </div>
-
-      <!-- Hero Stats Strip -->
-      <div class="stats-strip mt-16 md:mt-20" data-reveal-stagger>
-        <div class="stat-item glass rounded-2xl">
-          <div class="stat-value">
-            <span data-count-to="2000" data-count-suffix="+">0</span>
-          </div>
-          <div class="stat-label">Transactions per second</div>
-          <div class="stat-note">(Phase I target)</div>
-        </div>
-        <div class="stat-item glass rounded-2xl">
-          <div class="stat-value">
-            <span data-count-to="0.04" data-count-prefix="$">0</span>
-          </div>
-          <div class="stat-label">Average transaction cost</div>
-          <div class="stat-note">(estimated at launch)</div>
-        </div>
-        <div class="stat-item glass rounded-2xl">
-          <div class="stat-value text-white">&lt;200ms</div>
-          <div class="stat-label">Soft finality</div>
-          <div class="stat-note">(Instant Wallet)</div>
-        </div>
-        <div class="stat-item glass rounded-2xl">
-          <div class="stat-value text-white">L1</div>
-          <div class="stat-label">Ethereum settlement</div>
-          <div class="stat-note">(~13 min finality)</div>
-        </div>
-      </div>
-      <p class="text-center text-xs text-gray-500 italic mt-4">
-        Source: XHAVIC Technical Whitepaper v1.0, Table 1. Performance figures are targets for Phase I and subject to network conditions.
-      </p>
     </div>
   </section>
 
-  <!-- ===================== TRANSACTION REVERSAL ===================== -->
-  <section class="section" data-reveal>
+  <!-- ============================================================
+       2. TRANSACTION SAFETY — section-bordered + grid-40-60
+       ============================================================ -->
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Transaction Reversal at the Protocol Level</h2>
-        <p class="section-subtitle">
-          The Secured Wallet creates a 24-hour escrow period for every transaction.
-          During this window, authorized signers can reverse the operation.
-        </p>
-      </div>
-      <div class="split-section">
-        <!-- Left: How It Works -->
+      <div class="grid-40-60">
+        <!-- Left: heading + copy -->
         <div>
-          <h3 class="text-2xl font-bold mb-6 text-ink">How It Works</h3>
-          <div class="space-y-5 text-muted leading-relaxed">
+          <p class="label-mono mb-3">TRANSACTION SAFETY</p>
+          <h2 class="heading-section text-ink mb-4">Transaction Reversal at the Protocol Level</h2>
+          <p class="prose-editorial">
+            The Secured Wallet creates a 24-hour escrow period for every transaction.
+            During this window, authorized signers can reverse the operation.
+          </p>
+        </div>
+
+        <!-- Right: How it works + properties -->
+        <div>
+          <h3 class="heading-sub text-ink mb-6">How It Works</h3>
+          <div class="space-y-5 text-muted leading-relaxed mb-8">
             <p>
               When a transaction originates from a Secured Wallet, the sequencer routes it into
               a 24-hour escrow period. The state change is provisional — visible but not finalized.
@@ -140,51 +122,74 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Right: Properties Table -->
-        <div class="accent-card">
-          <h3 class="text-lg font-bold mb-5 text-ink">Properties</h3>
-          <div class="space-y-0">
-            <div class="flex justify-between items-center py-4 border-b border-stroke/30">
-              <span class="text-muted text-sm">Escrow Period</span>
-              <span class="font-semibold text-sm text-ink">24 hours</span>
-            </div>
-            <div class="flex justify-between items-center py-4 border-b border-stroke/30">
-              <span class="text-muted text-sm">Reversal Mechanism</span>
-              <span class="font-semibold text-sm text-ink">Multi-sig / threshold</span>
-            </div>
-            <div class="flex justify-between items-center py-4 border-b border-stroke/30">
-              <span class="text-muted text-sm">Composability</span>
-              <span class="font-semibold text-sm text-ink">Non-composable until final</span>
-            </div>
-            <div class="flex justify-between items-center py-4 border-b border-stroke/30">
-              <span class="text-muted text-sm">Settlement</span>
-              <span class="font-semibold text-sm text-ink">Ethereum (after escrow)</span>
-            </div>
-            <div class="flex justify-between items-center py-4">
-              <span class="text-muted text-sm">Enforcement</span>
-              <span class="font-semibold text-sm text-ink">Sequencer-level</span>
-            </div>
-          </div>
+  <!-- ============================================================
+       3. OPERATIONAL PROPERTIES — section-bordered, data-table
+       ============================================================ -->
+  <section class="section-bordered" data-reveal>
+    <div class="container">
+      <div class="grid-35-65">
+        <div>
+          <p class="label-mono mb-3">SPECIFICATIONS</p>
+          <h2 class="heading-section text-ink">Operational Properties</h2>
+        </div>
+
+        <div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Escrow Period</td>
+                <td class="font-semibold text-ink">24 hours</td>
+              </tr>
+              <tr>
+                <td>Reversal Mechanism</td>
+                <td class="font-semibold text-ink">Multi-sig / threshold</td>
+              </tr>
+              <tr>
+                <td>Composability</td>
+                <td class="font-semibold text-ink">Non-composable until final</td>
+              </tr>
+              <tr>
+                <td>Settlement</td>
+                <td class="font-semibold text-ink">Ethereum (after escrow)</td>
+              </tr>
+              <tr>
+                <td>Enforcement</td>
+                <td class="font-semibold text-ink">Sequencer-level</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== RWA-READY INFRASTRUCTURE ===================== -->
-  <section class="section bg-surface rounded-2xl mx-4 md:mx-8" data-reveal>
+  <!-- ============================================================
+       4. RWA INFRASTRUCTURE — section-inset dark, four card-dark-solid
+       ============================================================ -->
+  <section class="section-inset" data-reveal>
     <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">RWA-Ready Infrastructure</h2>
-        <p class="section-subtitle">
+      <div class="text-center mb-12">
+        <p class="label-mono-dark mb-3">INFRASTRUCTURE</p>
+        <h2 class="heading-section text-white mb-4">RWA-Ready Infrastructure</h2>
+        <p class="prose-editorial-dark mx-auto">
           Real-world asset tokenization requires infrastructure properties that most L2s lack.
           Xhavic's architecture addresses these requirements at the protocol level.
         </p>
       </div>
-      <div class="bento-grid" data-reveal-stagger>
-        <!-- Transaction Reversibility — large card with gold accent -->
-        <div class="accent-card bento-lg relative" style="border-color: rgba(196,163,90,0.25);">
-          <div class="absolute top-0 left-0 right-0 h-[3px] rounded-t-[22px]" style="background: #c4a35a;"></div>
+
+      <div class="grid-2" data-reveal-stagger>
+        <!-- Transaction Reversibility -->
+        <div class="card-dark-solid heading-accent-gold" style="padding: 2.5rem;">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(196,163,90,0.15);">
               <svg class="w-5 h-5" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -192,8 +197,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </svg>
             </div>
             <div>
-              <h3 class="text-xl font-bold mb-2 text-ink">Transaction Reversibility</h3>
-              <p class="text-muted text-sm leading-relaxed">
+              <h3 class="text-lg font-bold mb-2 text-white">Transaction Reversibility</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
                 RWA operations often require reversal capabilities for error correction and dispute resolution.
                 The Secured Wallet provides this natively without custom smart contract logic.
               </p>
@@ -202,7 +207,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
 
         <!-- Native Oracle Data -->
-        <div class="accent-card">
+        <div class="card-dark-solid" style="padding: 2.5rem;">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -210,8 +215,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold mb-2 text-ink">Native Oracle Data</h3>
-              <p class="text-muted text-sm leading-relaxed">
+              <h3 class="text-lg font-bold mb-2 text-white">Native Oracle Data</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
                 Asset pricing, reference rates, and external data are available via precompile addresses.
                 No dependency on external oracle providers or their uptime.
               </p>
@@ -220,7 +225,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
 
         <!-- Ethereum Settlement -->
-        <div class="accent-card">
+        <div class="card-dark-solid" style="padding: 2.5rem;">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -228,8 +233,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold mb-2 text-ink">Ethereum Settlement</h3>
-              <p class="text-muted text-sm leading-relaxed">
+              <h3 class="text-lg font-bold mb-2 text-white">Ethereum Settlement</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
                 State commits to Ethereum L1, providing the strongest available settlement guarantee.
                 Institutional counterparties inherit Ethereum security.
               </p>
@@ -238,7 +243,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
 
         <!-- Deterministic Execution -->
-        <div class="accent-card">
+        <div class="card-dark-solid" style="padding: 2.5rem;">
           <div class="flex items-start gap-4">
             <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
               <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,8 +251,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold mb-2 text-ink">Deterministic Execution</h3>
-              <p class="text-muted text-sm leading-relaxed">
+              <h3 class="text-lg font-bold mb-2 text-white">Deterministic Execution</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
                 EVM bytecode compatibility means identical state transitions across all validators.
                 Audit trails are cryptographically verifiable.
               </p>
@@ -255,7 +260,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </div>
         </div>
       </div>
-      <p class="footnote text-center mt-6">
+
+      <p class="footnote text-center mt-8" style="color: rgba(255,255,255,0.4);">
         Note: Xhavic provides infrastructure primitives. It does not provide regulatory compliance,
         legal opinions, or jurisdiction-specific guarantees. Compliance is the responsibility of
         the application layer.
@@ -263,43 +269,91 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ===================== INSTITUTIONAL USE CASES ===================== -->
-  <section class="section bg-dark text-white rounded-2xl mx-4 md:mx-8" data-reveal>
+  <!-- ============================================================
+       5. STATS — section-bordered, stats strip
+       ============================================================ -->
+  <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="section-header">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
-          Institutional Use Cases
-        </h2>
-        <p class="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
+      <div class="mb-10">
+        <p class="label-mono mb-2">PERFORMANCE</p>
+        <h2 class="heading-section text-ink">Network Performance</h2>
+      </div>
+
+      <div class="stats-strip" data-reveal-stagger style="background: #000; border-radius: 16px; padding: 2rem;">
+        <div class="stat-item">
+          <div class="stat-value">
+            <span data-count-to="2000" data-count-suffix="+">0</span>
+          </div>
+          <div class="stat-label">Transactions per second</div>
+          <div class="stat-note">(Phase I target)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">
+            <span data-count-to="0.04" data-count-prefix="$">0</span>
+          </div>
+          <div class="stat-label">Average transaction cost</div>
+          <div class="stat-note">(estimated at launch)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value text-white">&lt;200ms</div>
+          <div class="stat-label">Soft finality</div>
+          <div class="stat-note">(Instant Wallet)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value text-white">L1</div>
+          <div class="stat-label">Ethereum settlement</div>
+          <div class="stat-note">(~13 min finality)</div>
+        </div>
+      </div>
+      <p class="text-center text-xs text-muted italic mt-4">
+        Source: XHAVIC Technical Whitepaper v1.0, Table 1. Performance figures are targets for Phase I and subject to network conditions.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. USE CASES — section-bordered, three card-feature
+       ============================================================ -->
+  <section class="section-bordered" data-reveal>
+    <div class="container">
+      <div class="mb-10">
+        <p class="label-mono mb-2">USE CASES</p>
+        <h2 class="heading-section text-ink mb-3">Institutional Use Cases</h2>
+        <p class="prose-editorial">
           The Dual Wallet System and native oracle infrastructure enable operational patterns
           that are impractical on other L2 networks.
         </p>
       </div>
-      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto" data-reveal-stagger>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg mb-3 text-primary">Treasury Management</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+
+      <div class="grid-2" data-reveal-stagger>
+        <div class="card-feature">
+          <span class="card-number">01</span>
+          <h3 class="heading-sub text-ink mb-3">Treasury Management</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Secured Wallet transactions with 24-hour reversal for disbursements, payroll,
             and cross-entity transfers. Multi-sig authorization enforced at protocol level.
           </p>
         </div>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg mb-3 text-primary">RWA Tokenization</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+        <div class="card-feature">
+          <span class="card-number">02</span>
+          <h3 class="heading-sub text-ink mb-3">RWA Tokenization</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Asset issuance and transfer with native oracle pricing, reversible settlement for
             error correction, and cryptographically verifiable audit trails.
           </p>
         </div>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg mb-3 text-primary">Institutional DeFi</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+        <div class="card-feature">
+          <span class="card-number">03</span>
+          <h3 class="heading-sub text-ink mb-3">Institutional DeFi</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Lending, borrowing, and yield operations using the Instant Wallet for composable
             DeFi interactions, with the Secured Wallet for position management.
           </p>
         </div>
-        <div class="glass-card">
-          <h3 class="font-bold text-lg mb-3 text-primary">Operational Workflows</h3>
-          <p class="text-gray-300 text-sm leading-relaxed">
+        <div class="card-feature">
+          <span class="card-number">04</span>
+          <h3 class="heading-sub text-ink mb-3">Operational Workflows</h3>
+          <p class="text-muted text-sm leading-relaxed">
             Multi-step business processes encoded as smart contracts with appropriate risk routing
             per step — fast execution for routine operations, secured paths for high-value steps.
           </p>
@@ -308,128 +362,84 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- ===================== INTEGRATION PATH ===================== -->
-  <section class="section" data-reveal>
-    <div class="container max-w-3xl">
-      <div class="section-header">
-        <h2 class="section-title">Integration Path</h2>
-        <p class="section-subtitle">
-          From initial contact to production deployment.
-        </p>
-      </div>
-      <div class="timeline timeline-light">
-        <div class="timeline-item">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-white text-sm font-extrabold">1</span>
-            <h3 class="text-xl font-bold text-ink">Technical Brief</h3>
-          </div>
-          <p class="text-muted leading-relaxed">
-            Receive the detailed technical specification covering architecture, security model,
-            and performance characteristics relevant to your use case.
+  <!-- ============================================================
+       7. INTEGRATION PATH — section-bordered, numbered timeline
+       ============================================================ -->
+  <section class="section-bordered" data-reveal>
+    <div class="container">
+      <div class="grid-40-60">
+        <div>
+          <p class="label-mono mb-3">GETTING STARTED</p>
+          <h2 class="heading-section text-ink mb-4">Integration Path</h2>
+          <p class="prose-editorial">
+            From initial contact to production deployment.
           </p>
         </div>
-        <div class="timeline-item">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-white text-sm font-extrabold">2</span>
-            <h3 class="text-xl font-bold text-ink">Architecture Review</h3>
+
+        <div class="section-numbered" data-reveal-stagger>
+          <div class="flex items-start gap-5 mb-8 pb-8" style="border-bottom: 1px solid #e5e5e5;">
+            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+              <span class="text-white text-sm font-extrabold">1</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-2">Technical Brief</h3>
+              <p class="text-muted leading-relaxed">
+                Receive the detailed technical specification covering architecture, security model,
+                and performance characteristics relevant to your use case.
+              </p>
+            </div>
           </div>
-          <p class="text-muted leading-relaxed">
-            Work with the Xhavic team to map your operational requirements to the protocol
-            architecture. Identify which wallet types, oracle integrations, and execution patterns apply.
-          </p>
-        </div>
-        <div class="timeline-item">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-white text-sm font-extrabold">3</span>
-            <h3 class="text-xl font-bold text-ink">Testnet Deployment</h3>
+
+          <div class="flex items-start gap-5 mb-8 pb-8" style="border-bottom: 1px solid #e5e5e5;">
+            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+              <span class="text-white text-sm font-extrabold">2</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-2">Architecture Review</h3>
+              <p class="text-muted leading-relaxed">
+                Work with the Xhavic team to map your operational requirements to the protocol
+                architecture. Identify which wallet types, oracle integrations, and execution patterns apply.
+              </p>
+            </div>
           </div>
-          <p class="text-muted leading-relaxed">
-            Deploy and test on the Xhavic testnet. Verify contract behavior, Dual Wallet interactions,
-            oracle data feeds, and settlement timing against your requirements.
-          </p>
-        </div>
-        <div class="timeline-item">
-          <div class="flex items-center gap-3 mb-2">
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-white text-sm font-extrabold">4</span>
-            <h3 class="text-xl font-bold text-ink">Production</h3>
+
+          <div class="flex items-start gap-5 mb-8 pb-8" style="border-bottom: 1px solid #e5e5e5;">
+            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+              <span class="text-white text-sm font-extrabold">3</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-2">Testnet Deployment</h3>
+              <p class="text-muted leading-relaxed">
+                Deploy and test on the Xhavic testnet. Verify contract behavior, Dual Wallet interactions,
+                oracle data feeds, and settlement timing against your requirements.
+              </p>
+            </div>
           </div>
-          <p class="text-muted leading-relaxed">
-            Deploy to mainnet with monitoring, alerting, and operational runbooks. The same contracts,
-            addresses, and tooling from testnet apply to production.
-          </p>
+
+          <div class="flex items-start gap-5">
+            <div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+              <span class="text-white text-sm font-extrabold">4</span>
+            </div>
+            <div>
+              <h3 class="heading-sub text-ink mb-2">Production</h3>
+              <p class="text-muted leading-relaxed">
+                Deploy to mainnet with monitoring, alerting, and operational runbooks. The same contracts,
+                addresses, and tooling from testnet apply to production.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===================== CONTACT FORM ===================== -->
-  <section class="section bg-surface rounded-2xl mx-4 md:mx-8" id="contact" data-reveal>
-    <div class="container max-w-2xl">
-      <div class="section-header">
-        <h2 class="section-title">Request a Technical Brief</h2>
-        <p class="section-subtitle">
-          Provide your details and use case. The team will follow up with the relevant
-          technical documentation and next steps.
-        </p>
-      </div>
-      <form class="space-y-6" onsubmit="event.preventDefault();">
-        <div class="grid md:grid-cols-2 gap-6">
-          <div>
-            <label for="name" class="block text-sm font-semibold mb-2 text-ink">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              class="w-full px-5 py-3.5 rounded-xl border border-stroke/50 bg-white text-ink text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-              placeholder="Your name"
-            />
-          </div>
-          <div>
-            <label for="email" class="block text-sm font-semibold mb-2 text-ink">Work Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="w-full px-5 py-3.5 rounded-xl border border-stroke/50 bg-white text-ink text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-              placeholder="you@company.com"
-            />
-          </div>
-        </div>
-        <div>
-          <label for="company" class="block text-sm font-semibold mb-2 text-ink">Organization</label>
-          <input
-            type="text"
-            id="company"
-            name="company"
-            class="w-full px-5 py-3.5 rounded-xl border border-stroke/50 bg-white text-ink text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
-            placeholder="Organization name"
-          />
-        </div>
-        <div>
-          <label for="usecase" class="block text-sm font-semibold mb-2 text-ink">Use Case</label>
-          <textarea
-            id="usecase"
-            name="usecase"
-            rows="4"
-            class="w-full px-5 py-3.5 rounded-xl border border-stroke/50 bg-white text-ink text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none"
-            placeholder="Describe your use case and requirements"
-          ></textarea>
-        </div>
-        <div class="text-center pt-2">
-          <button type="submit" class="btn-primary" disabled>
-            Submit Request
-          </button>
-          <p class="footnote mt-4">Form submission is not yet connected. Contact enterprise@xhavic.io directly.</p>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- ===================== CTA ===================== -->
-  <section class="section bg-dark text-white rounded-2xl mx-4 md:mx-8" data-reveal>
+  <!-- ============================================================
+       8. CTA — bg-dark centered
+       ============================================================ -->
+  <section class="bg-dark text-white py-20 md:py-28" data-reveal>
     <div class="container text-center">
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-5">Explore the Protocol</h2>
-      <p class="text-gray-300 mb-10 max-w-xl mx-auto leading-relaxed">
+      <h2 class="heading-display text-white mb-5">Explore the Protocol</h2>
+      <p class="prose-editorial-dark mx-auto mb-10">
         Review the technical architecture, security model, and Dual Wallet specification
         in the full protocol documentation.
       </p>

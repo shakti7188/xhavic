@@ -24,7 +24,13 @@
 @layer base {
   ::selection {
     background-color: rgba(34, 98, 255, 0.15);
-    color: #101828;
+    color: #171717;
+  }
+
+  /* Override original.css body background leak */
+  body {
+    background: #ffffff;
+    color: #171717;
   }
 }
 

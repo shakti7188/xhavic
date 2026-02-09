@@ -42,13 +42,12 @@ const sections = [
   description="Privacy Policy describing how Xhavic collects, uses, and protects your information when you use the website and associated services."
 >
   <!-- Hero -->
-  <section class="section bg-dark text-white">
+  <section class="bg-dark text-white" style="padding:6rem 0 5rem;" data-reveal>
     <div class="container">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
-          <span class="gradient-text-static">Privacy Policy</span>
-        </h1>
-        <p class="text-lg text-gray-300">
+      <div style="max-width:720px;">
+        <p class="label-mono-dark" style="margin-bottom:1.5rem;">Legal</p>
+        <h1 class="heading-display" style="margin-bottom:1.5rem;">Privacy Policy</h1>
+        <p style="font-size:16px;color:rgba(255,255,255,0.5);">
           Last updated: January 2026
         </p>
       </div>
@@ -56,27 +55,26 @@ const sections = [
   </section>
 
   <!-- Content -->
-  <section class="section bg-white" data-reveal>
-    <div class="container max-w-3xl">
-      <div class="accent-card !p-4 mb-10 !bg-surface">
-        <p class="text-sm text-muted italic">
+  <div class="section-bordered" data-reveal>
+    <div class="container" style="max-width:720px;">
+      <div style="padding:1rem 1.25rem;border:1px dashed #d4d4d4;border-radius:8px;margin-bottom:3rem;">
+        <p style="font-size:13px;color:#a3a3a3;font-style:italic;">
           Note: Final legal copy to be provided by client. The content below is placeholder
           text outlining the expected structure and topics.
         </p>
       </div>
 
-      <div class="prose prose-lg max-w-none prose-headings:text-ink prose-headings:font-bold prose-p:text-muted prose-p:leading-relaxed">
-        {sections.map((section, i) => (
-          <div class="mb-10">
-            <h2 class="text-xl md:text-2xl !mb-3">
-              {i + 1}. {section.title}
-            </h2>
-            <p>{section.content}</p>
-          </div>
-        ))}
-      </div>
+      {sections.map((section, i) => (
+        <div style="margin-bottom:2.5rem;">
+          <span class="label-mono" style="display:block;margin-bottom:0.75rem;">Section {String(i + 1).padStart(2, '0')}</span>
+          <h2 style="font-size:20px;font-weight:700;margin-bottom:0.75rem;">
+            {i + 1}. {section.title}
+          </h2>
+          <p class="prose-editorial">{section.content}</p>
+        </div>
+      ))}
     </div>
-  </section>
+  </div>
 
   <script>
     import '../scripts/reveal.ts';

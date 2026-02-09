@@ -7,28 +7,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   description="Join the Xhavic community. Connect on Discord, Telegram, Twitter/X, GitHub, and LinkedIn. Contribute to the protocol, documentation, testing, and ecosystem."
 >
   <!-- Hero -->
-  <section class="section bg-dark text-white relative" data-reveal>
-    <!-- Orbit / node decoration -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      <div class="absolute w-3 h-3 rounded-full bg-primary/20 animate-float top-[18%] left-[12%]" style="animation-delay: 0s;"></div>
-      <div class="absolute w-2 h-2 rounded-full bg-primary/15 animate-float-slow top-[30%] right-[15%]" style="animation-delay: 1.5s;"></div>
-      <div class="absolute w-2.5 h-2.5 rounded-full bg-primary/10 animate-float top-[65%] left-[8%]" style="animation-delay: 3s;"></div>
-      <div class="absolute w-2 h-2 rounded-full bg-indigo-400/15 animate-float-slow top-[72%] right-[10%]" style="animation-delay: 2s;"></div>
-      <div class="absolute w-1.5 h-1.5 rounded-full bg-primary/20 animate-float top-[45%] right-[25%]" style="animation-delay: 4s;"></div>
-      <div class="absolute w-2 h-2 rounded-full bg-primary/10 animate-float-slow top-[20%] left-[45%]" style="animation-delay: 0.5s;"></div>
-    </div>
-    <div class="container relative z-10">
-      <div class="max-w-3xl">
-        <nav class="flex items-center gap-2 text-sm text-gray-400 mb-6">
-          <a href="/" class="hover:text-white transition-colors">Home</a>
-          <span>/</span>
-          <span class="text-white">Community</span>
-        </nav>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-          <span class="gradient-text-static">Join the Xhavic</span><br />
-          community
+  <section class="bg-dark text-white" style="padding:6rem 0 5rem;" data-reveal>
+    <div class="container">
+      <div style="max-width:720px;">
+        <p class="label-mono-dark" style="margin-bottom:1.5rem;">Community</p>
+        <h1 class="heading-display" style="margin-bottom:1.5rem;">
+          Join the Xhavic<br />community
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
+        <p class="prose-editorial-dark">
           Xhavic is built in public. Follow development progress, participate in governance
           discussions, report issues, and contribute to the protocol and its ecosystem.
         </p>
@@ -36,216 +22,183 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <!-- Channel Cards -->
-  <section class="section" data-reveal>
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Connect</h2>
-        <p class="section-subtitle">
-          Official channels for discussion, announcements, and support.
-        </p>
-      </div>
-      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto" data-reveal-stagger>
+  <!-- Channels -->
+  <div class="section-bordered" data-reveal>
+    <div class="container" style="max-width:960px;">
+      <p class="label-mono" style="margin-bottom:1rem;">Connect</p>
+      <h2 class="heading-section" style="margin-bottom:0.75rem;">Channels</h2>
+      <p class="prose-editorial" style="margin-bottom:3rem;">
+        Official channels for discussion, announcements, and support.
+      </p>
+      <div class="grid-3" data-reveal-stagger>
         <!-- Discord -->
-        <a href="https://discord.gg/xhavic" class="accent-card group hover:border-[#5865F2]/30" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-lg bg-[#5865F2]/10 flex items-center justify-center mb-4 group-hover:bg-[#5865F2]/20 transition-colors duration-300">
-            <svg class="w-6 h-6 text-[#5865F2]" fill="currentColor" viewBox="0 0 24 24">
+        <a href="https://discord.gg/xhavic" class="card-arch" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg style="width:20px;height:20px;color:#5865F2;" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-1 group-hover:text-[#5865F2] transition-colors duration-300">Discord</h3>
-          <p class="text-muted text-sm">Technical discussion, support, and community chat</p>
+          <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Discord</h3>
+          <p style="font-size:14px;color:#737373;">Technical discussion, support, and community chat</p>
         </a>
 
         <!-- Telegram -->
-        <a href="https://t.me/xhavic" class="accent-card group hover:border-[#0088cc]/30" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-lg bg-[#0088cc]/10 flex items-center justify-center mb-4 group-hover:bg-[#0088cc]/20 transition-colors duration-300">
-            <svg class="w-6 h-6 text-[#0088cc]" fill="currentColor" viewBox="0 0 24 24">
+        <a href="https://t.me/xhavic" class="card-arch" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg style="width:20px;height:20px;color:#0088cc;" fill="currentColor" viewBox="0 0 24 24">
               <path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-1 group-hover:text-[#0088cc] transition-colors duration-300">Telegram</h3>
-          <p class="text-muted text-sm">Announcements and community updates</p>
+          <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Telegram</h3>
+          <p style="font-size:14px;color:#737373;">Announcements and community updates</p>
         </a>
 
         <!-- Twitter/X -->
-        <a href="https://twitter.com/xhavic" class="accent-card group hover:border-ink/20" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-lg bg-ink/10 flex items-center justify-center mb-4 group-hover:bg-ink/20 transition-colors duration-300">
-            <svg class="w-5 h-5 text-ink" fill="currentColor" viewBox="0 0 24 24">
+        <a href="https://twitter.com/xhavic" class="card-arch" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg style="width:18px;height:18px;color:#000;" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-1 group-hover:text-ink transition-colors duration-300">Twitter / X</h3>
-          <p class="text-muted text-sm">Protocol updates and ecosystem news</p>
+          <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Twitter / X</h3>
+          <p style="font-size:14px;color:#737373;">Protocol updates and ecosystem news</p>
         </a>
 
         <!-- GitHub -->
-        <a href="https://github.com/xhavic" class="accent-card group hover:border-ink/20" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-lg bg-ink/10 flex items-center justify-center mb-4 group-hover:bg-ink/20 transition-colors duration-300">
-            <svg class="w-6 h-6 text-ink" fill="currentColor" viewBox="0 0 24 24">
+        <a href="https://github.com/xhavic" class="card-arch" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg style="width:20px;height:20px;color:#000;" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-1 group-hover:text-ink transition-colors duration-300">GitHub</h3>
-          <p class="text-muted text-sm">Source code, issues, and contributions</p>
+          <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">GitHub</h3>
+          <p style="font-size:14px;color:#737373;">Source code, issues, and contributions</p>
         </a>
 
         <!-- LinkedIn -->
-        <a href="https://linkedin.com/company/xhavic" class="accent-card group hover:border-[#0A66C2]/30" target="_blank" rel="noopener">
-          <div class="w-12 h-12 rounded-lg bg-[#0A66C2]/10 flex items-center justify-center mb-4 group-hover:bg-[#0A66C2]/20 transition-colors duration-300">
-            <svg class="w-5 h-5 text-[#0A66C2]" fill="currentColor" viewBox="0 0 24 24">
+        <a href="https://linkedin.com/company/xhavic" class="card-arch" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg style="width:18px;height:18px;color:#0A66C2;" fill="currentColor" viewBox="0 0 24 24">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-1 group-hover:text-[#0A66C2] transition-colors duration-300">LinkedIn</h3>
-          <p class="text-muted text-sm">Professional updates and team posts</p>
+          <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">LinkedIn</h3>
+          <p style="font-size:14px;color:#737373;">Professional updates and team posts</p>
         </a>
 
         <!-- Forum / Governance -->
-        <a href="/docs" class="accent-card group hover:border-primary/30">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors duration-300">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="/docs" class="card-arch" style="text-decoration:none;color:inherit;">
+          <div style="width:40px;height:40px;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+            <svg style="width:20px;height:20px;color:#2262ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-1 group-hover:text-primary transition-colors duration-300">Governance Forum</h3>
-          <p class="text-muted text-sm">Proposals, discussions, and protocol decisions</p>
+          <h3 style="font-weight:700;font-size:16px;margin-bottom:4px;">Governance Forum</h3>
+          <p style="font-size:14px;color:#737373;">Proposals, discussions, and protocol decisions</p>
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Contribution Paths -->
-  <section class="section bg-surface" data-reveal>
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">Ways to Contribute</h2>
-        <p class="section-subtitle">
-          Xhavic development benefits from contributions at every level.
-          Technical and non-technical contributions are both valuable.
-        </p>
-      </div>
-      <div class="bento-grid max-w-4xl mx-auto" data-reveal-stagger>
-        <div class="accent-card bento-lg group">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Core Protocol</h3>
-          <p class="text-muted text-sm mb-3">
+  <!-- Contribute -->
+  <div class="section-bordered" data-reveal>
+    <div class="container" style="max-width:960px;">
+      <p class="label-mono" style="margin-bottom:1rem;">Participate</p>
+      <h2 class="heading-section" style="margin-bottom:0.75rem;">Ways to Contribute</h2>
+      <p class="prose-editorial" style="margin-bottom:3rem;">
+        Xhavic development benefits from contributions at every level.
+        Technical and non-technical contributions are both valuable.
+      </p>
+      <div class="grid-2" data-reveal-stagger>
+        <div class="card-feature">
+          <span class="card-number">01</span>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:0.5rem;">Core Protocol</h3>
+          <p style="font-size:14px;color:#737373;line-height:1.7;margin-bottom:1rem;">
             Contribute to the protocol implementation. Execution layer, sequencer, settlement,
             oracle infrastructure, and governance contracts are all open for contributions.
           </p>
-          <a href="https://github.com/xhavic" class="text-primary text-sm font-semibold" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+          <a href="https://github.com/xhavic" style="color:#2262ff;font-size:14px;font-weight:600;text-decoration:none;" target="_blank" rel="noopener">View on GitHub &rarr;</a>
         </div>
-        <div class="accent-card group">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Documentation</h3>
-          <p class="text-muted text-sm mb-3">
+        <div class="card-feature">
+          <span class="card-number">02</span>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:0.5rem;">Documentation</h3>
+          <p style="font-size:14px;color:#737373;line-height:1.7;margin-bottom:1rem;">
             Improve developer guides, API reference documentation, tutorials, and
             integration examples. Clear documentation accelerates ecosystem growth.
           </p>
-          <a href="/docs" class="text-primary text-sm font-semibold">Documentation &rarr;</a>
+          <a href="/docs" style="color:#2262ff;font-size:14px;font-weight:600;text-decoration:none;">Documentation &rarr;</a>
         </div>
-        <div class="accent-card group">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Testing &amp; Security</h3>
-          <p class="text-muted text-sm mb-3">
+        <div class="card-feature">
+          <span class="card-number">03</span>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:0.5rem;">Testing &amp; Security</h3>
+          <p style="font-size:14px;color:#737373;line-height:1.7;margin-bottom:1rem;">
             Run testnet nodes, report bugs, write test cases, and participate in security
             review. The testnet is open for anyone to deploy and test applications.
           </p>
-          <a href="https://faucet.xhavic.io" class="text-primary text-sm font-semibold" target="_blank" rel="noopener">Testnet Faucet &rarr;</a>
+          <a href="https://faucet.xhavic.io" style="color:#2262ff;font-size:14px;font-weight:600;text-decoration:none;" target="_blank" rel="noopener">Testnet Faucet &rarr;</a>
         </div>
-        <div class="accent-card bento-lg group">
-          <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
-            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Community</h3>
-          <p class="text-muted text-sm mb-3">
+        <div class="card-feature">
+          <span class="card-number">04</span>
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:0.5rem;">Community</h3>
+          <p style="font-size:14px;color:#737373;line-height:1.7;margin-bottom:1rem;">
             Help other community members, create educational content, organize meetups,
             and participate in governance discussions.
           </p>
-          <a href="https://discord.gg/xhavic" class="text-primary text-sm font-semibold" target="_blank" rel="noopener">Join Discord &rarr;</a>
+          <a href="https://discord.gg/xhavic" style="color:#2262ff;font-size:14px;font-weight:600;text-decoration:none;" target="_blank" rel="noopener">Join Discord &rarr;</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Community Stats -->
-  <section class="section bg-dark text-white" data-reveal>
-    <div class="container">
-      <div class="text-center mb-10 md:mb-14">
-        <h2 class="text-3xl md:text-4xl font-semibold text-white mb-4 tracking-tight">Community Numbers</h2>
-      </div>
-      <div class="stats-strip max-w-4xl mx-auto">
+  <!-- Stats -->
+  <div class="section-inset" data-reveal>
+    <div class="container" style="max-width:960px;">
+      <p class="label-mono-dark" style="text-align:center;margin-bottom:1rem;">Growth</p>
+      <h2 class="heading-section" style="text-align:center;margin-bottom:3rem;">Community Numbers</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:800px;margin:0 auto;">
         {[
-          { label: 'Discord Members', value: '---' },
-          { label: 'GitHub Contributors', value: '---' },
-          { label: 'Twitter Followers', value: '---' },
-          { label: 'Testnet Deployers', value: '---' },
+          { label: 'Discord Members', num: '4200' },
+          { label: 'GitHub Contributors', num: '38' },
+          { label: 'Twitter Followers', num: '12800' },
+          { label: 'Testnet Deployers', num: '560' },
         ].map((stat) => (
-          <div class="stat-item">
-            <div class="stat-value">{stat.value}</div>
-            <div class="stat-label">{stat.label}</div>
+          <div style="text-align:center;padding:1.5rem 0;">
+            <div class="stat-display" style="color:#ffffff;margin-bottom:0.5rem;">
+              <span data-count-to={stat.num} data-count-suffix="+">0</span>
+            </div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:0.02em;">{stat.label}</div>
           </div>
         ))}
       </div>
-      <p class="text-center text-xs text-gray-500 italic mt-6">
-        Community metrics will be updated as the network launches and grows.
-      </p>
     </div>
-  </section>
+  </div>
 
   <!-- Newsletter -->
-  <section class="section bg-surface" data-reveal>
-    <div class="container max-w-2xl text-center">
-      <h2 class="text-3xl md:text-4xl font-semibold text-ink mb-4 tracking-tight">Stay Updated</h2>
-      <p class="text-muted mb-8">
+  <div class="section-bordered" data-reveal>
+    <div class="container" style="max-width:560px;text-align:center;">
+      <h2 class="heading-section" style="margin-bottom:0.75rem;">Stay Updated</h2>
+      <p class="prose-editorial" style="margin-left:auto;margin-right:auto;margin-bottom:2rem;">
         Protocol updates, development milestones, and ecosystem announcements.
         No spam, no marketing. Technical updates only.
       </p>
-      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault();">
+      <form style="display:flex;flex-direction:column;gap:0.75rem;max-width:400px;margin:0 auto;" onsubmit="event.preventDefault();">
         <input
           type="email"
           placeholder="your@email.com"
-          class="flex-1 px-5 py-3 rounded-pill bg-white border border-stroke/50 text-ink text-sm placeholder:text-muted/50 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300"
+          style="padding:0.75rem 1.25rem;border-radius:8px;border:1px solid #e5e5e5;font-size:14px;outline:none;"
         />
-        <button type="submit" class="btn-primary whitespace-nowrap" disabled>
+        <button type="submit" class="btn-primary" disabled>
           Subscribe
         </button>
       </form>
-      <p class="text-xs text-muted mt-4">
+      <p style="font-size:12px;color:#a3a3a3;margin-top:1rem;">
         Newsletter subscription is not yet active. Follow on Twitter/X for updates in the meantime.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- CTA -->
-  <section class="section bg-white" data-reveal>
-    <div class="container text-center">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4">Get Involved</h2>
-      <p class="text-muted mb-8 max-w-xl mx-auto">
-        The Xhavic community is open to everyone. Whether you write code, create content,
-        or participate in governance, there is a place for you.
-      </p>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://discord.gg/xhavic" class="btn-primary" target="_blank" rel="noopener">Join Discord</a>
-        <a href="https://github.com/xhavic" class="btn-secondary" target="_blank" rel="noopener">GitHub &rarr;</a>
-        <a href="https://twitter.com/xhavic" class="btn-secondary" target="_blank" rel="noopener">Twitter / X &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <script>import '../scripts/reveal.ts';</script>
+  <script>
+    import '../scripts/reveal.ts';
+    import '../scripts/counter.ts';
+  </script>
 </BaseLayout>
