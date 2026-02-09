@@ -1,0 +1,58 @@
+---
+/**
+ * SecurityGrid — Dark inset section with 5 security property cards
+ * Glass cards in a bento-style grid.
+ */
+const securityItems = [
+  {
+    title: 'Execution verified through fraud proofs',
+    image: '/images/security_model/1.webp',
+  },
+  {
+    title: 'Data published to Ethereum for verification',
+    image: '/images/security_model/2.webp',
+  },
+  {
+    title: 'Trust-minimized settlement',
+    image: '/images/security_model/3.webp',
+  },
+  {
+    title: 'Transparent state transitions',
+    image: '/images/security_model/4.webp',
+  },
+  {
+    title: 'Resistance to censorship via forced inclusion',
+    image: '/images/security_model/5.webp',
+  },
+];
+---
+
+<section class="py-8 md:py-12">
+  <div class="section-dark-inset">
+    <div class="max-w-container mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="overline text-center mb-4 before:mx-auto">Security</p>
+        <h2 class="text-display-sm text-white mb-4">Security model</h2>
+        <p class="text-hero-sub text-gray-400 max-w-2xl mx-auto">
+          Xhavic inherits security from Ethereum through optimistic rollup design. Users retain the trust model of Ethereum while benefiting from improved performance.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4" data-reveal>
+        {securityItems.map((item, i) => (
+          <div class:list={[
+            'glass-card group cursor-default',
+            { 'md:col-span-2': i === 0 || i === 3 },
+          ]}>
+            <div class="flex flex-col h-full">
+              <div class="flex-1 flex items-center justify-center p-4 mb-4">
+                <img src={item.image} alt={item.title} class="w-full max-w-[200px] h-auto opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <h3 class="text-white font-bold text-lg leading-snug">{item.title}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

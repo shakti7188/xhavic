@@ -1,0 +1,69 @@
+---
+/**
+ * GetStarted — Three static path cards
+ * Users / Developers / Enterprises
+ */
+const paths = [
+  {
+    icon: '/images/get_started/icon-1.png',
+    title: 'Users',
+    desc: 'Explore applications running on Xhavic. Set up your wallet, bridge assets, and start using dApps.',
+    ctaText: 'Explore apps',
+    ctaHref: '/users',
+    image: '/images/get_started/3.jpg',
+  },
+  {
+    icon: '/images/get_started/icon-2.png',
+    title: 'Developers',
+    desc: 'Read the documentation, deploy smart contracts, and build on Xhavic with familiar EVM tools.',
+    ctaText: 'Read docs',
+    ctaHref: '/developers',
+    image: '/images/get_started/2.jpg',
+  },
+  {
+    icon: '/images/get_started/icon-3.png',
+    title: 'Enterprises',
+    desc: 'Contact the team for integration support and institutional-grade infrastructure solutions.',
+    ctaText: 'Contact team',
+    ctaHref: '/enterprises',
+    image: '/images/get_started/1.jpg',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-white" data-reveal>
+  <div class="max-w-container mx-auto px-6">
+    <div class="mb-16">
+      <p class="overline mb-4">Get Started</p>
+      <h2 class="text-3xl md:text-5xl font-black text-ink tracking-tight mb-4">Get started</h2>
+      <p class="text-base text-muted max-w-2xl">
+        The XHAVIC Foundation supports the growth of the XHAVIC ecosystem by helping builders, businesses, and institutions move from experimentation to real-world deployment.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {paths.map((p) => (
+        <a href={p.ctaHref} class="group rounded-2xl border border-stroke bg-white overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+          <div class="h-48 overflow-hidden">
+            <img src={p.image} alt={p.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-surface flex items-center justify-center flex-shrink-0">
+                <img src={p.icon} alt="" class="w-5 h-5" />
+              </div>
+              <h3 class="text-xl font-bold text-ink group-hover:text-primary transition-colors">{p.title}</h3>
+            </div>
+            <p class="text-sm text-muted leading-relaxed mb-4">{p.desc}</p>
+            <span class="text-primary font-semibold text-sm inline-flex items-center gap-2">
+              {p.ctaText}
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

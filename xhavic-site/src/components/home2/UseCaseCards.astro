@@ -1,0 +1,73 @@
+---
+/**
+ * UseCaseCards — Horizontal snap-scroll cards
+ * Premium card slider with hover effects.
+ */
+const useCases = [
+  {
+    tag: 'DeFi Apps',
+    image: '/images/slider/1.webp',
+    title: 'Decentralized Finance (DeFi) Apps',
+    desc: 'Lending, swapping, stablecoins, derivatives, and structured products benefit from predictable, low-cost execution.',
+    href: '/ecosystem',
+  },
+  {
+    tag: 'Tokenized Assets',
+    image: '/images/slider/2.webp',
+    title: 'Tokenized Assets',
+    desc: 'Real estate, commodities, identity systems, and digital securities require secure settlement with fast execution.',
+    href: '/ecosystem',
+  },
+  {
+    tag: 'Gaming & NFTs',
+    image: '/images/slider/3.webp',
+    title: 'Gaming & NFTs',
+    desc: 'High-throughput, low-fee execution powers in-game economies, NFT minting, and real-time player interactions at scale.',
+    href: '/ecosystem',
+  },
+  {
+    tag: 'AI Agents',
+    image: '/images/slider/4.webp',
+    title: 'AI Agent Marketplace',
+    desc: 'Autonomous AI agents execute on-chain tasks, manage portfolios, and coordinate multi-step workflows with verifiable settlement.',
+    href: '/ecosystem',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-white" data-reveal>
+  <div class="max-w-container-lg mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div>
+        <p class="overline mb-4">Use Cases</p>
+        <h2 class="text-3xl md:text-5xl font-black text-ink tracking-tight">Use cases</h2>
+        <p class="text-base text-muted mt-3 max-w-lg">Xhavic supports a wide range of Web3 applications.</p>
+      </div>
+      <a href="/ecosystem" class="text-primary font-semibold text-sm inline-flex items-center gap-2 group flex-shrink-0">
+        Browse all use cases
+        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Horizontal scroll cards -->
+    <div class="horizontal-scroll-section flex gap-6 pb-4">
+      {useCases.map((uc) => (
+        <a
+          href={uc.href}
+          class="flex-shrink-0 w-[320px] md:w-[360px] rounded-2xl border border-stroke bg-white overflow-hidden group transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img src={uc.image} alt={uc.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm text-ink text-xs font-bold px-3 py-1.5 rounded-full">{uc.tag}</span>
+          </div>
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-ink mb-2 group-hover:text-primary transition-colors">{uc.title}</h3>
+            <p class="text-sm text-muted leading-relaxed">{uc.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,132 @@
+---
+/**
+ * HowItWorks — Sticky heading left + scrolling step cards right
+ * Accordion with image preview swap.
+ */
+const steps = [
+  {
+    icon: '/images/how/icon-1.png',
+    title: 'Transact on XHAVIC',
+    desc: 'Users swap, mint, send, pay, or use dApps on XHAVIC for fast, low-cost execution.',
+    preview: '/images/how/1.webp',
+  },
+  {
+    icon: '/images/how/icon-2.png',
+    title: 'Execute and bundle',
+    desc: 'XHAVIC runs transactions on Layer-2, then bundles many of them into batches to increase throughput and reduce costs.',
+    preview: '/images/how/2.png',
+  },
+  {
+    icon: '/images/how/icon-3.png',
+    title: 'Anchor to Ethereum',
+    desc: 'Each batch generates a state commitment that is posted to Ethereum, using Ethereum as the settlement and security layer.',
+    preview: '/images/how/3.png',
+  },
+  {
+    icon: '/images/how/icon-4.png',
+    title: 'Secure finality, bridge, and automate',
+    desc: 'Bridging keeps assets usable across networks by moving tokens between Ethereum and XHAVIC smoothly, and AI agents can automate actions like trade, pay, rebalance, and verify.',
+    preview: '/images/how/4.webp',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-bg" data-reveal>
+  <div class="max-w-container mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20">
+      <!-- Left: Sticky heading + preview -->
+      <div class="sticky-label">
+        <p class="overline mb-4">How It Works</p>
+        <h2 class="text-3xl md:text-5xl font-black text-ink tracking-tight mb-6">How Xhavic works</h2>
+        <p class="text-base text-muted leading-relaxed mb-8">
+          Built on optimistic rollup architecture. Transactions are processed off-chain and periodically submitted to Ethereum for final settlement.
+        </p>
+        <div class="rounded-3xl overflow-hidden bg-white border border-stroke shadow-sm">
+          <img id="howPreviewImg" src="/images/how/1.webp" alt="Step preview" class="w-full h-auto transition-opacity duration-300" />
+        </div>
+      </div>
+
+      <!-- Right: Step cards -->
+      <div class="space-y-4" id="howSteps">
+        {steps.map((step, i) => (
+          <div
+            class={`group rounded-2xl border border-stroke bg-white p-6 cursor-pointer transition-all duration-300 hover:shadow-md ${i === 0 ? 'is-active ring-2 ring-primary/20' : ''}`}
+            data-i={String(i)}
+            data-preview={step.preview}
+          >
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-surface flex items-center justify-center flex-shrink-0">
+                <img src={step.icon} alt="" class="w-6 h-6" />
+              </div>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-lg font-bold text-ink">{step.title}</h3>
+                  <span class="text-2xl font-black text-gray-200 tabular-nums">0{i + 1}</span>
+                </div>
+                <div class={`overflow-hidden transition-all duration-500 ${i === 0 ? 'max-h-40 opacity-100 mt-3' : 'max-h-0 opacity-0'}`}>
+                  <p class="text-muted text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+        <div class="pt-4">
+          <a href="/developers" class="btn-primary inline-flex">Get started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initHowSteps() {
+    const container = document.getElementById('howSteps');
+    const previewImg = document.getElementById('howPreviewImg') as HTMLImageElement | null;
+    if (!container) return;
+
+    const items = container.querySelectorAll<HTMLElement>('[data-i]');
+
+    function openItem(index: number) {
+      items.forEach((item, i) => {
+        const content = item.querySelector<HTMLElement>('.overflow-hidden');
+        const isOpen = i === index;
+
+        if (isOpen) {
+          item.classList.add('is-active', 'ring-2', 'ring-primary/20');
+          if (content) {
+            content.classList.remove('max-h-0', 'opacity-0');
+            content.classList.add('max-h-40', 'opacity-100', 'mt-3');
+          }
+        } else {
+          item.classList.remove('is-active', 'ring-2', 'ring-primary/20');
+          if (content) {
+            content.classList.add('max-h-0', 'opacity-0');
+            content.classList.remove('max-h-40', 'opacity-100', 'mt-3');
+          }
+        }
+      });
+
+      if (previewImg) {
+        const targetItem = items[index];
+        const nextSrc = targetItem?.dataset.preview;
+        if (nextSrc && !previewImg.src.endsWith(nextSrc)) {
+          previewImg.style.opacity = '0';
+          setTimeout(() => {
+            previewImg.src = nextSrc;
+            previewImg.style.opacity = '1';
+          }, 200);
+        }
+      }
+    }
+
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        const i = Number(item.dataset.i);
+        if (!isNaN(i)) openItem(i);
+      });
+    });
+  }
+
+  initHowSteps();
+  document.addEventListener('astro:after-swap', initHowSteps);
+</script>

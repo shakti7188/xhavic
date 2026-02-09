@@ -1,0 +1,46 @@
+---
+/**
+ * AsSeenIn — Logo marquee strip
+ * Infinite horizontal scroll of partner/media logos.
+ * Duplicates track innerHTML for seamless loop animation.
+ */
+---
+
+<section class="py-16 bg-white border-b border-gray-100" aria-label="Featured in">
+  <p class="text-center text-xs font-bold uppercase tracking-widest text-gray-400 mb-10">As seen in</p>
+  <div class="relative overflow-hidden">
+    <div class="flex items-center gap-16 animate-marquee" id="marqueeTrack">
+      <div class="flex-shrink-0 px-6 opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0">
+        <img src="/images/as-seen-in/1.png" alt="Media partner" class="h-8 w-auto" />
+      </div>
+      <div class="flex-shrink-0 px-6 opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0">
+        <img src="/images/as-seen-in/2.png" alt="Media partner" class="h-8 w-auto" />
+      </div>
+      <div class="flex-shrink-0 px-6 opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0">
+        <img src="/images/as-seen-in/3.png" alt="Media partner" class="h-8 w-auto" />
+      </div>
+      <div class="flex-shrink-0 px-6 opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0">
+        <img src="/images/as-seen-in/4.png" alt="Media partner" class="h-8 w-auto" />
+      </div>
+      <div class="flex-shrink-0 px-6 opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0">
+        <img src="/images/as-seen-in/5.png" alt="Media partner" class="h-8 w-auto" />
+      </div>
+      <div class="flex-shrink-0 px-6 opacity-40 hover:opacity-80 transition-opacity duration-300 grayscale hover:grayscale-0">
+        <img src="/images/as-seen-in/6.png" alt="Media partner" class="h-8 w-auto" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initMarquee() {
+    const track = document.getElementById('marqueeTrack');
+    if (!track) return;
+    if (!track.dataset.duplicated) {
+      track.innerHTML += track.innerHTML;
+      track.dataset.duplicated = 'true';
+    }
+  }
+  initMarquee();
+  document.addEventListener('astro:after-swap', initMarquee);
+</script>

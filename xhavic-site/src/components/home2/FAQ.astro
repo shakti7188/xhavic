@@ -1,0 +1,88 @@
+---
+/**
+ * FAQ — Accordion section with structured data
+ * Uses centralized FAQ_ITEMS from data/faq.ts (single source of truth).
+ * JSON-LD is handled by index.astro via the JsonLd component.
+ */
+import { FAQ_ITEMS } from '@/data/faq';
+---
+
+<section class="py-20 md:py-28 bg-bg" data-reveal>
+  <div class="max-w-container-sm mx-auto px-6">
+    <div class="text-center mb-16">
+      <p class="overline text-center mb-4 before:mx-auto">FAQ</p>
+      <h2 class="text-3xl md:text-5xl font-black text-ink tracking-tight mb-4">Have more questions?</h2>
+      <p class="text-base text-muted max-w-xl mx-auto">
+        Get answers to frequent questions about Xhavic, security measures, and features.
+      </p>
+    </div>
+
+    <div id="faqList" class="space-y-3">
+      {FAQ_ITEMS.map((item, i) => (
+        <div class="faq-item rounded-2xl border border-stroke bg-white overflow-hidden transition-all duration-300" data-i={String(i)}>
+          <button
+            class="faq-btn w-full flex items-center justify-between gap-4 p-6 text-left cursor-pointer"
+            type="button"
+            aria-expanded="false"
+          >
+            <span class="text-ink font-bold text-base">{item.question}</span>
+            <span class="faq-icon text-2xl text-gray-300 flex-shrink-0 transition-transform duration-300" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-body overflow-hidden transition-all duration-300" style="max-height: 0px;">
+            <div class="px-6 pb-6 text-muted text-sm leading-relaxed">{item.answer}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFaq() {
+    const faqList = document.getElementById('faqList');
+    if (!faqList) return;
+
+    const items = faqList.querySelectorAll<HTMLElement>('.faq-item');
+
+    items.forEach((item) => {
+      const btn = item.querySelector<HTMLButtonElement>('.faq-btn');
+      const body = item.querySelector<HTMLElement>('.faq-body');
+      const icon = item.querySelector<HTMLElement>('.faq-icon');
+
+      if (!btn || !body) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+
+        // Close all items
+        items.forEach((otherItem) => {
+          const otherBody = otherItem.querySelector<HTMLElement>('.faq-body');
+          const otherIcon = otherItem.querySelector<HTMLElement>('.faq-icon');
+          const otherBtn = otherItem.querySelector<HTMLButtonElement>('.faq-btn');
+
+          otherItem.classList.remove('is-open');
+          if (otherBody) otherBody.style.maxHeight = '0px';
+          if (otherIcon) {
+            otherIcon.textContent = '+';
+            otherIcon.style.transform = '';
+          }
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle clicked item
+        if (!isOpen) {
+          item.classList.add('is-open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          if (icon) {
+            icon.textContent = '\u2212';
+            icon.style.transform = 'rotate(180deg)';
+          }
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  initFaq();
+  document.addEventListener('astro:after-swap', initFaq);
+</script>

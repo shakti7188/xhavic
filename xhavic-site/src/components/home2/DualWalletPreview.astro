@@ -1,0 +1,77 @@
+---
+/**
+ * DualWalletPreview — Dark inset section
+ * EVM compatibility showcase with terminal and tool grid.
+ */
+const tools = [
+  { name: 'Solidity', icon: '/images/slider/icon1.png' },
+  { name: 'Hardhat', icon: '/images/slider/icon2.png' },
+  { name: 'Foundry', icon: '/images/slider/icon3.png' },
+  { name: 'Vyper', icon: '/images/slider/icon4.png' },
+];
+---
+
+<section class="py-8 md:py-12">
+  <div class="section-dark-inset">
+    <div class="max-w-container mx-auto px-6">
+      <div class="text-center mb-16">
+        <p class="overline text-center mb-4 before:mx-auto">EVM Compatible</p>
+        <h2 class="text-display-sm text-white mb-4">Built for real dApps</h2>
+        <p class="text-hero-sub text-gray-400 max-w-2xl mx-auto">
+          Deploy Ethereum smart contracts without modification using familiar tools and languages.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Terminal -->
+        <div class="terminal" data-reveal>
+          <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">Terminal</span>
+          </div>
+          <div class="terminal-body">
+            <div class="mb-2"><span class="text-gray-500">$</span> <span class="text-green-400">npx hardhat deploy</span> --network xhavic</div>
+            <div class="mb-2 text-gray-500">Compiling 3 Solidity files...</div>
+            <div class="mb-2 text-gray-500">Deploying contracts to Xhavic L2...</div>
+            <div class="mb-2"><span class="text-green-400">&#10003;</span> MyToken deployed to: <span class="text-primary">0x1a2b...9f3e</span></div>
+            <div class="mb-2"><span class="text-green-400">&#10003;</span> DEX deployed to: <span class="text-primary">0x4c5d...8a7b</span></div>
+            <div><span class="text-green-400">&#10003;</span> All contracts verified on Explorer</div>
+          </div>
+        </div>
+
+        <!-- Tool grid -->
+        <div class="grid grid-cols-2 gap-4" data-reveal>
+          {tools.map((tool) => (
+            <div class="glass-card flex items-center gap-4 p-6">
+              <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center flex-shrink-0">
+                <img src={tool.icon} alt={tool.name} class="w-7 h-7" />
+              </div>
+              <div>
+                <p class="text-white font-bold text-sm">{tool.name}</p>
+                <p class="text-gray-500 text-xs">Fully supported</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="grid grid-cols-3 gap-6 mt-16 pt-12 border-t border-white/5" data-reveal>
+        <div class="text-center">
+          <p class="text-3xl md:text-5xl font-black text-white tracking-tight">100%</p>
+          <p class="text-sm text-gray-500 mt-2">EVM Compatible</p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl md:text-5xl font-black text-white tracking-tight">0</p>
+          <p class="text-sm text-gray-500 mt-2">Code changes needed</p>
+        </div>
+        <div class="text-center">
+          <p class="text-3xl md:text-5xl font-black text-white tracking-tight">&lt;5min</p>
+          <p class="text-sm text-gray-500 mt-2">To deploy</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

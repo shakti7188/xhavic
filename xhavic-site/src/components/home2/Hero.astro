@@ -1,0 +1,43 @@
+---
+/**
+ * Hero — Full-viewport statement hero
+ * Centered layout with massive typography and stat counters at bottom.
+ */
+---
+
+<section class="relative bg-dark text-white min-h-screen flex flex-col justify-center items-center overflow-hidden grid-pattern">
+  <div class="container text-center max-w-4xl relative z-10 px-6 py-32 md:py-0">
+    <p class="overline text-center mb-8 before:mx-auto" data-reveal>Ethereum Layer-2 Execution Network</p>
+    <h1 class="text-display text-white mb-8" data-reveal>
+      Ethereum, with a<br class="hidden md:block" /> third dimension.
+    </h1>
+    <p class="text-hero-sub text-gray-400 max-w-xl mx-auto mb-12" data-reveal>
+      An L2 execution network that separates fast composable DeFi
+      from institutional-grade reversible settlement — at the protocol level.
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-4" data-reveal>
+      <a href="/protocol" class="btn-primary">Explore the Protocol</a>
+      <a href="/developers" class="btn-ghost">Start Building</a>
+    </div>
+  </div>
+
+  <!-- Stat strip pinned to bottom -->
+  <div class="absolute bottom-0 left-0 right-0 border-t border-white/5 z-10">
+    <div class="container">
+      <div class="grid grid-cols-3 divide-x divide-white/5" data-reveal>
+        <div class="text-center py-8">
+          <p class="text-3xl md:text-4xl font-black text-white tracking-tight" data-count-to="2000">0</p>
+          <p class="text-xs md:text-sm text-gray-500 mt-1">TPS</p>
+        </div>
+        <div class="text-center py-8">
+          <p class="text-3xl md:text-4xl font-black text-white tracking-tight">$0.04</p>
+          <p class="text-xs md:text-sm text-gray-500 mt-1">Avg fee</p>
+        </div>
+        <div class="text-center py-8">
+          <p class="text-3xl md:text-4xl font-black text-white tracking-tight">&lt;200ms</p>
+          <p class="text-xs md:text-sm text-gray-500 mt-1">Soft finality</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

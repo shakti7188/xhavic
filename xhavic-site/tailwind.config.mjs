@@ -39,6 +39,8 @@ export default {
         '6xl': ['45px', '1.05'],
         '7xl': ['56px', '1.0'],
         '8xl': ['72px', '0.95'],
+        '9xl': ['96px', '0.9'],
+        '10xl': ['128px', '0.85'],
       },
       borderRadius: {
         sm: '10px',
@@ -73,10 +75,11 @@ export default {
         'section-lg': '7rem',
       },
       maxWidth: {
-        container: '1120px',
-        'container-sm': '980px',
+        container: '1320px',
+        'container-sm': '1080px',
         'container-xs': '820px',
-        'container-lg': '1280px',
+        'container-lg': '1440px',
+        'container-2xl': '1600px',
       },
       animation: {
         'marquee': 'marquee 25s linear infinite',
@@ -88,6 +91,9 @@ export default {
         'border-glow': 'border-glow 3s ease-in-out infinite',
         'gradient-mesh': 'gradient-mesh 15s ease infinite',
         'grid-drift': 'grid-drift 8s linear infinite',
+        'clip-reveal': 'clip-reveal-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'tracking-in': 'tracking-in 0.8s ease forwards',
+        'line-grow': 'line-grow-right 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'blink-cursor': 'blink-cursor 1s step-end infinite',
         'orbit': 'orbit-spin 20s linear infinite',
         'orbit-reverse': 'orbit-spin 25s linear infinite reverse',

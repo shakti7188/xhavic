@@ -1,0 +1,58 @@
+---
+/**
+ * landing2.astro — Redesigned Homepage (v2)
+ * Uses the premium redesigned components from home2/.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/global/JsonLd.astro';
+import Hero from '@/components/home2/Hero.astro';
+import AsSeenIn from '@/components/home2/AsSeenIn.astro';
+import WhatXhavicDoes from '@/components/home2/WhatXhavicDoes.astro';
+import DualWalletPreview from '@/components/home2/DualWalletPreview.astro';
+import PerformanceStrip from '@/components/home2/PerformanceStrip.astro';
+import HowItWorks from '@/components/home2/HowItWorks.astro';
+import SecurityGrid from '@/components/home2/SecurityGrid.astro';
+import UseCaseCards from '@/components/home2/UseCaseCards.astro';
+import DevQuickStart from '@/components/home2/DevQuickStart.astro';
+import GetStarted from '@/components/home2/GetStarted.astro';
+import CommunityOrbit from '@/components/home2/CommunityOrbit.astro';
+import FAQ from '@/components/home2/FAQ.astro';
+import { FAQ_ITEMS } from '@/data/faq';
+---
+
+<BaseLayout
+  title="Xhavic — Ethereum Layer-2 Execution Network (v2)"
+  description="Ethereum L2 with protocol-level risk routing. Dual Wallet System, 2,000+ TPS, $0.04 avg fee. Full EVM compatibility. Ethereum-settled security."
+>
+  <Hero />
+  <AsSeenIn />
+  <WhatXhavicDoes />
+  <DualWalletPreview />
+  <PerformanceStrip />
+  <SecurityGrid />
+  <HowItWorks />
+  <UseCaseCards />
+  <DevQuickStart />
+  <CommunityOrbit />
+  <GetStarted />
+  <FAQ />
+
+  <JsonLd
+    type="FAQPage"
+    data={{
+      mainEntity: FAQ_ITEMS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    }}
+  />
+
+  <script>
+    import '../scripts/reveal.ts';
+    import '../scripts/counter.ts';
+  </script>
+</BaseLayout>

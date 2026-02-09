@@ -1,0 +1,55 @@
+---
+/**
+ * DevQuickStart — AI advantage section
+ * Dark bg, centered content with feature list.
+ */
+const features = [
+  {
+    title: 'Seamless AI-Agent Integration',
+    desc: 'Connect any AI agent and run workflows on XHAVIC without friction.',
+  },
+  {
+    title: 'Automated on-chain actions',
+    desc: 'Agents can monitor conditions and trigger trades, payments, rebalancing, and verification — fast on L2, secured by Ethereum.',
+  },
+  {
+    title: 'Built for AI-native dApps',
+    desc: 'EVM-compatible, scalable infrastructure designed for real-world AI + Web3 products.',
+  },
+];
+---
+
+<section class="bg-dark text-white py-20 md:py-28" data-reveal>
+  <div class="max-w-container mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <!-- Left: Robot visual -->
+      <div class="relative flex items-center justify-center">
+        <img src="/images/robot/1.png" alt="AI robot assistant" class="w-full max-w-sm mx-auto relative z-10" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-radial from-primary/10 to-transparent rounded-full" aria-hidden="true"></div>
+      </div>
+
+      <!-- Right: Content -->
+      <div>
+        <p class="overline mb-4">AI + Web3</p>
+        <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-10">
+          Unlocking the AI advantage with XHAVIC
+        </h2>
+        <div class="space-y-6">
+          {features.map((f) => (
+            <div class="flex items-start gap-4">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-primary" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-white font-bold text-lg mb-1">{f.title}</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

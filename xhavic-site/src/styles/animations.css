@@ -189,3 +189,21 @@
     transform-origin: left;
   }
 }
+
+/* ========== CLIP REVEAL ========== */
+@keyframes clip-reveal-up {
+  0% { clip-path: inset(100% 0 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+/* ========== TRACKING IN ========== */
+@keyframes tracking-in {
+  0% { letter-spacing: 0.3em; opacity: 0; }
+  100% { letter-spacing: normal; opacity: 1; }
+}
+
+/* ========== LINE GROW RIGHT ========== */
+@keyframes line-grow-right {
+  0% { transform: scaleX(0); transform-origin: left; }
+  100% { transform: scaleX(1); transform-origin: left; }
+}

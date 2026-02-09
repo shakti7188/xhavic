@@ -1,0 +1,47 @@
+---
+/**
+ * PerformanceStrip — Bridging and Interoperability
+ * Split layout with center image and icon columns.
+ */
+const ICONS = [
+  { src: '/images/bridging/1.png', alt: 'Bridge partner' },
+  { src: '/images/bridging/2.png', alt: 'Bridge partner' },
+  { src: '/images/bridging/3.png', alt: 'Bridge partner' },
+  { src: '/images/bridging/4.png', alt: 'Bridge partner' },
+  { src: '/images/bridging/5.png', alt: 'Bridge partner' },
+  { src: '/images/bridging/6.png', alt: 'Bridge partner' },
+];
+---
+
+<section class="py-20 md:py-28 bg-white" data-reveal>
+  <div class="max-w-container mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <!-- Left: Content -->
+      <div>
+        <p class="overline mb-4">Interoperability</p>
+        <h2 class="text-3xl md:text-5xl font-black text-ink tracking-tight mb-6">Bridging and interoperability</h2>
+        <p class="text-base text-muted leading-relaxed mb-4">
+          Xhavic enables seamless bridging so users can move assets between Ethereum and Xhavic for faster, lower-cost transactions.
+        </p>
+        <p class="text-base text-muted leading-relaxed mb-8">
+          Its interoperability supports cross-chain messaging, letting dApps connect liquidity and trigger actions across multiple networks while staying anchored to Ethereum security.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          {ICONS.map((icon) => (
+            <div class="w-14 h-14 rounded-2xl bg-surface border border-stroke flex items-center justify-center transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <img src={icon.src} alt={icon.alt} class="w-8 h-8" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: Visual -->
+      <div class="relative flex items-center justify-center">
+        <div class="relative z-10 rounded-3xl overflow-hidden shadow-xl">
+          <img src="/images/bridging/center-image.png" alt="Xhavic bridge interface" class="w-full max-w-md mx-auto" />
+        </div>
+        <div class="absolute inset-0 bg-gradient-radial from-primary/5 to-transparent rounded-full" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+---
+/**
+ * WhatXhavicDoes — Stripe-style feature rows
+ * Two alternating 50/50 feature rows with number highlights.
+ */
+const FEATURES = [
+  {
+    num: '01',
+    title: 'Dual-wallet security architecture',
+    desc: 'The Instant Wallet handles real-time transactions in seconds, while the Funding Wallet provides a 24-hour safety window to cancel or reverse transfers in case of errors or suspicious activity.',
+    icon: '/images/key_benefits/i-1.webp',
+    preview: '/images/key_benefits/img-1.webp',
+    href: '/protocol/dual-wallet',
+  },
+  {
+    num: '02',
+    title: 'On-Ramp and Off-Ramp Connectivity',
+    desc: 'Enable end-users and institutional participants to move between fiat and digital assets seamlessly, bridging the gap between traditional finance and decentralized infrastructure.',
+    icon: '/images/key_benefits/i-2.webp',
+    preview: '/images/key_benefits/img-2.webp',
+    href: '/users',
+  },
+];
+---
+
+<section class="py-20 md:py-28 bg-white" data-reveal>
+  <div class="max-w-container-lg mx-auto px-6">
+    <div class="mb-16 md:mb-24">
+      <p class="overline mb-4">Key Benefits</p>
+      <h2 class="text-display-sm text-ink mb-4">What makes Xhavic different</h2>
+      <p class="text-lg text-muted max-w-2xl">
+        Faster execution, cheaper fees, and a smoother user experience — all anchored to Ethereum security.
+      </p>
+    </div>
+
+    <div class="space-y-24 md:space-y-32">
+      {FEATURES.map((f, i) => (
+        <div class={`feature-row ${i % 2 !== 0 ? 'md:[direction:rtl]' : ''}`} data-reveal>
+          <div class={`feature-row__text ${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
+            <span class="number-highlight block mb-4" aria-hidden="true">{f.num}</span>
+            <h3 class="text-2xl md:text-4xl font-bold text-ink mb-4 tracking-tight">{f.title}</h3>
+            <p class="text-base text-muted leading-relaxed mb-6">{f.desc}</p>
+            <a href={f.href} class="inline-flex items-center gap-2 text-primary font-semibold text-sm group">
+              Learn more
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none">
+                <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <path d="M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class={`feature-row__visual ${i % 2 !== 0 ? 'md:[direction:ltr]' : ''}`}>
+            <img src={f.preview} alt={f.title} class="w-full h-full object-cover rounded-2xl" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
