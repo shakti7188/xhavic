@@ -58,17 +58,8 @@
 }
 
 .gradient-mesh::before {
-  content: '';
-  position: absolute;
-  inset: -50%;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(34, 98, 255, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(34, 98, 255, 0.1) 0%, transparent 50%);
-  background-size: 200% 200%;
-  animation: gradient-mesh 15s ease infinite;
-  pointer-events: none;
-  z-index: 0;
+  /* Disabled — no gradients per design direction */
+  display: none;
 }
 
 .gradient-mesh > * {
@@ -81,27 +72,17 @@
   opacity: 0.5;
 }
 
-/* ========== GRADIENT TEXT ========== */
+/* ========== GRADIENT TEXT — Disabled, using solid colors ========== */
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #2262ff 50%, #ffffff 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 .gradient-text-blue {
-  background: linear-gradient(135deg, #2262ff, #6366f1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #2262ff;
 }
 
 .gradient-text-static {
-  background: linear-gradient(135deg, #ffffff 30%, rgba(34, 98, 255, 0.7) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
 }
 
 /* ========== ANIMATED GRID PATTERN ========== */
@@ -111,18 +92,8 @@
 }
 
 .grid-pattern::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(34, 98, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 98, 255, 0.06) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: grid-drift 8s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  /* Disabled — no gradients per design direction */
+  display: none;
 }
 
 .grid-pattern > * {
@@ -200,7 +171,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, #2262ff, rgba(34, 98, 255, 0.1));
+  background: #2262ff;
 }
 
 .timeline-item {
@@ -228,7 +199,7 @@
 
 /* On light backgrounds */
 .timeline-light::before {
-  background: linear-gradient(to bottom, #2262ff, rgba(34, 98, 255, 0.15));
+  background: #2262ff;
 }
 
 .timeline-light .timeline-item::before {
@@ -367,7 +338,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #2262ff, #6366f1);
+  background: #2262ff;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -384,7 +355,7 @@
 /* ========== SECTION TRANSITIONS ========== */
 .section-divider {
   height: 120px;
-  background: linear-gradient(to bottom, var(--from-color, transparent), var(--to-color, transparent));
+  background: var(--from-color, transparent);
   margin: 0;
   position: relative;
 }
