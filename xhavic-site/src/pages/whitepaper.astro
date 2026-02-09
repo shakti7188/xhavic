@@ -1,28 +1,5 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-
-const tocSections = [
-  { num: '1', title: 'Abstract', desc: 'High-level summary of the Xhavic protocol and its design rationale.' },
-  { num: '2', title: 'Introduction', desc: 'Problem statement, market context, and why another Layer-2 execution network.' },
-  { num: '3', title: 'Design Philosophy', desc: 'Five guiding principles: Ethereum alignment, security inheritance, modularity, progressive decentralization, practical focus.' },
-  { num: '4', title: 'Architecture', desc: 'Six-layer modular architecture overview and inter-layer communication model.' },
-  { num: '5', title: 'Execution Layer', desc: 'EVM compatibility, bytecode execution, gas metering, and precompile integration.' },
-  { num: '6', title: 'Sequencer', desc: 'Transaction ordering, batch submission, MEV mitigation, and sequencer rotation roadmap.' },
-  { num: '7', title: 'Settlement', desc: 'Ethereum anchoring via CanonicalTransactionChain, state root commitments, and finality model.' },
-  { num: '8', title: 'Dual Wallet System', desc: 'Instant Wallet and Secured Wallet design, escrow periods, and risk routing.' },
-  { num: '9', title: 'Data Availability', desc: 'Calldata posting, blob transactions, Merkle commitments, and state reconstruction.' },
-  { num: '10', title: 'Bridge', desc: 'Deposit and withdrawal flows, canonical bridge contracts, and LP fast-exit mechanism.' },
-  { num: '11', title: 'Tokenomics', desc: 'XHV token utility, distribution schedule, staking mechanics, and fee model.' },
-  { num: '12', title: 'Oracle + AI Agents', desc: 'Native oracle precompiles, AI agent execution framework, and deterministic compute.' },
-  { num: '13', title: 'Governance', desc: 'DAO structure, four governance domains, proposal lifecycle, and voting mechanics.' },
-  { num: '14', title: 'Performance Benchmarks', desc: 'TPS measurements, fee comparisons, finality timings, and scalability projections.' },
-  { num: '15', title: 'Security Model', desc: 'Fraud proofs, interactive bisection protocol, challenge windows, and slashing conditions.' },
-  { num: '16', title: 'Formal Verification', desc: 'Verified invariants, audit scope, and correctness guarantees.' },
-  { num: '17', title: 'Ecosystem & Integrations', desc: 'Wallet support, indexer compatibility, RPC endpoints, and developer tooling.' },
-  { num: '18', title: 'Regulatory Considerations', desc: 'Compliance framework, jurisdictional analysis, and risk disclosures.' },
-  { num: '19', title: 'Comparison with Existing L2s', desc: 'Feature and performance comparison against Arbitrum, Optimism, zkSync, and others.' },
-  { num: '20', title: 'Challenges & Future Directions', desc: 'Known limitations, open research problems, and development roadmap.' },
-];
 ---
 
 <BaseLayout
@@ -47,73 +24,939 @@ const tocSections = [
           Complete protocol specification: architecture, execution model, settlement,
           tokenomics, governance, and security analysis.
         </p>
-        <a
-          href="/whitepaper/XHAVIC_Whitepaper_v1.0.pdf"
-          class="btn-primary"
-          download
-        >
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          Download PDF
-        </a>
+        <div class="flex flex-wrap gap-4">
+          <a href="#content" class="btn-primary">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+            Read Below
+          </a>
+          <a href="/whitepaper/XHAVIC_Whitepaper_v1.0.pdf" class="btn-outline" download>
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            Download PDF
+          </a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Table of Contents -->
-  <section class="section bg-white" data-reveal>
-    <div class="container">
-      <div class="section-header">
-        <span class="pill mb-4">20 Sections</span>
-        <h2 class="section-title">Table of Contents</h2>
-        <p class="section-subtitle">
-          A comprehensive specification covering every aspect of the Xhavic protocol.
-        </p>
-      </div>
+  <!-- Sticky TOC + Content -->
+  <section class="bg-white" id="content">
+    <div class="container py-16 lg:py-24">
+      <div class="lg:grid lg:grid-cols-[280px_1fr] lg:gap-16 xl:grid-cols-[300px_1fr]">
 
-      <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-4" data-reveal-stagger>
-        {tocSections.map((section) => (
-          <div class="accent-card flex items-start gap-4 !p-5">
-            <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
-              <span class="text-primary text-sm font-bold">{section.num}</span>
+        <!-- Sidebar TOC (sticky on desktop) -->
+        <aside class="hidden lg:block">
+          <nav class="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto pr-4 pb-8" id="wp-toc">
+            <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Contents</p>
+            <ul class="space-y-1 text-sm border-l border-gray-200">
+              <li><a href="#abstract" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">Abstract</a></li>
+              <li><a href="#s1" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">1. Introduction</a></li>
+              <li><a href="#s2" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">2. Background</a></li>
+              <li><a href="#s3" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">3. Design Philosophy</a></li>
+              <li><a href="#s4" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">4. Architecture Overview</a></li>
+              <li><a href="#s5" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">5. Core Protocol Components</a></li>
+              <li><a href="#s6" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">6. Technical Deep Dive</a></li>
+              <li><a href="#s7" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">7. Transaction Processing</a></li>
+              <li><a href="#s8" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">8. Dual Wallet System</a></li>
+              <li><a href="#s9" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">9. L1/L2 Interoperability</a></li>
+              <li><a href="#s10" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">10. Security Architecture</a></li>
+              <li><a href="#s11" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">11. MEV & Fair Ordering</a></li>
+              <li><a href="#s12" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">12. Oracle & AI Agents</a></li>
+              <li><a href="#s13" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">13. Governance</a></li>
+              <li><a href="#s14" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">14. Performance & Scalability</a></li>
+              <li><a href="#s15" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">15. Competitive Analysis</a></li>
+              <li><a href="#s16" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">16. Benefits</a></li>
+              <li><a href="#s17" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">17. Use Cases</a></li>
+              <li><a href="#s18" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">18. Developer Guide</a></li>
+              <li><a href="#s19" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">19. Development Roadmap</a></li>
+              <li><a href="#s20" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">20. Challenges & Limitations</a></li>
+              <li><a href="#s21" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">21. Risks & Disclaimer</a></li>
+              <li><a href="#s22" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">22. Conclusion</a></li>
+              <li><a href="#appendix" class="wp-toc-link block pl-4 py-1.5 text-gray-500 hover:text-primary hover:border-l-2 hover:border-primary -ml-px transition-colors">Appendix</a></li>
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <article class="wp-content max-w-none prose prose-lg prose-gray">
+
+          <!-- Abstract -->
+          <section id="abstract" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">Abstract</h2>
+            <p>Ethereum can handle about 15 transactions per second. When gas spikes during a token launch or an NFT drop, fees climb past $100 and half the network's users get priced out.</p>
+            <p>Xhavic is a Layer-2 execution network that sits on top of Ethereum. We take the computation off-chain, batch the results, and settle them back on Ethereum's mainnet. The architecture breaks down into six independent layers — execution, sequencing, settlement, data availability, oracle infrastructure, and governance — and each one can be upgraded without touching the others.</p>
+            <p>The numbers: over 2,000 transactions per second, average cost of $0.04, and end-to-end latency under 200 milliseconds. Full EVM bytecode compatibility, so existing Solidity and Vyper contracts work without any changes.</p>
+            <p>Two things make Xhavic different from everything else out there. First, the <strong>Dual Wallet System</strong>. It splits transactions into two paths at the protocol level: an Instant Wallet for composable DeFi (fast, irreversible) and a Secured Wallet with a 24-hour reversal window for high-value treasury operations. This isn't a UI toggle. It's baked into the sequencer. Second, a <strong>native oracle and AI-agent layer</strong> that provides on-chain data feeds and supports autonomous execution without bolting on third-party middleware after the fact.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 1. Introduction -->
+          <section id="s1" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">1. Introduction</h2>
+            <p>Ethereum changed what blockchains could do. Smart contracts turned a digital ledger into a programmable platform, and that platform now secures hundreds of billions of dollars in value. The ecosystem works. The problem is that it doesn't scale.</p>
+            <p>Fifteen transactions per second. That's the ceiling. When the network gets busy — and it gets busy often — gas prices spike, confirmation times stretch, and users who can't afford $50 for a simple transfer are shut out. This isn't a future problem. It's happening right now, every day, and it's holding back entire categories of applications that should be running on-chain but can't.</p>
+            <p>We built Xhavic to fix this specific problem. Transactions happen on our execution layer. Results get compressed and committed to Ethereum as state roots. Ethereum handles the finality and the security guarantees. We handle the speed.</p>
+            <p>What we're bringing to the table that the current crop of L2s doesn't have:</p>
+            <ul>
+              <li><strong>Dual Wallet System.</strong> Two separate execution paths at the protocol level. One for speed-critical DeFi (irreversible, composable). One for high-value operations with a 24-hour reversal window. The sequencer routes them differently. A $50 DEX swap and a $5M treasury move shouldn't go through the same pipeline.</li>
+              <li><strong>AI-native execution.</strong> Autonomous agents get first-class treatment — deterministic ordering guarantees, direct oracle precompile access, and programmatic wallet control. No off-chain coordination needed.</li>
+              <li><strong>RWA-ready architecture.</strong> Compliance-friendly by design. Supports tokenized assets, institutional settlement, and enterprise workflows alongside permissionless DeFi.</li>
+              <li><strong>Honest performance claims.</strong> 2,000+ TPS, sub-200ms latency, $0.04 average fee. These are testnet measurements, not theoretical projections. Current architecture caps at around 12,000 TPS; sharding takes it to 120,000+.</li>
+            </ul>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 2. Background -->
+          <section id="s2" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">2. Background: Ethereum and Layer-2 Scaling</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">2.1 The Scalability Problem</h3>
+            <p>Ethereum runs on a monolithic design. Every full node processes every transaction. Execution, consensus, and data availability are all bundled together. This is great for decentralization and security. It's terrible for throughput.</p>
+            <p>A $20 gas fee is tolerable if you're swapping $50,000 on Uniswap. It's completely impractical if you're buying a $3 in-game item, updating a supply chain record, or running an automated trading bot that makes fifty transactions an hour. The cost structure shuts out most of the applications that would actually benefit from being on-chain.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">2.2 Layer-2 Solutions</h3>
+            <p>The idea behind L2 is simple: move the heavy computation somewhere else, keep the security where it already is. Execute transactions on a separate chain, compress the results, post cryptographic proofs back to Ethereum, let anyone verify that nothing went wrong.</p>
+            <p>Xhavic is an optimistic rollup. That means we assume transactions are correct unless someone proves otherwise. Fraud proofs handle the edge cases. This keeps gas costs down during normal operation while preserving the ability to catch and punish bad actors.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 3. Design Philosophy -->
+          <section id="s3" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">3. Design Philosophy</h2>
+            <p>Five principles guide every design decision we make. They're not marketing copy — they're actual constraints we hold ourselves to.</p>
+            <p><strong>Ethereum alignment.</strong> Full EVM bytecode compatibility. If your contract runs on Ethereum, it runs on Xhavic. Same tooling, same compiler output, same RPC calls. We're not asking anyone to learn a new stack.</p>
+            <p><strong>Security inheritance.</strong> Every state transition settles on Ethereum. We don't ask you to trust a new validator set or a novel consensus mechanism. Xhavic's security is Ethereum's security. Period.</p>
+            <p><strong>Modularity.</strong> Six layers, each independently upgradeable. We can overhaul the oracle system without touching the execution engine. We can swap out the data availability strategy without disrupting settlement.</p>
+            <p><strong>Progressive decentralization.</strong> The sequencer starts permissioned. A freshly launched network needs reliability more than it needs decentralized block production. The architecture supports the transition to multi-sequencer stake-based operation, and Phase II delivers it.</p>
+            <p><strong>Practical focus.</strong> We're building for identified workloads: trading platforms, oracle-dependent contracts, automated strategies, institutional settlement. Every design choice gets tested against "does this actually help the people building on us?"</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 4. Architecture Overview -->
+          <section id="s4" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">4. Architecture Overview</h2>
+            <p>The protocol breaks into six layers. Each one does one thing well. They connect through well-defined interfaces, and any layer can be upgraded independently.</p>
+
+            <div class="my-8 space-y-3">
+              <div class="flex items-center gap-4 rounded-xl bg-gradient-to-r from-blue-50 to-transparent p-4 border border-blue-100">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">1</span></div>
+                <div><strong class="text-ink">Execution Layer</strong> <span class="text-gray-500 ml-2">EVM-compatible processing</span></div>
+              </div>
+              <div class="flex items-center gap-4 rounded-xl bg-gradient-to-r from-blue-50 to-transparent p-4 border border-blue-100">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">2</span></div>
+                <div><strong class="text-ink">Sequencer Layer</strong> <span class="text-gray-500 ml-2">Ordering & MEV mitigation</span></div>
+              </div>
+              <div class="flex items-center gap-4 rounded-xl bg-gradient-to-r from-blue-50 to-transparent p-4 border border-blue-100">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">3</span></div>
+                <div><strong class="text-ink">Settlement Layer</strong> <span class="text-gray-500 ml-2">Ethereum L1 finality</span></div>
+              </div>
+              <div class="flex items-center gap-4 rounded-xl bg-gradient-to-r from-blue-50 to-transparent p-4 border border-blue-100">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">4</span></div>
+                <div><strong class="text-ink">Data Availability Layer</strong> <span class="text-gray-500 ml-2">Calldata + redundancy</span></div>
+              </div>
+              <div class="flex items-center gap-4 rounded-xl bg-gradient-to-r from-blue-50 to-transparent p-4 border border-blue-100">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">5</span></div>
+                <div><strong class="text-ink">Oracle & AI Agent Layer</strong> <span class="text-gray-500 ml-2">Native data feeds + agents</span></div>
+              </div>
+              <div class="flex items-center gap-4 rounded-xl bg-gradient-to-r from-blue-50 to-transparent p-4 border border-blue-100">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0"><span class="text-primary font-bold text-sm">6</span></div>
+                <div><strong class="text-ink">Governance Layer</strong> <span class="text-gray-500 ml-2">DAO-controlled upgrades</span></div>
+              </div>
             </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="font-bold text-ink">{section.title}</h3>
-              <p class="text-muted text-sm mt-0.5 leading-relaxed">{section.desc}</p>
+            <p class="text-sm text-gray-500 italic text-center">Figure 1 — Xhavic modular protocol architecture. Each layer operates independently.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 5. Core Protocol Components -->
+          <section id="s5" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">5. Core Protocol Components</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">5.1 Execution Layer</h3>
+            <p>This is where transactions actually get processed. We run a bytecode-compatible EVM — same opcodes, same gas semantics, same everything. If it compiles for Ethereum, it runs here without modification.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Operation</th><th>L1 Cost (Gas)</th><th>L2 Cost (Gas)</th><th>Reduction</th></tr></thead>
+                <tbody>
+                  <tr><td>SSTORE</td><td>20,000</td><td>500</td><td class="text-primary font-semibold">40x</td></tr>
+                  <tr><td>SLOAD</td><td>2,100</td><td>50</td><td class="text-primary font-semibold">42x</td></tr>
+                  <tr><td>Transaction base</td><td>21,000</td><td>300</td><td class="text-primary font-semibold">70x</td></tr>
+                  <tr><td>CREATE2</td><td>32,000</td><td>800</td><td class="text-primary font-semibold">40x</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 1 — Gas cost comparison: Ethereum L1 vs Xhavic L2</p>
             </div>
+
+            <p>The execution engine uses a 256-bit word size with a 1024 stack depth limit, dynamic memory allocation with quadratic cost scaling, and 32-byte storage slots verified through Merkle proofs. Oracle data is available through dedicated precompile addresses in the <code>0x00...00F0-0xFF</code> range.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">5.2 Sequencer</h3>
+            <p>The sequencer collects transactions, orders them fairly, executes them, generates state roots, and submits batches to Ethereum. It's the workhorse of the protocol.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Parameter</th><th>Value</th><th>Description</th></tr></thead>
+                <tbody>
+                  <tr><td>Block time</td><td>2 seconds</td><td>Time between block proposals</td></tr>
+                  <tr><td>Max block size</td><td>5 MB</td><td>Compressed data limit per block</td></tr>
+                  <tr><td>Batch window</td><td>60 seconds</td><td>Accumulation period before L1 submission</td></tr>
+                  <tr><td>Transaction timeout</td><td>24 hours</td><td>Maximum time for guaranteed inclusion</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 2 — Sequencer configuration parameters</p>
+            </div>
+
+            <p>During Phase I, sequencers are permissioned for stability. Phase II transitions to a stake-based multi-sequencer model with governance-controlled admission.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">5.3 Validators</h3>
+            <p>Validators watch the sequencer. They independently execute transactions, compare results, and challenge any discrepancies through fraud proofs. The top 100 by stake are eligible, provided they maintain 95% uptime over a rolling 30-day window.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Violation</th><th>Penalty</th></tr></thead>
+                <tbody>
+                  <tr><td>Offline for one epoch (2 hours)</td><td>5% of stake</td></tr>
+                  <tr><td>Invalid fraud proof submission</td><td>25% of stake</td></tr>
+                  <tr><td>Double-signing or state root collision</td><td class="text-red-600 font-semibold">100% of stake</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 3 — Validator slashing schedule</p>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">5.4 Data Availability</h3>
+            <p>Compressed transaction data gets posted to Ethereum calldata. Validators keep redundant off-chain copies. Full state reconstruction from L1 data takes roughly 5-10 minutes if it's ever needed. This prevents data withholding attacks and keeps the system transparent.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">5.5 Settlement</h3>
+            <p>State roots are committed to Ethereum through the CanonicalTransactionChain smart contract. Once Ethereum confirms them, those transactions have the same finality as any native Ethereum transaction.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 6. Technical Deep Dive -->
+          <section id="s6" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">6. Technical Deep Dive</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">6.1 State Model</h3>
+            <p>We use Ethereum's account model. EOAs hold user balances; contract accounts store code and state. The global state tracks balances, contract storage, nonces, and code hashes.</p>
+            <div class="bg-gray-900 text-green-400 rounded-xl p-5 my-6 font-mono text-sm overflow-x-auto">
+              StateRoot(n) = Keccak256(RLP(Accounts || Contracts || Storage))
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">6.2 State Transitions</h3>
+            <p>Every block applies a deterministic function:</p>
+            <div class="bg-gray-900 text-green-400 rounded-xl p-5 my-6 font-mono text-sm overflow-x-auto">
+              S(n+1) = Apply(S(n), T(n))
+            </div>
+            <p>Same inputs, same outputs, every time. That's what makes fraud proofs work — anyone can re-execute a disputed transaction and prove whether the published result was correct.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">6.3 Blocks and Finality</h3>
+            <p>Each sequencing round collects pending transactions, applies fair ordering rules, executes them, produces a state root, and commits it to Ethereum. Soft finality arrives in 2-5 seconds. Full Ethereum finality takes about 13 minutes.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">6.4 State Commitment</h3>
+            <p>We use a modified Merkle-Patricia trie. Account proofs are O(log n). Storage slot proofs are O(log m). RLP encoding cuts proof size by about 40%. Batch commitments stack state roots in a Merkle tree, so validators can verify efficiently without redoing all the math.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 7. Transaction Processing -->
+          <section id="s7" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">7. Transaction Processing</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">7.1 L2 Transaction Flow</h3>
+            <div class="my-8 grid grid-cols-3 md:grid-cols-6 gap-3">
+              <div class="text-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2"><span class="text-primary font-bold">01</span></div>
+                <p class="text-xs font-semibold text-ink">Submit</p>
+                <p class="text-xs text-gray-400">User signs tx</p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2"><span class="text-primary font-bold">02</span></div>
+                <p class="text-xs font-semibold text-ink">Validate</p>
+                <p class="text-xs text-gray-400">Sig + nonce</p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2"><span class="text-primary font-bold">03</span></div>
+                <p class="text-xs font-semibold text-ink">Order</p>
+                <p class="text-xs text-gray-400">MEV-aware</p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2"><span class="text-primary font-bold">04</span></div>
+                <p class="text-xs font-semibold text-ink">Execute</p>
+                <p class="text-xs text-gray-400">EVM state tx</p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2"><span class="text-primary font-bold">05</span></div>
+                <p class="text-xs font-semibold text-ink">Commit</p>
+                <p class="text-xs text-gray-400">State root</p>
+              </div>
+              <div class="text-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2"><span class="text-primary font-bold">06</span></div>
+                <p class="text-xs font-semibold text-ink">Settle</p>
+                <p class="text-xs text-gray-400">Ethereum L1</p>
+              </div>
+            </div>
+            <p class="text-sm text-gray-500 italic text-center">~200ms end-to-end &middot; 2-5s soft finality &middot; ~13 min Ethereum finality</p>
+
+            <p class="mt-6">User signs, sequencer validates (signature, nonce, balance), orders the transaction with MEV-aware rules, executes it on the EVM, generates a state root, and submits the batch to Ethereum.</p>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-5 my-6">
+              <p class="text-sm text-blue-900"><strong>Censorship resistance.</strong> If the sequencer blocks your transaction, you can submit it directly to Ethereum L1. The sequencer then has to include it within a defined window or get slashed. It costs about 10x more than the normal path, but nobody can permanently censor you.</p>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">7.2 Cross-Chain Transactions</h3>
+            <p><strong>Deposits (L1 &rarr; L2).</strong> Send assets to the bridge contract on Ethereum. The contract locks them and queues a minting instruction for L2. ETH becomes WETH (ERC-20) on our chain — this helps with replay protection. Typically done within minutes.</p>
+            <p><strong>Withdrawals (L2 &rarr; L1).</strong> Burn your L2 tokens, wait for the batch to post on Ethereum, create a Merkle inclusion proof, then wait the 7-day challenge period. Or use a liquidity provider who'll pay you on L1 immediately and collect from the bridge when the window closes.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">7.3 Data Efficiency</h3>
+            <p>The sequencer batches calldata from consecutive transactions and delivers them to the CanonicalTransactionChain contract. The contract builds a Merkle tree from the transaction hashes and stores only the root on-chain. This is dramatically cheaper than storing each transaction individually.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 8. Dual Wallet System -->
+          <section id="s8" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">8. Dual Wallet System</h2>
+            <p>Every other L2 treats every transaction the same way. Same pipeline, same finality model, same risk profile. But a $50 token swap and a $5 million treasury transfer have nothing in common. One needs speed. The other needs safety. Routing them through identical infrastructure is lazy design.</p>
+            <p>The Dual Wallet System separates these at the sequencer level. When a transaction arrives, the sequencer checks which wallet originated it and routes accordingly. This is a protocol-level mechanism, not a wrapper or an application feature.</p>
+
+            <div class="grid md:grid-cols-2 gap-6 my-8">
+              <div class="rounded-xl border-2 border-primary/30 bg-primary/5 p-6">
+                <h4 class="text-lg font-bold text-primary mb-4">Instant Wallet</h4>
+                <ol class="space-y-2 text-sm text-gray-700">
+                  <li>1. Submit transaction</li>
+                  <li>2. Validate (sig, nonce, balance)</li>
+                  <li>3. MEV-aware ordering</li>
+                  <li>4. Execute on EVM</li>
+                  <li>5. Soft confirmation (&lt; 200ms)</li>
+                  <li>6. L1 batch settlement</li>
+                </ol>
+                <div class="mt-4 pt-4 border-t border-primary/20">
+                  <p class="text-xs font-bold text-primary uppercase tracking-wide">Irreversible &middot; Composable</p>
+                  <p class="text-xs text-gray-500 mt-1">DeFi &middot; Trading &middot; AI Agents &middot; Automation</p>
+                </div>
+              </div>
+              <div class="rounded-xl border-2 border-amber-400/30 bg-amber-50 p-6">
+                <h4 class="text-lg font-bold text-amber-600 mb-4">Secured Wallet</h4>
+                <ol class="space-y-2 text-sm text-gray-700">
+                  <li>1. Submit transaction</li>
+                  <li>2. Route to escrow</li>
+                  <li>3. Execute on EVM</li>
+                  <li>4. 24-hour escrow hold</li>
+                  <li>5. Finalize (no reversal)</li>
+                  <li>6. L1 batch settlement</li>
+                </ol>
+                <div class="mt-4 pt-4 border-t border-amber-300/40">
+                  <p class="text-xs font-bold text-amber-600 uppercase tracking-wide">Reversible &middot; Non-composable</p>
+                  <p class="text-xs text-gray-500 mt-1">Treasury &middot; Institutional &middot; RWA &middot; High-value</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-500 italic text-center">Figure 4 — Dual Wallet execution paths</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">8.1 Instant Wallet</h3>
+            <p>Built for speed. DEX trades, perpetuals, liquidation triggers, arbitrage, bot operations — anything where you need confirmation in under 200ms and the result needs to be immediately composable. Other contracts can reference the output within the same block.</p>
+            <p>There's no reversal option. That's a feature, not a bug. If a transaction could be reversed, every contract that built on top of it would break. Composability requires finality.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">8.2 Secured Wallet</h3>
+            <p>Designed for operations where the cost of a mistake outweighs the inconvenience of waiting. Transactions execute on the EVM normally, but the result sits in a 24-hour cryptographic escrow. During that window, the sender can request a reversal (authenticated by multi-sig or threshold signature). If nobody triggers a reversal, it finalizes and settles in the next L1 batch.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Property</th><th>Instant Wallet</th><th>Secured Wallet</th></tr></thead>
+                <tbody>
+                  <tr><td>Confirmation</td><td>&lt; 200ms soft finality</td><td>24-hour escrow window</td></tr>
+                  <tr><td>Reversibility</td><td>None</td><td>User-initiated within 24h</td></tr>
+                  <tr><td>Composability</td><td>Full — same-block</td><td>Non-composable until finalized</td></tr>
+                  <tr><td>Target use case</td><td>DeFi, trading, AI agents</td><td>Treasury, institutional, RWA</td></tr>
+                  <tr><td>Settlement</td><td>Standard L1 batch</td><td>L1 batch post-escrow</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 4 — Execution profile comparison: Instant vs Secured</p>
+            </div>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 9. L1/L2 Interoperability -->
+          <section id="s9" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">9. L1/L2 Interoperability</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">9.1 Asset Movement</h3>
+            <p><strong>Getting in.</strong> Deposit ETH or ERC-20 tokens to the bridge contract on Ethereum. The contract relays a minting instruction. Equivalent tokens appear at your L2 address within minutes. If the sequencer drags its feet, you can force-include through L1 directly.</p>
+            <p><strong>Getting out.</strong> Standard withdrawal takes seven days (the fraud proof window). Initiate on L2, wait for the batch to post on Ethereum, submit a Merkle proof, wait out the challenge period. Or use an LP for instant liquidity: they pay you on L1 right away and collect from the bridge after the window closes.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">9.2 EVM Compatibility</h3>
+            <p>Bytecode-level equivalence with the Ethereum Yellow Paper spec. Your contracts, your tools, your libraries — they all work. Hardhat, Foundry, ethers.js, web3.py, Remix. No new SDKs to learn, no compiler flags to set.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">9.3 Cross-Chain Contract Calls</h3>
+            <p>EOAs and contracts can interact across chains using the bridge contracts for message passing. These calls are asynchronous: you initiate on one chain, execution happens later on the other. L1 &rarr; L2 calls complete in minutes. L2 &rarr; L1 calls wait for the challenge period.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 10. Security Architecture -->
+          <section id="s10" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">10. Security Architecture</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">10.1 Security Model</h3>
+            <div class="my-8 space-y-2">
+              <div class="rounded-lg bg-gray-900 text-white p-4 text-center text-sm font-semibold">Ethereum Settlement Finality</div>
+              <div class="rounded-lg bg-gray-800 text-white p-4 text-center text-sm font-semibold">Fraud Proof System — 7-Day Challenge</div>
+              <div class="rounded-lg bg-gray-700 text-white p-4 text-center text-sm font-semibold">Validator Oversight — Top 100 by Stake</div>
+              <div class="rounded-lg bg-gray-600 text-white p-4 text-center text-sm font-semibold">Deterministic Execution</div>
+              <div class="rounded-lg bg-gray-500 text-white p-3 text-center text-xs">Cryptographic Primitives: Keccak-256 &middot; ECDSA &middot; ChaCha20-Poly1305 &middot; Merkle-Patricia Trie</div>
+            </div>
+            <p class="text-sm text-gray-500 italic text-center">Figure 6 — Defense-in-depth security model</p>
+
+            <p class="mt-6">The model is layered, and each layer reinforces the others. At the outermost ring, Ethereum's proof-of-stake consensus provides settlement finality. Inside that, fraud proofs catch invalid state transitions within a 7-day window. Validators actively monitor the sequencer. Deterministic execution means anyone can independently verify the math. Standard cryptographic primitives handle the mathematical guarantees.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">10.2 Fraud Proofs</h3>
+            <p>The system only needs one honest participant to stay secure. If even one validator catches an invalid state root and submits a fraud proof, the bad state gets rejected and the submitter gets slashed. The bisection protocol narrows a dispute down to a single EVM instruction, which gets verified on-chain.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">10.3 Threat Mitigation</h3>
+            <p><strong>Sequencer censorship.</strong> Can't permanently happen. Users submit directly to L1, and the sequencer must include those transactions within a defined window or face rotation and slashing.</p>
+            <p><strong>State root manipulation.</strong> Validators independently compute state roots. Mismatches trigger fraud proofs and 100% slashing of the malicious sequencer's stake.</p>
+            <p><strong>Data withholding.</strong> Compressed data is posted to Ethereum calldata with Merkle commitments. Full state reconstruction from L1 takes 5-10 minutes.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Component</th><th>Algorithm</th><th>Security Level</th><th>Notes</th></tr></thead>
+                <tbody>
+                  <tr><td>Hash function</td><td>Keccak-256</td><td>256-bit</td><td>Identical to Ethereum</td></tr>
+                  <tr><td>Signatures</td><td>ECDSA (secp256k1)</td><td>128-bit</td><td>EVM standard</td></tr>
+                  <tr><td>Encryption</td><td>ChaCha20-Poly1305</td><td>256-bit</td><td>Private transaction support</td></tr>
+                  <tr><td>State commitment</td><td>Merkle-Patricia Trie</td><td>256-bit</td><td>Modified for batch proofs</td></tr>
+                  <tr><td>Dispute resolution</td><td>Interactive fraud proofs</td><td>Game-theoretic</td><td>Bisection protocol</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 5 — Cryptographic primitives</p>
+            </div>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 11. MEV and Fair Ordering -->
+          <section id="s11" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">11. MEV and Fair Ordering</h2>
+            <p>MEV is the money block producers can extract by reordering, inserting, or censoring transactions. It's a tax on regular users — front-running and sandwich attacks cost DeFi participants billions annually. We address it at the protocol level:</p>
+            <ul>
+              <li><strong>Threshold encryption.</strong> Transactions stay encrypted until the sequencer commits to an inclusion order. You can't front-run what you can't read.</li>
+              <li><strong>Time-weighted ordering.</strong> Priority is a function of submission time plus gas price. First in line actually matters.</li>
+              <li><strong>Oracle sequencing.</strong> Price feeds get committed before user transactions execute. This prevents oracle manipulation attacks.</li>
+              <li><strong>Transaction batching.</strong> Grouping transactions into atomic batches reduces the surface area for ordering manipulation.</li>
+              <li><strong>Governance oversight.</strong> The community controls sequencing parameters through the DAO. Rules evolve as new attack vectors emerge.</li>
+            </ul>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 12. Oracle & AI Agent Infrastructure -->
+          <section id="s12" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">12. Oracle & AI Agent Infrastructure</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">12.1 Hybrid Oracle Architecture</h3>
+            <p>The oracle layer isn't bolted on — it's built into the protocol. Oracle nodes pull data from multiple external sources (exchange APIs, Chainlink, Band Protocol, custom feeds), normalize the formats, run outlier detection, and compute weighted averages based on reliability scores. The aggregated data lives on-chain through precompile addresses (<code>0x00...00F0-0xFF</code>). Smart contracts read it directly. No external contract calls, no additional gas overhead.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">12.2 AI Agent Execution</h3>
+            <p>Autonomous agents have specific requirements that most L2s ignore: they need deterministic ordering guarantees, direct data access, and programmatic wallet control.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Capability</th><th>What It Means</th></tr></thead>
+                <tbody>
+                  <tr><td>Deterministic execution</td><td>Predictable ordering and inclusion — agents can plan multi-step strategies</td></tr>
+                  <tr><td>Native oracle access</td><td>Direct precompile reads, no external contract dependencies or extra gas</td></tr>
+                  <tr><td>Programmatic wallets</td><td>API-first control for automated strategy execution and portfolio management</td></tr>
+                  <tr><td>Gas-metered compute</td><td>Predictable cost model so agents can budget their operations autonomously</td></tr>
+                  <tr><td>Sub-200ms latency</td><td>Fast enough for real-time decision loops and reactive trading</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 6 — AI agent execution capabilities</p>
+            </div>
+
+            <p><em>Scope note:</em> The protocol provides execution guarantees. Strategy design, decision logic, and multi-agent coordination are application-layer concerns.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 13. Governance -->
+          <section id="s13" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">13. Governance</h2>
+            <p>Governance transitions progressively to a DAO. Token holders vote on four categories of protocol decisions:</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-8">
+              <div class="rounded-xl bg-gray-50 border border-gray-200 p-5 text-center">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                </div>
+                <p class="text-sm font-bold text-ink">Protocol Upgrades</p>
+              </div>
+              <div class="rounded-xl bg-gray-50 border border-gray-200 p-5 text-center">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                </div>
+                <p class="text-sm font-bold text-ink">Sequencer Policies</p>
+              </div>
+              <div class="rounded-xl bg-gray-50 border border-gray-200 p-5 text-center">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
+                </div>
+                <p class="text-sm font-bold text-ink">Oracle Parameters</p>
+              </div>
+              <div class="rounded-xl bg-gray-50 border border-gray-200 p-5 text-center">
+                <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <p class="text-sm font-bold text-ink">Treasury Allocation</p>
+              </div>
+            </div>
+            <p>All decisions execute on-chain — no off-chain multisig backdoors. The mechanism is deliberately conservative: we'd rather move slowly than break things.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 14. Performance & Scalability -->
+          <section id="s14" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">14. Performance & Scalability</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">14.1 Throughput</h3>
+            <div class="my-8 space-y-3">
+              <div class="flex items-center gap-4">
+                <span class="w-20 text-sm font-semibold text-gray-600 text-right">Ethereum</span>
+                <div class="flex-1 bg-gray-100 rounded-full h-8 overflow-hidden"><div class="bg-gray-400 h-full rounded-full flex items-center justify-end pr-3" style="width: 1%"><span class="text-xs font-bold text-white">15</span></div></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-20 text-sm font-semibold text-gray-600 text-right">Optimism</span>
+                <div class="flex-1 bg-gray-100 rounded-full h-8 overflow-hidden"><div class="bg-red-400 h-full rounded-full flex items-center justify-end pr-3" style="width: 40%"><span class="text-xs font-bold text-white">800</span></div></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-20 text-sm font-semibold text-gray-600 text-right">Arbitrum</span>
+                <div class="flex-1 bg-gray-100 rounded-full h-8 overflow-hidden"><div class="bg-blue-400 h-full rounded-full flex items-center justify-end pr-3" style="width: 50%"><span class="text-xs font-bold text-white">1,000</span></div></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-20 text-sm font-semibold text-gray-600 text-right">StarkNet</span>
+                <div class="flex-1 bg-gray-100 rounded-full h-8 overflow-hidden"><div class="bg-purple-400 h-full rounded-full flex items-center justify-end pr-3" style="width: 75%"><span class="text-xs font-bold text-white">1,500</span></div></div>
+              </div>
+              <div class="flex items-center gap-4">
+                <span class="w-20 text-sm font-semibold text-primary text-right font-bold">Xhavic</span>
+                <div class="flex-1 bg-gray-100 rounded-full h-8 overflow-hidden"><div class="bg-primary h-full rounded-full flex items-center justify-end pr-3" style="width: 100%"><span class="text-xs font-bold text-white">2,000+</span></div></div>
+              </div>
+            </div>
+            <p class="text-sm text-gray-500 italic text-center">Figure 10 — Peak throughput comparison (testnet benchmarks, January 2026)</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Network</th><th>Peak TPS</th><th>Avg Latency</th><th>Finality</th><th>Avg Fee</th></tr></thead>
+                <tbody>
+                  <tr class="bg-primary/5 font-semibold"><td>Xhavic L2</td><td>2,000+</td><td>200ms</td><td>2-5s</td><td>$0.04</td></tr>
+                  <tr><td>Ethereum L1</td><td>15</td><td>12s</td><td>13 min</td><td>$20</td></tr>
+                  <tr><td>Arbitrum One</td><td>1,000</td><td>400ms</td><td>1 week</td><td>$0.08</td></tr>
+                  <tr><td>Optimism</td><td>800</td><td>2s</td><td>1 week</td><td>$0.10</td></tr>
+                  <tr><td>StarkNet</td><td>1,500</td><td>200ms</td><td>1 week</td><td>$0.06</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 7 — Network performance comparison</p>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">14.2 Cost Analysis</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Operation</th><th>Ethereum</th><th>Xhavic</th><th>Savings</th></tr></thead>
+                <tbody>
+                  <tr><td>Simple transfer</td><td>$20</td><td>$0.04</td><td class="text-primary font-semibold">500x</td></tr>
+                  <tr><td>Token swap</td><td>$80</td><td>$0.12</td><td class="text-primary font-semibold">667x</td></tr>
+                  <tr><td>NFT mint</td><td>$150</td><td>$0.08</td><td class="text-primary font-semibold">1,875x</td></tr>
+                  <tr><td>Contract deployment</td><td>$500</td><td>$1.50</td><td class="text-primary font-semibold">333x</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 8 — Per-operation cost comparison</p>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">14.3 Scalability Path</h3>
+            <div class="my-8 flex flex-wrap items-center justify-center gap-3 text-center">
+              <div class="rounded-lg bg-primary/10 px-4 py-3"><p class="text-2xl font-bold text-primary">20x</p><p class="text-xs text-gray-500">Compress</p></div>
+              <span class="text-gray-400 text-xl">&times;</span>
+              <div class="rounded-lg bg-primary/10 px-4 py-3"><p class="text-2xl font-bold text-primary">8x</p><p class="text-xs text-gray-500">Batch</p></div>
+              <span class="text-gray-400 text-xl">&times;</span>
+              <div class="rounded-lg bg-primary/10 px-4 py-3"><p class="text-2xl font-bold text-primary">5x</p><p class="text-xs text-gray-500">Parallel</p></div>
+              <span class="text-gray-400 text-xl">=</span>
+              <div class="rounded-lg bg-primary/20 px-4 py-3"><p class="text-2xl font-bold text-primary">800x</p><p class="text-xs text-gray-500">12K TPS</p></div>
+              <span class="text-gray-400 text-xl">&times;</span>
+              <div class="rounded-lg bg-primary/10 px-4 py-3"><p class="text-2xl font-bold text-primary">10x</p><p class="text-xs text-gray-500">Shard</p></div>
+              <span class="text-gray-400 text-xl">=</span>
+              <div class="rounded-lg bg-primary px-5 py-3"><p class="text-2xl font-bold text-white">120K</p><p class="text-xs text-white/80">TPS</p></div>
+            </div>
+            <p class="text-sm text-gray-500 italic text-center">Figure 11 — Compound scalability multipliers</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">14.4 Infrastructure</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Node Type</th><th>CPU</th><th>RAM</th><th>Storage</th><th>Monthly Cost</th></tr></thead>
+                <tbody>
+                  <tr><td>Full node (sequencer)</td><td>16 cores, 3.5+ GHz</td><td>64 GB</td><td>2 TB NVMe</td><td>$800-$1,200</td></tr>
+                  <tr><td>Archive node (validator)</td><td>8 cores, 2.5+ GHz</td><td>32 GB</td><td>4 TB HDD</td><td>$200-$400</td></tr>
+                  <tr><td>Light client (RPC)</td><td>4 cores</td><td>8 GB</td><td>100 GB</td><td>$50-$100</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 9 — Infrastructure requirements by node type</p>
+            </div>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 15. Competitive Analysis -->
+          <section id="s15" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">15. Competitive Analysis</h2>
+            <p>The L2 market is crowded and well-funded. Arbitrum, Optimism, StarkNet, zkSync — these are serious projects with real teams and real adoption. There are specific things we do that nobody else does.</p>
+
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Feature</th><th>Xhavic</th><th>Arbitrum</th><th>Optimism</th><th>StarkNet</th><th>zkSync</th></tr></thead>
+                <tbody>
+                  <tr><td>Peak TPS</td><td class="text-primary font-semibold">2,000+</td><td>1,000</td><td>800</td><td>1,500</td><td>1,200</td></tr>
+                  <tr><td>Native oracle</td><td class="text-primary font-semibold">Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+                  <tr><td>Dual wallet</td><td class="text-primary font-semibold">Yes</td><td>No</td><td>No</td><td>No</td><td>No</td></tr>
+                  <tr><td>MEV mitigation</td><td class="text-primary font-semibold">Protocol-level</td><td>Partial</td><td>Partial</td><td>None</td><td>Partial</td></tr>
+                  <tr><td>EVM compat</td><td>Bytecode</td><td>Bytecode</td><td>Bytecode</td><td>Transpiled</td><td>Bytecode</td></tr>
+                  <tr><td>Proof system</td><td>Fraud proofs</td><td>Fraud proofs</td><td>Fraud proofs</td><td>ZK (STARK)</td><td>ZK (SNARK)</td></tr>
+                  <tr><td>AI agent support</td><td class="text-primary font-semibold">Native</td><td>None</td><td>None</td><td>None</td><td>None</td></tr>
+                  <tr><td>Avg fee</td><td class="text-primary font-semibold">$0.04</td><td>$0.08</td><td>$0.10</td><td>$0.06</td><td>$0.07</td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 10 — Competitive feature matrix</p>
+            </div>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 16. Benefits -->
+          <section id="s16" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">16. Benefits</h2>
+            <p><strong>Scalability.</strong> Over 2,000 TPS with sub-200ms latency. That's enough for high-frequency trading, live DeFi, and automated agent operations. Architecture supports growth to 120,000+ through sharding.</p>
+            <p><strong>Cost efficiency.</strong> $0.04 average fees mean you can actually build micro-transaction economies, gaming systems, and high-frequency automation on-chain without going bankrupt on gas.</p>
+            <p><strong>Security.</strong> Everything settles on Ethereum. Fraud proofs, validator slashing, and forced inclusion provide guarantees without adding new trust assumptions.</p>
+            <p><strong>Interoperability.</strong> Bytecode-level EVM compatibility. Your contracts work. Your tools work. Your team's existing Ethereum knowledge transfers completely.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 17. Use Cases -->
+          <section id="s17" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">17. Use Cases</h2>
+            <p><strong>DeFi.</strong> DEXs, lending, yield optimization. The Instant Wallet's composability lets you build complex multi-contract strategies that execute within a single block. Low fees make small positions viable.</p>
+            <p><strong>Gaming.</strong> In-game economies, item trading, NFTs. At $0.04 per transaction, on-chain game mechanics actually make economic sense for the first time.</p>
+            <p><strong>High-frequency trading.</strong> Sub-200ms confirmation, deterministic ordering, protocol-level MEV mitigation. An execution environment actually designed for algorithmic trading.</p>
+            <p><strong>Institutional and RWA.</strong> The Secured Wallet's reversal window combined with compliance-ready architecture supports tokenized real-world assets, treasury management, and institutional settlement.</p>
+            <p><strong>Supply chain and IoT.</strong> Low costs and native oracle integration make it practical to track supply chain events and coordinate IoT devices on-chain at scale.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 18. Developer Guide -->
+          <section id="s18" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">18. Developer Guide</h2>
+            <p>If you've built on Ethereum, you already know how to build on Xhavic. The RPC interface exposes standard methods: <code>eth_sendTransaction</code>, <code>eth_call</code>, <code>eth_getBalance</code>, <code>eth_getLogs</code>, plus everything else in the Ethereum JSON-RPC spec. We add a few methods for oracle data and cross-chain messaging, but the core workflow is identical.</p>
+            <p>Deploy with Hardhat or Foundry. Test on our testnet (faucet available). Interact with ethers.js or web3.py. Monitor through the block explorer.</p>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">18.1 Supported RPC Methods</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Category</th><th>Methods</th></tr></thead>
+                <tbody>
+                  <tr><td>Account</td><td><code>eth_getBalance</code>, <code>eth_getTransactionCount</code>, <code>eth_getCode</code></td></tr>
+                  <tr><td>Transaction</td><td><code>eth_sendTransaction</code>, <code>eth_sendRawTransaction</code>, <code>eth_getTransactionReceipt</code></td></tr>
+                  <tr><td>Block</td><td><code>eth_getBlockByNumber</code>, <code>eth_getBlockByHash</code>, <code>eth_blockNumber</code></td></tr>
+                  <tr><td>State</td><td><code>eth_call</code>, <code>eth_estimateGas</code>, <code>eth_getStorageAt</code></td></tr>
+                  <tr><td>Events</td><td><code>eth_getLogs</code>, <code>eth_subscribe</code>, <code>eth_unsubscribe</code></td></tr>
+                  <tr><td class="text-primary font-semibold">Oracle (Xhavic)</td><td><code>xhv_getOraclePrice</code>, <code>xhv_getOracleFeeds</code></td></tr>
+                  <tr><td class="text-primary font-semibold">Bridge (Xhavic)</td><td><code>xhv_getDepositStatus</code>, <code>xhv_getWithdrawalProof</code></td></tr>
+                </tbody>
+              </table>
+              <p class="text-sm text-gray-500 italic text-center mt-3">Table 11 — Supported RPC methods</p>
+            </div>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 19. Development Roadmap -->
+          <section id="s19" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">19. Development Roadmap</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
+              <div class="rounded-xl border-2 border-primary p-5">
+                <p class="text-xs font-bold text-primary uppercase tracking-wide mb-1">Phase I</p>
+                <p class="text-lg font-bold text-ink mb-1">Foundation</p>
+                <p class="text-xs text-gray-400 mb-3">Q1-Q2 2026</p>
+                <ul class="text-xs text-gray-600 space-y-1">
+                  <li>Mainnet launch</li>
+                  <li>Bridge deployment</li>
+                  <li>Core DeFi integrations</li>
+                  <li>Block explorer</li>
+                  <li>Initial liquidity</li>
+                </ul>
+              </div>
+              <div class="rounded-xl border border-gray-200 p-5">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Phase II</p>
+                <p class="text-lg font-bold text-ink mb-1">Expansion</p>
+                <p class="text-xs text-gray-400 mb-3">Q3-Q4 2026</p>
+                <ul class="text-xs text-gray-600 space-y-1">
+                  <li>Multi-sequencer</li>
+                  <li>Governance DAO</li>
+                  <li>Oracle framework v2</li>
+                  <li>Developer SDK</li>
+                  <li>AI agent framework</li>
+                </ul>
+              </div>
+              <div class="rounded-xl border border-gray-200 p-5">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Phase III</p>
+                <p class="text-lg font-bold text-ink mb-1">Maturity</p>
+                <p class="text-xs text-gray-400 mb-3">H1 2027</p>
+                <ul class="text-xs text-gray-600 space-y-1">
+                  <li>Sharding</li>
+                  <li>ZK proof research</li>
+                  <li>Cross-L2 interop</li>
+                  <li>Institutional tooling</li>
+                  <li>Compliance modules</li>
+                </ul>
+              </div>
+              <div class="rounded-xl border border-gray-200 p-5">
+                <p class="text-xs font-bold text-gray-400 uppercase tracking-wide mb-1">Phase IV</p>
+                <p class="text-lg font-bold text-ink mb-1">Scale</p>
+                <p class="text-xs text-gray-400 mb-3">H2 2027+</p>
+                <ul class="text-xs text-gray-600 space-y-1">
+                  <li>120,000+ TPS</li>
+                  <li>Full decentralization</li>
+                  <li>Enterprise adoption</li>
+                  <li>Global expansion</li>
+                  <li>Cross-chain hub</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 20. Challenges and Limitations -->
+          <section id="s20" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">20. Challenges and Limitations</h2>
+            <p><strong>Data availability costs.</strong> Ethereum calldata is our main cost bottleneck. When Ethereum ships EIP-4844 and danksharding, we'll integrate those improvements and costs will drop further. Until then, calldata fees set the floor.</p>
+            <p><strong>Withdrawal latency.</strong> The 7-day challenge period isn't a design flaw. It's the security mechanism that makes optimistic rollups work. LP-backed fast exits handle most use cases, and a future move to validity proofs (ZK) could eventually eliminate the delay.</p>
+            <p><strong>Sequencer centralization in Phase I.</strong> We run a permissioned sequencer at launch. If it goes down, block production stops. Users can still force-include through L1, so funds aren't at risk, but it's a liveness dependency we're upfront about. Phase II fixes this with multi-sequencer design.</p>
+            <p><strong>Bridge complexity.</strong> Moving assets between L1 and L2 is more complicated than transacting on a single chain. We're investing heavily in wallet integration and bridge abstraction to make this invisible to end users, but it's not there yet.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 21. Risks and Legal Disclaimer -->
+          <section id="s21" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">21. Risks and Legal Disclaimer</h2>
+            <p>This whitepaper is published by the Xhavic Protocol Foundation for informational purposes only. It does not constitute an offer to sell, a solicitation to buy, or a recommendation of any security, token, investment product, or financial instrument in any jurisdiction.</p>
+            <p>The protocol and associated technology are under active development. What's described here reflects the design and roadmap as of January 2026. Things will change.</p>
+            <p>Participation in the Xhavic ecosystem involves significant risks, including but not limited to: total loss of funds from smart contract bugs, bridge failures, or exploits; regulatory actions restricting access; and market volatility.</p>
+            <p>The protocol is provided "as is" without warranty of any kind. Do your own research. Talk to a lawyer. Talk to a financial advisor.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- 22. Conclusion -->
+          <section id="s22" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">22. Conclusion</h2>
+            <p>Xhavic does a specific set of things, and we think it does them well. Over 2,000 TPS at $0.04 per transaction with sub-200ms latency, settled on Ethereum. Modular architecture where each component can be upgraded independently. Full EVM bytecode compatibility so nothing breaks when you migrate.</p>
+            <p>The Dual Wallet System is the headline feature. Two execution paths, separated at the protocol level, serving fundamentally different risk profiles within a single network. The Instant Wallet handles composable DeFi at speed. The Secured Wallet gives institutions the safety they need for high-value operations.</p>
+            <p>Native oracle integration and AI-agent execution support are our bet on where on-chain activity is headed. Autonomous systems interacting directly with decentralized infrastructure, not through duct-taped middleware.</p>
+            <p>The scaling path from 12,000 TPS today to 120,000+ through sharding is architecturally ready — Phase III delivers it. The challenges are real: DA costs, withdrawal latency, sequencer centralization during launch. We've been honest about every one of them.</p>
+          </section>
+
+          <hr class="my-12 border-gray-200" />
+
+          <!-- Appendix -->
+          <section id="appendix" class="wp-section scroll-mt-24">
+            <h2 class="text-3xl font-extrabold text-ink mb-6">Appendix: Technical Reference</h2>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">A.1 Glossary</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+                <tbody>
+                  <tr><td>EOA</td><td>Externally Owned Account — user-controlled account with a private key</td></tr>
+                  <tr><td>EVM</td><td>Ethereum Virtual Machine — deterministic execution environment for smart contracts</td></tr>
+                  <tr><td>Fraud Proof</td><td>Cryptographic evidence that a state transition was computed incorrectly</td></tr>
+                  <tr><td>MEV</td><td>Maximal Extractable Value — profit from transaction reordering by block producers</td></tr>
+                  <tr><td>Optimistic Rollup</td><td>L2 design where transactions are assumed correct unless challenged</td></tr>
+                  <tr><td>RLP</td><td>Recursive Length Prefix — Ethereum's standard serialization format</td></tr>
+                  <tr><td>State Root</td><td>Merkle root hash representing the complete state of the chain at a given block</td></tr>
+                  <tr><td>WETH</td><td>Wrapped ETH — ERC-20 representation of ETH used on L2 for replay protection</td></tr>
+                  <tr><td>Bisection Protocol</td><td>Interactive dispute resolution that narrows disagreements to a single step</td></tr>
+                  <tr><td>Challenge Period</td><td>7-day window during which fraud proofs can be submitted for L2 &rarr; L1 operations</td></tr>
+                  <tr><td>Precompile</td><td>Built-in contract at a fixed address providing optimized functionality</td></tr>
+                  <tr><td>DAO</td><td>Decentralized Autonomous Organization — on-chain governance structure</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">A.2 Protocol Parameters Summary</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
+                <tbody>
+                  <tr><td>Block time</td><td>2 seconds</td></tr>
+                  <tr><td>Maximum block size</td><td>5 MB (compressed)</td></tr>
+                  <tr><td>Batch window</td><td>60 seconds</td></tr>
+                  <tr><td>Transaction timeout</td><td>24 hours</td></tr>
+                  <tr><td>Challenge period</td><td>7 days</td></tr>
+                  <tr><td>Escrow window (Secured Wallet)</td><td>24 hours</td></tr>
+                  <tr><td>Validator set size</td><td>Top 100 by stake</td></tr>
+                  <tr><td>Minimum validator uptime</td><td>95% (30-day rolling)</td></tr>
+                  <tr><td>L1 state reconstruction time</td><td>~5-10 minutes</td></tr>
+                  <tr><td>Oracle precompile range</td><td><code>0x00...00F0-0xFF</code></td></tr>
+                  <tr><td>Hash algorithm</td><td>Keccak-256</td></tr>
+                  <tr><td>Signature algorithm</td><td>ECDSA (secp256k1)</td></tr>
+                  <tr><td>Encryption</td><td>ChaCha20-Poly1305</td></tr>
+                  <tr><td>State encoding</td><td>RLP</td></tr>
+                  <tr><td>State structure</td><td>Modified Merkle-Patricia Trie</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">A.3 Contract Addresses (Testnet)</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Contract</th><th>Address</th></tr></thead>
+                <tbody>
+                  <tr><td>Bridge (L1)</td><td><code>0x...TBD</code></td></tr>
+                  <tr><td>CanonicalTransactionChain (L1)</td><td><code>0x...TBD</code></td></tr>
+                  <tr><td>StateCommitmentChain (L1)</td><td><code>0x...TBD</code></td></tr>
+                  <tr><td>FraudProofVerifier (L1)</td><td><code>0x...TBD</code></td></tr>
+                  <tr><td>GovernanceDAO (L2)</td><td><code>0x...TBD</code></td></tr>
+                  <tr><td>OracleRegistry (L2)</td><td><code>0x...TBD</code></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">A.4 References</h3>
+            <ol class="text-sm text-gray-600 space-y-2 list-decimal list-inside">
+              <li>Ethereum Yellow Paper — G. Wood, 2014. Formal specification of Ethereum.</li>
+              <li>EIP-4844: Proto-Danksharding — V. Buterin et al., 2022. Blob transaction spec.</li>
+              <li>"An Incomplete Guide to Rollups" — V. Buterin, 2021. Overview of rollup designs.</li>
+              <li>Arbitrum Nitro Whitepaper — Offchain Labs, 2022. Optimistic rollup reference.</li>
+              <li>Optimism Bedrock Specification — OP Labs, 2023. Modular rollup architecture.</li>
+              <li>"Flash Boys 2.0" — Daian et al., 2019. MEV and front-running on Ethereum.</li>
+              <li>ChaCha20-Poly1305 — RFC 8439. AEAD encryption specification.</li>
+              <li>Ethereum JSON-RPC Specification — ethereum.org documentation.</li>
+            </ol>
+
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">A.5 Document History</h3>
+            <div class="overflow-x-auto my-8">
+              <table class="wp-table w-full text-sm">
+                <thead><tr><th>Version</th><th>Date</th><th>Changes</th></tr></thead>
+                <tbody>
+                  <tr><td>1.0</td><td>January 2026</td><td>Initial publication — complete protocol specification</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <div class="mt-16 pt-8 border-t border-gray-200 text-center">
+            <p class="text-sm text-gray-400">Xhavic Technical Whitepaper v1.0 &middot; January 2026 &middot; Prepared by the Xhavic Protocol Foundation</p>
+            <a href="/whitepaper/XHAVIC_Whitepaper_v1.0.pdf" class="inline-flex items-center gap-2 mt-4 text-primary text-sm font-semibold hover:underline" download>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download PDF version
+            </a>
           </div>
-        ))}
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Inline Rendering Placeholder -->
-  <section class="section bg-surface" data-reveal>
-    <div class="container max-w-3xl text-center">
-      <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
-        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      </div>
-      <h2 class="text-2xl md:text-3xl font-bold mb-4 text-ink">
-        Inline HTML Rendering Coming Soon
-      </h2>
-      <p class="text-muted mb-8 max-w-xl mx-auto leading-relaxed">
-        A fully navigable HTML version of the whitepaper will be published here.
-        In the meantime, download the PDF for the complete specification.
-      </p>
-      <a
-        href="/whitepaper/XHAVIC_Whitepaper_v1.0.pdf"
-        class="btn-primary"
-        download
-      >
-        Download PDF
-      </a>
-    </div>
-  </section>
+  <style>
+    .wp-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .wp-table thead th {
+      background: #f9fafb;
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6b7280;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .wp-table tbody td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #f3f4f6;
+      color: #374151;
+    }
+    .wp-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .wp-table tbody tr:hover {
+      background: #f9fafb;
+    }
+    .wp-content p {
+      color: #4b5563;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    .wp-content ul, .wp-content ol {
+      color: #4b5563;
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+    .wp-content li {
+      margin-bottom: 0.5rem;
+      line-height: 1.7;
+    }
+    .wp-content code {
+      background: #f3f4f6;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      font-size: 0.875em;
+      color: #1f2937;
+    }
+
+    /* Active TOC link */
+    .wp-toc-link.active {
+      color: var(--color-primary, #2262ff);
+      border-left: 2px solid var(--color-primary, #2262ff);
+      font-weight: 600;
+    }
+  </style>
 
   <script>
     import '../scripts/reveal.ts';
+
+    // TOC active state tracking
+    const sections = document.querySelectorAll('.wp-section');
+    const tocLinks = document.querySelectorAll('.wp-toc-link');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            tocLinks.forEach((link) => link.classList.remove('active'));
+            const id = entry.target.getAttribute('id');
+            const activeLink = document.querySelector(`.wp-toc-link[href="#${id}"]`);
+            if (activeLink) activeLink.classList.add('active');
+          }
+        });
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
   </script>
 </BaseLayout>
