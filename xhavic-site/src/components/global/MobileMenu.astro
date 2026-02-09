@@ -1,0 +1,268 @@
+---
+/**
+ * MobileMenu.astro
+ * ---
+ * Premium full-screen mobile menu with staggered animations.
+ * Dark overlay, collapsible sections, social links at bottom.
+ */
+
+interface MobileSection {
+  title: string;
+  links: { label: string; href: string }[];
+}
+
+const sections: MobileSection[] = [
+  {
+    title: 'Protocol',
+    links: [
+      { label: 'Overview', href: '/protocol' },
+      { label: 'Architecture', href: '/protocol/architecture' },
+      { label: 'Dual Wallet System', href: '/protocol/dual-wallet' },
+      { label: 'Performance', href: '/protocol/performance' },
+      { label: 'Security', href: '/protocol/security' },
+    ],
+  },
+  {
+    title: 'Build',
+    links: [
+      { label: 'Developers', href: '/developers' },
+      { label: 'Documentation', href: '/docs' },
+    ],
+  },
+  {
+    title: 'Explore',
+    links: [
+      { label: 'Users', href: '/users' },
+      { label: 'Enterprises', href: '/enterprises' },
+      { label: 'Ecosystem', href: '/ecosystem' },
+      { label: 'Governance', href: '/governance' },
+      { label: 'Community', href: '/community' },
+    ],
+  },
+];
+
+const socialLinks = [
+  { label: 'Twitter', href: 'https://x.com/xhavic', icon: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z' },
+  { label: 'Discord', href: 'https://discord.gg/xhavic', icon: 'M20.317 4.37a19.79 19.79 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.74 19.74 0 003.677 4.37a.07.07 0 00-.032.028C.533 9.046-.32 13.58.099 18.058a.082.082 0 00.031.056 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.873-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.11 13.11 0 01-1.872-.892.077.077 0 01-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 01.078-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.009c.12.099.246.198.373.292a.077.077 0 01-.006.127 12.3 12.3 0 01-1.873.892.076.076 0 00-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 00.084.028 19.84 19.84 0 006.002-3.03.077.077 0 00.032-.055c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z' },
+  { label: 'GitHub', href: 'https://github.com/xhavic', icon: 'M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z' },
+  { label: 'Telegram', href: 'https://t.me/xhavic', icon: 'M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="mobile-panel" aria-label="Mobile navigation">
+  <div class="mobile-inner">
+    <!-- Sections -->
+    {sections.map((section, sIdx) => (
+      <div class="mobile-section" style={`--stagger: ${sIdx}`}>
+        <div class="mobile-section-title">{section.title}</div>
+        <ul class="mobile-section-links">
+          {section.links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class:list={[
+                  'mobile-link',
+                  { 'is-active': currentPath === link.href },
+                ]}
+              >
+                {link.label}
+                <svg class="mobile-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+
+    <!-- Docs CTA -->
+    <div class="mobile-docs" style="--stagger: 3">
+      <a href="/docs" class="mobile-docs-btn">
+        Documentation
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M3 11L11 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M5 3H11V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Social links -->
+    <div class="mobile-social" style="--stagger: 4">
+      {socialLinks.map((link) => (
+        <a href={link.href} class="mobile-social-link" target="_blank" rel="noopener" aria-label={link.label}>
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d={link.icon} />
+          </svg>
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggle = document.getElementById('nav-toggle') as HTMLInputElement | null;
+    if (!toggle) return;
+    document.querySelectorAll('.mobile-link, .mobile-docs-btn').forEach((link) => {
+      link.addEventListener('click', () => {
+        toggle.checked = false;
+      });
+    });
+  });
+</script>
+
+<style>
+  .mobile-panel {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.97);
+    padding-top: 80px;
+    transform: translateY(-100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: block;
+    z-index: 110;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  :global(#nav-toggle:checked) ~ .mobile-panel {
+    transform: translateY(0);
+  }
+
+  .mobile-inner {
+    padding: 20px 24px 40px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Staggered entrance */
+  .mobile-section,
+  .mobile-docs,
+  .mobile-social {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--stagger, 0) * 80ms + 100ms);
+  }
+
+  :global(#nav-toggle:checked) ~ .mobile-panel .mobile-section,
+  :global(#nav-toggle:checked) ~ .mobile-panel .mobile-docs,
+  :global(#nav-toggle:checked) ~ .mobile-panel .mobile-social {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Section */
+  .mobile-section {
+    margin-bottom: 28px;
+  }
+
+  .mobile-section-title {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255, 255, 255, 0.35);
+    padding: 0 4px;
+    margin-bottom: 10px;
+  }
+
+  .mobile-section-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2px;
+  }
+
+  .mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+
+  .mobile-link:hover,
+  .mobile-link:active {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .mobile-link.is-active {
+    color: #2262ff;
+    background: rgba(34, 98, 255, 0.08);
+  }
+
+  .mobile-link-arrow {
+    opacity: 0.3;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .mobile-link:hover .mobile-link-arrow {
+    opacity: 0.6;
+    transform: translateX(2px);
+  }
+
+  /* Docs CTA */
+  .mobile-docs {
+    margin-bottom: 32px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .mobile-docs-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(34, 98, 255, 0.3);
+    background: rgba(34, 98, 255, 0.1);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .mobile-docs-btn:hover {
+    background: rgba(34, 98, 255, 0.18);
+    border-color: rgba(34, 98, 255, 0.5);
+  }
+
+  /* Social links */
+  .mobile-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .mobile-social-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .mobile-social-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+</style>

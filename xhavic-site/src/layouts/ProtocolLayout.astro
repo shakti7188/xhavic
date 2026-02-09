@@ -1,0 +1,150 @@
+---
+/**
+ * ProtocolLayout.astro
+ * ---
+ * Extends BaseLayout. Adds a protocol sub-navigation bar/breadcrumb
+ * showing: Overview | Architecture | Dual Wallet | Performance | Security
+ * with active state highlighting based on current URL path.
+ */
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const { title, description, ogImage, canonical } = Astro.props;
+
+const currentPath = Astro.url.pathname;
+
+interface SubNavItem {
+  label: string;
+  href: string;
+}
+
+const protocolNav: SubNavItem[] = [
+  { label: 'Overview', href: '/protocol' },
+  { label: 'Architecture', href: '/protocol/architecture' },
+  { label: 'Dual Wallet', href: '/protocol/dual-wallet' },
+  { label: 'Performance', href: '/protocol/performance' },
+  { label: 'Security', href: '/protocol/security' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/protocol') {
+    return currentPath === '/protocol' || currentPath === '/protocol/';
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  canonical={canonical}
+>
+  <slot name="head" slot="head" />
+
+  <!-- Protocol sub-navigation -->
+  <div class="protocol-subnav">
+    <div class="protocol-subnav__container">
+      <nav class="protocol-subnav__nav" aria-label="Protocol pages">
+        <ul class="protocol-subnav__list">
+          {protocolNav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  'protocol-subnav__link',
+                  { 'protocol-subnav__link--active': isActive(item.href) },
+                ]}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <slot />
+</BaseLayout>
+
+<style>
+  /* ========== PROTOCOL SUB-NAV ========== */
+  .protocol-subnav {
+    position: sticky;
+    top: 60px; /* below the fixed navbar */
+    z-index: 90;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .protocol-subnav__container {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+
+  .protocol-subnav__nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .protocol-subnav__nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .protocol-subnav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: max-content;
+  }
+
+  .protocol-subnav__link {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #667085;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .protocol-subnav__link:hover {
+    color: #101828;
+  }
+
+  .protocol-subnav__link--active {
+    color: #2262ff;
+    border-bottom-color: #2262ff;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 760px) {
+    .protocol-subnav {
+      top: 54px; /* slightly smaller navbar on mobile */
+    }
+
+    .protocol-subnav__link {
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+  }
+</style>

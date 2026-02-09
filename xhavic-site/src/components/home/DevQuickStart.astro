@@ -1,0 +1,72 @@
+---
+/**
+ * DevQuickStart — Robot / AI advantage section
+ * Maps to the original "robotSec" section from index.html.
+ * Robot slides in from left on scroll via IntersectionObserver.
+ */
+---
+
+<section class="robotSec js-robotSec" id="robotPerks">
+  <div class="robotSec__wrap">
+    <div class="robotSec__left">
+      <img class="robotSec__robot js-robot" src="/images/robot/1.png" alt="AI robot assistant" loading="lazy" />
+      <div class="robotSec__robotGlow" aria-hidden="true"></div>
+    </div>
+    <div class="robotSec__right">
+      <h2 class="why__title robotSec__heading">Unlocking the AI advantage <br> with XHAVIC</h2>
+      <ul class="robotSec__list">
+        <li class="robotSec__item">
+          <span class="robotSec__check" aria-hidden="true">&#10003;</span>
+          <div>
+            <h3>Seamless AI-Agent Integration</h3>
+            <p>Connect any AI agent and run workflows on XHAVIC without friction.</p>
+          </div>
+        </li>
+        <li class="robotSec__item">
+          <span class="robotSec__check" aria-hidden="true">&#10003;</span>
+          <div>
+            <h3>Automated on-chain actions</h3>
+            <p>Agents can monitor conditions and trigger trades, payments, rebalancing, and verification—fast on L2, secured by Ethereum.</p>
+          </div>
+        </li>
+        <li class="robotSec__item">
+          <span class="robotSec__check" aria-hidden="true">&#10003;</span>
+          <div>
+            <h3>Built for AI-native dApps</h3>
+            <p>EVM-compatible, scalable infrastructure designed for real-world AI + Web3 products.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .robotSec__heading {
+    margin-bottom: 40px;
+  }
+</style>
+
+<script>
+  function initRobotReveal() {
+    const sec = document.querySelector('.js-robotSec');
+    if (!sec) return;
+    const robot = sec.querySelector('.robotSec__robot');
+    if (!robot) return;
+
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        sec.classList.remove('is-in');
+        void (robot as HTMLElement).offsetWidth; // force reflow for re-animation
+        sec.classList.add('is-in');
+      } else {
+        sec.classList.remove('is-in');
+      }
+    }, { threshold: 0.35 });
+
+    io.observe(sec);
+  }
+
+  initRobotReveal();
+  document.addEventListener('astro:after-swap', initRobotReveal);
+</script>

@@ -1,0 +1,425 @@
+Tab –homepage
+Home page - XHAVIC LANDING PAGE 
+HERO SECTION
+Headline: Web3 Applications That Feel Instant and Affordable
+Subheadline: Xhavic improves the speed and cost of using Ethereum while preserving its security and decentralized settlement. Build and use applications with faster execution, lower fees, and the same EVM developer experience.
+Primary CTA: Get Started Secondary CTA: View Documentation
+Support Links: For Developers | For Users | For Enterprises
+
+SECTION: WHAT IS XHAVIC
+Xhavic is a Layer 2 rollup designed to scale Ethereum. It executes transactions off-chain and settles the results on Ethereum, enabling faster throughput and lower transaction costs without requiring changes to the underlying protocol.
+With Xhavic, decentralized applications can support higher usage, faster interactions, and more complex workflows while benefiting from Ethereum’s security guarantees.
+
+SECTION: WHY LAYER 2 MATTERS
+Ethereum enables programmable digital assets, decentralized finance, and on-chain coordination. As usage increases, so does network demand. This can lead to high fees and slower confirmation times.
+Layer 2 networks like Xhavic address this by:
+	•	Increasing transaction capacity
+	•	Reducing transaction fees
+	•	Improving application responsiveness
+	•	Maintaining compatibility with existing tooling
+	•	Preserving security through Ethereum settlement
+This allows more people to use Ethereum-based applications without sacrificing decentralization or accessibility.
+
+SECTION: KEY BENEFITS
+Low transaction fees Xhavic reduces the cost of executing smart contracts and user transactions, making micro-transactions and high-frequency activity practical.
+Faster finality Transactions are confirmed quickly, enabling real-time trading, gaming, and interactive applications.
+EVM compatible Developers can deploy Ethereum smart contracts without modification using familiar tools and languages such as Solidity, Vyper, Hardhat, and Foundry.
+Secure by design State commitments are posted to Ethereum, and fraud proofs ensure correctness over time.
+Smooth user experience Applications feel more responsive, making decentralized systems accessible to a wider audience.
+
+SECTION: HOW XHAVIC WORKS
+Xhavic is built on optimistic rollup architecture. Transactions are processed off-chain by the Xhavic network and periodically submitted to Ethereum for final settlement.
+This model includes:
+	•	Execution Layer for running transactions and contracts
+	•	Sequencer for ordering transactions
+	•	Settlement Layer for writing state roots to Ethereum
+	•	Data Availability Layer for fraud-proof validation
+	•	Bridge for asset movement between L1 and L2
+This separation allows for increased capacity and reduced fees, while Ethereum remains the final arbiter of security.
+
+SECTION: USE CASES
+Xhavic supports a wide range of Web3 applications:
+Decentralized Finance (DeFi) Lending, swapping, stablecoins, derivatives, and structured products benefit from predictable, low-cost execution.
+Trading Infrastructure Order books, perpetuals, options, arbitrage engines, and price-sensitive systems require fast and inexpensive block space.
+Web3 Gaming and Digital Worlds Interactive gaming logic and asset transfers demand frequent, low-cost transactions.
+Tokenized Assets Real estate, commodities, identity systems, and digital securities require secure settlement with fast execution.
+Consumer Applications Wallets, payment systems, loyalty programs, and digital marketplaces become more usable at scale.
+
+SECTION: FOR DEVELOPERS
+Xhavic is designed for seamless Ethereum development.
+Supported Features:
+	•	Solidity and Vyper smart contracts
+	•	EVM bytecode equivalence
+	•	JSON-RPC compatibility
+	•	Integration with MetaMask and hardware wallets
+	•	Compatibility with Ethers.js, Web3.js, Wagmi, The Graph, and indexing tools
+Tooling ecosystem includes:
+	•	Hardhat
+	•	Foundry
+	•	Truffle
+	•	Remix
+	•	WalletConnect
+	•	MetaMask
+Developers can deploy existing contracts, migrate infrastructure, or build new dApps without changing development workflows.
+Developer CTA: Explore Documentation
+
+SECTION: SECURITY MODEL
+Xhavic inherits security from Ethereum through optimistic rollup design.
+Security properties include:
+	•	Execution verified through fraud proofs
+	•	Data published to Ethereum for verification
+	•	Trust-minimized settlement
+	•	Transparent state transitions
+	•	Resistance to censorship via forced inclusion
+Users retain the trust model of Ethereum while benefiting from improved performance.
+
+SECTION: BRIDGING AND INTEROPERABILITY
+Assets can move between Ethereum and Xhavic using a canonical bridge.
+Deposits (L1 to L2) Funds are locked on Ethereum and made available on Xhavic.
+Withdrawals (L2 to L1) Funds return to Ethereum following a challenge period. Liquidity providers may offer fast exit services.
+This approach maintains asset security while enabling fast Layer 2 execution.
+
+SECTION: FAQ
+What is Xhavic? Xhavic is a Layer 2 network for Ethereum that offers faster and cheaper transactions using optimistic rollup architecture.
+Is Xhavic a sidechain? No. Sidechains use separate consensus, while Xhavic posts transaction data and final state commitments to Ethereum.
+Does Xhavic require a new wallet? No. Any Ethereum-compatible wallet such as MetaMask can connect to Xhavic.
+Can developers deploy existing contracts? Yes. Xhavic is EVM-compatible and does not require code rewrites.
+Why is it cheaper than Ethereum? Execution happens off-chain, and data is posted in compressed batches, reducing gas consumption.
+How is security maintained? Security is inherited from Ethereum via settlement and fraud-proof mechanisms.
+
+SECTION: GET STARTED
+Choose how you want to begin:
+Users: Explore applications running on Xhavic Developers: Read the documentation and deploy contracts Enterprises: Contact the team for integration support Community: Join discussions, contribute, or provide feedback
+CTA Buttons: Start Using Xhavic View Documentation Join Community
+
+SECTION: COMMUNITY AND CONTRIBUTION
+Xhavic welcomes open collaboration from developers, researchers, educators, and users. The ecosystem grows through shared knowledge, transparent standards, and open-source participation.
+CTA Button Join Now
+
+Add Newsletter 
+Add widget of telegram community 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PAGE 1 — FOR DEVELOPERS
+Hero Section
+Build Ethereum Applications That Scale on Xhavic
+Xhavic is an EVM-compatible Layer 2 designed for developers who need high throughput, low fees, secure settlement, and modern infrastructure for DeFi, NFTs, RWA assets, and AI-agentic workloads.
+Primary CTA: Build on Xhavic Secondary CTA: View Documentation
+
+Why Developers Choose Xhavic
+EVM Compatibility Deploy Solidity and Vyper smart contracts without code changes. Existing Ethereum tools and libraries work out of the box.
+Low Fees and High TPS Xhavic offers significantly lower execution fees and high TPS performance, enabling scalable DeFi, real-time trading, and gaming applications.
+NFT and Token Standards Supported Xhavic supports ERC-20, ERC-721, ERC-1155 and related infrastructure. Asset metadata, minting, and marketplace interactions operate with minimal friction.
+AI-Agentic MCP Support Xhavic supports MCP-style (multi-chain protocol) AI-agentic execution, allowing autonomous smart contract agents, automated trading strategies, and AI-driven DeFi primitives.
+RWA-Compliant Infrastructure Develop tokenized real estate, commodities, digital securities, or compliance-driven products with institutional workflows and auditability.
+On-Ramp and Off-Ramp Integration Developers can build consumer-friendly experiences that connect banking rails to Web3 dApps without extra middleware.
+Secure Wallet Integration Xhavic supports wallet applications with time-based security features for safer signing, bridging, and transaction batching.
+
+Tooling and Ecosystem
+Supported languages and frameworks:
+	•	Solidity, Vyper
+	•	Hardhat, Foundry, Truffle, Remix
+	•	Ethers.js, Web3.js, Wagmi
+	•	MetaMask, WalletConnect, Hardware wallets
+
+Build and Launch with Xhavic Labs
+DeFi, NFT, RWA, and AI-driven builders can join Xhavic Labs, an incubator offering:
+	•	Technical guidance
+	•	Security reviews
+	•	Dev tooling
+	•	Go-to-market support
+	•	Liquidity pathways
+
+Developer Documentation
+	•	RPC Endpoints
+	•	Contract Deployments
+	•	SDKs and APIs
+	•	Wallet Integration
+	•	On-Ramp / Off-Ramp Integration
+	•	Compliance Modules
+Developer CTA: Explore Docs
+PAGE 2 — FOR USERS
+Hero Section
+Use Ethereum Applications for Less Cost and Higher Speed
+Users can trade, buy NFTs, participate in DeFi, tokenize assets, and interact with Web3 apps on Xhavic with faster confirmations and significantly lower fees.
+Primary CTA: Start Using Xhavic Secondary CTA: Learn How
+
+Benefits for Users
+Low Transaction Fees and Faster Execution Interact with DeFi, NFTs, gaming, and payments without high gas fees.
+Secure Wallet Application Users can access a wallet app supporting time-based security features to protect assets and reduce signing risk.
+Supports NFTs and Digital Assets Mint, transfer, and trade NFTs at a fraction of the cost of Ethereum Layer 1.
+RWA-Enabled Ecosystem Users can interact with tokenized real-world assets with compliance-backed infrastructure.
+On-Ramp and Off-Ramp Ready Buy and sell assets using fiat payment methods, improving onboarding for beginners.
+
+Getting Started Flow
+	•	Install a compatible wallet (MetaMask, WalletConnect, hardware wallets)
+	•	Add Xhavic network RPC
+	•	Bridge assets or on-ramp directly using supported services
+	•	Access DeFi, NFT, gaming, or tokenized asset applications
+
+User-Oriented Features
+	•	Low fee DeFi participation
+	•	Instant NFT minting and trading
+	•	Real-world asset token access
+	•	High frequency trading support
+	•	Secure bridging
+	•	Fiat-to-crypto conversion
+	•	Community governance in future stages
+
+Learn and Explore
+	•	Beginner Guides
+	•	How to Bridge
+	•	How to On-Ramp
+	•	NFT Usage Guides
+	•	Wallet Security Tips
+
+
+
+
+
+
+
+
+
+
+
+
+
+PAGE 3 — FOR ENTERPRISES
+Hero Section
+Institutional-Grade Ethereum Scaling for Real-World Finance
+Xhavic provides compliant, cost-efficient, and high-throughput blockchain infrastructure suitable for financial institutions, digital asset platforms, tokenization issuers, and enterprise developers.
+Primary CTA: Contact Enterprise Team Secondary CTA: Request Integration Brief
+
+Enterprise Value Proposition
+Low Fees and High Throughput Efficient execution for trading systems, settlement networks, and financial workflows.
+RWA-Compliant Infrastructure Supports tokenized real estate, commodities, securities, and supply-chain data via verifiable, auditable smart contracts.
+On-Ramp and Off-Ramp Connectivity Enable end-users and institutional participants to move between fiat and digital assets.
+AI-Agentic Integrations MCP and autonomous agent support enables algorithmic trading, automated liquidity, and AI-driven credit models.
+Wallet Security Layer Enterprise custodial and self-custodial flows benefit from time-based transaction protection and risk-scoped security modules.
+
+Enterprise Use Cases
+	•	Digital Asset Trading and Settlement
+	•	Tokenization of Real-World Assets (RWA)
+	•	Regulated Stablecoins and Payments
+	•	DeFi Market Access
+	•	Loyalty, Rewards, and Consumer Finance
+	•	Compliance Systems and Identity Verification
+	•	Supply Chain Tracking and Certification
+
+Compatibility and Standards
+	•	EVM Compatible
+	•	ERC Standards Supported (20, 721, 1155)
+	•	Custody Integrations Available
+	•	Institutional Compliance Modules
+	•	Audit Trails with Ethereum Settlement
+
+Ecosystem Support: Xhavic Labs for Fintech
+Enterprises can engage Xhavic Labs for:
+	•	Technical evaluations
+	•	Solution architecture
+	•	Compliance reviews
+	•	Security guidance
+	•	Pilot and POC deployments
+
+Engagement Model
+	•	Enterprise onboarding sessions
+	•	Integration documentation
+	•	Sandbox environments
+	•	Long-term SLAs (optional)
+Enterprise CTA: Book a Technical Session
+
+
+PAGE 4 — COMMUNITY
+Hero Section
+A Globally Distributed, Open Community
+Xhavic is supported by developers, researchers, enterprises, creators, and users working together to scale Ethereum responsibly.
+
+Community Pillars
+Open Participation Contributions are accepted across development, research, governance, documentation, and ecosystem growth.
+Education and Onboarding Resources for beginners, developers, researchers, and enterprise teams.
+Community Driven Governance Long-term roadmap incorporates community proposals, public reviews, and transparency.
+Support for Builders Through Xhavic Labs, hackathons, meetups, workshops, and accelerator programs.
+
+Ways to Contribute
+	•	Improve Documentation
+	•	Build Tools and Libraries
+	•	Submit Feature Requests
+	•	Join Governance Discussions
+	•	Publish Research or Analysis
+	•	Organize Community Events
+	•	Support User Onboarding
+
+Communication Channels
+For structured engagement:
+	•	Developer Forum
+	•	Technical Governance Calls
+	•	Research Groups
+	•	Documentation Working Groups
+	•	Community Chat Channels
+
+
+
+
+
+
+
+
+
+
+
+
+PAGE 5 — USE CASES
+Hero Section
+Applications That Benefit from Xhavic Execution
+Xhavic unlocks use cases that are impractical on Ethereum Layer 1 due to high fees, slow execution, or compliance constraints.
+
+Financial and DeFi Use Cases
+	•	Low fee swaps and lending
+	•	Perpetual derivative trading
+	•	Options and structured products
+	•	High frequency trading strategies
+	•	Liquidity provisioning and market making
+Low fees and high TPS make financial experimentation and institutional use viable.
+
+Real-World Assets (RWA)
+Tokenization and settlement workflows for:
+	•	Real estate
+	•	Commodities
+	•	Corporate bonds
+	•	Consumer credit
+	•	Supply chain assets
+Compliance-ready infrastructure ensures auditability and regulatory alignment.
+
+AI-Agentic Applications
+	•	Autonomous DeFi execution
+	•	Automated liquidity strategies
+	•	AI settlement engines
+	•	On-chain credit assessments
+	•	Automated market operations
+MCP-style support enables multi-chain AI agents to perform economic activity on-chain.
+
+NFTs and Digital Collectibles
+	•	Low-cost minting
+	•	Scalable metadata operations
+	•	Marketplace building
+	•	Gaming asset ownership
+	•	Fractional NFTs
+EVM + ERC standard support ensures compatibility across the ecosystem.
+
+Enterprise and Consumer Workflows
+	•	Payments and settlements
+	•	Ticketing and access passes
+	•	Loyalty and reward programs
+	•	Identity verification
+	•	Certification and compliance
+On-ramp/off-ramp integration improves user accessibility.
+
+
+
+
+
+
+
+PAGE 6 — MEDIA KIT
+Hero Section
+Brand and Media Resources
+The Xhavic Media Kit provides standardized brand materials, product information, boilerplate text, and approved media assets for journalists, researchers, partners, and collaborators.
+
+What the Media Kit Contains
+Brand Assets
+	•	Logos (Light/Dark)
+	•	Brand Colors
+	•	Typography Guidelines
+	•	Usage Restrictions
+Product Assets
+	•	Platform Diagrams
+	•	Architecture Graphics
+	•	Feature and Capability Sheets
+	•	UI Screenshots (Mobile and Desktop)
+Company Information
+	•	Official Boilerplate Description
+	•	Leadership Profiles (Optional)
+	•	Press Mentions and Coverage
+	•	Partner and Ecosystem Information
+Media Contact
+	•	Press Email
+	•	Enterprise Inquiry Form
+	•	Developer Relations Contact
+	•	Speaking Requests
+
+Boilerplate About Xhavic
+Xhavic is an Ethereum Layer 2 execution environment offering low transaction fees, high throughput, EVM compatibility, RWA-compliant infrastructure, and integrated on/off ramp capabilities. The platform supports AI-agentic MCP workflows, NFT standards, secure wallet integrations, and a builder-focused ecosystem through Xhavic Labs. Xhavic is designed for developers, enterprises, and users seeking scalable execution secured by Ethereum settlement.
+
+Usage Guidelines
+Media outlets, researchers, and partners may use Xhavic brand assets for news articles, research reports, event listings, integration announcements, and educational content in accordance with usage guidelines.
+Media CTA: Download Media Kit Alternate CTA: Contact Press Office
+
+
+
+
+
+
+
+
+
+
+
+
+
+Footer Sections Layout:
+Xhavic
+	•	About
+	•	Vision
+	•	Media Kit
+	•	Careers 
+	•	Contact
+Build
+	•	Documentation
+	•	Developer Tools
+	•	RPC Endpoints
+	•	SDKs & APIs
+	•	Github
+	•	Xhavic Labs
+Ecosystem
+	•	For Users
+	•	For Developers
+	•	For Enterprises
+	•	Use Cases
+	•	Community
+Resources
+	•	Wallet Integration
+	•	On/Off Ramp
+	•	RWA Compliance
+	•	NFT Standards (ERC-721 / ERC-1155)
+	•	AI Agent (MCP)
+Legal
+	•	Terms of Use
+	•	Privacy Policy
+	•	Risk Disclosure
+	•	Compliance
+Social
+	•	Twitter / X
+	•	Discord
+	•	Telegram
+	•	Github
+	•	LinkedIn
+
+Bottom Line: Xhavic is an Ethereum Layer 2 execution environment offering scalable, low-cost, and EVM-compatible infrastructure for DeFi, RWA, AI, NFTs, and enterprise digital asset applications.
+© 2026 Xhavic Network. All rights reserved.
+

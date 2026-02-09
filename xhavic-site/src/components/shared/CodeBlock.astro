@@ -1,0 +1,24 @@
+---
+/**
+ * CodeBlock — Styled dark code block
+ * Props:
+ *   code     — the source code string
+ *   language — optional language label shown at the top
+ */
+interface Props {
+  code: string;
+  language?: string;
+}
+
+const { code, language } = Astro.props;
+---
+
+<div class="relative rounded-xl overflow-hidden bg-dark text-white/90 border border-white/[0.06]">
+  {language && (
+    <div class="flex items-center justify-between px-5 py-2.5 border-b border-white/[0.06] bg-dark-card">
+      <span class="text-xs font-semibold text-white/50 uppercase tracking-wider">{language}</span>
+      <span class="text-2xs text-white/30">Copy</span>
+    </div>
+  )}
+  <pre class="overflow-x-auto p-5 text-sm leading-relaxed"><code set:html={code} /></pre>
+</div>

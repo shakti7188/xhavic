@@ -1,0 +1,174 @@
+---
+/**
+ * DualWalletPreview — Key Benefits Slider section
+ * Horizontal card slider with drag support, navigation arrows, and snapping.
+ */
+const slides = [
+  { title: 'Bulletproof security', icon: '/images/slider/icon4.png', image: '/images/slider/4.webp' },
+  { title: 'Built-in wallet', icon: '/images/slider/icon1.png', image: '/images/slider/1.png' },
+  { title: 'Visualize your performance', icon: '/images/slider/icon3.png', image: '/images/slider/3.webp' },
+  { title: 'Insta crypto transfer', icon: '/images/slider/icon2.png', image: '/images/slider/2.png' },
+];
+---
+
+<section class="kb" id="keyBenefits">
+  <div class="kb__container">
+    <div class="kb__head">
+      <div class="kb__copy">
+        <h2 class="why__title">Built for Real Dapps - EVM compatible</h2>
+        <p class="why__subtitle">Developers can deploy Ethereum smart contracts without modification using familiar tools and languages such as Solidity, Vyper, Hardhat, and Foundry</p>
+      </div>
+      <a class="kb__btn" href="/developers">Get started</a>
+    </div>
+    <div class="kb__slider">
+      <button class="kb__nav kb__nav--left" type="button" aria-label="Previous">&#8249;</button>
+      <div class="kb__viewport" id="kbViewport">
+        <div class="kb__track" id="kbTrack">
+          {slides.map((slide) => (
+            <a class="kbCard" href="/protocol">
+              <div class="kbCard__top">
+                <div class="kbCard__corner" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="kbCard__imgWrap">
+                  <img class="kbCard__img" src={slide.image} alt={slide.title} />
+                </div>
+              </div>
+              <div class="kbCard__bottom">
+                <div class="kbCard__label">
+                  <span class="kbCard__icon"><img src={slide.icon} alt="" /></span>
+                  <span>{slide.title}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+      <button class="kb__nav kb__nav--right" type="button" aria-label="Next">&#8250;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const track = document.getElementById("kbTrack");
+  const viewport = document.getElementById("kbViewport");
+  if (!track || !viewport) return;
+
+  const section = document.getElementById("keyBenefits");
+  if (!section) return;
+
+  const btnLeft = section.querySelector(".kb__nav--left");
+  const btnRight = section.querySelector(".kb__nav--right");
+  const cards = track.querySelectorAll(".kbCard");
+  if (!cards.length) return;
+
+  let idx = 0;
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+  let animationId = 0;
+
+  function getCardWidth() {
+    return cards[0].offsetWidth + 18; // card width + gap
+  }
+
+  function getMaxIdx() {
+    var cardW = getCardWidth();
+    var visibleCards = Math.floor(viewport.offsetWidth / cardW);
+    return Math.max(0, cards.length - visibleCards);
+  }
+
+  function setPosition() {
+    track.style.transform = "translateX(" + currentTranslate + "px)";
+  }
+
+  function goTo(i) {
+    idx = Math.max(0, Math.min(i, getMaxIdx()));
+    currentTranslate = -(idx * getCardWidth());
+    prevTranslate = currentTranslate;
+    track.style.transition = "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)";
+    setPosition();
+    updateButtons();
+  }
+
+  function updateButtons() {
+    if (btnLeft) btnLeft.disabled = idx <= 0;
+    if (btnRight) btnRight.disabled = idx >= getMaxIdx();
+  }
+
+  // Navigation buttons
+  if (btnLeft) {
+    btnLeft.addEventListener("click", function () { goTo(idx - 1); });
+  }
+  if (btnRight) {
+    btnRight.addEventListener("click", function () { goTo(idx + 1); });
+  }
+
+  // Drag support
+  function dragStart(e) {
+    isDragging = true;
+    startX = (e.type === "touchstart") ? e.touches[0].clientX : e.clientX;
+    track.style.transition = "none";
+    animationId = requestAnimationFrame(animate);
+  }
+
+  function dragMove(e) {
+    if (!isDragging) return;
+    var currentX = (e.type === "touchmove") ? e.touches[0].clientX : e.clientX;
+    currentTranslate = prevTranslate + currentX - startX;
+  }
+
+  function dragEnd() {
+    isDragging = false;
+    cancelAnimationFrame(animationId);
+    var movedBy = currentTranslate - prevTranslate;
+    // Snap to next/prev if dragged enough
+    if (movedBy < -50) {
+      goTo(idx + 1);
+    } else if (movedBy > 50) {
+      goTo(idx - 1);
+    } else {
+      goTo(idx);
+    }
+  }
+
+  function animate() {
+    setPosition();
+    if (isDragging) requestAnimationFrame(animate);
+  }
+
+  // Mouse events
+  track.addEventListener("mousedown", dragStart);
+  track.addEventListener("mousemove", dragMove);
+  track.addEventListener("mouseup", dragEnd);
+  track.addEventListener("mouseleave", function () {
+    if (isDragging) dragEnd();
+  });
+
+  // Touch events
+  track.addEventListener("touchstart", dragStart, { passive: true });
+  track.addEventListener("touchmove", dragMove, { passive: true });
+  track.addEventListener("touchend", dragEnd);
+
+  // Prevent link click after drag
+  track.addEventListener("click", function (e) {
+    if (Math.abs(currentTranslate - prevTranslate) > 5) {
+      e.preventDefault();
+    }
+  });
+
+  // Prevent image dragging
+  cards.forEach(function (card) {
+    card.addEventListener("dragstart", function (e) { e.preventDefault(); });
+  });
+
+  // Init
+  updateButtons();
+  goTo(0);
+})();
+</script>

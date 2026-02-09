@@ -1,0 +1,482 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Performance — Xhavic"
+  description="2,000+ TPS, $0.04 avg fee, <200ms latency. Testnet benchmarks January 2026. Scalability path to 120,000+ TPS."
+>
+  <!-- ══════ HERO ══════ -->
+  <section class="section bg-dark text-white gradient-mesh grid-pattern py-24 md:py-32">
+    <div class="container">
+      <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8">
+        <a href="/protocol" class="hover:text-white transition-colors">Protocol</a>
+        <span>/</span>
+        <span class="text-white">Performance</span>
+      </nav>
+
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 max-w-3xl">
+        <span class="gradient-text-static">Verifiable Performance</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-14">
+        Every number is sourced, dated, and presented with comparison.
+        Real benchmarks, not theoretical projections.
+      </p>
+
+      <!-- Stats Strip built into hero -->
+      <div class="stats-strip" data-reveal-stagger>
+        <div class="stat-item glass rounded-2xl">
+          <div class="stat-value">
+            <span data-count-to="2000" data-count-suffix="+">0</span>
+          </div>
+          <div class="stat-label">Transactions Per Second</div>
+          <div class="stat-note">Peak TPS</div>
+        </div>
+        <div class="stat-item glass rounded-2xl">
+          <div class="stat-value">
+            <span data-count-to="0.04" data-count-prefix="$">0</span>
+          </div>
+          <div class="stat-label">Average Transaction Fee</div>
+          <div class="stat-note">USD per tx</div>
+        </div>
+        <div class="stat-item glass rounded-2xl">
+          <div class="stat-value">&lt;200ms</div>
+          <div class="stat-label">Execution Latency</div>
+          <div class="stat-note">Soft confirmation</div>
+        </div>
+        <div class="stat-item glass rounded-2xl">
+          <div class="stat-value">2&ndash;5s</div>
+          <div class="stat-label">Soft Finality</div>
+          <div class="stat-note">Sequencer ordered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ METHODOLOGY NOTE ══════ -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-3xl">
+      <div class="rounded-2xl border-2 border-primary/20 bg-primary/[0.03] p-8 md:p-10">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mt-1">
+            <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-ink mb-2">Methodology &amp; Disclaimer</h3>
+            <p class="text-muted text-sm leading-relaxed mb-3">
+              All performance figures on this page are <strong class="text-ink">testnet benchmarks from January 2026</strong>.
+              These are measured results from controlled testing environments, not theoretical maximums
+              or mainnet production data. Conditions may vary under real-world network load.
+            </p>
+            <p class="text-muted text-sm leading-relaxed">
+              Source: XHAVIC Technical Whitepaper v1.0, Tables 7&ndash;8, Figure 11. Competitor data based on
+              publicly available benchmarks as of January 2026.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ NETWORK COMPARISON ══════ -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="section-header">
+        <h2 class="section-title">Network Comparison</h2>
+        <p class="section-subtitle">How Xhavic compares to other Ethereum execution environments.</p>
+      </div>
+
+      <!-- Styled grid comparison — NOT a plain HTML table -->
+      <div class="space-y-3" data-reveal-stagger>
+        <!-- Header row -->
+        <div class="grid grid-cols-5 gap-3 px-4 py-3 text-sm font-bold text-muted">
+          <div>Network</div>
+          <div class="text-center">Peak TPS</div>
+          <div class="text-center">Avg Fee</div>
+          <div class="text-center">Finality</div>
+          <div class="text-center">Settlement</div>
+        </div>
+
+        <!-- Xhavic — highlighted row -->
+        <div class="grid grid-cols-5 gap-3 items-center rounded-2xl bg-primary text-white p-5 shadow-lg shadow-primary/20">
+          <div class="font-bold text-lg">Xhavic L2</div>
+          <div class="text-center font-extrabold text-2xl">2,000+</div>
+          <div class="text-center font-bold">$0.04</div>
+          <div class="text-center font-bold">2&ndash;5s</div>
+          <div class="text-center font-bold">Ethereum L1</div>
+        </div>
+
+        <!-- Ethereum L1 -->
+        <div class="grid grid-cols-5 gap-3 items-center rounded-2xl bg-white border border-stroke/60 p-5">
+          <div class="font-semibold text-ink">Ethereum L1</div>
+          <div class="text-center text-muted">~30</div>
+          <div class="text-center text-muted">$5&ndash;50</div>
+          <div class="text-center text-muted">~13 min</div>
+          <div class="text-center text-muted">Native</div>
+        </div>
+
+        <!-- Arbitrum -->
+        <div class="grid grid-cols-5 gap-3 items-center rounded-2xl bg-white border border-stroke/60 p-5">
+          <div class="font-semibold text-ink">Arbitrum One</div>
+          <div class="text-center text-muted">~1,000</div>
+          <div class="text-center text-muted">$0.08</div>
+          <div class="text-center text-muted">1 week*</div>
+          <div class="text-center text-muted">Ethereum L1</div>
+        </div>
+
+        <!-- Optimism -->
+        <div class="grid grid-cols-5 gap-3 items-center rounded-2xl bg-white border border-stroke/60 p-5">
+          <div class="font-semibold text-ink">Optimism</div>
+          <div class="text-center text-muted">~800</div>
+          <div class="text-center text-muted">$0.10</div>
+          <div class="text-center text-muted">1 week*</div>
+          <div class="text-center text-muted">Ethereum L1</div>
+        </div>
+
+        <!-- Polygon -->
+        <div class="grid grid-cols-5 gap-3 items-center rounded-2xl bg-white border border-stroke/60 p-5">
+          <div class="font-semibold text-ink">Polygon PoS</div>
+          <div class="text-center text-muted">~700</div>
+          <div class="text-center text-muted">$0.01</div>
+          <div class="text-center text-muted">~2 min</div>
+          <div class="text-center text-muted">Polygon chain</div>
+        </div>
+      </div>
+
+      <p class="footnote text-center mt-6">
+        Source: XHAVIC Technical Whitepaper v1.0, Table 7. *Optimistic rollup finality includes 7-day challenge period.
+        Competitor data based on publicly available benchmarks as of January 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════ TRANSACTION FLOW ══════ -->
+  <section class="section bg-dark text-white gradient-mesh py-20" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="section-header">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">Transaction Pipeline</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          End-to-end transaction lifecycle from submission to Ethereum settlement.
+        </p>
+      </div>
+
+      <div class="timeline-horizontal" data-reveal-stagger>
+        <div class="timeline-h-item">
+          <div class="glass-card text-center">
+            <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center mx-auto mb-3">
+              <span class="font-bold text-primary text-sm">1</span>
+            </div>
+            <h4 class="font-bold text-white mb-1">Submit</h4>
+            <p class="text-sm text-gray-400">User sends tx via EVM-compatible wallet. Standard JSON-RPC call.</p>
+            <div class="text-xs text-primary mt-3 font-mono">0ms</div>
+          </div>
+        </div>
+        <div class="timeline-h-item">
+          <div class="glass-card text-center">
+            <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center mx-auto mb-3">
+              <span class="font-bold text-primary text-sm">2</span>
+            </div>
+            <h4 class="font-bold text-white mb-1">Execute &amp; Bundle</h4>
+            <p class="text-sm text-gray-400">Sequencer orders, validates, and executes on EVM. Batched every 60s.</p>
+            <div class="text-xs text-primary mt-3 font-mono">~50ms</div>
+          </div>
+        </div>
+        <div class="timeline-h-item">
+          <div class="glass-card text-center">
+            <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center mx-auto mb-3">
+              <span class="font-bold text-primary text-sm">3</span>
+            </div>
+            <h4 class="font-bold text-white mb-1">Anchor to Ethereum</h4>
+            <p class="text-sm text-gray-400">State root committed to L1 via CanonicalTransactionChain contract.</p>
+            <div class="text-xs text-primary mt-3 font-mono">~100ms</div>
+          </div>
+        </div>
+        <div class="timeline-h-item">
+          <div class="glass-card text-center">
+            <div class="w-10 h-10 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center mx-auto mb-3">
+              <span class="font-bold text-primary text-sm">4</span>
+            </div>
+            <h4 class="font-bold text-white mb-1">Finality</h4>
+            <p class="text-sm text-gray-400">Soft finality in 2&ndash;5s. Ethereum finality ~13 min for full settlement.</p>
+            <div class="text-xs text-primary mt-3 font-mono">&lt;200ms soft</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500 mt-8 text-center italic">
+        Source: XHAVIC Technical Whitepaper v1.0, Figure 3. Times represent soft finality on Xhavic L2.
+        Ethereum settlement requires ~13 minutes for full finality.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════ SCALABILITY PATH ══════ -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="section-header">
+        <h2 class="section-title">Scalability Path</h2>
+        <p class="section-subtitle">
+          From 2,000+ TPS today to 120,000+ TPS through compound optimizations.
+        </p>
+      </div>
+
+      <div class="split-section">
+        <!-- Left: text -->
+        <div>
+          <h3 class="text-2xl font-bold text-ink mb-4">Three-Phase Scaling Roadmap</h3>
+          <p class="text-muted mb-6 leading-relaxed">
+            Xhavic scales through a compound optimization strategy. Phase I delivers 2,000+ TPS
+            through sequencer optimization. Phase II targets 12,000 TPS via batch compression,
+            parallel execution, and improved state management. Phase III unlocks 120,000+ TPS
+            with full sharding across 10 execution shards.
+          </p>
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">20x</span>
+              <span class="text-sm text-muted">Compression optimization</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">8x</span>
+              <span class="text-sm text-muted">Batch aggregation</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">5x</span>
+              <span class="text-sm text-muted">Parallel execution engine</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="flex-shrink-0 w-7 h-7 rounded-lg bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">10x</span>
+              <span class="text-sm text-muted">Execution sharding</span>
+            </div>
+          </div>
+          <p class="footnote mt-6">
+            Source: XHAVIC Technical Whitepaper v1.0, Figure 11. Scalability projections, not current throughput.
+          </p>
+        </div>
+
+        <!-- Right: CSS bar chart -->
+        <div class="space-y-8">
+          <!-- Phase I -->
+          <div>
+            <div class="flex items-baseline justify-between mb-2">
+              <span class="text-sm font-bold text-ink">Phase I &mdash; Current</span>
+              <span class="text-sm font-extrabold text-primary">2,000+ TPS</span>
+            </div>
+            <div class="h-10 rounded-xl bg-gray-100 overflow-hidden">
+              <div class="h-full rounded-xl bg-gradient-to-r from-primary to-primary/80" style="width: 8%"></div>
+            </div>
+          </div>
+
+          <!-- Phase II -->
+          <div>
+            <div class="flex items-baseline justify-between mb-2">
+              <span class="text-sm font-bold text-ink">Phase II &mdash; Optimized</span>
+              <span class="text-sm font-extrabold text-primary">12,000 TPS</span>
+            </div>
+            <div class="h-10 rounded-xl bg-gray-100 overflow-hidden">
+              <div class="h-full rounded-xl bg-gradient-to-r from-primary to-indigo-500" style="width: 40%"></div>
+            </div>
+          </div>
+
+          <!-- Phase III -->
+          <div>
+            <div class="flex items-baseline justify-between mb-2">
+              <span class="text-sm font-bold text-ink">Phase III &mdash; Sharded</span>
+              <span class="text-sm font-extrabold text-primary">120,000+ TPS</span>
+            </div>
+            <div class="h-10 rounded-xl bg-gray-100 overflow-hidden">
+              <div class="h-full rounded-xl bg-gradient-to-r from-primary via-indigo-500 to-violet-500" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ COST ANALYSIS ══════ -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="section-header">
+        <h2 class="section-title">Cost Analysis</h2>
+        <p class="section-subtitle">Per-operation cost comparison with Ethereum L1.</p>
+      </div>
+
+      <div class="bento-grid" data-reveal-stagger>
+        <!-- Simple Transfer — bento-lg -->
+        <div class="accent-card bento-lg">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-ink">Simple Transfer</h3>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <div class="text-xs text-muted mb-1">Ethereum L1</div>
+              <div class="text-lg font-bold text-ink line-through decoration-red-400">$5.00</div>
+            </div>
+            <div>
+              <div class="text-xs text-muted mb-1">Xhavic L2</div>
+              <div class="text-lg font-extrabold text-primary">$0.01</div>
+            </div>
+            <div>
+              <div class="text-xs text-muted mb-1">Reduction</div>
+              <div class="text-lg font-extrabold text-green-600">500x</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Token Swap -->
+        <div class="accent-card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-ink">Token Swap</h3>
+          </div>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm">
+              <span class="text-muted">Ethereum L1</span>
+              <span class="text-ink line-through decoration-red-400">$15.00</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-muted">Xhavic L2</span>
+              <span class="font-bold text-primary">$0.04</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-muted">Reduction</span>
+              <span class="font-bold text-green-600">375x</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NFT Mint -->
+        <div class="accent-card">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-ink">NFT Mint</h3>
+          </div>
+          <div class="space-y-2">
+            <div class="flex justify-between text-sm">
+              <span class="text-muted">Ethereum L1</span>
+              <span class="text-ink line-through decoration-red-400">$25.00</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-muted">Xhavic L2</span>
+              <span class="font-bold text-primary">$0.06</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-muted">Reduction</span>
+              <span class="font-bold text-green-600">416x</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contract Deploy — bento-lg -->
+        <div class="accent-card bento-lg">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </div>
+            <h3 class="font-bold text-lg text-ink">Contract Deploy</h3>
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <div class="text-xs text-muted mb-1">Ethereum L1</div>
+              <div class="text-lg font-bold text-ink line-through decoration-red-400">$50.00</div>
+            </div>
+            <div>
+              <div class="text-xs text-muted mb-1">Xhavic L2</div>
+              <div class="text-lg font-extrabold text-primary">$0.12</div>
+            </div>
+            <div>
+              <div class="text-xs text-muted mb-1">Reduction</div>
+              <div class="text-lg font-extrabold text-green-600">416x</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Average savings card -->
+        <div class="accent-card flex flex-col items-center justify-center text-center">
+          <div class="text-xs text-muted uppercase tracking-wider mb-2">Average Savings</div>
+          <div class="text-4xl font-extrabold text-primary mb-1">~400x</div>
+          <div class="text-sm text-muted">cheaper than L1</div>
+        </div>
+      </div>
+
+      <p class="footnote text-center mt-6">
+        Source: XHAVIC Technical Whitepaper v1.0, Table 8. L1 costs estimated at 50 gwei gas price.
+        Testnet benchmarks, January 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════ FINALITY MODEL ══════ -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-4xl">
+      <div class="section-header">
+        <h2 class="section-title">Finality Model</h2>
+        <p class="section-subtitle">Two tiers of transaction finality for different use cases.</p>
+      </div>
+      <div class="split-section" data-reveal-stagger>
+        <div class="premium-card bg-white border-2 border-primary/20 shadow-lg shadow-primary/5">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-xl mb-2 text-ink">Soft Finality</h3>
+          <div class="text-4xl font-extrabold text-primary mb-3">2&ndash;5 seconds</div>
+          <p class="text-muted text-sm leading-relaxed">
+            Transaction is executed and ordered by the sequencer. Practically irreversible
+            under normal conditions. Sufficient for most DeFi operations.
+          </p>
+        </div>
+        <div class="premium-card bg-white border-2 border-gold/30 shadow-lg shadow-gold/5">
+          <div class="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-bold text-xl mb-2 text-ink">Ethereum Finality</h3>
+          <div class="text-4xl font-extrabold text-gold mb-3">~13 minutes</div>
+          <p class="text-muted text-sm leading-relaxed">
+            State root committed to Ethereum L1 and included in a finalized block.
+            Cryptographically guaranteed by Ethereum's consensus mechanism.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CTA ══════ -->
+  <section class="section bg-dark text-white gradient-mesh py-20" data-reveal>
+    <div class="container text-center max-w-2xl">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+        <span class="gradient-text-static">Deploy and Test</span>
+      </h2>
+      <p class="text-gray-400 mb-10 text-lg">
+        Deploy your existing Ethereum contracts to Xhavic's testnet and measure performance firsthand.
+      </p>
+      <a href="/docs" class="btn-primary text-lg px-8 py-4">
+        Quickstart Guide &rarr;
+      </a>
+    </div>
+  </section>
+
+  <script>
+    import '../../scripts/reveal.ts';
+    import '../../scripts/counter.ts';
+  </script>
+</BaseLayout>

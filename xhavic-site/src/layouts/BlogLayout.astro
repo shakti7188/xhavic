@@ -1,0 +1,266 @@
+---
+/**
+ * BlogLayout.astro
+ * ---
+ * Extends BaseLayout. Adds an article wrapper with title, date, author,
+ * reading time, and tags. Also includes Article JSON-LD schema.
+ */
+import BaseLayout from './BaseLayout.astro';
+import JsonLd from '../components/global/JsonLd.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  updatedDate?: Date;
+  author?: string;
+  authorUrl?: string;
+  readingTime?: string;
+  tags?: string[];
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  author = 'Xhavic Team',
+  authorUrl,
+  readingTime,
+  tags = [],
+  ogImage,
+  canonical,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.io';
+const articleUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+const resolvedOgImage = ogImage
+  ? ogImage.startsWith('http')
+    ? ogImage
+    : `${siteUrl}${ogImage}`
+  : `${siteUrl}/og-default.png`;
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  canonical={canonical}
+>
+  <slot name="head" slot="head" />
+
+  <article class="blog-article">
+    <!-- Article header -->
+    <header class="blog-article__header">
+      <div class="blog-article__container">
+        <!-- Tags -->
+        {tags.length > 0 && (
+          <div class="blog-article__tags">
+            {tags.map((tag) => (
+              <a href={`/blog/tag/${tag.toLowerCase()}`} class="blog-article__tag">
+                {tag}
+              </a>
+            ))}
+          </div>
+        )}
+
+        <!-- Title -->
+        <h1 class="blog-article__title">{title}</h1>
+
+        <!-- Meta row -->
+        <div class="blog-article__meta">
+          <div class="blog-article__author">
+            {authorUrl ? (
+              <a href={authorUrl} class="blog-article__authorLink">
+                {author}
+              </a>
+            ) : (
+              <span>{author}</span>
+            )}
+          </div>
+
+          <span class="blog-article__sep" aria-hidden="true">&middot;</span>
+
+          <time datetime={pubDate.toISOString()} class="blog-article__date">
+            {formatDate(pubDate)}
+          </time>
+
+          {readingTime && (
+            <>
+              <span class="blog-article__sep" aria-hidden="true">&middot;</span>
+              <span class="blog-article__readTime">{readingTime}</span>
+            </>
+          )}
+        </div>
+
+        {updatedDate && (
+          <p class="blog-article__updated">
+            Updated on{' '}
+            <time datetime={updatedDate.toISOString()}>
+              {formatDate(updatedDate)}
+            </time>
+          </p>
+        )}
+      </div>
+    </header>
+
+    <!-- Article body (slot for MDX / markdown content) -->
+    <div class="blog-article__body">
+      <div class="blog-article__container prose prose-lg prose-slate max-w-none">
+        <slot />
+      </div>
+    </div>
+  </article>
+
+  <!-- Article JSON-LD -->
+  <JsonLd
+    type="Article"
+    data={{
+      headline: title,
+      description: description,
+      image: resolvedOgImage,
+      datePublished: pubDate.toISOString(),
+      dateModified: updatedDate ? updatedDate.toISOString() : pubDate.toISOString(),
+      author: {
+        '@type': 'Person',
+        name: author,
+        ...(authorUrl ? { url: authorUrl } : {}),
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Xhavic',
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteUrl}/images/logo.png`,
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': articleUrl,
+      },
+      keywords: tags.join(', '),
+    }}
+  />
+</BaseLayout>
+
+<style>
+  /* ========== ARTICLE LAYOUT ========== */
+  .blog-article {
+    padding-top: 80px; /* space for fixed navbar */
+  }
+
+  .blog-article__container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 18px;
+  }
+
+  /* ========== HEADER ========== */
+  .blog-article__header {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid rgba(16, 24, 40, 0.08);
+    margin-bottom: 40px;
+  }
+
+  .blog-article__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .blog-article__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #f2f4ff;
+    color: #2262ff;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid rgba(34, 98, 255, 0.12);
+    transition: background 0.15s ease;
+  }
+
+  .blog-article__tag:hover {
+    background: rgba(34, 98, 255, 0.1);
+  }
+
+  .blog-article__title {
+    margin: 0 0 16px;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: #101828;
+  }
+
+  /* ========== META ROW ========== */
+  .blog-article__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: #667085;
+  }
+
+  .blog-article__author {
+    font-weight: 600;
+    color: #101828;
+  }
+
+  .blog-article__authorLink {
+    color: #2262ff;
+    text-decoration: none;
+  }
+
+  .blog-article__authorLink:hover {
+    text-decoration: underline;
+  }
+
+  .blog-article__sep {
+    color: #d0d5dd;
+    user-select: none;
+  }
+
+  .blog-article__date,
+  .blog-article__readTime {
+    font-weight: 500;
+  }
+
+  .blog-article__updated {
+    margin: 8px 0 0;
+    font-size: 13px;
+    color: #667085;
+    font-style: italic;
+  }
+
+  /* ========== BODY ========== */
+  .blog-article__body {
+    padding-bottom: 80px;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 760px) {
+    .blog-article {
+      padding-top: 64px;
+    }
+
+    .blog-article__header {
+      padding: 28px 0 24px;
+      margin-bottom: 28px;
+    }
+  }
+</style>

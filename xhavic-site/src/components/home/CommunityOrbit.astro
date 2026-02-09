@@ -1,0 +1,102 @@
+---
+/**
+ * CommunityOrbit — Community section with scroll-driven orbit animation
+ * Avatar images orbit around center logo. Scroll progress drives --p CSS variable.
+ */
+---
+
+<div class="community-header">
+  <h2 class="why__title">COMMUNITY AND CONTRIBUTION</h2>
+  <p class="why__subtitle">Xhavic welcomes open collaboration from developers, researchers, educators, and users. The ecosystem grows through shared knowledge, transparent standards, and open-source participation.</p>
+  <a class="howit__btn" href="/community">Join Now</a>
+</div>
+
+<section class="scroll-wrap" id="expandSection">
+  <div class="sticky-panel">
+    <div class="scene" id="scene">
+      <div class="rings"></div>
+      <div class="center bg">
+        <div class="centerInner community-center">
+          <img class="community-logo" src="/images/xhavic-icon-v2.png" alt="Xhavic" />
+        </div>
+      </div>
+      <div class="anchor">
+        <div class="avatar cluster av-1" data-layer="1">
+          <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=600&q=80&auto=format&fit=crop" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-2" data-layer="2">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80&auto=format&fit=crop" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-3" data-layer="3">
+          <img src="https://framerusercontent.com/images/fGMII2DZxHfMG5shcSEK1AnhYvw.png?scale-down-to=1024" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-4" data-layer="4">
+          <img src="https://framerusercontent.com/images/3tKsVb3psNppIRvC1PoQT4FgoQ.jpg" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-5" data-layer="5">
+          <img src="https://framerusercontent.com/images/48Cqhfwpt7z7CH4A5eVCCMQGbEg.jpg" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-6" data-layer="6">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80&auto=format&fit=crop" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-7" data-layer="7">
+          <img src="https://framerusercontent.com/images/XOzKSXQTs1DdcEoA8hOXV38WL6M.png?scale-down-to=512" alt="Community member" />
+        </div>
+        <div class="avatar cluster av-8" data-layer="8">
+          <img src="https://framerusercontent.com/images/MYlrVK7d5fXdfloNrfa5uiX75UI.jpg" alt="Community member" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .community-header {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .community-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .community-logo {
+    width: 150px;
+  }
+</style>
+
+<script>
+  function initOrbitScroll() {
+    const wrap = document.getElementById('expandSection');
+    const scene = document.getElementById('scene');
+    if (!wrap || !scene) return;
+
+    function clamp01(v: number) { return Math.max(0, Math.min(1, v)); }
+
+    function update() {
+      const r = wrap.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const total = r.height - vh;
+      const scrolled = 0 - r.top;
+      const p = total <= 0 ? 0 : clamp01(scrolled / total);
+      scene.style.setProperty('--p', p.toFixed(4));
+    }
+
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => { update(); ticking = false; });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  initOrbitScroll();
+  document.addEventListener('astro:after-swap', initOrbitScroll);
+</script>

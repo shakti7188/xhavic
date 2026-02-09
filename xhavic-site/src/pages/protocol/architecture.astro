@@ -1,0 +1,685 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Architecture — Xhavic"
+  description="Six independent layers: execution, sequencing, settlement, data availability, oracle + AI agents, governance. Each upgradeable without affecting the others."
+>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       1. HERO — Dark gradient-mesh + grid-pattern
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-dark text-white gradient-mesh grid-pattern" data-reveal>
+    <div class="container text-center">
+      <nav class="flex items-center justify-center gap-2 text-sm text-gray-400 mb-8">
+        <a href="/protocol" class="hover:text-white transition-colors">Protocol</a>
+        <span>/</span>
+        <span class="text-white">Architecture</span>
+      </nav>
+
+      <p class="pill mx-auto mb-6">Modular by Design</p>
+
+      <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight mb-6">
+        <span class="gradient-text-static">6-Layer Modular<br/>Architecture</span>
+      </h1>
+
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-16">
+        Six independent layers, each upgradeable without affecting the others.
+        Swap the sequencer. Upgrade the oracle. Evolve governance. Nothing else breaks.
+      </p>
+
+      <!-- Hero: 6 stacked layer bars -->
+      <div class="max-w-lg mx-auto space-y-2" data-reveal-stagger>
+        <div class="layer-bar" style="background: linear-gradient(90deg, rgba(244,63,94,0.25), rgba(244,63,94,0.08)); border-left: 3px solid #f43f5e;">
+          <span class="layer-bar-label">Governance</span>
+          <span class="layer-bar-num">06</span>
+        </div>
+        <div class="layer-bar" style="background: linear-gradient(90deg, rgba(236,72,153,0.25), rgba(236,72,153,0.08)); border-left: 3px solid #ec4899;">
+          <span class="layer-bar-label">Oracle + AI</span>
+          <span class="layer-bar-num">05</span>
+        </div>
+        <div class="layer-bar" style="background: linear-gradient(90deg, rgba(168,85,247,0.25), rgba(168,85,247,0.08)); border-left: 3px solid #a855f7;">
+          <span class="layer-bar-label">Data Availability</span>
+          <span class="layer-bar-num">04</span>
+        </div>
+        <div class="layer-bar" style="background: linear-gradient(90deg, rgba(139,92,246,0.25), rgba(139,92,246,0.08)); border-left: 3px solid #8b5cf6;">
+          <span class="layer-bar-label">Settlement</span>
+          <span class="layer-bar-num">03</span>
+        </div>
+        <div class="layer-bar" style="background: linear-gradient(90deg, rgba(99,102,241,0.25), rgba(99,102,241,0.08)); border-left: 3px solid #6366f1;">
+          <span class="layer-bar-label">Sequencer</span>
+          <span class="layer-bar-num">02</span>
+        </div>
+        <div class="layer-bar" style="background: linear-gradient(90deg, rgba(34,98,255,0.25), rgba(34,98,255,0.08)); border-left: 3px solid #2262ff;">
+          <span class="layer-bar-label">Execution</span>
+          <span class="layer-bar-num">01</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       2. ARCHITECTURE OVERVIEW — White bg, split-section
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Left: editorial prose -->
+        <div>
+          <p class="text-sm font-semibold text-primary tracking-wide uppercase mb-4">Architecture Philosophy</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-6">
+            Every layer is a replaceable module
+          </h2>
+          <div class="space-y-4 text-muted text-base md:text-lg leading-relaxed">
+            <p>
+              Monolithic blockchains bundle execution, consensus, data availability, and governance into a single codebase. Upgrading one component means upgrading everything, creating fragile release cycles and systemic risk.
+            </p>
+            <p>
+              Xhavic decomposes the stack into six discrete layers with clean interfaces between them. Each layer has a single responsibility, its own upgrade cadence, and can be swapped for a better implementation without touching the others.
+            </p>
+            <p>
+              The result: faster iteration, lower upgrade risk, and the freedom to adopt cutting-edge solutions (new DA layers, improved oracle designs, decentralized sequencing) as they mature.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: 6-layer stack visualization -->
+        <div class="space-y-3" data-reveal-stagger>
+          <div class="layer-stack-item" style="border-left-color: #f43f5e;">
+            <span class="text-xs font-bold text-gray-400 tracking-widest">06</span>
+            <span class="font-semibold text-ink">Governance</span>
+          </div>
+          <div class="layer-stack-item" style="border-left-color: #ec4899;">
+            <span class="text-xs font-bold text-gray-400 tracking-widest">05</span>
+            <span class="font-semibold text-ink">Oracle + AI</span>
+          </div>
+          <div class="layer-stack-item" style="border-left-color: #a855f7;">
+            <span class="text-xs font-bold text-gray-400 tracking-widest">04</span>
+            <span class="font-semibold text-ink">Data Availability</span>
+          </div>
+          <div class="layer-stack-item" style="border-left-color: #8b5cf6;">
+            <span class="text-xs font-bold text-gray-400 tracking-widest">03</span>
+            <span class="font-semibold text-ink">Settlement</span>
+          </div>
+          <div class="layer-stack-item" style="border-left-color: #6366f1;">
+            <span class="text-xs font-bold text-gray-400 tracking-widest">02</span>
+            <span class="font-semibold text-ink">Sequencer</span>
+          </div>
+          <div class="layer-stack-item" style="border-left-color: #2262ff;">
+            <span class="text-xs font-bold text-gray-400 tracking-widest">01</span>
+            <span class="font-semibold text-ink">Execution</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3a. LAYER 1 — Execution Layer (bg-surface)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-surface rounded-2xl mx-4 md:mx-8" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-primary tracking-widest uppercase">Layer 01</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">Execution Layer</h2>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            Where transactions are processed and state is updated. Full EVM bytecode compatibility means Solidity and Vyper contracts deploy without modification. No rewriting, no porting, no compromise.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <span class="text-muted">256-bit word size, 1024 stack depth</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Gas cost: SSTORE 90% cheaper than L1</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Oracle precompile integration (0x00...F0-FF)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <span class="text-muted">All Ethereum opcodes supported</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Visual card -->
+        <div class="premium-card bg-white border border-stroke/50">
+          <div class="terminal">
+            <div class="terminal-header">
+              <div class="terminal-dot terminal-dot--red"></div>
+              <div class="terminal-dot terminal-dot--yellow"></div>
+              <div class="terminal-dot terminal-dot--green"></div>
+              <span class="terminal-title">execution.sol</span>
+            </div>
+            <div class="terminal-body text-sm">
+              <div><span class="text-gray-500">// Deploy to Xhavic — zero changes</span></div>
+              <div class="mt-2"><span class="text-pink-400">contract</span> <span class="text-blue-400">MyProtocol</span> {</div>
+              <div class="pl-4"><span class="text-purple-400">mapping</span>(address =&gt; uint256) balances;</div>
+              <div class="pl-4 mt-1"><span class="text-pink-400">function</span> <span class="text-blue-400">deposit</span>() <span class="text-gray-400">external payable</span> {</div>
+              <div class="pl-8">balances[msg.sender] += msg.value;</div>
+              <div class="pl-4">}</div>
+              <div>}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3b. LAYER 2 — Sequencer Layer (white bg, reverse)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="split-section reverse">
+        <!-- Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7"/></svg>
+            </div>
+            <span class="text-xs font-bold text-indigo-500 tracking-widest uppercase">Layer 02</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">Sequencer Layer</h2>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            Orders transactions before execution. Controls block production, batch submission, and MEV mitigation through threshold encryption and time-weighted ordering.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">2-second block time</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">60-second batch submission window</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Threshold encryption for MEV protection</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Phase I: permissioned  &rarr;  Phase II: multi-sequencer</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Visual -->
+        <div class="premium-card bg-white border border-stroke/50 p-8">
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-lg font-bold text-indigo-600">Tx</div>
+              <div class="flex-1 h-2 bg-indigo-100 rounded-full overflow-hidden">
+                <div class="h-full bg-indigo-500 rounded-full" style="width: 75%; animation: pulse-width 3s ease-in-out infinite;"></div>
+              </div>
+              <span class="text-xs font-mono text-muted">2s</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-full bg-indigo-50 flex items-center justify-center text-lg font-bold text-indigo-400">Bx</div>
+              <div class="flex-1 h-2 bg-indigo-50 rounded-full overflow-hidden">
+                <div class="h-full bg-indigo-400 rounded-full" style="width: 55%; animation: pulse-width 4s ease-in-out infinite;"></div>
+              </div>
+              <span class="text-xs font-mono text-muted">60s</span>
+            </div>
+            <div class="pt-4 border-t border-stroke/50">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-muted">Encryption</span>
+                <span class="inline-flex items-center gap-1.5 text-green-600 font-semibold">
+                  <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                  Threshold Active
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3c. LAYER 3 — Settlement Layer (dark gradient-mesh)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-dark text-white gradient-mesh rounded-2xl mx-4 md:mx-8" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-violet-400 tracking-widest uppercase">Layer 03</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Settlement Layer</h2>
+          <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+            Anchors Xhavic state to Ethereum through the CanonicalTransactionChain contract. State root commitments ensure cryptographic verifiability of every state transition.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0"></span>
+              <span class="text-gray-400">State roots committed to Ethereum</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0"></span>
+              <span class="text-gray-400">Modified Merkle-Patricia trie for state</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0"></span>
+              <span class="text-gray-400">Soft finality: 2-5 seconds</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0"></span>
+              <span class="text-gray-400">Ethereum finality: ~13 minutes</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Visual -->
+        <div class="glass-card">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <span class="text-sm text-gray-400">Finality Pipeline</span>
+              <span class="text-xs font-mono text-violet-400">LIVE</span>
+            </div>
+            <div class="space-y-4">
+              <div class="flex items-center gap-4">
+                <div class="w-3 h-3 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.5)]"></div>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-white">Soft Finality</p>
+                  <p class="text-xs text-gray-500">Xhavic consensus</p>
+                </div>
+                <span class="text-sm font-mono text-green-400">2-5s</span>
+              </div>
+              <div class="w-px h-6 bg-white/10 ml-1.5"></div>
+              <div class="flex items-center gap-4">
+                <div class="w-3 h-3 rounded-full bg-violet-400 shadow-[0_0_8px_rgba(139,92,246,0.5)]"></div>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-white">State Root Posted</p>
+                  <p class="text-xs text-gray-500">CanonicalTransactionChain</p>
+                </div>
+                <span class="text-sm font-mono text-violet-400">~60s</span>
+              </div>
+              <div class="w-px h-6 bg-white/10 ml-1.5"></div>
+              <div class="flex items-center gap-4">
+                <div class="w-3 h-3 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.5)]"></div>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold text-white">Ethereum Finality</p>
+                  <p class="text-xs text-gray-500">L1 confirmation</p>
+                </div>
+                <span class="text-sm font-mono text-blue-400">~13m</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3d. LAYER 4 — Data Availability Layer (white bg, reverse)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="split-section reverse">
+        <!-- Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"/></svg>
+            </div>
+            <span class="text-xs font-bold text-purple-500 tracking-widest uppercase">Layer 04</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">Data Availability Layer</h2>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            Posts transaction data to Ethereum for fraud proof verification. Ensures anyone can reconstruct the full chain state independently, guaranteeing the trustless foundation the network relies on.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Calldata posting to Ethereum</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Merkle commitments for data integrity</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Redundant off-chain copies</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">State reconstruction: 5-10 minutes</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Visual -->
+        <div class="premium-card bg-white border border-stroke/50 p-8">
+          <div class="space-y-4">
+            <p class="text-xs font-bold text-purple-500 tracking-widest uppercase mb-2">Data Pipeline</p>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="text-center p-4 bg-purple-50 rounded-xl">
+                <div class="text-2xl font-extrabold text-purple-600 mb-1">Tx</div>
+                <div class="text-xs text-muted">Transactions</div>
+              </div>
+              <div class="text-center p-4 bg-purple-50/60 rounded-xl">
+                <div class="text-2xl font-extrabold text-purple-500 mb-1">
+                  <svg class="w-6 h-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </div>
+                <div class="text-xs text-muted">Batched</div>
+              </div>
+              <div class="text-center p-4 bg-purple-50/40 rounded-xl">
+                <div class="text-2xl font-extrabold text-purple-400 mb-1">L1</div>
+                <div class="text-xs text-muted">Ethereum</div>
+              </div>
+            </div>
+            <div class="pt-4 border-t border-stroke/50 flex items-center justify-between text-sm">
+              <span class="text-muted">Reconstruction time</span>
+              <span class="font-mono font-semibold text-purple-600">5-10 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3e. LAYER 5 — Oracle & AI Layer (bg-surface)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-surface rounded-2xl mx-4 md:mx-8" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-pink-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-pink-500 tracking-widest uppercase">Layer 05</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">Oracle & AI Layer</h2>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            Native oracle infrastructure and AI agent execution support built into the protocol. Oracle data is accessible via precompile addresses, eliminating external contract dependencies.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Hybrid oracle architecture (multi-source aggregation)</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Precompile address range: 0x00...F0-FF</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">AI agents: deterministic execution guarantees</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-pink-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Gas-metered compute for programmatic operations</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Visual -->
+        <div class="premium-card bg-white border border-stroke/50 p-8">
+          <div class="space-y-5">
+            <p class="text-xs font-bold text-pink-500 tracking-widest uppercase">Oracle Feeds</p>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between p-3 bg-pink-50/60 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-pink-100 flex items-center justify-center text-xs font-bold text-pink-600">P</div>
+                  <span class="font-semibold text-sm text-ink">Price Feeds</span>
+                </div>
+                <span class="text-xs font-mono text-pink-500">0x...F0</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-pink-50/40 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-xs font-bold text-pink-500">R</div>
+                  <span class="font-semibold text-sm text-ink">Randomness</span>
+                </div>
+                <span class="text-xs font-mono text-pink-500">0x...F4</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-pink-50/30 rounded-xl">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-pink-50 flex items-center justify-center text-xs font-bold text-pink-400">A</div>
+                  <span class="font-semibold text-sm text-ink">AI Compute</span>
+                </div>
+                <span class="text-xs font-mono text-pink-500">0x...F8</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       3f. LAYER 6 — Governance Layer (white bg, reverse)
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="split-section reverse">
+        <!-- Text -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-rose-50 flex items-center justify-center">
+              <svg class="w-5 h-5 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
+            <span class="text-xs font-bold text-rose-500 tracking-widest uppercase">Layer 06</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-ink tracking-tight mb-4">Governance Layer</h2>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            DAO structure controlling four governance domains with on-chain execution. No off-chain multisig backdoors. Every protocol change flows through transparent, verifiable governance.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">4 domains: protocol upgrades, sequencer policies, oracle params, treasury</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Token holder voting mechanism</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">On-chain proposal execution</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500 mt-2 flex-shrink-0"></span>
+              <span class="text-muted">Progressive decentralization roadmap</span>
+            </li>
+          </ul>
+        </div>
+        <!-- Visual -->
+        <div class="premium-card bg-white border border-stroke/50 p-8">
+          <div class="space-y-5">
+            <p class="text-xs font-bold text-rose-500 tracking-widest uppercase">Governance Domains</p>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-4 bg-rose-50 rounded-xl text-center">
+                <div class="text-xl mb-1">
+                  <svg class="w-6 h-6 mx-auto text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                </div>
+                <p class="text-xs font-semibold text-ink">Protocol Upgrades</p>
+              </div>
+              <div class="p-4 bg-rose-50/70 rounded-xl text-center">
+                <div class="text-xl mb-1">
+                  <svg class="w-6 h-6 mx-auto text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                </div>
+                <p class="text-xs font-semibold text-ink">Sequencer Policy</p>
+              </div>
+              <div class="p-4 bg-rose-50/50 rounded-xl text-center">
+                <div class="text-xl mb-1">
+                  <svg class="w-6 h-6 mx-auto text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                </div>
+                <p class="text-xs font-semibold text-ink">Oracle Params</p>
+              </div>
+              <div class="p-4 bg-rose-50/30 rounded-xl text-center">
+                <div class="text-xl mb-1">
+                  <svg class="w-6 h-6 mx-auto text-rose-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                </div>
+                <p class="text-xs font-semibold text-ink">Treasury</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       4. MODULARITY — Bento grid on bg-surface
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-surface rounded-2xl mx-4 md:mx-8" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <p class="pill mx-auto mb-4">Independent Upgradeability</p>
+        <h2 class="section-title">Why Modularity Matters</h2>
+        <p class="section-subtitle">
+          Each layer evolves on its own schedule. No monolithic release trains. No cascading failures.
+        </p>
+      </div>
+
+      <div class="bento-grid" data-reveal-stagger>
+        <div class="accent-card bento-lg">
+          <p class="text-xs font-bold text-primary tracking-widest uppercase mb-3">Isolated Upgrades</p>
+          <h3 class="text-xl font-bold text-ink mb-2">Swap any layer without downtime</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Upgrade the sequencer from permissioned to multi-sequencer rotation without touching execution, oracles, or governance. Each layer has a clean interface boundary, so changes in one cannot cascade into others.
+          </p>
+        </div>
+
+        <div class="accent-card">
+          <p class="text-xs font-bold text-primary tracking-widest uppercase mb-3">Lower Risk</p>
+          <h3 class="text-xl font-bold text-ink mb-2">Smaller blast radius</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            A bug in data availability posting does not affect the execution engine or governance voting. Each layer can be rolled back independently.
+          </p>
+        </div>
+
+        <div class="accent-card">
+          <p class="text-xs font-bold text-primary tracking-widest uppercase mb-3">Future-Proof</p>
+          <h3 class="text-xl font-bold text-ink mb-2">Adopt new tech faster</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            When a superior DA solution emerges, plug it in. When ZK proofs are production-ready, integrate them into the settlement layer. The rest of the stack is unaffected.
+          </p>
+        </div>
+
+        <div class="accent-card">
+          <p class="text-xs font-bold text-primary tracking-widest uppercase mb-3">Parallel Teams</p>
+          <h3 class="text-xl font-bold text-ink mb-2">Ship independently</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Oracle engineers and governance designers can ship without blocking execution or sequencer teams. Clean interfaces enable true parallel development.
+          </p>
+        </div>
+
+        <div class="accent-card bento-lg">
+          <p class="text-xs font-bold text-primary tracking-widest uppercase mb-3">Governance-Controlled</p>
+          <h3 class="text-xl font-bold text-ink mb-2">Every upgrade flows through on-chain governance</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Layer upgrades are not admin-keyed. Every change, from fee parameters to sequencer rotation, is proposed, debated, and executed on-chain through the governance layer. No multisig backdoors, no opaque upgrade paths.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       5. CTA — Dark gradient-mesh
+       ═══════════════════════════════════════════════════════════════ -->
+  <section class="section bg-dark text-white gradient-mesh grid-pattern" data-reveal>
+    <div class="container text-center">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mb-4">
+        <span class="gradient-text-static">View Full Technical Docs</span>
+      </h2>
+      <p class="text-gray-400 text-base md:text-lg max-w-xl mx-auto mb-10">
+        Deep-dive into each layer with implementation details, API references, specifications, and integration guides.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/docs" class="btn-dark">
+          Read the Documentation &rarr;
+        </a>
+        <a href="/whitepaper" class="btn bg-white/10 text-white border border-white/20 px-6 py-3 md:px-8 md:py-3.5 hover:bg-white/20 active:scale-[0.98]">
+          Whitepaper
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Scoped styles -->
+  <style>
+    /* Hero layer bars */
+    .layer-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      border-radius: 10px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .layer-bar:hover {
+      transform: translateX(8px);
+      filter: brightness(1.2);
+    }
+
+    .layer-bar-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      letter-spacing: 0.02em;
+    }
+
+    .layer-bar-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.4);
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      letter-spacing: 0.1em;
+    }
+
+    /* Architecture overview stack items */
+    .layer-stack-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: #fff;
+      border: 1px solid rgba(16, 24, 40, 0.06);
+      border-left: 4px solid;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .layer-stack-item:hover {
+      transform: translateX(6px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Pulse animation for sequencer visual */
+    @keyframes pulse-width {
+      0%, 100% { width: 55%; }
+      50% { width: 85%; }
+    }
+  </style>
+
+  <script>
+    import '../../scripts/reveal.ts';
+  </script>
+</BaseLayout>

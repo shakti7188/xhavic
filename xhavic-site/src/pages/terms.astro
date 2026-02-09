@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    title: 'Acceptance of Terms',
+    content: 'By accessing or using the Xhavic network, website, documentation, or any associated services (collectively, the "Services"), you agree to be bound by these Terms of Use. If you do not agree to these terms, you must not access or use the Services.',
+  },
+  {
+    title: 'Description of Service',
+    content: 'Xhavic is an Ethereum Layer-2 execution network that processes transactions off-chain and settles results on Ethereum. The Services include the Xhavic network, bridge contracts, developer tools, documentation, and this website. The Services are provided on an "as is" basis and may be modified, suspended, or discontinued at any time.',
+  },
+  {
+    title: 'User Obligations',
+    content: 'You agree to use the Services in compliance with all applicable laws and regulations. You are solely responsible for your use of the network, including all transactions initiated through your wallet. You must not use the Services for any unlawful purpose, to transmit malicious code, or to interfere with the operation of the network.',
+  },
+  {
+    title: 'Intellectual Property',
+    content: 'All content, trademarks, logos, and intellectual property displayed on this website and within the Services are the property of Xhavic or its licensors. You may not reproduce, distribute, or create derivative works from any content without prior written permission, except where open-source licenses explicitly grant such rights.',
+  },
+  {
+    title: 'Disclaimer of Warranties',
+    content: 'The Services are provided "as is" and "as available" without warranties of any kind, whether express or implied. Xhavic does not warrant that the Services will be uninterrupted, error-free, or secure. Smart contracts, bridge mechanisms, and protocol infrastructure carry inherent technical risks.',
+  },
+  {
+    title: 'Limitation of Liability',
+    content: 'To the maximum extent permitted by applicable law, Xhavic and its contributors, developers, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Services, including but not limited to loss of funds, data, or profits.',
+  },
+  {
+    title: 'Governing Law',
+    content: 'These Terms shall be governed by and construed in accordance with the laws of the applicable jurisdiction. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts in the applicable jurisdiction.',
+  },
+  {
+    title: 'Contact',
+    content: 'For questions about these Terms of Use, contact us at legal@xhavic.io.',
+  },
+];
+---
+
+<BaseLayout
+  title="Terms of Use — Xhavic"
+  description="Terms of Use governing access to and use of the Xhavic execution network, website, and associated services."
+>
+  <!-- Hero -->
+  <section class="section bg-dark text-white gradient-mesh">
+    <div class="container">
+      <div class="max-w-3xl">
+        <div class="pill mb-6">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Legal
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+          <span class="gradient-text-static">Terms of Use</span>
+        </h1>
+        <p class="text-lg text-gray-300">
+          Last updated: January 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-3xl">
+      <div class="accent-card !p-4 mb-10 !bg-surface">
+        <p class="text-sm text-muted italic">
+          Note: Final legal copy to be provided by client. The content below is placeholder
+          text outlining the expected structure and topics.
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none prose-headings:text-ink prose-headings:font-bold prose-p:text-muted prose-p:leading-relaxed">
+        {sections.map((section, i) => (
+          <div class="mb-10">
+            <h2 class="text-xl md:text-2xl !mb-3">
+              {i + 1}. {section.title}
+            </h2>
+            <p>{section.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import '../scripts/reveal.ts';
+  </script>
+</BaseLayout>

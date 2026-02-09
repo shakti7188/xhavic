@@ -1,0 +1,81 @@
+---
+/**
+ * WhatXhavicDoes — Key Benefits section
+ * Two feature cards with hover preview images.
+ * Cards animate in via IntersectionObserver.
+ */
+const FEATURES = [
+  {
+    title: 'Dual-wallet security architecture',
+    desc: 'The Instant Wallet handles real-time transactions in seconds, while the Funding Wallet provides a 24-hour safety window to cancel or reverse transfers in case of errors or suspicious activity.',
+    icon: '/images/key_benefits/i-1.webp',
+    preview: '/images/key_benefits/img-1.webp',
+    href: '/protocol/dual-wallet',
+  },
+  {
+    title: 'On-Ramp and Off-Ramp Connectivity',
+    desc: 'Enable end-users and institutional participants to move between fiat and digital assets.',
+    icon: '/images/key_benefits/i-2.webp',
+    preview: '/images/key_benefits/img-2.webp',
+    href: '/users',
+  },
+];
+---
+
+<section id="benefit" class="why">
+  <div class="why__container">
+    <h2 class="why__title">Key Benefits</h2>
+    <p class="why__subtitle">Xhavic makes Ethereum dApps faster and cheaper with a smoother user experience. It stays EVM compatible and anchors security to Ethereum.</p>
+    <div class="panel">
+      <div id="featuresGrid" class="grid">
+        {FEATURES.map((f) => (
+          <article class="feature-card">
+            <div class="feature-inner">
+              <div class="feature__box">
+                <div class="feature__content">
+                  <h3 class="feature__title">{f.title}</h3>
+                  <p class="feature__desc">{f.desc}</p>
+                  <div class="feature__iconRow">
+                    <div class="feature__iconWrap" aria-hidden="true">
+                      <img src={f.icon} alt="" />
+                    </div>
+                    <a class="arrowBtn" href={f.href} aria-label={`Learn about ${f.title}`}>
+                      <span class="sr-only">Learn about {f.title}</span>
+                      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M7 17L17 7" stroke-width="2" stroke-linecap="round" />
+                        <path d="M10 7h7v7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="feature__previewBox" aria-hidden="true">
+                <img class="feature__previewImg" src={f.preview} alt="" />
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFeatureReveal() {
+    const cards = document.querySelectorAll('.why .feature-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+
+    cards.forEach((card) => observer.observe(card));
+  }
+
+  initFeatureReveal();
+  document.addEventListener('astro:after-swap', initFeatureReveal);
+</script>

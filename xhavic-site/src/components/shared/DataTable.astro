@@ -1,0 +1,42 @@
+---
+/**
+ * DataTable — Responsive table with header row and alternating shading
+ * Props:
+ *   headers   — column header strings
+ *   rows      — 2D array of cell strings
+ *   footnote? — optional footnote below the table
+ */
+interface Props {
+  headers: string[];
+  rows: string[][];
+  footnote?: string;
+}
+
+const { headers, rows, footnote } = Astro.props;
+---
+
+<div class="w-full overflow-x-auto rounded-xl border border-stroke/40">
+  <table class="w-full text-left text-sm">
+    <thead>
+      <tr class="bg-surface">
+        {headers.map((h) => (
+          <th class="px-5 py-3.5 font-bold text-ink tracking-tight whitespace-nowrap">
+            {h}
+          </th>
+        ))}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row, ri) => (
+        <tr class:list={[ri % 2 === 1 ? 'bg-surface/50' : 'bg-white']}>
+          {row.map((cell) => (
+            <td class="px-5 py-3 text-muted whitespace-nowrap">{cell}</td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {footnote && (
+    <p class="footnote px-5 py-2 border-t border-stroke/20">{footnote}</p>
+  )}
+</div>

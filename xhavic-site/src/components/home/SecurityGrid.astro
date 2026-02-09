@@ -1,0 +1,69 @@
+---
+/**
+ * SecurityGrid — Dark section with 5 security property cards
+ * Matches the original index.html #security / .security section.
+ * Scoped styles override .why__title/.why__subtitle colors for dark background.
+ */
+---
+
+<section id="security" class="security gradient-mesh" data-reveal>
+  <h2 class="why__title">SECURITY MODEL</h2>
+  <p class="why__subtitle">
+    Xhavic inherits security from Ethereum through optimistic rollup design.
+    Users retain the trust model of Ethereum while benefiting from improved performance.
+  </p>
+  <div class="features-grid">
+    <div class="feature-card is-lock">
+      <img src="/images/security_model/1.webp" alt="Fraud proof verification" class="feature-img" />
+      <div class="feature-text"><h3>Execution verified through fraud proofs</h3></div>
+    </div>
+    <div class="feature-card is-data">
+      <div class="feature-text"><h3>Data published to Ethereum for verification</h3></div>
+      <img src="/images/security_model/2.webp" alt="Data verification on Ethereum" class="feature-img" />
+    </div>
+    <div class="feature-card is-engine">
+      <img src="/images/security_model/3.webp" alt="Trust-minimized settlement" class="feature-img" />
+      <div class="feature-text"><h3>Trust-minimized settlement</h3></div>
+    </div>
+    <div class="feature-card is-payments">
+      <div class="feature-text"><h3>Transparent state transitions</h3></div>
+      <img src="/images/security_model/4.webp" alt="Transparent state transitions" class="feature-img" />
+    </div>
+    <div class="feature-card is-more">
+      <div class="feature-text"><h3>Resistance to censorship via forced inclusion</h3></div>
+      <img src="/images/security_model/5.webp" alt="Censorship resistance" class="feature-img" />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Override shared .why__title/.why__subtitle colors for dark .security section */
+  .security .why__title,
+  .security .why__subtitle {
+    color: #fff;
+    text-align: center;
+  }
+</style>
+
+<script>
+  function initSecurityReveal() {
+    const cards = document.querySelectorAll('.features-grid .feature-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  }
+
+  initSecurityReveal();
+  document.addEventListener('astro:after-swap', initSecurityReveal);
+</script>

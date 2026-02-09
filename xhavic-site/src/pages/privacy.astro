@@ -1,0 +1,88 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const sections = [
+  {
+    title: 'Information We Collect',
+    content: 'We collect information you provide directly, such as when you subscribe to updates or contact us. We may also collect technical information automatically, including IP addresses, browser type, device identifiers, and usage data when you interact with our website. On-chain transaction data is public by nature of the Ethereum and Xhavic networks.',
+  },
+  {
+    title: 'How We Use Information',
+    content: 'We use collected information to operate, maintain, and improve the Services; to communicate with you about updates, security notices, and support; to monitor and analyze usage trends; and to detect, prevent, and address technical issues or abuse.',
+  },
+  {
+    title: 'Data Sharing',
+    content: 'We do not sell personal information to third parties. We may share information with service providers who assist in operating the website and Services, with law enforcement when required by applicable law, or in connection with a merger, acquisition, or asset sale. On-chain data is inherently public and accessible to anyone.',
+  },
+  {
+    title: 'Cookies and Tracking',
+    content: 'We may use cookies, local storage, and similar technologies to remember preferences, analyze traffic, and improve the user experience. You can control cookie settings through your browser. Disabling cookies may limit certain functionality of the website.',
+  },
+  {
+    title: 'Security',
+    content: 'We implement reasonable technical and organizational measures to protect the information we collect. However, no method of electronic transmission or storage is completely secure. We cannot guarantee absolute security of your data.',
+  },
+  {
+    title: 'Your Rights',
+    content: 'Depending on your jurisdiction, you may have rights regarding your personal data, including the right to access, correct, delete, or port your data. You may also have the right to object to or restrict certain processing. To exercise these rights, contact us at privacy@xhavic.io.',
+  },
+  {
+    title: 'Changes to This Policy',
+    content: 'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. Your continued use of the Services after changes are posted constitutes your acceptance of the revised policy.',
+  },
+  {
+    title: 'Contact',
+    content: 'For questions about this Privacy Policy or our data practices, contact us at privacy@xhavic.io.',
+  },
+];
+---
+
+<BaseLayout
+  title="Privacy Policy — Xhavic"
+  description="Privacy Policy describing how Xhavic collects, uses, and protects your information when you use the website and associated services."
+>
+  <!-- Hero -->
+  <section class="section bg-dark text-white gradient-mesh">
+    <div class="container">
+      <div class="max-w-3xl">
+        <div class="pill mb-6">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Legal
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+          <span class="gradient-text-static">Privacy Policy</span>
+        </h1>
+        <p class="text-lg text-gray-300">
+          Last updated: January 2026
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-3xl">
+      <div class="accent-card !p-4 mb-10 !bg-surface">
+        <p class="text-sm text-muted italic">
+          Note: Final legal copy to be provided by client. The content below is placeholder
+          text outlining the expected structure and topics.
+        </p>
+      </div>
+
+      <div class="prose prose-lg max-w-none prose-headings:text-ink prose-headings:font-bold prose-p:text-muted prose-p:leading-relaxed">
+        {sections.map((section, i) => (
+          <div class="mb-10">
+            <h2 class="text-xl md:text-2xl !mb-3">
+              {i + 1}. {section.title}
+            </h2>
+            <p>{section.content}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import '../scripts/reveal.ts';
+  </script>
+</BaseLayout>

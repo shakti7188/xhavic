@@ -1,0 +1,177 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const brandColors = [
+  { name: 'Primary Blue', hex: '#2262FF', className: 'bg-primary', ring: 'ring-primary/20' },
+  { name: 'Background', hex: '#F6F8FB', className: 'bg-bg', ring: 'ring-gray-200' },
+  { name: 'Dark', hex: '#030B1D', className: 'bg-dark', ring: 'ring-gray-300' },
+  { name: 'Ink', hex: '#101828', className: 'bg-ink', ring: 'ring-gray-300' },
+  { name: 'Muted', hex: '#667085', className: 'bg-muted', ring: 'ring-gray-200' },
+  { name: 'Surface', hex: '#F2F4FF', className: 'bg-surface', ring: 'ring-primary/10' },
+];
+
+const logoFormats = [
+  { name: 'Primary Logo', formats: 'SVG, PNG', desc: 'Full wordmark for light backgrounds.', bgClass: 'bg-bg' },
+  { name: 'Icon Only', formats: 'SVG, PNG', desc: 'Logomark for compact spaces and favicons.', bgClass: 'bg-bg' },
+  { name: 'White Logo', formats: 'SVG, PNG', desc: 'Full wordmark for dark backgrounds.', bgClass: 'bg-dark' },
+  { name: 'Monochrome', formats: 'SVG, PNG', desc: 'Single-color variant for print and restricted palettes.', bgClass: 'bg-bg' },
+];
+---
+
+<BaseLayout
+  title="Media Kit — Xhavic"
+  description="Brand assets, logos, color palette, and press materials for Xhavic. Download the complete media kit."
+>
+  <!-- Hero -->
+  <section class="section bg-dark text-white gradient-mesh">
+    <div class="container">
+      <div class="max-w-3xl">
+        <div class="pill mb-6">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Brand Assets
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+          <span class="gradient-text-static">Media Kit</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl mb-8 leading-relaxed">
+          Brand assets, guidelines, and press materials for editorial and partner use.
+        </p>
+        <a
+          href="/media-kit/xhavic-media-kit.zip"
+          class="btn-primary"
+          download
+        >
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          Download Media Kit
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo Assets -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="section-header">
+        <span class="pill mb-4">Logos</span>
+        <h2 class="section-title">Logo Assets</h2>
+        <p class="section-subtitle">
+          Available in multiple formats and color variants. Minimum clear space: 1x the height of the logomark.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6" data-reveal-stagger>
+        {logoFormats.map((logo) => (
+          <div class="accent-card text-center">
+            <div class={`aspect-video rounded-xl ${logo.bgClass} flex items-center justify-center mb-5 border border-stroke/30`}>
+              <span class="text-muted text-sm font-medium">{logo.name}</span>
+            </div>
+            <h3 class="font-bold text-lg text-ink mb-1">{logo.name}</h3>
+            <p class="text-muted text-sm mb-3">{logo.desc}</p>
+            <span class="inline-flex items-center gap-1.5 text-xs text-primary font-semibold bg-primary/5 px-3 py-1 rounded-pill">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+              {logo.formats}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Brand Colors -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="section-header">
+        <span class="pill mb-4">Palette</span>
+        <h2 class="section-title">Brand Colors</h2>
+        <p class="section-subtitle">
+          The Xhavic color palette. Use these values for accurate brand representation.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6" data-reveal-stagger>
+        {brandColors.map((color) => (
+          <div class="flex flex-col items-center text-center">
+            <div class={`w-20 h-20 md:w-24 md:h-24 rounded-full ${color.className} ring-4 ${color.ring} shadow-lg mb-4`}></div>
+            <p class="font-bold text-sm text-ink">{color.name}</p>
+            <p class="text-muted text-xs font-mono mt-0.5">{color.hex}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-4xl">
+      <div class="section-header">
+        <span class="pill mb-4">Type</span>
+        <h2 class="section-title">Typography</h2>
+        <p class="section-subtitle">
+          Xhavic uses Plus Jakarta Sans as its primary typeface across all digital surfaces.
+        </p>
+      </div>
+      <div class="accent-card">
+        <div class="grid md:grid-cols-2 gap-8">
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wider mb-3 font-semibold">Primary Typeface</p>
+            <p class="text-4xl font-extrabold mb-2 text-ink">Plus Jakarta Sans</p>
+            <p class="text-muted leading-relaxed">
+              Weights: Regular (400), Medium (500), SemiBold (600), Bold (700), ExtraBold (800)
+            </p>
+          </div>
+          <div>
+            <p class="text-xs text-muted uppercase tracking-wider mb-3 font-semibold">Sample</p>
+            <p class="text-2xl font-extrabold mb-1 text-ink">Aa Bb Cc Dd Ee</p>
+            <p class="text-lg font-semibold mb-1 text-ink">Ff Gg Hh Ii Jj Kk</p>
+            <p class="text-base text-muted">0123456789 !@#$%&</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Boilerplate -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container max-w-3xl">
+      <div class="section-header">
+        <h2 class="section-title">About Xhavic</h2>
+      </div>
+      <div class="accent-card">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-muted leading-relaxed">
+            Xhavic is an Ethereum Layer-2 execution network built on optimistic rollup architecture.
+            It processes transactions off-chain and settles results on Ethereum, delivering over 2,000 TPS
+            at an average fee of $0.04 with full EVM compatibility. Xhavic introduces the Dual Wallet System
+            — protocol-level transaction risk routing that separates fast composable DeFi from institutional-grade
+            reversible settlement — alongside native oracle infrastructure and AI agent execution support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Contact -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-3xl text-center">
+      <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 text-ink">Press Contact</h2>
+      <p class="text-muted mb-6 leading-relaxed">
+        For press inquiries, partnership requests, or brand usage questions:
+      </p>
+      <a
+        href="mailto:press@xhavic.io"
+        class="btn-secondary"
+      >
+        press@xhavic.io
+      </a>
+    </div>
+  </section>
+
+  <script>
+    import '../scripts/reveal.ts';
+  </script>
+</BaseLayout>

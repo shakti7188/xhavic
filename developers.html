@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Hero Replica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="stylesheet" href="./developers.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="wrap">
+        <!-- LEFT -->
+        <div class="left">
+          <!-- <div class="pill">
+          <span class="dot"></span>
+          Announcing Fintech Beta 2.0
+          <span class="chev">›</span>
+        </div> -->
+
+          <h1 class="token-hero__title">
+            Build Ethereum
+
+            <!-- <span class="sparkle">✦</span><br /> -->
+            Applications That Scale
+            <span class="accent"> on Xhavic</span>
+          </h1>
+
+          <p class="sub">
+            Xhavic is an EVM-compatible Layer 2 designed for developers who need
+            high throughput, low fees, secure settlement, and modern
+            infrastructure for DeFi, NFTs, RWA assets, and AI-agentic workloads.
+          </p>
+
+          <div class="actions">
+            <a class="btn primary" href="#">Build on Xhavic </a>
+            <a class="btn ghost" href="#">View Documentation </a>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+          <div class="stage">
+            <!-- Swap these image src paths with your own assets -->
+            <img
+              class="phone"
+              src="./assets/developer-page/hero-left.png"
+              alt="Phone mock"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Why developer choose xhavic -->
+    <section class="section">
+      <div class="container">
+        <header class="header">
+          <span class="pill pill--soft">Developers</span>
+          <h2 class="h2">
+            Why Developers Choose <span class="brand">Xhavic</span>
+          </h2>
+          <p class="lead">
+            Build Ethereum-native apps with modern performance, low fees, strong
+            standards support, and agentic execution.
+          </p>
+        </header>
+
+      <div class="slider" id="devSlider">
+  <button class="nav nav--left" aria-label="Previous" id="prevBtn">
+    <span>‹</span>
+  </button>
+
+  <div class="track" id="track">
+          <!-- Card 1 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <!-- simple inline icon -->
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 7h10M7 12h10M7 17h10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">EVM Compatibility</h3>
+              <p class="card__sub">
+                Deploy Solidity and Vyper smart contracts without code changes.
+                Existing Ethereum tools and libraries work out of the box.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Zero rewrites</div>
+                    <div class="mini__desc">
+                      Ship with the same code and workflows.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--solid">Out of the box</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Tooling ready</div>
+                    <div class="mini__desc">
+                      Wallets, libraries, and infra integrate fast.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 14l4-4 4 4 8-8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M20 20H4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">Low Fees and High TPS</h3>
+              <p class="card__sub">
+                Significantly lower execution fees with high TPS
+                performance—built for scalable DeFi, real-time trading, and
+                gaming applications.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Scalable UX</div>
+                    <div class="mini__desc">
+                      Cheap execution makes high-frequency actions practical.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--soft">Throughput</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Real-time apps</div>
+                    <div class="mini__desc">
+                      Trading, games, and dApps with instant feedback.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M7 7h10v10H7z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M5 9V5h4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M19 15v4h-4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">NFT and Token Standards Supported</h3>
+              <p class="card__sub">
+                Supports ERC-20, ERC-721, ERC-1155 and related infrastructure.
+                Metadata, minting, and marketplace interactions work with
+                minimal friction.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Standards native</div>
+                    <div class="mini__desc">
+                      Tokens + NFTs behave as expected across tooling.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--soft">Ecosystem</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Marketplace-ready</div>
+                    <div class="mini__desc">
+                      Smooth mint + list + trade flows.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2v6M12 16v6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M4 7h16M4 17h16"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M8 12h8"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">AI-Agentic MCP Support</h3>
+              <p class="card__sub">
+                Supports MCP-style multi-chain agentic execution—autonomous
+                contract agents, automated strategies, and AI-driven DeFi
+                primitives.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Autonomous agents</div>
+                    <div class="mini__desc">
+                      Execute actions and strategies on-chain.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--solid">Agentic</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Multi-chain workflows</div>
+                    <div class="mini__desc">
+                      Coordinate liquidity + actions across networks.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 10l8-6 8 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9 22V12h6v10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">RWA-Compliant Infrastructure</h3>
+              <p class="card__sub">
+                Build tokenized real estate, commodities, digital securities,
+                and compliance-driven products with institutional workflows and
+                auditability.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Institution-ready</div>
+                    <div class="mini__desc">
+                      Audit trails + compliance-first design patterns.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--soft">Compliance</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Tokenize RWAs</div>
+                    <div class="mini__desc">
+                      Real estate, commodities, and securities flows.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M3 12h18"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M7 8l-4 4 4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M17 8l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">On-Ramp and Off-Ramp Integration</h3>
+              <p class="card__sub">
+                Build consumer-friendly experiences that connect banking rails
+                to Web3 dApps without extra middleware.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Bank rails → Web3</div>
+                    <div class="mini__desc">
+                      Simplify deposits and withdrawals for users.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--soft">UX</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">No middleware pain</div>
+                    <div class="mini__desc">
+                      Fewer moving parts, faster integrations.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="card" data-tilt>
+            <div class="card__topFade"></div>
+            <div class="card__bg"></div>
+
+            <div class="card__inner">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M12 2l8 4v6c0 5-3.5 9-8 10C7.5 21 4 17 4 12V6l8-4Z"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M9.5 12l1.8 1.8L15 10"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <h3 class="card__title">Secure Wallet Integration</h3>
+              <p class="card__sub">
+                Wallet applications with time-based security features for safer
+                signing, bridging, and transaction batching.
+              </p>
+
+              <div class="stack">
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--navy"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Time-based safety</div>
+                    <div class="mini__desc">
+                      Extra protection window for sensitive actions.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flow">
+                  <div class="flow__line"></div>
+                  <div class="flow__dots"><span></span><span></span></div>
+                  <div class="flow__label">
+                    <span class="pill pill--solid">Security</span>
+                  </div>
+                </div>
+
+                <div class="mini">
+                  <div class="mini__icon">
+                    <span class="dot dot--green"></span>
+                  </div>
+                  <div>
+                    <div class="mini__title">Batch + bridge</div>
+                    <div class="mini__desc">
+                      Safer signing for complex multi-step flows.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+  <button class="nav nav--right" aria-label="Next" id="nextBtn">
+    <span>›</span>
+  </button>
+</div>
+    </section>
+    <!-- Tooling and eco system -->
+  <section class="ecosystem">
+ <header class="header">
+         
+          <h2 style="color: black;" class="h2">
+            Tooling and 
+<span class="brand">Ecosystem</span>
+          </h2>
+          <p class="lead">
+           Supported languages and frameworks:
+
+          </p>
+        </header>
+
+  <!-- ROW 1 -->
+  <div class="ticker">
+    <div class="ticker-track left">
+      <div class="item">Solidity</div>
+      <div class="item">Vyper</div>
+      <div class="item">Hardhat</div>
+      <div class="item">Foundry</div>
+      <div class="item">Truffle</div>
+      <div class="item">Remix</div>
+
+      <!-- duplicate for infinite -->
+      <div class="item">Solidity</div>
+      <div class="item">Vyper</div>
+      <div class="item">Hardhat</div>
+      <div class="item">Foundry</div>
+      <div class="item">Truffle</div>
+      <div class="item">Remix</div>
+    </div>
+  </div>
+
+  <!-- ROW 2 -->
+  <div class="ticker">
+    <div class="ticker-track right">
+      <div class="item">Ethers.js</div>
+      <div class="item">Web3.js</div>
+      <div class="item">Wagmi</div>
+      <div class="item">MetaMask</div>
+      <div class="item">WalletConnect</div>
+      <div class="item">Hardware Wallets</div>
+
+      <!-- duplicate for infinite -->
+      <div class="item">Ethers.js</div>
+      <div class="item">Web3.js</div>
+      <div class="item">Wagmi</div>
+      <div class="item">MetaMask</div>
+      <div class="item">WalletConnect</div>
+      <div class="item">Hardware Wallets</div>
+    </div>
+  </div>
+</section>
+<!-- Build and launch -->
+ <section class="labs">
+  <div class="labs-wrap">
+    <header class="labs-head">
+      <h2>Build and Launch with <span>Xhavic Labs</span></h2>
+      <p>
+        DeFi, NFT, RWA, and AI-driven builders can join Xhavic Labs, an incubator offering:
+      </p>
+    </header>
+
+    <div class="labs-grid">
+      <!-- Card 1 -->
+      <article class="labs-card">
+        <div class="labs-icon">
+          <!-- simple inline icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2l9 4.5v6.7c0 5-3.8 9.6-9 10.8C6.8 22.8 3 18.2 3 13.2V6.5L12 2z"/>
+            <path d="M8.7 12.2l2.2 2.3 4.6-5" class="stroke"/>
+          </svg>
+        </div>
+        <h3>Technical guidance</h3>
+        <p>Architecture, smart contract patterns, scalability, and best practices.</p>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="labs-card">
+        <div class="labs-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V7l8-4z"/>
+            <path d="M9 12l2 2 4-4" class="stroke"/>
+          </svg>
+        </div>
+        <h3>Security reviews</h3>
+        <p>Threat modeling, audits, testing, and launch readiness checks.</p>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="labs-card">
+        <div class="labs-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 7h12v10H6z"/>
+            <path d="M9 10h6M9 13h6" class="stroke"/>
+          </svg>
+        </div>
+        <h3>Dev tooling</h3>
+        <p>SDKs, templates, CI/CD pipelines, and reliable dev workflows.</p>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="labs-card">
+        <div class="labs-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 12a8 8 0 1016 0A8 8 0 104 12z"/>
+            <path d="M12 7v5l3 2" class="stroke"/>
+          </svg>
+        </div>
+        <h3>Go-to-market support</h3>
+        <p>Positioning, launch strategy, community, and growth playbooks.</p>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="labs-card">
+        <div class="labs-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2l7 7-7 13L5 9l7-7z"/>
+            <path d="M9 9h6" class="stroke"/>
+          </svg>
+        </div>
+        <h3>Liquidity pathways</h3>
+        <p>Access routes for liquidity, partners, and ecosystem integrations.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- Tooling script -->
+<script>
+const tracks = document.querySelectorAll('.ticker-track');
+
+tracks.forEach(track=>{
+  const width = track.scrollWidth;
+  const speed = width / 100; // dynamic speed
+  track.style.animationDuration = speed + "s";
+});
+</script>
+
+    <!-- Why developer choose xhavic script -->
+    <script>
+        // app.js
+const track = document.getElementById("track");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function getStep() {
+  // scroll by one card width + gap
+  const firstCard = track.querySelector(".card");
+  if (!firstCard) return 320;
+  const cardW = firstCard.getBoundingClientRect().width;
+  const styles = getComputedStyle(track);
+  const gap = parseFloat(styles.columnGap || styles.gap || "16");
+  return cardW + gap;
+}
+
+function updateButtons() {
+  const maxScroll = track.scrollWidth - track.clientWidth - 2;
+  prevBtn.disabled = track.scrollLeft <= 2;
+  nextBtn.disabled = track.scrollLeft >= maxScroll;
+}
+
+prevBtn.addEventListener("click", () => {
+  track.scrollBy({ left: -getStep(), behavior: "smooth" });
+});
+nextBtn.addEventListener("click", () => {
+  track.scrollBy({ left: getStep(), behavior: "smooth" });
+});
+
+track.addEventListener("scroll", updateButtons);
+window.addEventListener("resize", () => setTimeout(updateButtons, 50));
+updateButtons();
+
+/* ---------- tiny tilt (no libs) ---------- */
+const cards = document.querySelectorAll("[data-tilt]");
+cards.forEach((card) => {
+  const strength = 10;
+
+  function onMove(e) {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    const rotY = (x - 0.5) * strength;
+    const rotX = (0.5 - y) * strength;
+    card.style.transform = `translateY(-4px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+  }
+
+  function onLeave() {
+    card.style.transform = `translateY(0px) rotateX(0deg) rotateY(0deg)`;
+  }
+
+  card.addEventListener("mousemove", onMove);
+  card.addEventListener("mouseleave", onLeave);
+
+  card.addEventListener(
+    "touchstart",
+    () => (card.style.transform = `translateY(-4px) rotateX(0deg) rotateY(0deg)`),
+    { passive: true }
+  );
+
+  card.addEventListener(
+    "touchend",
+    () => setTimeout(onLeave, 120),
+    { passive: true }
+  );
+});
+
+    </script>
+  </body>
+</html>

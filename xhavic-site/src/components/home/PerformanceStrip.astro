@@ -1,0 +1,67 @@
+---
+/**
+ * PerformanceStrip — Bridging and Interoperability section
+ * Maps to the original "integrate" section from index.html
+ */
+---
+
+<section id="bridging" class="integrate" data-reveal>
+  <div class="integrate__container">
+    <div class="integrate__spark" aria-hidden="true"></div>
+    <h2 class="why__title">BRIDGING AND INTEROPERABILITY</h2>
+    <p class="why__subtitle">Xhavic enables seamless bridging so users can move assets between Ethereum and Xhavic for faster, lower-cost transactions.</p>
+    <p class="why__subtitle">Its interoperability supports cross-chain messaging, letting dApps connect liquidity and trigger actions across multiple networks while staying anchored to Ethereum security</p>
+    <div class="integrate__stage">
+      <div class="integrate__glow" aria-hidden="true"></div>
+      <div class="integrate__rail">
+        <div id="integrateLeft" class="integrate__icons"></div>
+        <div class="integrate__phoneWrap" aria-hidden="true">
+          <img class="integrate__phone" src="/images/bridging/center-image.png" alt="Xhavic bridge interface">
+        </div>
+        <div id="integrateRight" class="integrate__icons"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initIntegrate() {
+    const ICONS = [
+      { src: '/images/bridging/1.png', alt: 'Bridge partner' },
+      { src: '/images/bridging/2.png', alt: 'Bridge partner' },
+      { src: '/images/bridging/3.png', alt: 'Bridge partner' },
+      { src: '/images/bridging/4.png', alt: 'Bridge partner' },
+      { src: '/images/bridging/5.png', alt: 'Bridge partner' },
+      { src: '/images/bridging/6.png', alt: 'Bridge partner' },
+    ];
+
+    const leftEl = document.getElementById('integrateLeft');
+    const rightEl = document.getElementById('integrateRight');
+    const section = document.querySelector('.integrate');
+    if (!leftEl || !rightEl || !section) return;
+
+    const render = (arr: { src: string; alt: string }[]) =>
+      arr.map((it) => `<div class="appIcon"><div class="appIcon__inner"><img src="${it.src}" alt="${it.alt}" /></div></div>`).join('');
+
+    leftEl.innerHTML = render(ICONS.slice(0, 3));
+    rightEl.innerHTML = render(ICONS.slice(3, 6));
+
+    // Staggered reveal on scroll
+    const leftIcons = Array.from(leftEl.querySelectorAll('.appIcon'));
+    const rightIcons = Array.from(rightEl.querySelectorAll('.appIcon'));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        leftIcons.forEach((el, i) => { setTimeout(() => el.classList.add('is-visible'), i * 140); });
+        rightIcons.forEach((el, i) => { setTimeout(() => el.classList.add('is-visible'), 160 + i * 140); });
+        observer.disconnect();
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -20% 0px' });
+
+    observer.observe(section);
+  }
+
+  initIntegrate();
+  document.addEventListener('astro:after-swap', initIntegrate);
+</script>

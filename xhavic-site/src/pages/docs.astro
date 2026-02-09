@@ -1,0 +1,138 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+const audiences = [
+  {
+    title: 'For Developers',
+    desc: 'Deploy contracts, integrate the Dual Wallet System, use oracle precompiles, and build AI agent execution flows on Xhavic.',
+    href: '/developers',
+    icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+    badge: 'SDKs & APIs',
+  },
+  {
+    title: 'For Users',
+    desc: 'Bridge assets, choose between Instant and Secured wallets, stake XHV, and navigate the ecosystem.',
+    href: '/community',
+    icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+    badge: 'Guides',
+  },
+  {
+    title: 'For Enterprises',
+    desc: 'Institutional settlement, compliance framework, Secured Wallet escrow integration, and dedicated support.',
+    href: '/enterprise',
+    icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+    badge: 'Custom Solutions',
+  },
+];
+
+const quickLinks = [
+  { title: 'Protocol Architecture', href: '/protocol/architecture', desc: 'Explore the six-layer modular stack.' },
+  { title: 'Whitepaper', href: '/whitepaper', desc: 'Full protocol specification.' },
+  { title: 'Glossary', href: '/glossary', desc: 'Key terminology and definitions.' },
+  { title: 'GitHub', href: 'https://github.com/xhavic', desc: 'Source code and open-source tools.' },
+];
+---
+
+<BaseLayout
+  title="Documentation — Xhavic"
+  description="Xhavic developer documentation. Guides, API references, tutorials, and tools for building on the Xhavic Layer-2 execution network."
+>
+  <!-- Hero -->
+  <section class="section bg-dark text-white gradient-mesh">
+    <div class="container">
+      <div class="max-w-3xl">
+        <div class="pill mb-6">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+          Knowledge Base
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 tracking-tight">
+          <span class="gradient-text-static">Documentation</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          Comprehensive documentation for the Xhavic Layer-2 execution network.
+          Choose your path below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience Routing Cards -->
+  <section class="section bg-white" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <span class="pill mb-4">Start Here</span>
+        <h2 class="section-title">Choose Your Path</h2>
+        <p class="section-subtitle">
+          Whether you are building, using, or integrating, find the right resources for your needs.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto" data-reveal-stagger>
+        {audiences.map((item) => (
+          <a href={item.href} class="accent-card group flex flex-col text-center items-center !p-8">
+            <div class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={item.icon} />
+              </svg>
+            </div>
+            <span class="pill mb-4 text-[11px]">{item.badge}</span>
+            <h3 class="text-xl font-bold text-ink mb-3 group-hover:text-primary transition-colors">{item.title}</h3>
+            <p class="text-muted text-sm leading-relaxed flex-1">{item.desc}</p>
+            <span class="text-primary text-sm font-semibold mt-6 inline-flex items-center gap-1 group-hover:gap-2 transition-all">
+              Explore
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container max-w-4xl">
+      <div class="section-header">
+        <h2 class="section-title">Quick Links</h2>
+        <p class="section-subtitle">Jump directly to the most-referenced resources.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4" data-reveal-stagger>
+        {quickLinks.map((link) => (
+          <a href={link.href} class="accent-card group flex items-center gap-4 !p-5">
+            <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/15 transition-colors">
+              <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-ink group-hover:text-primary transition-colors">{link.title}</h3>
+              <p class="text-muted text-sm">{link.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Docs Coming Soon Note -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-3xl text-center">
+      <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      </div>
+      <h2 class="text-2xl md:text-3xl font-bold mb-4 text-ink">Full Documentation Coming Soon</h2>
+      <p class="text-muted mb-8 max-w-xl mx-auto leading-relaxed">
+        The complete developer documentation hub will be available at docs.xhavic.io.
+        In the meantime, explore the resources linked above.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/protocol/architecture" class="btn-primary">Protocol Architecture</a>
+        <a href="/whitepaper" class="btn-secondary">Read the Whitepaper</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import '../scripts/reveal.ts';
+  </script>
+</BaseLayout>

@@ -1,0 +1,69 @@
+---
+/**
+ * Hero — Full-viewport dark hero section
+ * Left column: headline, subtitle, CTA
+ * Right column: autoplay video
+ * Base styles from original.css; scoped overrides for text-align only.
+ */
+---
+
+<section id="home" class="token-hero gradient-mesh" data-reveal>
+  <div class="token-hero__container">
+    <div class="left">
+      <h1 class="token-hero__title">Build and Scale DApps With Ease</h1>
+      <p class="token-hero__subtitle">
+        Fast, secure, low-cost execution on an Ethereum-secured Layer-2. Built for AI agent integrations,
+        next-gen dApps, timestamped payments, and scalable RWA ecosystems
+      </p>
+      <a class="howit__btn" href="/protocol">Get started</a>
+    </div>
+
+    <div class="token-hero__media right">
+      <video
+        class="token-hero__video"
+        id="tokenHeroVideo"
+        muted
+        autoplay
+        loop
+        playsinline
+        preload="auto"
+      >
+        <source src="/videos/video3.mp4" type="video/mp4" />
+      </video>
+      <div class="token-hero__fade" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Override container's text-align: center for left column content */
+  .token-hero__container .left,
+  .token-hero__container .left .token-hero__title,
+  .token-hero__container .left .token-hero__subtitle {
+    text-align: left;
+  }
+</style>
+
+<script>
+  function initHeroVideo() {
+    const video = document.getElementById('tokenHeroVideo') as HTMLVideoElement | null;
+    if (!video) return;
+
+    // Force visible styling (bypasses CSS opacity:0 in original.css)
+    video.style.display = 'block';
+    video.style.opacity = '1';
+    video.style.background = '#000';
+    video.style.position = 'relative';
+
+    video.muted = true;
+    video.play().catch(() => {});
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroVideo);
+  } else {
+    initHeroVideo();
+  }
+
+  document.addEventListener('astro:after-swap', initHeroVideo);
+</script>

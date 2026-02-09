@@ -1,0 +1,48 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.publishedAt}
+  updatedDate={post.data.updatedAt}
+  author={post.data.author}
+  tags={post.data.tags}
+  ogImage={post.data.image}
+  canonical={post.data.canonical}
+>
+  <!-- Back link -->
+  <Fragment slot="head">
+    <meta property="article:published_time" content={post.data.publishedAt.toISOString()} />
+  </Fragment>
+
+  <nav class="mb-8">
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-primary transition-colors"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+      Back to Blog
+    </a>
+  </nav>
+
+  <Content />
+</BlogLayout>

@@ -1,0 +1,147 @@
+---
+/**
+ * BaseLayout.astro
+ * ---
+ * Root layout wrapping ALL pages.
+ * Includes DOCTYPE, html, head (charset, viewport, SEO, fonts, favicon),
+ * body (skip-to-content, Navbar, MobileMenu, slot, Footer),
+ * and Organization + WebSite JSON-LD schemas on every page.
+ */
+import '../styles/global.css';
+import SEOHead from '../components/global/SEOHead.astro';
+import JsonLd from '../components/global/JsonLd.astro';
+import Navbar from '../components/global/Navbar.astro';
+import MobileMenu from '../components/global/MobileMenu.astro';
+import Footer from '../components/global/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  canonical,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.io';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <SEOHead
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      canonical={canonical}
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Font: Plus Jakarta Sans — self-hosted, no external requests -->
+    <link rel="preload" href="/fonts/PlusJakartaSans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/PlusJakartaSans-latin-ext.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!--
+      Critical inline CSS — prevents FOUC (flash of unstyled content).
+      These styles render instantly before external stylesheets load.
+      Mirrors the key body/html/navbar rules from original.css.
+    -->
+    <style is:inline>
+      :root {
+        --bg: #f6f8fb;
+        --ink: #101828;
+        --font-family: "Plus Jakarta Sans", "Plus Jakarta Sans Placeholder", sans-serif;
+        --primary: #2262ff;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { scroll-behavior: smooth; margin: 0; }
+      body {
+        font-family: var(--font-family);
+        color: var(--ink);
+        background: var(--bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      img { max-width: 100%; height: auto; display: block; }
+      a { text-decoration: none; }
+    </style>
+
+    <!-- Slot for page-specific head content -->
+    <slot name="head" />
+  </head>
+
+  <body class="min-h-screen">
+    <!-- Skip to content link for accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-none"
+    >
+      Skip to content
+    </a>
+
+    <!-- Navigation -->
+    <Navbar>
+      <MobileMenu slot="mobile-menu" />
+    </Navbar>
+
+    <!-- Main content -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+
+    <!-- Organization JSON-LD (every page) -->
+    <JsonLd
+      type="Organization"
+      data={{
+        name: 'Xhavic',
+        url: siteUrl,
+        logo: `${siteUrl}/images/logo.png`,
+        description:
+          'Xhavic is an Ethereum Layer 2 execution environment offering scalable, low-cost, and EVM-compatible infrastructure.',
+        sameAs: [
+          'https://twitter.com/xhavic',
+          'https://github.com/xhavic',
+          'https://discord.gg/xhavic',
+          'https://t.me/xhavic',
+          'https://linkedin.com/company/xhavic',
+        ],
+      }}
+    />
+
+    <!-- WebSite JSON-LD (every page) -->
+    <JsonLd
+      type="WebSite"
+      data={{
+        name: 'Xhavic',
+        url: siteUrl,
+        description:
+          'Xhavic is an Ethereum Layer 2 execution environment offering scalable, low-cost, and EVM-compatible infrastructure for DeFi, RWA, AI, NFTs, and enterprise digital asset applications.',
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${siteUrl}/search?q={search_term_string}`,
+          },
+          'query-input': 'required name=search_term_string',
+        },
+      }}
+    />
+  </body>
+</html>

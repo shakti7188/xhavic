@@ -1,0 +1,271 @@
+---
+/**
+ * Footer.astro
+ * ---
+ * Port of the footer from index.html.
+ * ALL content rendered as static HTML (not JS-rendered like the original).
+ * Four main column groups: PROTOCOL, BUILD, ECOSYSTEM, COMPANY.
+ * Plus Legal + Social link rows, Newsletter signup, and copyright.
+ */
+import Newsletter from './Newsletter.astro';
+
+interface FooterColumn {
+  title: string;
+  links: { label: string; href: string; external?: boolean }[];
+}
+
+const columns: FooterColumn[] = [
+  {
+    title: 'Protocol',
+    links: [
+      { label: 'Overview', href: '/protocol' },
+      { label: 'Architecture', href: '/protocol/architecture' },
+      { label: 'Dual Wallet System', href: '/protocol/dual-wallet' },
+      { label: 'Performance', href: '/protocol/performance' },
+      { label: 'Security', href: '/protocol/security' },
+      { label: 'Whitepaper', href: '/whitepaper' },
+    ],
+  },
+  {
+    title: 'Build',
+    links: [
+      { label: 'Documentation', href: '/docs' },
+      { label: 'Developer Tools', href: '/developers' },
+      { label: 'RPC Endpoints', href: '/docs/rpc' },
+      { label: 'GitHub', href: 'https://github.com/xhavic', external: true },
+      { label: 'Testnet Faucet', href: '/docs/tools/faucet' },
+      { label: 'Block Explorer', href: '/docs/tools/explorer' },
+    ],
+  },
+  {
+    title: 'Ecosystem',
+    links: [
+      { label: 'Applications', href: '/ecosystem' },
+      { label: 'For Users', href: '/users' },
+      { label: 'For Developers', href: '/developers' },
+      { label: 'For Enterprises', href: '/enterprises' },
+      { label: 'Community', href: '/community' },
+      { label: 'Governance', href: '/governance' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Media Kit', href: '/media' },
+      { label: 'Glossary', href: '/glossary' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Terms of Use', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy' },
+      { label: 'Risk Disclosure', href: '/risk-disclosure' },
+    ],
+  },
+  {
+    title: 'Social',
+    links: [
+      { label: 'Twitter / X', href: 'https://x.com/xhavic', external: true },
+      { label: 'Discord', href: 'https://discord.gg/xhavic', external: true },
+      { label: 'Telegram', href: 'https://t.me/xhavic', external: true },
+      { label: 'GitHub', href: 'https://github.com/xhavic', external: true },
+      { label: 'LinkedIn', href: 'https://linkedin.com/company/xhavic', external: true },
+    ],
+  },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="xh-footer">
+  <div class="xh-footer__container">
+    <!-- Top: CTA left + Link columns right -->
+    <div class="xh-footer__top">
+      <!-- Left: CTA block -->
+      <div class="xh-footer__cta">
+        <div class="xh-footer__brand">Xhavic</div>
+        <h3 class="xh-footer__headline">Start building on Xhavic today</h3>
+        <p class="xh-footer__lead">
+          Xhavic is an Ethereum Layer 2 execution environment offering scalable,
+          low-cost, and EVM-compatible infrastructure for DeFi, RWA, AI, NFTs,
+          and enterprise digital asset applications.
+        </p>
+        <a class="xh-footer__btn" href="/developers">Get started</a>
+      </div>
+
+      <!-- Right: Link columns -->
+      <div class="xh-footer__cols">
+        {columns.map((col) => (
+          <div class="xh-footer__col">
+            <div class="xh-footer__colTitle">{col.title}</div>
+            <ul class="xh-footer__list">
+              {col.links.map((link) => (
+                <li class="xh-footer__item">
+                  <a
+                    href={link.href}
+                    class="xh-footer__link"
+                    {...(link.external
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <Newsletter />
+
+    <!-- Divider -->
+    <div class="xh-footer__divider"></div>
+
+    <!-- Bottom: Copyright -->
+    <div class="xh-footer__bottom">
+      <div class="xh-footer__bottomText">
+        &copy; {currentYear} Xhavic Network. All rights reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* ========== FOOTER ========== */
+  .xh-footer {
+    background: linear-gradient(180deg, #050916 0%, #040815 100%);
+    color: #fff;
+    padding: 54px 18px 22px;
+    font-family: var(--font-family, 'Plus Jakarta Sans', system-ui, sans-serif);
+  }
+
+  .xh-footer__container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .xh-footer__top {
+    display: grid;
+    grid-template-columns: 1.1fr 1.9fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  /* Left CTA block */
+  .xh-footer__brand {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    opacity: 0.92;
+    margin-bottom: 10px;
+  }
+
+  .xh-footer__headline {
+    margin: 0 0 10px;
+    font-size: clamp(24px, 2.6vw, 34px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .xh-footer__lead {
+    margin: 0 0 16px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 420px;
+  }
+
+  .xh-footer__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    background: #2262ff;
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    text-decoration: none;
+    box-shadow: 0 14px 30px rgba(59, 109, 255, 0.22);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .xh-footer__btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 20px 40px rgba(59, 109, 255, 0.28);
+  }
+
+  /* Right columns */
+  .xh-footer__cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    gap: 26px 34px;
+  }
+
+  .xh-footer__colTitle {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.88);
+  }
+
+  .xh-footer__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .xh-footer__link {
+    color: rgba(255, 255, 255, 0.68);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 160ms ease;
+  }
+
+  .xh-footer__link:hover {
+    color: #ffffff;
+  }
+
+  /* Divider + bottom */
+  .xh-footer__divider {
+    height: 1px;
+    margin: 26px 0 14px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .xh-footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .xh-footer__bottomText {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 980px) {
+    .xh-footer__top {
+      grid-template-columns: 1fr;
+    }
+    .xh-footer__cols {
+      grid-template-columns: repeat(2, minmax(160px, 1fr));
+    }
+  }
+
+  @media (max-width: 560px) {
+    .xh-footer__cols {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

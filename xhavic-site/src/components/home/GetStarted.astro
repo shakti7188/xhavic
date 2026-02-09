@@ -1,0 +1,125 @@
+---
+/**
+ * GetStarted — Tabbed "Get Started" section
+ * Three tabs: Users | Developers | Enterprises
+ * JS-driven tab switching with image swap animation (is-out / is-in classes)
+ */
+const tabs = [
+  {
+    key: 'users',
+    tabLabel: 'Users',
+    icon: '/images/get_started/icon-1.png',
+    title: 'Users',
+    desc: 'Explore applications running on Xhavic.',
+    ctaText: 'Explore apps',
+    ctaHref: '/users',
+    image: '/images/get_started/3.jpg',
+  },
+  {
+    key: 'devs',
+    tabLabel: 'Developers',
+    icon: '/images/get_started/icon-2.png',
+    title: 'Developers',
+    desc: 'Read the documentation and deploy contracts.',
+    ctaText: 'Read docs',
+    ctaHref: '/developers',
+    image: '/images/get_started/2.jpg',
+  },
+  {
+    key: 'enterprise',
+    tabLabel: 'Enterprises',
+    icon: '/images/get_started/icon-3.png',
+    title: 'Enterprises',
+    desc: 'Contact the team for integration support.',
+    ctaText: 'Contact team',
+    ctaHref: '/enterprises',
+    image: '/images/get_started/1.jpg',
+  },
+];
+---
+
+<section class="getstart">
+  <div class="getstart__container">
+    <div class="getstart__head">
+      <div>
+        <h2 class="why__title">Get started</h2>
+        <p class="why__subtitle">The XHAVIC Foundation supports the growth of the XHAVIC ecosystem by helping builders, businesses, and institutions move from experimentation to real-world deployment. We focus on reliable execution, long-term sustainability, and Ethereum-secured infrastructure.</p>
+      </div>
+      <a class="getstart__topBtn" href="/developers">Get started</a>
+    </div>
+    <div class="getstart__panel">
+      <div class="getstart__left">
+        <div id="getstartTabs" class="getstart__tabs">
+          {tabs.map((tab, i) => (
+            <div class={`tabCard${i === 0 ? ' is-active' : ''}`} data-i={String(i)}>
+              <div class="tabCard__icon"><img src={tab.icon} alt="" /></div>
+              <div class="tabCard__label">{tab.tabLabel}</div>
+            </div>
+          ))}
+        </div>
+        <div class="getstart__detail">
+          <h3 id="getstartTitle" class="getstart__detailTitle">{tabs[0].title}</h3>
+          <p id="getstartDesc" class="getstart__detailDesc">{tabs[0].desc}</p>
+          <a id="getstartCta" class="getstart__cta" href={tabs[0].ctaHref}>{tabs[0].ctaText}</a>
+        </div>
+      </div>
+      <div class="getstart__right">
+        <div class="getstart__preview">
+          <img id="getstartImg" src="/images/get_started/3.jpg" alt="Get started with Xhavic" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ tabs }}>
+(function () {
+  const tabData = tabs;
+  const container = document.getElementById("getstartTabs");
+  const titleEl = document.getElementById("getstartTitle");
+  const descEl = document.getElementById("getstartDesc");
+  const ctaEl = document.getElementById("getstartCta");
+  const imgEl = document.getElementById("getstartImg");
+  if (!container || !titleEl || !descEl || !ctaEl || !imgEl) return;
+
+  const cards = container.querySelectorAll(".tabCard");
+  let current = 0;
+
+  function activate(idx) {
+    if (idx === current) return;
+    const data = tabData[idx];
+
+    // Update active tab card
+    cards.forEach(function (c) { c.classList.remove("is-active"); });
+    cards[idx].classList.add("is-active");
+
+    // Animate image out
+    imgEl.classList.remove("is-in");
+    imgEl.classList.add("is-out");
+
+    setTimeout(function () {
+      // Swap content
+      titleEl.textContent = data.title;
+      descEl.textContent = data.desc;
+      ctaEl.textContent = data.ctaText;
+      ctaEl.href = data.ctaHref;
+      imgEl.src = data.image;
+
+      // Animate image in
+      imgEl.classList.remove("is-out");
+      imgEl.classList.add("is-in");
+    }, 200);
+
+    current = idx;
+  }
+
+  cards.forEach(function (card, i) {
+    card.addEventListener("click", function () {
+      activate(i);
+    });
+  });
+
+  // Set initial state
+  imgEl.classList.add("is-in");
+})();
+</script>

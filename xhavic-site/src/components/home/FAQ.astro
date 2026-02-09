@@ -1,0 +1,74 @@
+---
+/**
+ * FAQ — Accordion section with structured data
+ * Uses centralized FAQ_ITEMS from data/faq.ts (single source of truth).
+ * JSON-LD is handled by index.astro via the JsonLd component — not duplicated here.
+ */
+import { FAQ_ITEMS } from '@/data/faq';
+---
+
+<section class="faq" data-reveal>
+  <div class="faq__container">
+    <h2 class="why__title">Have more questions?</h2>
+    <p class="why__subtitle">
+      Get answers to frequent questions about Xhavic, security measures, and features. If you need help, our team is here.
+    </p>
+    <div id="faqList" class="faq__list">
+      {FAQ_ITEMS.map((item, i) => (
+        <div class="faqItem" data-i={String(i)}>
+          <button class="faqQ" type="button" aria-expanded="false">
+            <span class="faqQ__text">{item.question}</span>
+            <span class="faqQ__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faqA">
+            <div class="faqA__inner">{item.answer}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFaq() {
+    const faqList = document.getElementById('faqList');
+    if (!faqList) return;
+
+    const items = faqList.querySelectorAll<HTMLElement>('.faqItem');
+
+    items.forEach((item) => {
+      const btn = item.querySelector<HTMLButtonElement>('.faqQ');
+      const body = item.querySelector<HTMLElement>('.faqA');
+      const icon = item.querySelector<HTMLElement>('.faqQ__icon');
+
+      if (!btn || !body) return;
+
+      btn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('is-open');
+
+        // Close all items
+        items.forEach((otherItem) => {
+          const otherBody = otherItem.querySelector<HTMLElement>('.faqA');
+          const otherIcon = otherItem.querySelector<HTMLElement>('.faqQ__icon');
+          const otherBtn = otherItem.querySelector<HTMLButtonElement>('.faqQ');
+
+          otherItem.classList.remove('is-open');
+          if (otherBody) otherBody.style.maxHeight = '0px';
+          if (otherIcon) otherIcon.textContent = '+';
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle clicked item
+        if (!isOpen) {
+          item.classList.add('is-open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          if (icon) icon.textContent = '\u2212';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  initFaq();
+  document.addEventListener('astro:after-swap', initFaq);
+</script>

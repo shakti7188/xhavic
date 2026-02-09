@@ -1,0 +1,147 @@
+@import './fonts.css';
+@import './original.css';
+@import './animations.css';
+@import './components.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * global.css
+ * ----------
+ * Layered styles that extend original.css.
+ * original.css is the visual source of truth (ported from the production site).
+ * animations.css provides @keyframes for all premium animations.
+ * components.css provides glassmorphism, bento, timeline, and other design systems.
+ *
+ * IMPORTANT: Do NOT re-declare body, html, *, heading, img, or anchor resets
+ * here — original.css already handles all of those. Duplicating them in
+ * @layer base causes FOUC because layered rules load with lower precedence
+ * during the initial paint.
+ */
+
+@layer base {
+  ::selection {
+    background-color: rgba(34, 98, 255, 0.15);
+    color: #101828;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply w-full max-w-container mx-auto px-5 md:px-8;
+  }
+
+  .container-sm {
+    @apply w-full max-w-container-sm mx-auto px-5 md:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-section-sm md:py-section;
+  }
+
+  /* Card base */
+  .card {
+    @apply bg-card rounded-xl p-6 md:p-8 border border-stroke/50;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out-expo hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  /* Button variants */
+  .btn {
+    @apply inline-flex items-center justify-center font-semibold rounded-pill
+           transition-all duration-200 ease-out-expo cursor-pointer
+           text-sm md:text-base;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white px-6 py-3 md:px-8 md:py-3.5
+           hover:bg-primary-hover hover:shadow-primary-sm
+           active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-ink border border-stroke px-6 py-3 md:px-8 md:py-3.5
+           hover:border-primary/30 hover:shadow-sm
+           active:scale-[0.98];
+  }
+
+  .btn-dark {
+    @apply btn bg-white text-dark px-6 py-3 md:px-8 md:py-3.5
+           hover:bg-gray-50 active:scale-[0.98];
+  }
+
+  /* Pill badge */
+  .pill {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-pill
+           bg-surface text-primary text-xs font-semibold tracking-wide;
+  }
+
+  /* Section header */
+  .section-header {
+    @apply text-center max-w-container-xs mx-auto mb-10 md:mb-14;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-semibold text-ink mb-4 tracking-tight;
+  }
+
+  .section-subtitle {
+    @apply text-base md:text-lg text-muted max-w-2xl mx-auto;
+  }
+
+  /* Dark section */
+  .section-dark {
+    @apply bg-dark text-white rounded-2xl;
+  }
+
+  /* Footnote */
+  .footnote {
+    @apply text-xs text-muted italic mt-2;
+  }
+
+  /* Scroll reveal (base) */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(32px) scale(0.97);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@layer utilities {
+  /* Skip to content */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4
+           focus:z-50 focus:bg-primary focus:text-white focus:px-4 focus:py-2
+           focus:rounded-lg focus:outline-none;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  [data-reveal-stagger] > * {
+    opacity: 1;
+    transform: none;
+  }
+}

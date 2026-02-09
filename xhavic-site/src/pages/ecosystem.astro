@@ -1,0 +1,183 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Ecosystem — Xhavic"
+  description="Applications and partners building on the Xhavic execution network. Explore the growing ecosystem of DeFi, NFT, infrastructure, and tooling projects."
+>
+  <!-- Hero -->
+  <section class="section bg-dark text-white gradient-mesh" data-reveal>
+    <div class="container">
+      <div class="max-w-3xl">
+        <nav class="flex items-center gap-2 text-sm text-gray-400 mb-6">
+          <a href="/" class="hover:text-white transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-white">Ecosystem</span>
+        </nav>
+        <div class="pill mb-6">
+          <span class="w-2 h-2 rounded-full bg-primary animate-pulse-glow"></span>
+          Early Stage Network
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
+          <span class="gradient-text-static">Applications and partners</span><br />
+          building on Xhavic
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl">
+          Xhavic is an early-stage execution network. The ecosystem is in its initial phase
+          of development. This page will be updated as projects deploy and partnerships form.
+        </p>
+        <a href="/developers" class="btn-primary">Build on Xhavic</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Directory -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Application Directory</h2>
+        <p class="section-subtitle">
+          Projects building on or integrating with the Xhavic network.
+        </p>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10">
+        {['All', 'DeFi', 'NFT', 'Infrastructure', 'Tooling'].map((cat, i) => (
+          <button
+            class={`px-5 py-2 rounded-pill text-sm font-semibold transition-colors ${
+              i === 0
+                ? 'bg-primary text-white'
+                : 'bg-white text-muted border border-stroke/50 hover:border-primary/30 hover:text-ink'
+            }`}
+            disabled
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <!-- Coming Soon Grid -->
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6" data-reveal-stagger>
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <div class="accent-card border-dashed border-2 border-primary/20 animate-border-glow flex flex-col items-center justify-center min-h-[200px] text-center group">
+            <div class="w-16 h-16 rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all duration-300">
+              <svg class="w-8 h-8 text-primary/40 group-hover:text-primary/60 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+              </svg>
+            </div>
+            <p class="text-primary/70 text-sm font-semibold">Coming Soon</p>
+            <p class="text-muted/50 text-xs mt-1">Application slot available</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <div class="accent-card inline-block max-w-lg">
+          <p class="text-muted text-sm">
+            The Xhavic ecosystem is in early development. These placeholder slots represent
+            the categories of applications the network is designed to support. If you are building
+            a project and considering Xhavic, see the developer resources below.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Partners &amp; Integrations</h2>
+        <p class="section-subtitle">
+          Infrastructure providers, tooling partners, and integration collaborators.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto" data-reveal-stagger>
+        {[1, 2, 3, 4].map(() => (
+          <div class="premium-card bg-white border border-stroke/50 flex flex-col items-center justify-center min-h-[160px] text-center group hover:shadow-lg">
+            <div class="w-14 h-14 rounded-xl bg-surface border border-primary/10 flex items-center justify-center mb-4 group-hover:border-primary/20 group-hover:shadow-glow transition-all duration-500">
+              <svg class="w-6 h-6 text-primary/30 group-hover:text-primary/50 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <p class="text-muted/70 text-xs font-semibold">To be announced</p>
+          </div>
+        ))}
+      </div>
+      <p class="footnote text-center mt-6">
+        Partnership announcements will be made as integrations are confirmed and operational.
+      </p>
+    </div>
+  </section>
+
+  <!-- What the Network Supports -->
+  <section class="section" data-reveal>
+    <div class="container max-w-4xl">
+      <div class="section-header">
+        <h2 class="section-title">What the Network Supports</h2>
+        <p class="section-subtitle">
+          Xhavic's architecture is designed for these application categories.
+        </p>
+      </div>
+      <div class="bento-grid" data-reveal-stagger>
+        {[
+          {
+            title: 'DeFi Protocols',
+            desc: 'DEX, lending, derivatives, and yield protocols benefit from sub-200ms Instant Wallet finality, native oracle precompiles, and low transaction costs.',
+            icon: 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+            span: 'bento-lg',
+          },
+          {
+            title: 'NFT &amp; Digital Assets',
+            desc: 'Minting, trading, and marketplace operations with fast finality. Secured Wallet enables high-value NFT transfers with reversal protection.',
+            icon: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
+            span: '',
+          },
+          {
+            title: 'Infrastructure &amp; Tooling',
+            desc: 'Bridges, indexers, analytics platforms, and developer tools. Standard EVM tooling works without modification. xhv_* RPC extensions for Xhavic-specific data.',
+            icon: 'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+            span: '',
+          },
+          {
+            title: 'AI Agent Applications',
+            desc: 'AI agents as protocol-level participants with deterministic execution, programmatic wallet control, and gas-metered compute for bounded operations.',
+            icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+            span: 'bento-lg',
+          },
+        ].map((item) => (
+          <div class={`accent-card group ${item.span}`}>
+            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors duration-300">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={item.icon}/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold mb-2">{item.title}</h3>
+            <p class="text-muted text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section bg-dark text-white gradient-mesh" data-reveal>
+    <div class="container text-center">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mb-4">
+        <span class="gradient-text-static">Build on Xhavic</span>
+      </h2>
+      <p class="text-gray-300 mb-8 max-w-xl mx-auto">
+        The network is EVM-compatible. Your existing Solidity contracts deploy without changes.
+        Review the developer documentation to get started.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/developers" class="btn-primary">Developer Resources</a>
+        <a href="/docs" class="btn-dark">Documentation &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <script>import '../scripts/reveal.ts';</script>
+</BaseLayout>

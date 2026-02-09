@@ -1,0 +1,711 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Dual Wallet System — Xhavic"
+  description="Two execution paths at the sequencer level. Instant Wallet for composable DeFi. Secured Wallet with 24-hour reversal for institutional operations."
+>
+
+  <!-- ============================================================
+       HERO — Dark gradient-mesh + grid-pattern
+       ============================================================ -->
+  <section class="section bg-dark text-white gradient-mesh grid-pattern pt-32 md:pt-40 pb-16 md:pb-22">
+    <div class="container max-w-container-lg">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8" data-reveal>
+        <a href="/protocol" class="hover:text-white transition-colors">Protocol</a>
+        <span class="text-gray-600">/</span>
+        <span class="text-white font-medium">Dual Wallet System</span>
+      </nav>
+
+      <!-- Headline block -->
+      <div class="max-w-4xl mb-14" data-reveal>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 gradient-text-static leading-[0.95]">
+          Two Execution Paths.<br/>One Network.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
+          The Dual Wallet System separates transaction execution at the sequencer level,
+          giving every user the choice between instant composability and 24-hour reversibility
+          &mdash; within a single chain.
+        </p>
+      </div>
+
+      <!-- Hero preview cards -->
+      <div class="grid md:grid-cols-2 gap-5 max-w-3xl" data-reveal-stagger>
+        <!-- Instant card -->
+        <div class="glass-card group" style="border-color: rgba(34, 98, 255, 0.2);">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Instant Wallet</h3>
+              <p class="text-sm text-primary font-semibold">&lt;200ms soft finality</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Composable, irreversible, built for DeFi speed. Trades, swaps, and liquidations execute at the pace the market demands.
+          </p>
+        </div>
+
+        <!-- Secured card -->
+        <div class="glass-card group" style="border-color: rgba(196, 163, 90, 0.2);">
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-lg flex items-center justify-center border" style="background: rgba(196, 163, 90, 0.15); border-color: rgba(196, 163, 90, 0.3);">
+              <svg class="w-6 h-6" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white">Secured Wallet</h3>
+              <p class="text-sm font-semibold" style="color: #c4a35a;">24-hour escrow window</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-400 leading-relaxed">
+            Reversible, escrowed, designed for institutional safety. Treasury moves and high-value transfers get the protection they require.
+          </p>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-wrap gap-4 mt-10" data-reveal>
+        <a href="/whitepaper" class="btn-primary">Read the Whitepaper</a>
+        <a href="/docs" class="btn bg-white/10 text-white border border-white/15 px-6 py-3 md:px-8 md:py-3.5 hover:bg-white/15 active:scale-[0.98]">
+          Developer Integration
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       THE PROBLEM — White bg, editorial prose
+       ============================================================ -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-container-xs">
+      <p class="pill mb-6">The Problem</p>
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mb-8 leading-tight">
+        A financial system that treats every<br class="hidden md:block"/> transaction the same is broken.
+      </h2>
+
+      <!-- Pull quote -->
+      <blockquote class="border-l-4 border-primary pl-6 py-2 my-10">
+        <p class="text-xl md:text-2xl font-semibold text-ink leading-snug italic">
+          "Every existing L2 treats every transaction identically &mdash; same execution pipeline, same finality model, same risk profile."
+        </p>
+      </blockquote>
+
+      <div class="prose prose-lg max-w-none text-muted">
+        <p>
+          A $50 token swap and a $5 million treasury transfer go through the exact same process.
+          They share the same confirmation time, the same reversibility constraints, and the same
+          composability model. This forces users to choose between speed and safety &mdash; a false
+          choice that no well-designed financial system would impose.
+        </p>
+        <p>
+          These transactions have fundamentally different risk profiles, different stakeholders, and
+          different requirements. The architecture should reflect that reality.
+        </p>
+        <p class="text-primary font-semibold not-italic">
+          Xhavic solves this with protocol-level transaction risk routing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       HOW IT WORKS — Surface bg, split section with flow diagram
+       ============================================================ -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container">
+      <div class="split-section items-start">
+        <!-- Left: Explanation -->
+        <div>
+          <p class="pill mb-4">Architecture</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-ink mb-6">
+            How It Works
+          </h2>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            The Dual Wallet System operates at the sequencer level. It is a protocol mechanism,
+            not a user interface feature. When a transaction is submitted, the originating wallet
+            type determines which execution path the sequencer uses.
+          </p>
+          <p class="text-muted text-base md:text-lg leading-relaxed mb-6">
+            Instant Wallets route transactions through the fast-finality pipeline &mdash; composable
+            with all DeFi protocols, confirmed in under 200 milliseconds, and irreversible by design.
+          </p>
+          <p class="text-muted text-base md:text-lg leading-relaxed">
+            Secured Wallets route transactions through the escrow pipeline &mdash; held for 24 hours
+            with multi-sig reversal capability, non-composable until finalized, and settled to Ethereum
+            only after the escrow window closes.
+          </p>
+        </div>
+
+        <!-- Right: CSS Flow Diagram -->
+        <div class="flex justify-center">
+          <div class="w-full max-w-md">
+            <!-- Transaction origin -->
+            <div class="flex justify-center mb-6">
+              <div class="bg-white rounded-lg border border-stroke px-6 py-3 text-center shadow-sm">
+                <p class="text-xs text-muted uppercase tracking-wider font-semibold mb-1">Origin</p>
+                <p class="text-base font-bold text-ink">Transaction Submitted</p>
+              </div>
+            </div>
+
+            <!-- Connector line down -->
+            <div class="flex justify-center mb-6">
+              <div class="w-px h-8 bg-gradient-to-b from-stroke to-ink/20"></div>
+            </div>
+
+            <!-- Sequencer box -->
+            <div class="flex justify-center mb-6">
+              <div class="bg-dark rounded-lg px-8 py-3 text-center shadow-lg border border-white/10">
+                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Xhavic</p>
+                <p class="text-base font-bold text-white">Sequencer</p>
+              </div>
+            </div>
+
+            <!-- Branch connector -->
+            <div class="relative h-10 mb-6">
+              <!-- Vertical stem -->
+              <div class="absolute left-1/2 top-0 w-px h-4 bg-ink/20 -translate-x-px"></div>
+              <!-- Horizontal bar -->
+              <div class="absolute top-4 left-[20%] right-[20%] h-px bg-ink/20"></div>
+              <!-- Left drop -->
+              <div class="absolute left-[20%] top-4 w-px h-6 bg-primary/60"></div>
+              <!-- Right drop -->
+              <div class="absolute right-[20%] top-4 w-px h-6" style="background: rgba(196, 163, 90, 0.6);"></div>
+            </div>
+
+            <!-- Two paths -->
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Instant path -->
+              <div class="rounded-lg border-2 border-primary/30 bg-primary/5 p-4 text-center">
+                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-2">
+                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-primary mb-1">Instant Path</p>
+                <p class="text-xs text-muted">&lt;200ms finality</p>
+                <p class="text-xs text-muted">Composable</p>
+                <p class="text-xs text-muted">Irreversible</p>
+              </div>
+
+              <!-- Secured path -->
+              <div class="rounded-lg border-2 p-4 text-center" style="border-color: rgba(196, 163, 90, 0.3); background: rgba(196, 163, 90, 0.05);">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style="background: rgba(196, 163, 90, 0.2);">
+                  <svg class="w-4 h-4" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                </div>
+                <p class="text-sm font-bold" style="color: #c4a35a;">Secured Path</p>
+                <p class="text-xs text-muted">24h escrow</p>
+                <p class="text-xs text-muted">Non-composable</p>
+                <p class="text-xs text-muted">Reversible</p>
+              </div>
+            </div>
+
+            <!-- Settlement row -->
+            <div class="flex justify-center mt-6">
+              <div class="relative h-8 w-full">
+                <div class="absolute left-[20%] top-0 w-px h-4 bg-primary/40"></div>
+                <div class="absolute right-[20%] top-0 w-px h-4" style="background: rgba(196, 163, 90, 0.4);"></div>
+                <div class="absolute top-4 left-[20%] right-[20%] h-px bg-ink/15"></div>
+                <div class="absolute left-1/2 top-4 w-px h-4 bg-ink/20 -translate-x-px"></div>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <div class="bg-white rounded-lg border border-stroke px-6 py-3 text-center shadow-sm">
+                <p class="text-xs text-muted uppercase tracking-wider font-semibold mb-1">L1</p>
+                <p class="text-sm font-bold text-ink">Ethereum Settlement</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       INSTANT WALLET DEEP-DIVE — Dark bg, blue accent
+       ============================================================ -->
+  <section class="section bg-dark text-white gradient-mesh" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Left: Content -->
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/30">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-primary tracking-tight">Instant Wallet</h2>
+          </div>
+
+          <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-8">
+            The Instant Wallet is designed for speed-critical operations where composability
+            is non-negotiable. Transactions achieve soft finality in under 200 milliseconds,
+            making them immediately available for downstream contract execution.
+          </p>
+
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <div>
+                <p class="text-white font-semibold">Full DeFi composability</p>
+                <p class="text-gray-400 text-sm">Other contracts can immediately build on transaction outputs.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <div>
+                <p class="text-white font-semibold">Irreversible by design</p>
+                <p class="text-gray-400 text-sm">Composability requires deterministic finality. No reversal mechanism exists.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <div>
+                <p class="text-white font-semibold">Ethereum settlement in ~13 minutes</p>
+                <p class="text-gray-400 text-sm">Standard L1 settlement after sequencer confirmation.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
+              <div>
+                <p class="text-white font-semibold">Built for DeFi, liquidations, and AI agents</p>
+                <p class="text-gray-400 text-sm">Token swaps, perpetual futures, arbitrage, and automated strategies.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Spec card -->
+        <div class="flex justify-center items-center">
+          <div class="glass-card w-full max-w-sm" style="border-color: rgba(34, 98, 255, 0.2);">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-primary mb-6">Key Specifications</h3>
+            <div class="space-y-5">
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">Soft Finality</span>
+                <span class="text-white font-bold text-lg">&lt;200ms</span>
+              </div>
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">Composable</span>
+                <span class="text-primary font-bold">Yes</span>
+              </div>
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">Reversible</span>
+                <span class="text-red-400 font-bold">No</span>
+              </div>
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">L1 Settlement</span>
+                <span class="text-white font-bold">~13 min</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400 text-sm">Security Model</span>
+                <span class="text-white font-bold">Speed-optimized</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SECURED WALLET DEEP-DIVE — Dark-card bg, gold accent, reversed
+       ============================================================ -->
+  <section class="section text-white" style="background: #060e20;" data-reveal>
+    <div class="container">
+      <div class="split-section reverse">
+        <!-- Right (visually left due to reverse): Spec card -->
+        <div class="flex justify-center items-center">
+          <div class="glass-card w-full max-w-sm" style="border-color: rgba(196, 163, 90, 0.2);">
+            <h3 class="text-sm font-semibold uppercase tracking-wider mb-6" style="color: #c4a35a;">Key Specifications</h3>
+            <div class="space-y-5">
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">Escrow Period</span>
+                <span class="text-white font-bold text-lg">24 hours</span>
+              </div>
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">Composable</span>
+                <span class="font-bold" style="color: #c4a35a;">No (until final)</span>
+              </div>
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">Reversible</span>
+                <span class="text-emerald-400 font-bold">Yes</span>
+              </div>
+              <div class="flex justify-between items-center pb-4 border-b border-white/10">
+                <span class="text-gray-400 text-sm">L1 Settlement</span>
+                <span class="text-white font-bold">After escrow</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-gray-400 text-sm">Reversal Method</span>
+                <span class="text-white font-bold">Multi-sig</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left (visually right due to reverse): Content -->
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center border" style="background: rgba(196, 163, 90, 0.15); border-color: rgba(196, 163, 90, 0.3);">
+              <svg class="w-7 h-7" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight" style="color: #c4a35a;">Secured Wallet</h2>
+          </div>
+
+          <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-8">
+            The Secured Wallet is designed for high-value operations where reversibility
+            is critical. Transactions enter a 24-hour escrow period during which they can
+            be reversed via multi-signature or threshold signature authorization.
+          </p>
+
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
+              <div>
+                <p class="text-white font-semibold">24-hour reversal window</p>
+                <p class="text-gray-400 text-sm">Authorized signers can reverse a transaction during the escrow period.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
+              <div>
+                <p class="text-white font-semibold">Non-composable until finalized</p>
+                <p class="text-gray-400 text-sm">Transaction outputs cannot be used by other contracts during escrow.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
+              <div>
+                <p class="text-white font-semibold">Multi-sig reversal mechanism</p>
+                <p class="text-gray-400 text-sm">Threshold signature scheme prevents unilateral reversal actions.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
+              <div>
+                <p class="text-white font-semibold">Built for treasuries, RWA, and institutions</p>
+                <p class="text-gray-400 text-sm">Disbursements, settlements, and cross-chain movements at enterprise scale.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       COMPARISON TABLE — White bg, styled grid (not plain table)
+       ============================================================ -->
+  <section class="section bg-white" data-reveal>
+    <div class="container max-w-4xl">
+      <div class="section-header">
+        <p class="pill mb-4 mx-auto">Comparison</p>
+        <h2 class="section-title">Side-by-Side Comparison</h2>
+        <p class="section-subtitle">
+          Each wallet type serves a distinct operational profile. Here is how they compare.
+        </p>
+      </div>
+
+      <!-- Table header -->
+      <div class="grid grid-cols-3 gap-3 mb-3">
+        <div class="py-3 px-4">
+          <p class="text-sm font-bold text-muted uppercase tracking-wider">Feature</p>
+        </div>
+        <div class="py-3 px-4 text-center rounded-t-lg bg-primary/5 border-t-2 border-primary">
+          <p class="text-sm font-bold text-primary uppercase tracking-wider">Instant Wallet</p>
+        </div>
+        <div class="py-3 px-4 text-center rounded-t-lg border-t-2" style="background: rgba(196, 163, 90, 0.05); border-color: #c4a35a;">
+          <p class="text-sm font-bold uppercase tracking-wider" style="color: #c4a35a;">Secured Wallet</p>
+        </div>
+      </div>
+
+      <!-- Rows -->
+      <div class="space-y-2" data-reveal-stagger>
+        <!-- Soft Finality -->
+        <div class="grid grid-cols-3 gap-3 items-center">
+          <div class="bg-surface rounded-lg py-4 px-5">
+            <p class="text-sm font-semibold text-ink">Soft Finality</p>
+          </div>
+          <div class="bg-primary/5 rounded-lg py-4 px-5 text-center border border-primary/10">
+            <p class="text-sm font-bold text-primary">&lt;200ms</p>
+          </div>
+          <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.05); border-color: rgba(196, 163, 90, 0.1);">
+            <p class="text-sm font-bold" style="color: #c4a35a;">24-hour escrow</p>
+          </div>
+        </div>
+
+        <!-- Composability -->
+        <div class="grid grid-cols-3 gap-3 items-center">
+          <div class="bg-surface rounded-lg py-4 px-5">
+            <p class="text-sm font-semibold text-ink">Composability</p>
+          </div>
+          <div class="bg-primary/5 rounded-lg py-4 px-5 text-center border border-primary/10">
+            <p class="text-sm font-bold text-primary">Full &mdash; DeFi composable</p>
+          </div>
+          <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.05); border-color: rgba(196, 163, 90, 0.1);">
+            <p class="text-sm font-bold" style="color: #c4a35a;">None until finalized</p>
+          </div>
+        </div>
+
+        <!-- Reversibility -->
+        <div class="grid grid-cols-3 gap-3 items-center">
+          <div class="bg-surface rounded-lg py-4 px-5">
+            <p class="text-sm font-semibold text-ink">Reversibility</p>
+          </div>
+          <div class="bg-primary/5 rounded-lg py-4 px-5 text-center border border-primary/10">
+            <p class="text-sm font-bold text-red-500">Irreversible</p>
+          </div>
+          <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.05); border-color: rgba(196, 163, 90, 0.1);">
+            <p class="text-sm font-bold text-emerald-600">Reversible during window</p>
+          </div>
+        </div>
+
+        <!-- Settlement -->
+        <div class="grid grid-cols-3 gap-3 items-center">
+          <div class="bg-surface rounded-lg py-4 px-5">
+            <p class="text-sm font-semibold text-ink">L1 Settlement</p>
+          </div>
+          <div class="bg-primary/5 rounded-lg py-4 px-5 text-center border border-primary/10">
+            <p class="text-sm font-bold text-ink">~13 minutes</p>
+          </div>
+          <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.05); border-color: rgba(196, 163, 90, 0.1);">
+            <p class="text-sm font-bold text-ink">After 24h escrow</p>
+          </div>
+        </div>
+
+        <!-- Best For -->
+        <div class="grid grid-cols-3 gap-3 items-center">
+          <div class="bg-surface rounded-lg py-4 px-5">
+            <p class="text-sm font-semibold text-ink">Best For</p>
+          </div>
+          <div class="bg-primary/5 rounded-lg py-4 px-5 text-center border border-primary/10">
+            <p class="text-sm font-bold text-ink">Trades, swaps, liquidations</p>
+          </div>
+          <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.05); border-color: rgba(196, 163, 90, 0.1);">
+            <p class="text-sm font-bold text-ink">Treasury, RWA, settlements</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="footnote text-center mt-4">Source: XHAVIC Technical Whitepaper v1.0, Table 4</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHY NOT BOTH? — Surface bg, editorial + split callout
+       ============================================================ -->
+  <section class="section bg-surface" data-reveal>
+    <div class="container max-w-container">
+      <div class="section-header">
+        <p class="pill mb-4 mx-auto">The Tradeoff</p>
+        <h2 class="section-title">Composability vs. Reversibility</h2>
+        <p class="section-subtitle">
+          Why these two execution modes are mutually exclusive &mdash; and why that is exactly the point.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10" data-reveal-stagger>
+        <!-- Composability -->
+        <div class="accent-card">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-ink mb-3">Why Composability Matters</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            A composable transaction can be immediately consumed by downstream contracts.
+            A DEX trade settles, a lending protocol auto-compounds, and a yield optimizer
+            rebalances &mdash; all in the same block. This is the foundation of DeFi's
+            capital efficiency.
+          </p>
+        </div>
+
+        <!-- Reversibility -->
+        <div class="accent-card">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style="background: rgba(196, 163, 90, 0.1);">
+            <svg class="w-5 h-5" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-ink mb-3">Why Reversibility Matters</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            A $5 million treasury disbursement sent to the wrong address needs a recovery
+            path. Institutional operations demand safety nets. Reversibility gives authorized
+            signers the ability to undo a transaction before it becomes permanent.
+          </p>
+        </div>
+      </div>
+
+      <!-- Callout box -->
+      <div class="max-w-3xl mx-auto bg-dark rounded-xl p-6 md:p-8 border border-white/10" data-reveal>
+        <div class="flex items-start gap-4">
+          <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 mt-1">
+            <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-white font-bold mb-2">They cannot coexist in a single execution path.</h4>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              If a transaction is composable, downstream contracts can immediately build on its output.
+              If that transaction were later reversed, every dependent transaction would be invalidated.
+              This is not a limitation of Xhavic's design &mdash; it is a fundamental property of
+              deterministic execution systems. The Dual Wallet System makes this tradeoff explicit and
+              gives users the choice.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       DEVELOPER INTEGRATION — Dark bg with terminal
+       ============================================================ -->
+  <section class="section bg-dark text-white gradient-mesh" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Left: Text -->
+        <div>
+          <p class="pill mb-4" style="background: rgba(34, 98, 255, 0.15); color: #a4bfff;">For Developers</p>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-6">
+            Developer Integration
+          </h2>
+          <p class="text-gray-300 text-base md:text-lg leading-relaxed mb-6">
+            The Dual Wallet System exposes RPC endpoints for querying wallet type and escrow status.
+            Smart contracts can branch logic based on the originating wallet's execution path.
+          </p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-8">
+            Use <code class="text-primary font-mono bg-white/5 px-1.5 py-0.5 rounded">xhv_getWalletType</code> to determine
+            whether a transaction originated from an Instant or Secured wallet.
+            Use <code class="text-primary font-mono bg-white/5 px-1.5 py-0.5 rounded">xhv_getEscrowStatus</code> to check
+            the escrow state of Secured Wallet transactions.
+          </p>
+          <a href="/docs" class="btn-primary">Integration Guide &rarr;</a>
+        </div>
+
+        <!-- Right: Terminal -->
+        <div>
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-dot terminal-dot--red"></span>
+              <span class="terminal-dot terminal-dot--yellow"></span>
+              <span class="terminal-dot terminal-dot--green"></span>
+              <span class="terminal-title">xhavic-rpc.sh</span>
+            </div>
+            <div class="terminal-body">
+              <div class="mb-5">
+                <p class="text-gray-500 text-xs mb-2"># Query wallet type for a transaction</p>
+                <p>
+                  <span style="color: #7ee787;">curl</span>
+                  <span class="text-gray-400"> -X POST </span>
+                  <span style="color: #a5d6ff;">https://rpc.xhavic.io</span>
+                  <span class="text-gray-400"> \</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-gray-400">-d </span>
+                  <span style="color: #a5d6ff;">'&#123;"jsonrpc":"2.0",</span>
+                </p>
+                <p class="pl-8">
+                  <span style="color: #a5d6ff;">"method":"</span><span style="color: #d2a8ff;">xhv_getWalletType</span><span style="color: #a5d6ff;">",</span>
+                </p>
+                <p class="pl-8">
+                  <span style="color: #a5d6ff;">"params":["</span><span style="color: #ffa657;">0xabc...def</span><span style="color: #a5d6ff;">"]&#125;'</span>
+                </p>
+              </div>
+              <div class="mb-5 pl-2 border-l-2 border-primary/30">
+                <p class="text-gray-500 text-xs mb-1">Response:</p>
+                <p>
+                  <span style="color: #a5d6ff;">&#123;"result": "</span><span style="color: #7ee787;">INSTANT</span><span style="color: #a5d6ff;">"&#125;</span>
+                </p>
+              </div>
+              <div class="border-t border-white/5 pt-5">
+                <p class="text-gray-500 text-xs mb-2"># Check escrow status (Secured Wallet only)</p>
+                <p>
+                  <span style="color: #7ee787;">curl</span>
+                  <span class="text-gray-400"> -X POST </span>
+                  <span style="color: #a5d6ff;">https://rpc.xhavic.io</span>
+                  <span class="text-gray-400"> \</span>
+                </p>
+                <p class="pl-4">
+                  <span class="text-gray-400">-d </span>
+                  <span style="color: #a5d6ff;">'&#123;"jsonrpc":"2.0",</span>
+                </p>
+                <p class="pl-8">
+                  <span style="color: #a5d6ff;">"method":"</span><span style="color: #d2a8ff;">xhv_getEscrowStatus</span><span style="color: #a5d6ff;">",</span>
+                </p>
+                <p class="pl-8">
+                  <span style="color: #a5d6ff;">"params":["</span><span style="color: #ffa657;">0x123...789</span><span style="color: #a5d6ff;">"]&#125;'</span>
+                </p>
+              </div>
+              <div class="mt-3 pl-2 border-l-2" style="border-color: rgba(196, 163, 90, 0.4);">
+                <p class="text-gray-500 text-xs mb-1">Response:</p>
+                <p>
+                  <span style="color: #a5d6ff;">&#123;"result": &#123;</span>
+                </p>
+                <p class="pl-4">
+                  <span style="color: #a5d6ff;">"status": "</span><span style="color: #ffa657;">ESCROWED</span><span style="color: #a5d6ff;">",</span>
+                </p>
+                <p class="pl-4">
+                  <span style="color: #a5d6ff;">"expiresIn": "</span><span style="color: #ffa657;">21h 43m</span><span style="color: #a5d6ff;">",</span>
+                </p>
+                <p class="pl-4">
+                  <span style="color: #a5d6ff;">"reversible": </span><span style="color: #7ee787;">true</span>
+                </p>
+                <p>
+                  <span style="color: #a5d6ff;">&#125;&#125;</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA — Full-bleed dark gradient-mesh
+       ============================================================ -->
+  <section class="section text-white gradient-mesh grid-pattern" style="background: #020816;" data-reveal>
+    <div class="container text-center">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 gradient-text-static">
+          Build with Dual Wallets
+        </h2>
+        <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-10">
+          Integrate the Dual Wallet System into your smart contracts and application
+          architecture. Choose the execution path that matches your operational profile.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/docs" class="btn-primary">Integration Guide &rarr;</a>
+          <a href="/whitepaper" class="btn bg-white/10 text-white border border-white/15 px-6 py-3 md:px-8 md:py-3.5 hover:bg-white/15 active:scale-[0.98]">
+            Read the Whitepaper
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import '../../scripts/reveal.ts';
+  </script>
+</BaseLayout>

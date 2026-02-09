@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xhavic</title>
+<link rel="icon" href="./assets/Images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/Images/favicon-32x32.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <div class="nav-wrap">
+
+      <!-- checkbox controls mobile menu (no JS) -->
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" />
+
+      <header class="navbar">
+        <!-- Left: logo -->
+        <a class="brand" href="#">
+          <img style="width: 180px;" src="./assets/Images/Xhavic Logo/Xhavic Logo/PNG/XhavicLogo V1.png" alt="">
+        </a>
+
+        <!-- Center: links -->
+        <nav class="nav-center" aria-label="Hauptnavigation">
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#benefit">Benefits</a></li>
+            <li><a href="#bridging">Bridging</a></li>
+            <li><a href="#security">Security </a></li>
+          <!-- <li><a href="./developers.html">Developers </a></li> -->
+                 <li><a href="#usecases">Use Cases </a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: actions -->
+        <div class="actions">
+       
+
+        
+
+          <!-- Hamburger for mobile -->
+          <label class="hamburger" for="nav-toggle" aria-label="Menü öffnen/schließen">
+            <span></span>
+             <span></span>
+              <span></span>
+          </label>
+        </div>
+      </header>
+
+      <!-- Mobile panel -->
+      <nav class="mobile-panel" aria-label="Mobile Navigation">
+        <ul class="mobile-links">
+         <li><a href="#home">Home</a></li>
+            <li><a href="#benefit">Benefits</a></li>
+            <li><a href="#bridging">Bridging</a></li>
+            <li><a href="#security">Security </a></li>
+         
+                 <li><a href="#usecases">Use Cases </a></li>
+        </ul>
+      </nav>
+
+    </div>
+    <!-- ===================== HERO: Design Token Engine (Dark) ===================== -->
+    <section id="home" class="token-hero">
+      
+
+      <div class="token-hero__container">
+        <!-- pill -->
+        
+<div style="text-align: left;" class="left">
+<h1 style="text-align: left; " class="token-hero__title">Build and Scale DApps With Ease</h1>
+
+        <p style="text-align: left;" class="token-hero__subtitle">
+          Fast, secure, low-cost execution on an Ethereum-secured Layer-2. Built
+          for AI agent integrations, next-gen dApps, timestamped payments, and
+          scalable RWA ecosystems
+        </p>
+          <a class="howit__btn" href="#">Get started</a>
+</div>
+        
+
+        <!-- media -->
+        <div class="token-hero__media right">
+          <!-- Put BOTH sources. JS will pick the one that loads fastest -->
+          <video
+            class="token-hero__video"
+            id="tokenHeroVideo"
+            muted
+            autoplay
+            loop
+            playsinline
+            preload="auto"
+            poster="./assets/replace-poster.png"
+          >
+            <!-- ✅ replace these paths -->
+            <source src="./assets/Images/video3.mp4" type="video/mp4" />
+          </video>
+
+        
+          
+
+          <!-- bottom fade like screenshot -->
+          <div class="token-hero__fade" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+<section class="logo-marquee">
+  <h3 style="text-align: center; opacity: 0.6;">As seen in</h3>
+  <div class="marquee-track">
+    <!-- Original logos -->
+    <div class="logo"><img src="./assets/Images/as-seen-in/1.png" alt=""></div>
+    <div class="logo"><img src="./assets/Images/as-seen-in/2.png" alt=""></div>
+    <div class="logo"><img src="./assets/Images/as-seen-in/3.png" alt=""></div>
+    <div class="logo"><img src="./assets/Images/as-seen-in/4.png" alt=""></div>
+    <div class="logo"><img src="./assets/Images/as-seen-in/5.png" alt=""></div>
+    <div class="logo"><img src="./assets/Images/as-seen-in/6.png" alt=""></div>
+    
+  </div>
+</section>
+
+    <section id="benefit" class="why">
+      <div class="why__container">
+        <h1 class="why__title">Key Benefits</h1>
+        <p class="why__subtitle">
+          Xhavic makes Ethereum dApps faster and cheaper with a smoother user
+          experience. It stays EVM compatible and anchors security to Ethereum.
+        </p>
+
+        <div class="panel">
+          <div id="featuresGrid" class="grid"></div>
+        </div>
+      </div>
+    </section>
+      <section class="kb" id="keyBenefits">
+  <div class="kb__container">
+    <!-- top row -->
+    <div class="kb__head">
+      <div class="kb__copy">
+        <h2 class="why__title">Built for Real Dapps - EVM compatible</h2>
+        <p class="why__subtitle">
+          Developers can deploy Ethereum smart contracts without modification using familiar tools and languages such as Solidity, Vyper, Hardhat, and Foundry
+        </p>
+      </div>
+
+      <a class="kb__btn" href="#">Get started</a>
+    </div>
+
+    <!-- slider -->
+    <div class="kb__slider">
+      <button class="kb__nav kb__nav--left" type="button" aria-label="Previous">
+        ‹
+      </button>
+
+      <div class="kb__viewport" id="kbViewport">
+        <div class="kb__track" id="kbTrack">
+          <!-- JS renders 4 cards here -->
+        </div>
+      </div>
+
+      <button class="kb__nav kb__nav--right" type="button" aria-label="Next">
+        ›
+      </button>
+    </div>
+  </div>
+</section>
+    <section id="bridging" class="integrate">
+      <div class="integrate__container">
+        <!-- soft top "spark" like reference -->
+        <div class="integrate__spark" aria-hidden="true"></div>
+
+        <h2 class="why__title">BRIDGING AND INTEROPERABILITY</h2>
+
+        <p class="why__subtitle">
+          Xhavic enables seamless bridging so users can move assets between
+          Ethereum and Xhavic for faster, lower-cost transactions.
+        </p>
+        <p class="why__subtitle">
+          Its interoperability supports cross-chain messaging, letting dApps
+          connect liquidity and trigger actions across multiple networks while
+          staying anchored to Ethereum security
+        </p>
+
+        <div class="integrate__stage">
+          <div class="integrate__glow" aria-hidden="true"></div>
+
+          <div class="integrate__rail">
+            <div id="integrateLeft" class="integrate__icons"></div>
+
+            <div class="integrate__phoneWrap" aria-hidden="true">
+  <img class="integrate__phone" src="./assets/Images/bridging/center-image.png" alt="">
+</div>
+
+
+            <div id="integrateRight" class="integrate__icons"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="security" class="security">
+      <h2 style="color: white; text-align: center" class="why__title">
+        SECURITY MODEL
+      </h2>
+
+      <p style="color: white; text-align: center" class="why__subtitle">
+        Xhavic inherits security from Ethereum through optimistic rollup design.
+        Users retain the trust model of Ethereum while benefiting from improved
+        performance.
+      </p>
+      <div class="features-grid">
+        <!-- 1) Secure wallet encryption (left, centered) -->
+
+        <div class="feature-card is-lock">
+          <img
+            src="./assets/Images/security_model/1.webp"
+            alt=""
+            class="feature-img"
+          />
+          <div class="feature-text">
+            <h3>Execution verified through fraud proofs</h3>
+          </div>
+        </div>
+
+        <!-- 2) Data visualization (middle, text top-left, image bottom) -->
+        <div class="feature-card is-data">
+          <div class="feature-text">
+            <h3>Data published to Ethereum for verification</h3>
+          </div>
+          <img
+            src="./assets/Images/security_model/2.webp"
+            alt=""
+            class="feature-img"
+          />
+        </div>
+
+        <!-- 3) Real-time transaction engine (right, image top, title bottom) -->
+        <div class="feature-card is-engine">
+          <img
+            src="./assets/Images/security_model/3.webp"
+            alt=""
+            class="feature-img"
+          />
+          <div class="feature-text">
+            <h3>Trust-minimized settlement</h3>
+          </div>
+        </div>
+
+        <!-- 4) Easy payments (bottom wide: spans 2 cols) -->
+        <div class="feature-card is-payments">
+          <div class="feature-text">
+            <h3>Transparent state transitions</h3>
+          </div>
+          <img
+            src="./assets/Images/security_model/4.webp"
+            alt=""
+            class="feature-img"
+          />
+        </div>
+
+        <!-- 5) And much more (bottom right) -->
+        <div class="feature-card is-more">
+          <div class="feature-text">
+            <h3>Resistance to censorship via forced inclusion</h3>
+          </div>
+          <img
+            src="./assets/Images/security_model/5.webp"
+            alt=""
+            class="feature-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section id="howworks" class="howit">
+      <div class="howit__container">
+        <!-- Header row -->
+        <div class="howit__head">
+          <div>
+            <h2 class="howit__title">HOW XHAVIC WORKS?</h2>
+            <p class="howit__subtitle">
+              Xhavic is built on optimistic rollup architecture. Transactions
+              are processed off-chain by the Xhavic network and periodically
+              submitted to Ethereum for final settlement.
+            </p>
+          </div>
+
+          <a class="howit__btn" href="#">Get started</a>
+        </div>
+
+        <!-- Main row -->
+        <div class="howit__main">
+          <!-- Left: accordion -->
+          <div class="howit__left">
+            <div id="howAccordion" class="howit__accordion"></div>
+          </div>
+
+          <!-- Right: image card -->
+          <div class="howit__right">
+            <div class="howit__preview">
+              <img
+                id="howPreviewImg"
+                src="./assets/how-phone.png"
+                alt="Preview"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+    <section id="usecases" class="cases">
+      <div class="cases__container">
+        <div class="cases__head">
+          <div>
+            <h2 class="why__title">Use cases</h2>
+            <p class="why__subtitle">
+              Xhavic supports a wide range of Web3 applications:
+            </p>
+          </div>
+
+          <a class="cases__btn" href="#">Browse all use cases</a>
+        </div>
+
+        <div id="casesGrid" class="cases__grid"></div>
+      </div>
+    </section>
+   <section class="robotSec js-robotSec" id="robotPerks">
+  <div class="robotSec__wrap">
+    <!-- LEFT: Robot -->
+    <div class="robotSec__left">
+      <img
+        class="robotSec__robot js-robot"
+        src="./assets/Images/robot/1.png"
+        alt="Robot"
+        loading="lazy"
+      />
+      <!-- optional glow -->
+      <div class="robotSec__robotGlow" aria-hidden="true"></div>
+    </div>
+
+    <!-- RIGHT: Content -->
+    <div class="robotSec__right">
+      <h2 style="margin-bottom: 40px;" class="why__title">
+       Unlocking the AI advantage <br> with XHAVIC
+      </h2>
+
+      <ul class="robotSec__list">
+        <li class="robotSec__item">
+          <span class="robotSec__check" aria-hidden="true">✓</span>
+          <div>
+            <h3>Seamless AI-Agent Integration</h3>
+            <p>Connect any AI agent and run workflows on XHAVIC without friction.
+</p>
+          </div>
+        </li>
+
+        <li class="robotSec__item">
+          <span class="robotSec__check" aria-hidden="true">✓</span>
+          <div>
+            <h3>Automated on-chain actions</h3>
+            <p>Agents can monitor conditions and trigger trades, payments, rebalancing, and verification—fast on L2, secured by Ethereum.
+</p>
+          </div>
+        </li>
+
+        <li class="robotSec__item">
+          <span class="robotSec__check" aria-hidden="true">✓</span>
+          <div>
+            <h3 >Built for AI-native dApps</h3>
+            <p>EVM-compatible, scalable infrastructure designed for real-world AI + Web3 products.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Scroll-driven expandable section -->
+   <div style="text-align: center; margin-top: 50px;">
+            <h2 class="why__title">COMMUNITY AND CONTRIBUTION </h2>
+            <p class="why__subtitle">
+              Xhavic welcomes open collaboration from developers, researchers, educators, and users. The ecosystem grows through shared knowledge, transparent standards, and open-source participation.
+            </p>
+            <a class="howit__btn" href="#">Join Now</a>
+          </div>
+ <section class="scroll-wrap" id="expandSection">
+  <div class="sticky-panel">
+    <div class="scene" id="scene">
+      <div class="rings"></div>
+
+      <div  class="center bg">
+        <div class="centerInner">
+          
+          <img style="width: 150px;"  src="./assets/Images/Xhavic Logo//Xhavic Logo/PNG/XhavicIcon V2.png" alt="">
+        </div>
+      </div>
+
+     <div class="anchor">
+  <!-- 1) BIG top-left -->
+  <div class="avatar cluster av-1" data-layer="1">
+    <img
+      src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?w=600&q=80&auto=format&fit=crop"
+      alt=""
+    />
+  </div>
+
+  <!-- 2) SMALL top -->
+  <div class="avatar cluster av-2" data-layer="2">
+    <img
+      src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=80&auto=format&fit=crop"
+      alt=""
+    />
+  </div>
+
+  <!-- 3) MED top-right -->
+  <div class="avatar cluster av-3" data-layer="3">
+    <img
+      src="https://framerusercontent.com/images/fGMII2DZxHfMG5shcSEK1AnhYvw.png?scale-down-to=1024"
+      alt=""
+    />
+  </div>
+
+  <!-- 4) SMALL left -->
+  <div class="avatar cluster av-4" data-layer="4">
+    <img
+      src="https://framerusercontent.com/images/3tKsVb3psNppIRvC1PoQT4FgoQ.jpg"
+      alt=""
+    />
+  </div>
+
+  <!-- 5) MED bottom-left -->
+  <div class="avatar cluster av-5" data-layer="5">
+    <img
+      src="https://framerusercontent.com/images/48Cqhfwpt7z7CH4A5eVCCMQGbEg.jpg"
+      alt=""
+    />
+  </div>
+
+  <!-- 6) SMALL bottom -->
+  <div class="avatar cluster av-6" data-layer="6">
+    <img
+      src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&q=80&auto=format&fit=crop"
+      alt=""
+    />
+  </div>
+
+  <!-- 7) MED right -->
+  <div class="avatar cluster av-7" data-layer="7">
+    <img
+      src="https://framerusercontent.com/images/XOzKSXQTs1DdcEoA8hOXV38WL6M.png?scale-down-to=512"
+      alt=""
+    />
+  </div>
+
+  <!-- 8) BIG bottom-right -->
+  <div class="avatar cluster av-8" data-layer="8">
+    <img
+      src="https://framerusercontent.com/images/MYlrVK7d5fXdfloNrfa5uiX75UI.jpg"
+      alt=""
+    />
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+ 
+    <section class="getstart">
+      <div class="getstart__container">
+        <div class="getstart__head">
+          <div>
+            <h2 class="why__title">Get started</h2>
+            <p class="why__subtitle">The XHAVIC Foundation supports the growth of the XHAVIC ecosystem by helping builders, businesses, and institutions move from experimentation to real-world deployment. We focus on reliable execution, long-term sustainability, and Ethereum-secured infrastructure.</p>
+          </div>
+
+          <a class="getstart__topBtn" href="#">Get started</a>
+        </div>
+
+        <div class="getstart__panel">
+          <!-- Left -->
+          <div class="getstart__left">
+            <div id="getstartTabs" class="getstart__tabs"></div>
+
+            <div class="getstart__detail">
+              <h3 id="getstartTitle" class="getstart__detailTitle"></h3>
+              <p id="getstartDesc" class="getstart__detailDesc"></p>
+
+              <a id="getstartCta" class="getstart__cta" href="#">Open</a>
+            </div>
+          </div>
+
+          <!-- Right -->
+          <div class="getstart__right">
+            <div class="getstart__preview">
+              <img
+                id="getstartImg"
+                src="./assets/get-started/preview-users.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="faq">
+      <div class="faq__container">
+        <h2 class="why__title">Have more questions?</h2>
+        <p class="why__subtitle">
+          Get answers to frequent questions about Xhavic, security measures, and
+          features. If you need help, our team is here.
+        </p>
+
+        <div id="faqList" class="faq__list"></div>
+      </div>
+    </section>
+    <footer class="xh-footer">
+      <div class="xh-footer__container">
+        <div class="xh-footer__top">
+          <!-- Left: CTA -->
+          <div class="xh-footer__cta">
+            <div class="xh-footer__brand">Xhavic</div>
+
+            <h3 class="xh-footer__headline">Start building on Xhavic today</h3>
+
+            <p class="xh-footer__lead">
+              Xhavic is an Ethereum Layer 2 execution environment offering
+              scalable, low-cost, and EVM-compatible infrastructure for DeFi,
+              RWA, AI, NFTs, and enterprise digital asset applications.
+            </p>
+
+            <a class="xh-footer__btn" href="#">Get started</a>
+          </div>
+
+          <!-- Right: Link columns -->
+          <div id="xhFooterCols" class="xh-footer__cols"></div>
+        </div>
+<!-- Newsletter -->
+<div class="xh-footer__newsletter">
+  <div class="xh-footer__newsletterInner">
+    <div class="xh-footer__newsletterText">
+      <h4>Stay tuned for more updates</h4>
+      <p>Receive the latest news and updates from us.</p>
+    </div>
+
+    <form class="xh-footer__newsletterForm" id="xhNewsletterForm">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        required
+        class="xh-footer__newsletterInput"
+      />
+      <button type="submit" class="xh-footer__newsletterBtn">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</div>
+
+        <div class="xh-footer__divider"></div>
+
+        <div class="xh-footer__bottom">
+          <div class="xh-footer__bottomText">
+            © 2026 Xhavic Network. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Slider script -->
+     <script>
+  const track = document.querySelector(".marquee-track");
+
+  // Duplicate logos to ensure seamless looping
+  track.innerHTML += track.innerHTML;
+</script>
+
+    <!-- Footer script -->
+    <script>
+      // ----- Footer columns (edit here) -----
+      const FOOTER_COLS = [
+        {
+          title: "Xhavic",
+          links: [
+            ["About", "#"],
+            ["Vision", "#"],
+            ["Media Kit", "#"],
+            ["Careers", "#"],
+            ["Contact", "#"],
+          ],
+        },
+        {
+          title: "Build",
+          links: [
+            ["Documentation", "#"],
+            ["Developer Tools", "#"],
+            ["RPC Endpoints", "#"],
+            ["SDKs & APIs", "#"],
+            ["Github", "#"],
+            ["Xhavic Labs", "#"],
+          ],
+        },
+        {
+          title: "Ecosystem",
+          links: [
+            ["For Users", "#"],
+            ["For Developers", "#"],
+            ["For Enterprises", "#"],
+            ["Use Cases", "#"],
+            ["Community", "#"],
+          ],
+        },
+        {
+          title: "Resources",
+          links: [
+            ["Wallet Integration", "#"],
+            ["On/Off Ramp", "#"],
+            ["RWA Compliance", "#"],
+            ["NFT Standards (ERC-721 / ERC-1155)", "#"],
+            ["AI Agent (MCP)", "#"],
+          ],
+        },
+        {
+          title: "Legal",
+          links: [
+            ["Terms of Use", "#"],
+            ["Privacy Policy", "#"],
+            ["Risk Disclosure", "#"],
+            ["Compliance", "#"],
+          ],
+        },
+        {
+          title: "Social",
+          links: [
+            ["Twitter / X", "#"],
+            ["Discord", "#"],
+            ["Telegram", "#"],
+            ["Github", "#"],
+            ["LinkedIn", "#"],
+          ],
+        },
+      ];
+
+      const colsWrap = document.getElementById("xhFooterCols");
+
+      colsWrap.innerHTML = FOOTER_COLS.map((col) => {
+        return `
+      <div class="xh-footer__col">
+        <div class="xh-footer__colTitle">${col.title}</div>
+        <ul class="xh-footer__list">
+          ${col.links
+            .map(
+              ([label, href]) =>
+                `<li class="xh-footer__item"><a href="${href}" class="xh-footer__link">${label}</a></li>`,
+            )
+            .join("")}
+        </ul>
+      </div>
+    `;
+      }).join("");
+    </script>
+    <!-- Faq script -->
+    <script>
+      const FAQS = [
+        {
+          q: "What is Xhavic?",
+          a: "Xhavic is a Layer 2 network for Ethereum that offers faster and cheaper transactions using optimistic rollup architecture.",
+        },
+        {
+          q: "Is Xhavic a sidechain?",
+          a: "No. Sidechains use separate consensus, while Xhavic posts transaction data and final state commitments to Ethereum.",
+        },
+        {
+          q: "Does Xhavic require a new wallet?",
+          a: "No. Any Ethereum-compatible wallet such as MetaMask can connect to Xhavic.",
+        },
+        {
+          q: "Can developers deploy existing contracts?",
+          a: "Yes. Xhavic is EVM-compatible and does not require code rewrites.",
+        },
+        {
+          q: "Why is it cheaper than Ethereum?",
+          a: "Execution happens off-chain, and data is posted in compressed batches, reducing gas consumption.",
+        },
+        {
+          q: "How is security maintained?",
+          a: "Security is inherited from Ethereum via settlement and fraud-proof mechanisms.",
+        },
+      ];
+
+      const list = document.getElementById("faqList");
+      let openIndex1 = -1;
+
+      function renderFaqs() {
+        list.innerHTML = FAQS.map((item, i) => {
+          const isOpen = i === openIndex1;
+
+          return `
+        <div class="faqItem ${isOpen ? "is-open" : ""}" data-i="${i}">
+          <button class="faqQ" type="button" aria-expanded="${isOpen}">
+            <span class="faqQ__text">${item.q}</span>
+            <span class="faqQ__icon" aria-hidden="true">${isOpen ? "–" : "+"}</span>
+          </button>
+
+          <!-- ✅ NO inline max-height here -->
+          <div class="faqA">
+            <div class="faqA__inner">${item.a}</div>
+          </div>
+        </div>
+      `;
+        }).join("");
+
+        // ✅ after render, set correct height for the open item (so it starts opened properly)
+        if (openIndex1 > -1) {
+          const openEl = list.querySelector(
+            `.faqItem[data-i="${openIndex1}"] .faqA`,
+          );
+          if (openEl) openEl.style.maxHeight = openEl.scrollHeight + "px";
+        }
+      }
+
+      renderFaqs();
+
+      list.addEventListener("click", (e) => {
+        const item = e.target.closest(".faqItem");
+        if (!item) return;
+
+        const i = Number(item.dataset.i);
+        const items = [...list.querySelectorAll(".faqItem")];
+
+        // ✅ close previously open
+        if (openIndex1 !== -1 && openIndex1 !== i) {
+          const prev = list.querySelector(`.faqItem[data-i="${openIndex1}"]`);
+          if (prev) {
+            prev.classList.remove("is-open");
+            prev.querySelector(".faqQ").setAttribute("aria-expanded", "false");
+            prev.querySelector(".faqQ__icon").textContent = "+";
+            prev.querySelector(".faqA").style.maxHeight = "0px";
+          }
+        }
+
+        // toggle current
+        const isOpening = openIndex1 !== i;
+        openIndex1 = isOpening ? i : -1;
+
+        const body = item.querySelector(".faqA");
+        const btn = item.querySelector(".faqQ");
+        const icon = item.querySelector(".faqQ__icon");
+
+        if (isOpening) {
+          item.classList.add("is-open");
+          btn.setAttribute("aria-expanded", "true");
+          icon.textContent = "–";
+
+          // ✅ smooth open using real height
+          body.style.maxHeight = body.scrollHeight + "px";
+        } else {
+          item.classList.remove("is-open");
+          btn.setAttribute("aria-expanded", "false");
+          icon.textContent = "+";
+
+          // ✅ smooth close
+          body.style.maxHeight = "0px";
+        }
+      });
+
+      // Optional: if fonts load later, re-measure open item once
+      window.addEventListener("load", () => {
+        if (openIndex1 > -1) {
+          const openEl = list.querySelector(
+            `.faqItem[data-i="${openIndex1}"] .faqA`,
+          );
+          if (openEl) openEl.style.maxHeight = openEl.scrollHeight + "px";
+        }
+      });
+    </script>
+
+    <!-- Get started script -->
+    <script>
+      // ---- Content data (add as many as you want) ----
+      const GET_STARTED_ITEMS = [
+        {
+          key: "users",
+          tabLabel: "Users",
+          icon: "./assets/Images/get_started/icon-1.png",
+          title: "Users",
+          desc: "Explore applications running on Xhavic.",
+          ctaText: "Explore apps",
+          href: "#",
+          image: "./assets/Images/get_started/3.jpg",
+        },
+        {
+          key: "devs",
+          tabLabel: "Developers",
+          icon: "./assets/Images/get_started/icon-2.png",
+          title: "Developers",
+          desc: "Read the documentation and deploy contracts.",
+          ctaText: "Read docs",
+          href: "#",
+          image: "./assets/Images/get_started/2.jpg",
+        },
+        {
+          key: "enterprise",
+          tabLabel: "Enterprises",
+          icon: "./assets/Images/get_started/icon-3.png",
+          title: "Enterprises",
+          desc: "Contact the team for integration support.",
+          ctaText: "Contact team",
+          href: "#",
+          image: "./assets/Images/get_started/1.jpg",
+        },
+       
+      ];
+
+      const tabsWrap = document.getElementById("getstartTabs");
+      const titleEl = document.getElementById("getstartTitle");
+      const descEl = document.getElementById("getstartDesc");
+      const ctaEl = document.getElementById("getstartCta");
+      const imgEl = document.getElementById("getstartImg");
+
+      let activeIndex = 0;
+      let isAnimating = false;
+
+      function renderTabs() {
+        tabsWrap.innerHTML = GET_STARTED_ITEMS.map((it, i) => {
+          const active = i === activeIndex ? "is-active" : "";
+          const label = it.tabLabel.replace(" ", "<br/>");
+          return `
+        <div class="tabCard ${active}" data-i="${i}">
+          <div class="tabCard__icon">
+            <img src="${it.icon}" alt="" />
+          </div>
+          <div class="tabCard__label">${label}</div>
+        </div>
+      `;
+        }).join("");
+      }
+
+      function swapPreviewImage(nextSrc) {
+        if (!imgEl) return;
+
+        // if same image, do nothing
+        if (imgEl.getAttribute("src") === nextSrc) return;
+
+        // prevent spam clicks during animation (optional)
+        if (isAnimating) return;
+        isAnimating = true;
+
+        // reset states
+        imgEl.classList.remove("is-in");
+        imgEl.classList.add("is-out");
+
+        // wait for fade-out to finish then swap src and fade-in
+        const OUT_MS = 180; // keep in sync with CSS "opacity" duration
+        const IN_UNLOCK_MS = 260;
+
+        setTimeout(() => {
+          imgEl.src = nextSrc;
+
+          // Force reflow so the browser applies the src before transitioning in
+          // (prevents rare "no animation" cases)
+          imgEl.offsetHeight;
+
+          imgEl.classList.remove("is-out");
+          imgEl.classList.add("is-in");
+
+          setTimeout(() => {
+            isAnimating = false;
+          }, IN_UNLOCK_MS);
+        }, OUT_MS);
+      }
+
+      function renderDetail() {
+        const it = GET_STARTED_ITEMS[activeIndex];
+        titleEl.textContent = it.title;
+        descEl.textContent = it.desc;
+        ctaEl.textContent = it.ctaText;
+        ctaEl.href = it.href;
+
+        swapPreviewImage(it.image);
+      }
+
+      function renderAll() {
+        renderTabs();
+        renderDetail();
+      }
+
+      // init state so first load looks correct
+      imgEl.classList.add("is-in");
+      renderAll();
+
+      tabsWrap.addEventListener("click", (e) => {
+        const tab = e.target.closest(".tabCard");
+        if (!tab) return;
+        const i = Number(tab.dataset.i);
+        if (i === activeIndex) return;
+
+        activeIndex = i;
+        renderAll();
+      });
+    </script>
+
+    <!-- Use cases script -->
+    <script>
+      // --------- DATA (add more cards here) ----------
+      const USE_CASES = [
+        {
+          tag: "DeFi Apps",
+          image: "./assets/Images/casestudy/1.webp", // replace
+          title: "Decentralized Finance (DeFi) Apps",
+          desc: "Lending, swapping, stablecoins, derivatives, and structured products benefit from predictable, low-cost execution.",
+          href: "#",
+        },
+        {
+          tag: "Tokenized Assets",
+          image: "./assets/Images/casestudy/2.avif", // replace
+          title: "Tokenized Assets",
+          desc: "Real estate, commodities, identity systems, and digital securities require secure settlement with fast execution.",
+          href: "#",
+        },
+      ];
+
+      const casesGridEl = document.getElementById("casesGrid");
+
+      casesGridEl.innerHTML = USE_CASES.map((c) => {
+        return `
+      <a class="caseCard" href="${c.href}">
+        <div class="caseCard__media">
+          <span class="caseCard__tag">${c.tag}</span>
+          <img class="caseCard__img" src="${c.image}" alt="" />
+        </div>
+
+        <div class="caseCard__body">
+          <h3 class="caseCard__title">${c.title}</h3>
+          <p class="caseCard__desc">${c.desc}</p>
+        </div>
+      </a>
+    `;
+      }).join("");
+    </script>
+    <!-- How it work script -->
+    <script>
+      const HOW_SECTION = {
+        heading: "HOW XHAVIC WORKS",
+        subheading: `Xhavic is built on optimistic rollup architecture. Transactions are processed off-chain by the
+Xhavic network and periodically submitted to Ethereum for final settlement.
+`,
+        buttonText: "Get started",
+        buttonHref: "#",
+        defaultPreview: "./assets/how-phone.png",
+      };
+
+      const STEPS = [
+        {
+          title: "Transact on XHAVIC",
+          icon: "./assets/Images/how/icon-1.png",
+          desc: "Users swap, mint, send, pay, or use dApps on XHAVIC for fast, low-cost execution.",
+          preview: "./assets/Images/how/1.webp",
+        },
+        {
+          title: "Execute and bundle",
+           icon: "./assets/Images/how/icon-2.png",
+          desc: `XHAVIC runs transactions on Layer-2, then bundles many of them into batches to increase throughput and reduce costs.`,
+          preview: "./assets/Images/how/2.png",
+        },
+        {
+          title: "Anchor to Ethereum",
+          icon: "./assets/Images/how/icon-3.png",
+          desc: `Each batch generates a state commitment that is posted to Ethereum, using Ethereum as the settlement and security layer.`,
+          preview: "./assets/Images/how/3.png",
+        },
+        {
+          title: "Secure finality, bridge, and automate",
+          icon: "./assets/Images/how/icon-4.png",
+          desc: `Bridging keeps assets usable across networks by moving tokens between Ethereum and XHAVIC smoothly, and AI agents can automate actions like trade, pay, rebalance, and verify while execution happens on XHAVIC.`,
+          preview: "./assets/Images/how/4.webp",
+        },
+      ];
+
+      // Apply heading/subheading/button
+      document.querySelector(".howit__title").textContent = HOW_SECTION.heading;
+      document.querySelector(".howit__subtitle").textContent =
+        HOW_SECTION.subheading;
+      const topBtn = document.querySelector(".howit__btn");
+      topBtn.textContent = HOW_SECTION.buttonText;
+      topBtn.href = HOW_SECTION.buttonHref;
+
+      const acc = document.getElementById("howAccordion");
+      const previewImg = document.getElementById("howPreviewImg");
+
+      let openIndex = 0;
+
+      // --- helpers ---
+      function setPreview(src) {
+        const nextSrc = src || HOW_SECTION.defaultPreview;
+
+        // animate OUT
+        previewImg.classList.remove("is-in");
+        previewImg.classList.add("is-out");
+
+        // swap after a short delay
+        setTimeout(() => {
+          previewImg.src = nextSrc;
+
+          // animate IN
+          previewImg.classList.remove("is-out");
+          previewImg.classList.add("is-in");
+        }, 160);
+      }
+
+      function openItem(i) {
+        const items = [...acc.querySelectorAll(".acc-item")];
+
+        items.forEach((item, idx) => {
+          const body = item.querySelector(".acc-body");
+          const icon = item.querySelector(".acc-toggle");
+
+          const isOpen = idx === i;
+          item.classList.toggle("is-open", isOpen);
+
+          // toggle symbol
+          icon.textContent = isOpen ? "−" : "+";
+
+          // smooth height transition
+          if (isOpen) {
+            body.style.maxHeight = body.scrollHeight + "px";
+          } else {
+            body.style.maxHeight = "0px";
+          }
+        });
+
+        // update image smoothly
+        openIndex = i;
+        setPreview(STEPS[i]?.preview);
+      }
+
+      // --- render ONCE ---
+      acc.innerHTML = STEPS.map((s, i) => {
+        return `
+      <div class="acc-item" data-i="${i}">
+        <div class="acc-row" role="button" tabindex="0" aria-expanded="false">
+          <div class="acc-ic"><img src="${s.icon}" alt="" /></div>
+          <div class="acc-title">${s.title}</div>
+          <div class="acc-toggle" aria-hidden="true">+</div>
+        </div>
+
+        <div class="acc-body">
+          ${s.desc ? `<p class="acc-desc">${s.desc}</p>` : ``}
+        </div>
+      </div>
+    `;
+      }).join("");
+
+      // init: open first
+      // set initial "in" state for the image
+      previewImg.classList.add("is-in");
+      openItem(openIndex);
+
+      // --- click / keyboard ---
+      acc.addEventListener("click", (e) => {
+        const row = e.target.closest(".acc-row");
+        if (!row) return;
+        const item = row.closest(".acc-item");
+        const i = Number(item.dataset.i);
+        openItem(i);
+      });
+
+      acc.addEventListener("keydown", (e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        const row = e.target.closest(".acc-row");
+        if (!row) return;
+        e.preventDefault();
+        const item = row.closest(".acc-item");
+        const i = Number(item.dataset.i);
+        openItem(i);
+      });
+    </script>
+
+    <!-- Bridging script -->
+<script>
+  function initIntegrate() {
+    const ICONS = [
+      { src: "./assets/Images/bridging/1.png", alt: "App 1" },
+      { src: "./assets/Images/bridging/2.png", alt: "App 2" },
+      { src: "./assets/Images/bridging/3.png", alt: "App 3" },
+      { src: "./assets/Images/bridging/4.png", alt: "App 4" },
+      { src: "./assets/Images/bridging/5.png", alt: "App 5" },
+      { src: "./assets/Images/bridging/6.png", alt: "App 6" },
+    ];
+
+    const leftEl = document.getElementById("integrateLeft");
+    const rightEl = document.getElementById("integrateRight");
+    const section = document.querySelector(".integrate");
+
+    console.log("[integrate] init", { leftEl, rightEl, section });
+
+    if (!leftEl || !rightEl || !section) return;
+
+    const render = (arr) =>
+      arr
+        .map(
+          (it) => `
+            <div class="appIcon">
+              <div class="appIcon__inner">
+                <img src="${it.src}" alt="${it.alt}" />
+              </div>
+            </div>
+          `
+        )
+        .join("");
+
+    leftEl.innerHTML = render(ICONS.slice(0, 3));
+    rightEl.innerHTML = render(ICONS.slice(3, 6));
+
+    const leftIcons = Array.from(leftEl.querySelectorAll(".appIcon"));
+    const rightIcons = Array.from(rightEl.querySelectorAll(".appIcon"));
+
+    console.log("[integrate] icons found", leftIcons.length, rightIcons.length);
+
+    // If observer unsupported, just show
+    if (!("IntersectionObserver" in window)) {
+      [...leftIcons, ...rightIcons].forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) {
+      [...leftIcons, ...rightIcons].forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          console.log("[integrate] section entered view ✅");
+
+          leftIcons.forEach((el, i) => {
+            setTimeout(() => el.classList.add("is-visible"), i * 140);
+          });
+
+          rightIcons.forEach((el, i) => {
+            setTimeout(() => el.classList.add("is-visible"), 160 + i * 140);
+          });
+
+          io.disconnect();
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: "0px 0px -20% 0px",
+      }
+    );
+
+    io.observe(section);
+  }
+
+  // ✅ Bulletproof DOM ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initIntegrate);
+  } else {
+    initIntegrate();
+  }
+</script>
+
+
+
+    <!-- Key benefit script -->
+  <script>
+  // -------------------- DATA (add more cards here) --------------------
+  const FEATURES = [
+    {
+      title: "Dual-wallet security architecture",
+      desc: `The Instant Wallet handles real-time transactions in seconds, while the Funding Wallet provides a 24-hour safety window to cancel or reverse transfers in case of errors or suspicious activity.`,
+      icon: "./assets/Images/key_benefits/i-1.webp",
+      preview: "./assets/Images/key_benefits/img-1.webp",
+      href: "#",
+    },
+    {
+      title: "On-Ramp and Off-Ramp Connectivity",
+      desc: "Enable end-users and institutional participants to move between fiat and digital assets.",
+      icon: "./assets/Images/key_benefits/i-2.webp",
+      preview: "./assets/Images/key_benefits/img-2.webp",
+      href: "#",
+    },
+//     {
+//       title: "Built for Real Dapps - EVM compatible",
+//       desc: `Developers can deploy Ethereum smart contracts without modification using familiar tools and
+// languages such as Solidity, Vyper, Hardhat, and Foundry`,
+//       icon: "./assets/Images/key_benefits/i-3.webp",
+//       preview: "./assets/Images/key_benefits/image.png",
+//       href: "#",
+//     },
+  ];
+
+  // -------------------- RENDER --------------------
+  const featuresGridEl = document.getElementById("featuresGrid");
+
+  featuresGridEl.innerHTML = FEATURES.map((item) => {
+    return `
+      <article class="feature-card">
+        <div class="feature-inner">
+          <!-- LEFT WHITE BOX -->
+          <div class="feature__box">
+            <div class="feature__content">
+              <h3 class="feature__title">${item.title}</h3>
+              <p class="feature__desc">${item.desc}</p>
+
+              <div class="feature__iconRow">
+                <div class="feature__iconWrap" aria-hidden="true">
+                  <img src="${item.icon}" alt="" />
+                </div>
+
+                <a class="arrowBtn" href="${item.href}" aria-label="Open ${item.title}">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M7 17L17 7" stroke-width="2" stroke-linecap="round" />
+                    <path d="M10 7h7v7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT WHITE BOX -->
+          <div class="feature__previewBox" aria-hidden="true">
+            <img class="feature__previewImg" src="${item.preview}" alt="" />
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  // -------------------- REVEAL ON SCROLL (FIRST TIME) --------------------
+  const sectionEl = document.querySelector(".why");
+  // -------------------- REVEAL EACH CARD INDIVIDUALLY (FIRST TIME) --------------------
+const cards = Array.from(document.querySelectorAll(".feature-card"));
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (reduceMotion) {
+  cards.forEach((c) => c.classList.add("is-visible"));
+} else {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        // reveal only THIS card
+        entry.target.classList.add("is-visible");
+
+        // stop observing this card after it reveals once
+        io.unobserve(entry.target);
+      });
+    },
+    {
+      root: null,
+      threshold: 0.25,            // card must be ~25% visible
+      rootMargin: "0px 0px -10% 0px",
+    }
+  );
+
+  // observe every card
+  cards.forEach((card) => io.observe(card));
+}
+
+</script>
+
+    <!-- Hero section script  -->
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("tokenHeroVideo");
+    if (!video) return console.error("❌ #tokenHeroVideo not found");
+
+    const src = video.querySelector("source")?.getAttribute("src");
+    console.log("▶️ video src attribute:", src);
+    console.log("▶️ resolved currentSrc:", video.currentSrc);
+
+    // log events
+    ["loadstart","loadedmetadata","loadeddata","canplay","canplaythrough","playing","pause","stalled","waiting","error"].forEach(ev=>{
+      video.addEventListener(ev, () => {
+        console.log("EVENT:", ev, "readyState:", video.readyState, "networkState:", video.networkState);
+        if (video.error) console.log("VIDEO ERROR:", video.error.code, video.error.message);
+      });
+    });
+
+    // force visible styling (bypasses CSS issues)
+   
+    video.style.display = "block";
+    video.style.opacity = "1";
+    video.style.background = "#000";
+    video.style.position = "relative";
+   
+
+    // force play
+    video.muted = true;
+    video.play().then(()=>console.log("✅ play() worked")).catch(e=>console.warn("❌ play() failed:", e));
+  });
+</script>
+
+
+    <!-- Scroller spiiner animation script -->
+    <script>
+(function () {
+  const wrap = document.getElementById("expandSection");
+  const scene = document.getElementById("scene");
+
+  function clamp01(v){ return Math.max(0, Math.min(1, v)); }
+
+  function update(){
+    const r = wrap.getBoundingClientRect();
+    const vh = window.innerHeight;
+
+    const total = (r.height - vh);
+    const scrolled = (0 - r.top);
+    const p = total <= 0 ? 0 : clamp01(scrolled / total);
+
+    scene.style.setProperty("--p", p.toFixed(4));
+  }
+
+  let ticking = false;
+  function onScroll(){
+    if (!ticking){
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", onScroll, { passive:true });
+  window.addEventListener("resize", update);
+  update();
+})();
+</script>
+<!-- Slider script -->
+ <script>
+  // ---- Replace with your 4 cards ----
+  const KEY_BENEFITS = [
+    {
+      title: "Bulletproof security",
+       icon: "./assets/Images/slider/icon4.png",     // replace
+      image: "./assets/Images/slider/4.webp",  // replace
+      href: "#"
+    },
+   {
+      title: "Built-in wallet",
+      icon: "./assets/Images/slider/icon1.png",   // replace
+      image: "./assets/Images/slider/1.png",  // replace
+      href: "#"
+    },
+ 
+    {
+      title: "Visualize your performance",
+      icon: "./assets/Images/slider/icon3.png",    // replace
+      image: "./assets/Images/slider/3.webp",  // replace
+      href: "#"
+    },
+        {
+      title: "Insta crypto transfer",
+    icon: "./assets/Images/slider/icon2.png",  // replace
+      image: "./assets/Images/slider/2.png",  // replace
+      href: "#"
+    },
+    
+  ];
+
+  const track1 = document.getElementById("kbTrack");
+  const viewport = document.getElementById("kbViewport");
+  const btnPrev = document.querySelector(".kb__nav--left");
+  const btnNext = document.querySelector(".kb__nav--right");
+
+  track1.innerHTML = KEY_BENEFITS.map((c) => `
+    <a class="kbCard" href="${c.href}">
+      <div class="kbCard__top">
+        <div class="kbCard__corner" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <div class="kbCard__imgWrap">
+          <img class="kbCard__img" src="${c.image}" alt="">
+        </div>
+      </div>
+
+      <div class="kbCard__bottom">
+        <div class="kbCard__label">
+          <span class="kbCard__icon"><img src="${c.icon}" alt=""></span>
+          <span>${c.title}</span>
+        </div>
+      </div>
+    </a>
+  `).join("");
+
+  let index = 0;
+
+  function cardStep() {
+    const first = track1.querySelector(".kbCard");
+    if (!first) return 0;
+    const cardW = first.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track1).gap || "18");
+    return cardW + gap;
+  }
+
+  function visibleCount() {
+    const step = cardStep();
+    if (!step) return 1;
+    return Math.max(1, Math.floor(viewport.getBoundingClientRect().width / step));
+  }
+
+  function maxIndex() {
+    // allow last card to come into view
+    return Math.max(0, KEY_BENEFITS.length - visibleCount());
+  }
+
+  function updateNav() {
+    btnPrev.disabled = index <= 0;
+    btnNext.disabled = index >= maxIndex();
+  }
+
+  function goTo(i) {
+    index = Math.max(0, Math.min(maxIndex(), i));
+    track1.style.transform = `translateX(${-index * cardStep()}px)`;
+    updateNav();
+  }
+
+  btnPrev.addEventListener("click", () => goTo(index - 1));
+  btnNext.addEventListener("click", () => goTo(index + 1));
+
+  // drag support (feels like a real slider)
+  let isDown = false;
+  let startX = 0;
+  let startT = 0;
+
+  viewport.addEventListener("pointerdown", (e) => {
+    isDown = true;
+    viewport.setPointerCapture(e.pointerId);
+    startX = e.clientX;
+    const m = track1.style.transform.match(/-?\d+(\.\d+)?/);
+    startT = m ? parseFloat(m[0]) : 0;
+    track1.style.transition = "none";
+  });
+
+  viewport.addEventListener("pointermove", (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    track1.style.transform = `translateX(${startT + dx}px)`;
+  });
+
+  function endDrag(e) {
+    if (!isDown) return;
+    isDown = false;
+    track1.style.transition = "transform 520ms cubic-bezier(0.22, 1, 0.36, 1)";
+
+    // snap to nearest index
+    const m = track1.style.transform.match(/-?\d+(\.\d+)?/);
+    const current = m ? parseFloat(m[0]) : 0;
+    const step = cardStep();
+    const snapped = step ? Math.round(Math.abs(current) / step) : 0;
+    goTo(snapped);
+  }
+
+  viewport.addEventListener("pointerup", endDrag);
+  viewport.addEventListener("pointercancel", endDrag);
+  window.addEventListener("resize", () => goTo(index));
+
+  // init
+  goTo(0);
+</script>
+<!-- Robot section script  -->
+<script>
+(function () {
+  const sec = document.querySelector(".js-robotSec");
+  if (!sec) return;
+
+  const robot = sec.querySelector(".robotSec__robot");
+  if (!robot) return;
+
+  const io = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        // ✅ restart animation every time it enters (down OR up)
+        sec.classList.remove("is-in");
+        void robot.offsetWidth; // reflow (important: use robot, not sec)
+        sec.classList.add("is-in");
+      } else {
+        // ✅ reset so it can replay next time
+        sec.classList.remove("is-in");
+      }
+    },
+    { threshold: 0.35 }
+  );
+
+  io.observe(sec);
+})();
+</script>
+<script>
+  const navToggle = document.getElementById("nav-toggle");
+  const mobileLinks = document.querySelectorAll(".mobile-links a");
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navToggle.checked = false;
+    });
+  });
+</script>
+
+
+</body>
+</html>
+  </body>
+</html>

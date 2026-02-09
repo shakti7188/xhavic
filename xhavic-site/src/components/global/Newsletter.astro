@@ -1,0 +1,110 @@
+---
+/**
+ * Newsletter signup form.
+ * Email input + subscribe button styled to match the existing site design.
+ */
+---
+
+<div class="xh-newsletter">
+  <div class="xh-newsletter__inner">
+    <div class="xh-newsletter__text">
+      <h4 class="xh-newsletter__heading">Stay tuned for more updates</h4>
+      <p class="xh-newsletter__desc">Receive the latest news and updates from us.</p>
+    </div>
+
+    <form class="xh-newsletter__form" data-newsletter-form>
+      <input
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+        autocomplete="email"
+        class="xh-newsletter__input"
+      />
+      <button type="submit" class="xh-newsletter__btn">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .xh-newsletter {
+    margin: 48px 0;
+    padding: 28px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #0b1020, #0f172a);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .xh-newsletter__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .xh-newsletter__heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .xh-newsletter__desc {
+    margin-top: 6px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .xh-newsletter__form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffffff;
+    padding: 6px;
+    border-radius: 999px;
+    min-width: 320px;
+  }
+
+  .xh-newsletter__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 999px;
+    font-family: inherit;
+    color: #101828;
+  }
+
+  .xh-newsletter__input::placeholder {
+    color: #667085;
+  }
+
+  .xh-newsletter__btn {
+    border: none;
+    cursor: pointer;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #fff;
+    font-family: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .xh-newsletter__btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  }
+
+  @media (max-width: 640px) {
+    .xh-newsletter__form {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+</style>

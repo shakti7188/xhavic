@@ -1,0 +1,58 @@
+---
+const useCases = [
+  {
+    tag: 'DeFi Apps',
+    image: '/images/casestudy/1.webp',
+    title: 'Decentralized Finance (DeFi) Apps',
+    desc: 'Lending, swapping, stablecoins, derivatives, and structured products benefit from predictable, low-cost execution.',
+    href: '/ecosystem',
+  },
+  {
+    tag: 'Tokenized Assets',
+    image: '/images/casestudy/1.webp',
+    title: 'Tokenized Assets',
+    desc: 'Real estate, commodities, identity systems, and digital securities require secure settlement with fast execution.',
+    href: '/ecosystem',
+  },
+  {
+    tag: 'Gaming & NFTs',
+    image: '/images/casestudy/1.webp',
+    title: 'Gaming & NFTs',
+    desc: 'High-throughput, low-fee execution powers in-game economies, NFT minting, and real-time player interactions at scale.',
+    href: '/ecosystem',
+  },
+  {
+    tag: 'AI Agents',
+    image: '/images/casestudy/1.webp',
+    title: 'AI Agent Marketplace',
+    desc: 'Autonomous AI agents execute on-chain tasks, manage portfolios, and coordinate multi-step workflows with verifiable settlement.',
+    href: '/ecosystem',
+  },
+];
+---
+
+<section id="usecases" class="cases" data-reveal>
+  <div class="cases__container">
+    <div class="cases__head">
+      <div>
+        <h2 class="why__title">Use cases</h2>
+        <p class="why__subtitle">Xhavic supports a wide range of Web3 applications:</p>
+      </div>
+      <a class="cases__btn" href="/ecosystem">Browse all use cases</a>
+    </div>
+    <div class="cases__grid">
+      {useCases.map((uc) => (
+        <a class="caseCard" href={uc.href}>
+          <div class="caseCard__media">
+            <span class="caseCard__tag">{uc.tag}</span>
+            <img class="caseCard__img" src={uc.image} alt={uc.title} />
+          </div>
+          <div class="caseCard__body">
+            <h3 class="caseCard__title">{uc.title}</h3>
+            <p class="caseCard__desc">{uc.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

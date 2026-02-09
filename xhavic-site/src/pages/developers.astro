@@ -1,0 +1,603 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Developers — Xhavic"
+  description="Deploy Solidity and Vyper contracts without modification. EVM-compatible execution, native oracle precompiles, AI agent support, and xhv_* RPC extensions."
+>
+  <!-- ============================================================
+       1. HERO — Dark gradient mesh + grid pattern, split layout
+       ============================================================ -->
+  <section class="bg-dark text-white gradient-mesh grid-pattern py-20 md:py-32 lg:py-40">
+    <div class="container">
+      <div class="split-section">
+        <!-- Left: Copy -->
+        <div>
+          <nav class="flex items-center gap-2 text-sm text-gray-500 mb-8">
+            <a href="/" class="hover:text-white transition-colors">Home</a>
+            <svg class="w-3.5 h-3.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-gray-300">Developers</span>
+          </nav>
+
+          <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.08] tracking-tight mb-6">
+            <span class="gradient-text-static">Your Ethereum contracts run without changes.</span>
+          </h1>
+
+          <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed">
+            Xhavic is EVM-compatible at the bytecode level. Solidity, Vyper, and all standard opcodes
+            work as expected. Deploy the same way you deploy to Ethereum — then use what's new.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="/docs" class="btn-primary">Read the Docs &rarr;</a>
+            <a href="https://github.com/xhavic" class="btn inline-flex items-center gap-2 bg-white/10 text-white border border-white/10 px-6 py-3 md:px-8 md:py-3.5 hover:bg-white/15 hover:border-white/20 active:scale-[0.98]" target="_blank" rel="noopener">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Terminal -->
+        <div class="terminal" style="animation: float-slow 6s ease-in-out infinite;">
+          <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">Terminal</span>
+          </div>
+          <div class="terminal-body">
+            <div class="text-gray-500 mb-3 text-xs uppercase tracking-widest">Quick Deploy</div>
+            <div>
+              <span class="text-primary">$</span>
+              <span class="text-green-400"> npx hardhat deploy</span>
+              <span class="text-gray-500"> \</span>
+            </div>
+            <div class="pl-6">
+              <span class="text-yellow-400">--network</span>
+              <span class="text-white"> xhavic-testnet</span>
+              <span class="typing-cursor"></span>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/5 text-gray-500 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                Deploying to Xhavic Testnet (Chain ID: 7850)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       2. EVM COMPATIBILITY — White bg, bento grid
+       ============================================================ -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <div class="pill mb-4">EVM Native</div>
+        <h2 class="section-title">Full EVM Compatibility</h2>
+        <p class="section-subtitle">
+          Xhavic executes EVM bytecode natively. No transpilation, no modified opcodes, no compatibility layers.
+        </p>
+      </div>
+
+      <div class="bento-grid" data-reveal-stagger>
+        <!-- Large card spanning 2 cols -->
+        <div class="accent-card bento-lg">
+          <div class="flex items-start gap-5">
+            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold mb-3 text-ink">Solidity &amp; Vyper</h3>
+              <p class="text-muted leading-relaxed">
+                Both languages compile to the same EVM bytecode Xhavic executes. Use your existing
+                compiler toolchain, OpenZeppelin libraries, and audit reports. Zero contract modifications needed —
+                your verified Ethereum contracts deploy identically.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small card: Opcodes -->
+        <div class="accent-card">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-ink">All Standard Opcodes</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            256-bit word size, 1024 stack depth, identical gas semantics for standard operations.
+            CREATE2, DELEGATECALL, and all precompiles work as specified.
+          </p>
+        </div>
+
+        <!-- Small card: Tooling -->
+        <div class="accent-card">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold mb-2 text-ink">Same Tooling</h3>
+          <p class="text-muted text-sm leading-relaxed">
+            Hardhat, Foundry, Remix, ethers.js, web3.py — all work by pointing to the Xhavic RPC endpoint.
+            No SDK lock-in or proprietary toolchain.
+          </p>
+        </div>
+
+        <!-- Single-row card spanning full width (hidden feature highlight) -->
+        <div class="accent-card bento-lg">
+          <div class="flex items-center gap-3 text-sm text-muted">
+            <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>
+            <span><strong class="text-ink">Chain ID 7849</strong> (mainnet) &nbsp;/&nbsp; <strong class="text-ink">Chain ID 7850</strong> (testnet) &nbsp;&mdash;&nbsp; Add to MetaMask or any EIP-3085 compatible wallet.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       3. WHAT'S NEW — Three split-section blocks, alternating
+       ============================================================ -->
+
+  <!-- 3a. xhv_* RPC Methods — transparent bg -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <div class="pill mb-4">Beyond Standard EVM</div>
+        <h2 class="section-title">What's New on Xhavic</h2>
+        <p class="section-subtitle">
+          Everything above the standard EVM. These are protocol-level additions available to all contracts.
+        </p>
+      </div>
+
+      <div class="split-section">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            RPC Extensions
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">xhv_* RPC Methods</h3>
+          <p class="text-muted leading-relaxed mb-6">
+            Extended RPC namespace for Xhavic-specific operations. Query wallet types,
+            check escrow status, read oracle data, and interact with AI agent state.
+          </p>
+          <ul class="space-y-3 text-sm text-muted">
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Query wallet types and escrow windows
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Read oracle prices with single RPC call
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+              Interact with AI agent state on-chain
+            </li>
+          </ul>
+        </div>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">xhv_* namespace</span>
+          </div>
+          <div class="terminal-body text-sm">
+            <div><span class="text-gray-500">// Available methods</span></div>
+            <div class="mt-2"><span class="text-primary">xhv_getWalletType</span><span class="text-gray-500">(address)</span></div>
+            <div><span class="text-primary">xhv_getEscrowStatus</span><span class="text-gray-500">(txHash)</span></div>
+            <div><span class="text-primary">xhv_getOraclePrice</span><span class="text-gray-500">(pair)</span></div>
+            <div><span class="text-primary">xhv_getAgentState</span><span class="text-gray-500">(agentId)</span></div>
+            <div class="mt-4 pt-4 border-t border-white/5">
+              <span class="text-gray-500">// Example call</span>
+            </div>
+            <div><span class="text-yellow-400">const</span> <span class="text-white">type</span> <span class="text-yellow-400">=</span> <span class="text-yellow-400">await</span> <span class="text-white">provider</span><span class="text-gray-500">.</span><span class="text-green-400">send</span><span class="text-gray-500">(</span></div>
+            <div class="pl-4"><span class="text-amber-300">"xhv_getWalletType"</span><span class="text-gray-500">,</span></div>
+            <div class="pl-4"><span class="text-gray-500">[</span><span class="text-amber-300">"0x..."</span><span class="text-gray-500">]</span></div>
+            <div><span class="text-gray-500">);</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3b. Oracle Precompiles — bg-surface, reversed layout -->
+  <section class="bg-surface rounded-2xl mx-4 md:mx-8 section" data-reveal>
+    <div class="container">
+      <div class="split-section reverse">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Native Oracles
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">Oracle Precompiles</h3>
+          <p class="text-muted leading-relaxed mb-6">
+            Native oracle data accessible via precompile addresses <code class="text-primary bg-primary/10 px-1.5 py-0.5 rounded text-xs">0x00...F0-FF</code>.
+            No external oracle contracts, no middleware, no additional trust assumptions.
+          </p>
+          <div class="space-y-4">
+            <div class="flex gap-4 p-4 rounded-xl bg-white border border-stroke/50">
+              <div class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+              <div>
+                <h4 class="font-bold text-sm mb-1 text-ink">Address Range</h4>
+                <p class="text-muted text-xs">Precompile addresses <code class="text-primary bg-primary/10 px-1 py-0.5 rounded text-xs">0x00...F0</code> through <code class="text-primary bg-primary/10 px-1 py-0.5 rounded text-xs">0x00...FF</code></p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-4 rounded-xl bg-white border border-stroke/50">
+              <div class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+              <div>
+                <h4 class="font-bold text-sm mb-1 text-ink">Hybrid Architecture</h4>
+                <p class="text-muted text-xs">Multi-source aggregation with configurable quorum thresholds</p>
+              </div>
+            </div>
+            <div class="flex gap-4 p-4 rounded-xl bg-white border border-stroke/50">
+              <div class="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></div>
+              <div>
+                <h4 class="font-bold text-sm mb-1 text-ink">Gas Cost</h4>
+                <p class="text-muted text-xs">Standard precompile gas — significantly lower than external oracle calls</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">Oracle.sol</span>
+          </div>
+          <div class="terminal-body text-sm">
+            <div><span class="text-gray-500">// Solidity — Oracle Precompile</span></div>
+            <div class="mt-2"><span class="text-purple-400">interface</span> <span class="text-green-400">IXhavicOracle</span> <span class="text-gray-500">&#123;</span></div>
+            <div class="pl-4"><span class="text-purple-400">function</span> <span class="text-yellow-400">getPrice</span><span class="text-gray-500">(</span></div>
+            <div class="pl-8"><span class="text-blue-400">string</span> <span class="text-purple-400">calldata</span> <span class="text-white">pair</span></div>
+            <div class="pl-4"><span class="text-gray-500">) </span><span class="text-purple-400">external</span> <span class="text-purple-400">view</span> <span class="text-purple-400">returns</span> <span class="text-gray-500">(</span></div>
+            <div class="pl-8"><span class="text-blue-400">uint256</span> <span class="text-white">price</span><span class="text-gray-500">,</span></div>
+            <div class="pl-8"><span class="text-blue-400">uint256</span> <span class="text-white">timestamp</span><span class="text-gray-500">,</span></div>
+            <div class="pl-8"><span class="text-blue-400">uint8</span> <span class="text-white">decimals</span></div>
+            <div class="pl-4"><span class="text-gray-500">);</span></div>
+            <div><span class="text-gray-500">&#125;</span></div>
+            <div class="mt-3"><span class="text-gray-500">// Precompile at 0x...F0</span></div>
+            <div><span class="text-green-400">IXhavicOracle</span> <span class="text-white">oracle</span> <span class="text-gray-500">=</span></div>
+            <div class="pl-4"><span class="text-green-400">IXhavicOracle</span><span class="text-gray-500">(</span><span class="text-purple-400">address</span><span class="text-gray-500">(</span><span class="text-amber-300">0xF0</span><span class="text-gray-500">));</span></div>
+            <div class="mt-2"><span class="text-gray-500">(</span><span class="text-blue-400">uint256</span> <span class="text-white">price</span><span class="text-gray-500">,,) =</span></div>
+            <div class="pl-4"><span class="text-white">oracle</span><span class="text-gray-500">.</span><span class="text-yellow-400">getPrice</span><span class="text-gray-500">(</span><span class="text-amber-300">"ETH/USD"</span><span class="text-gray-500">);</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3c. AI Agent Support — transparent bg -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Protocol-Level Agents
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-4 text-ink">AI Agent Support</h3>
+          <p class="text-muted leading-relaxed mb-6">
+            AI agents execute as first-class protocol participants with deterministic ordering,
+            programmatic wallet control, and gas-metered compute cycles.
+          </p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-4 p-4 rounded-xl bg-surface border border-stroke/30">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-ink mb-1">Deterministic Execution</h4>
+                <p class="text-muted text-xs">Agent transactions are ordered deterministically by the sequencer. Execution results are reproducible and verifiable by validators.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 p-4 rounded-xl bg-surface border border-stroke/30">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-ink mb-1">Programmatic Wallets</h4>
+                <p class="text-muted text-xs">Agents control wallets programmatically with defined permission boundaries. Both Instant and Secured wallet types are available.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-4 p-4 rounded-xl bg-surface border border-stroke/30">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-ink mb-1">Gas-Metered Compute</h4>
+                <p class="text-muted text-xs">Agent compute cycles are metered through the gas mechanism, providing bounded execution costs and preventing runaway operations.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-dot terminal-dot--red"></span>
+            <span class="terminal-dot terminal-dot--yellow"></span>
+            <span class="terminal-dot terminal-dot--green"></span>
+            <span class="terminal-title">agent-config.ts</span>
+          </div>
+          <div class="terminal-body text-sm">
+            <div><span class="text-gray-500">// AI Agent Configuration</span></div>
+            <div class="mt-2"><span class="text-purple-400">const</span> <span class="text-white">agent</span> <span class="text-gray-500">=</span> <span class="text-gray-500">&#123;</span></div>
+            <div class="pl-4"><span class="text-white">id</span><span class="text-gray-500">:</span> <span class="text-amber-300">"agent-001"</span><span class="text-gray-500">,</span></div>
+            <div class="pl-4"><span class="text-white">wallet</span><span class="text-gray-500">:</span> <span class="text-amber-300">"instant"</span><span class="text-gray-500">,</span></div>
+            <div class="pl-4"><span class="text-white">gasLimit</span><span class="text-gray-500">:</span> <span class="text-blue-400">500_000</span><span class="text-gray-500">,</span></div>
+            <div class="pl-4"><span class="text-white">permissions</span><span class="text-gray-500">: [</span></div>
+            <div class="pl-8"><span class="text-amber-300">"transfer"</span><span class="text-gray-500">,</span></div>
+            <div class="pl-8"><span class="text-amber-300">"call_contract"</span><span class="text-gray-500">,</span></div>
+            <div class="pl-8"><span class="text-amber-300">"read_oracle"</span></div>
+            <div class="pl-4"><span class="text-gray-500">]</span></div>
+            <div><span class="text-gray-500">&#125;;</span></div>
+            <div class="mt-3"><span class="text-gray-500">// Query state</span></div>
+            <div><span class="text-purple-400">const</span> <span class="text-white">state</span> <span class="text-gray-500">=</span> <span class="text-purple-400">await</span></div>
+            <div class="pl-4"><span class="text-white">provider</span><span class="text-gray-500">.</span><span class="text-yellow-400">send</span><span class="text-gray-500">(</span></div>
+            <div class="pl-6"><span class="text-amber-300">"xhv_getAgentState"</span><span class="text-gray-500">,</span></div>
+            <div class="pl-6"><span class="text-gray-500">[</span><span class="text-amber-300">"agent-001"</span><span class="text-gray-500">]</span></div>
+            <div class="pl-4"><span class="text-gray-500">);</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       4. QUICK DEPLOY — Dark gradient mesh, tabbed terminal
+       ============================================================ -->
+  <section class="bg-dark text-white gradient-mesh py-20 md:py-28" data-reveal>
+    <div class="container max-w-5xl">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-xs font-semibold mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+          Ship Fast
+        </div>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">Deploy in Minutes</h2>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+          Add the Xhavic network to your Hardhat config and deploy. That's it.
+        </p>
+      </div>
+
+      <!-- Config terminal with tabs -->
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot terminal-dot--red"></span>
+          <span class="terminal-dot terminal-dot--yellow"></span>
+          <span class="terminal-dot terminal-dot--green"></span>
+          <div class="flex items-center gap-0 ml-4">
+            <span class="px-4 py-1.5 text-xs font-medium text-white bg-white/10 rounded-t-lg border-b-2 border-primary">Hardhat</span>
+            <span class="px-4 py-1.5 text-xs font-medium text-gray-500 hover:text-gray-300 cursor-pointer transition-colors">Foundry</span>
+            <span class="px-4 py-1.5 text-xs font-medium text-gray-500 hover:text-gray-300 cursor-pointer transition-colors">Remix</span>
+          </div>
+        </div>
+        <div class="terminal-body">
+          <div class="text-xs text-gray-500 mb-3 uppercase tracking-widest">hardhat.config.ts</div>
+          <pre class="text-sm leading-relaxed"><code><span class="text-purple-400">import</span> <span class="text-gray-500">&#123;</span> <span class="text-white">HardhatUserConfig</span> <span class="text-gray-500">&#125;</span> <span class="text-purple-400">from</span> <span class="text-amber-300">"hardhat/config"</span><span class="text-gray-500">;</span>
+
+<span class="text-purple-400">const</span> <span class="text-white">config</span><span class="text-gray-500">:</span> <span class="text-green-400">HardhatUserConfig</span> <span class="text-gray-500">=</span> <span class="text-gray-500">&#123;</span>
+  <span class="text-white">solidity</span><span class="text-gray-500">:</span> <span class="text-amber-300">"0.8.24"</span><span class="text-gray-500">,</span>
+  <span class="text-white">networks</span><span class="text-gray-500">:</span> <span class="text-gray-500">&#123;</span>
+    <span class="text-white">xhavic</span><span class="text-gray-500">:</span> <span class="text-gray-500">&#123;</span>
+      <span class="text-white">url</span><span class="text-gray-500">:</span> <span class="text-amber-300">"https://rpc.xhavic.io"</span><span class="text-gray-500">,</span>
+      <span class="text-white">chainId</span><span class="text-gray-500">:</span> <span class="text-blue-400">7849</span><span class="text-gray-500">,</span>
+      <span class="text-white">accounts</span><span class="text-gray-500">:</span> <span class="text-gray-500">[</span><span class="text-white">process</span><span class="text-gray-500">.</span><span class="text-white">env</span><span class="text-gray-500">.</span><span class="text-white">DEPLOYER_KEY</span><span class="text-gray-500">!],</span>
+    <span class="text-gray-500">&#125;,</span>
+    <span class="text-amber-300">"xhavic-testnet"</span><span class="text-gray-500">:</span> <span class="text-gray-500">&#123;</span>
+      <span class="text-white">url</span><span class="text-gray-500">:</span> <span class="text-amber-300">"https://testnet-rpc.xhavic.io"</span><span class="text-gray-500">,</span>
+      <span class="text-white">chainId</span><span class="text-gray-500">:</span> <span class="text-blue-400">7850</span><span class="text-gray-500">,</span>
+      <span class="text-white">accounts</span><span class="text-gray-500">:</span> <span class="text-gray-500">[</span><span class="text-white">process</span><span class="text-gray-500">.</span><span class="text-white">env</span><span class="text-gray-500">.</span><span class="text-white">DEPLOYER_KEY</span><span class="text-gray-500">!],</span>
+    <span class="text-gray-500">&#125;,</span>
+  <span class="text-gray-500">&#125;,</span>
+<span class="text-gray-500">&#125;;</span>
+
+<span class="text-purple-400">export</span> <span class="text-purple-400">default</span> <span class="text-white">config</span><span class="text-gray-500">;</span></code></pre>
+        </div>
+      </div>
+
+      <!-- Deploy command terminal -->
+      <div class="terminal mt-6">
+        <div class="terminal-header">
+          <span class="terminal-dot terminal-dot--red"></span>
+          <span class="terminal-dot terminal-dot--yellow"></span>
+          <span class="terminal-dot terminal-dot--green"></span>
+          <span class="terminal-title">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <div>
+            <span class="text-primary">$</span>
+            <span class="text-green-400"> npx hardhat deploy --network xhavic-testnet</span>
+            <span class="typing-cursor"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. DUAL WALLET INTEGRATION — bg-surface, split-section
+       ============================================================ -->
+  <section class="bg-surface rounded-2xl mx-4 md:mx-8 section" data-reveal>
+    <div class="container">
+      <div class="split-section">
+        <!-- Left: Text -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-6">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            Two Paths
+          </div>
+          <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold mb-4 text-ink">Dual Wallet Integration</h2>
+          <p class="text-muted leading-relaxed mb-6">
+            Your contracts interact with two execution paths. The wallet type is determined by the
+            originating address, not by contract logic.
+          </p>
+          <p class="text-sm text-muted">
+            Use <code class="text-primary bg-primary/10 px-1.5 py-0.5 rounded text-xs font-mono">xhv_getWalletType(address)</code> to
+            detect the wallet type at runtime, and <code class="text-primary bg-primary/10 px-1.5 py-0.5 rounded text-xs font-mono">xhv_getEscrowStatus(txHash)</code> to
+            check escrow state for Secured Wallet transactions.
+          </p>
+        </div>
+
+        <!-- Right: Two styled cards -->
+        <div class="space-y-5">
+          <div class="bg-white rounded-2xl p-6 border-l-4 border-l-primary shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3 class="font-bold text-lg text-ink">Instant Wallet Path</h3>
+            </div>
+            <p class="text-muted text-sm mb-3 leading-relaxed">
+              Transactions from Instant Wallets execute immediately with sub-200ms soft finality.
+              Fully composable — other contracts can act on the output in the same block.
+            </p>
+            <code class="text-xs text-primary bg-primary/5 px-2 py-1 rounded font-mono">xhv_getWalletType(address) → "instant"</code>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border-l-4 border-l-amber-500 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
+                <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <h3 class="font-bold text-lg text-ink">Secured Wallet Path</h3>
+            </div>
+            <p class="text-muted text-sm mb-3 leading-relaxed">
+              Transactions from Secured Wallets enter a 24-hour escrow period. State changes
+              are provisional until the escrow window closes. Non-composable during this period.
+            </p>
+            <code class="text-xs text-amber-600 bg-amber-500/5 px-2 py-1 rounded font-mono">xhv_getEscrowStatus(txHash) → "pending"</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. RESOURCES GRID — White bg, staggered accent cards
+       ============================================================ -->
+  <section class="section" data-reveal>
+    <div class="container">
+      <div class="section-header">
+        <div class="pill mb-4">Everything You Need</div>
+        <h2 class="section-title">Developer Resources</h2>
+        <p class="section-subtitle">
+          Everything you need to build, test, and deploy on Xhavic.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal-stagger>
+        <a href="/docs" class="accent-card group cursor-pointer block">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5 group-hover:from-primary/30 group-hover:to-indigo-500/20 transition-all duration-300">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-ink group-hover:text-primary transition-colors">Documentation</h3>
+          <p class="text-muted text-sm leading-relaxed">Guides, API reference, and integration tutorials</p>
+          <span class="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="https://github.com/xhavic" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5 group-hover:from-primary/30 group-hover:to-indigo-500/20 transition-all duration-300">
+            <svg class="w-6 h-6 text-primary" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-ink group-hover:text-primary transition-colors">GitHub</h3>
+          <p class="text-muted text-sm leading-relaxed">Source code, examples, and open-source tooling</p>
+          <span class="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="https://faucet.xhavic.io" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5 group-hover:from-primary/30 group-hover:to-indigo-500/20 transition-all duration-300">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-ink group-hover:text-primary transition-colors">Testnet Faucet</h3>
+          <p class="text-muted text-sm leading-relaxed">Get testnet XHV tokens for development</p>
+          <span class="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="https://explorer.xhavic.io" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5 group-hover:from-primary/30 group-hover:to-indigo-500/20 transition-all duration-300">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-ink group-hover:text-primary transition-colors">Block Explorer</h3>
+          <p class="text-muted text-sm leading-relaxed">Transaction history, contract verification, analytics</p>
+          <span class="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <a href="https://bridge.xhavic.io" class="accent-card group cursor-pointer block" target="_blank" rel="noopener">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5 group-hover:from-primary/30 group-hover:to-indigo-500/20 transition-all duration-300">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-2 text-ink group-hover:text-primary transition-colors">Bridge</h3>
+          <p class="text-muted text-sm leading-relaxed">Move assets between Ethereum and Xhavic</p>
+          <span class="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+            Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </span>
+        </a>
+
+        <div class="accent-card">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/20 to-indigo-500/10 flex items-center justify-center mb-5">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg mb-3 text-ink">RPC Endpoints</h3>
+          <div class="space-y-3 mt-2">
+            <div class="flex items-center gap-3 p-2.5 rounded-lg bg-surface">
+              <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>
+              <code class="text-xs font-mono text-muted">https://rpc.xhavic.io</code>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg bg-surface">
+              <span class="w-2 h-2 rounded-full bg-yellow-500 flex-shrink-0"></span>
+              <code class="text-xs font-mono text-muted">https://testnet-rpc.xhavic.io</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. CTA — Dark gradient mesh, generous padding
+       ============================================================ -->
+  <section class="bg-dark text-white gradient-mesh grid-pattern py-20 md:py-30" data-reveal>
+    <div class="container text-center">
+      <h2 class="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-6">
+        <span class="gradient-text-static">Start Building</span>
+      </h2>
+      <p class="text-lg text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
+        The documentation covers deployment guides, RPC reference, oracle integration,
+        Dual Wallet development patterns, and AI agent specifications.
+      </p>
+      <a href="/docs" class="btn-primary">
+        Read the Docs &rarr;
+      </a>
+    </div>
+  </section>
+
+  <script>import '../scripts/reveal.ts';</script>
+</BaseLayout>

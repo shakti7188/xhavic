@@ -1,0 +1,16 @@
+---
+/**
+ * Card — Basic card wrapper
+ * Props:
+ *   class? — additional Tailwind classes
+ */
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class:list={['card card-hover', className]}>
+  <slot />
+</div>

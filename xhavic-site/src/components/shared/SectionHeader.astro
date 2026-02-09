@@ -1,0 +1,26 @@
+---
+/**
+ * SectionHeader — Centered section heading block
+ * Props:
+ *   pill?     — optional pill badge text above the title
+ *   title     — the section heading (h2)
+ *   subtitle? — optional descriptive paragraph below the title
+ */
+interface Props {
+  pill?: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { pill, title, subtitle } = Astro.props;
+---
+
+<div class="section-header">
+  {pill && (
+    <span class="pill mb-4">{pill}</span>
+  )}
+  <h2 class="section-title">{title}</h2>
+  {subtitle && (
+    <p class="section-subtitle">{subtitle}</p>
+  )}
+</div>

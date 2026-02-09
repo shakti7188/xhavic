@@ -1,0 +1,143 @@
+---
+const steps = [
+  {
+    icon: '/images/how/icon-1.png',
+    title: 'Transact on XHAVIC',
+    desc: 'Users swap, mint, send, pay, or use dApps on XHAVIC for fast, low-cost execution.',
+    preview: '/images/how/1.webp',
+  },
+  {
+    icon: '/images/how/icon-2.png',
+    title: 'Execute and bundle',
+    desc: 'XHAVIC runs transactions on Layer-2, then bundles many of them into batches to increase throughput and reduce costs.',
+    preview: '/images/how/2.png',
+  },
+  {
+    icon: '/images/how/icon-3.png',
+    title: 'Anchor to Ethereum',
+    desc: 'Each batch generates a state commitment that is posted to Ethereum, using Ethereum as the settlement and security layer.',
+    preview: '/images/how/3.png',
+  },
+  {
+    icon: '/images/how/icon-4.png',
+    title: 'Secure finality, bridge, and automate',
+    desc: 'Bridging keeps assets usable across networks by moving tokens between Ethereum and XHAVIC smoothly, and AI agents can automate actions like trade, pay, rebalance, and verify while execution happens on XHAVIC.',
+    preview: '/images/how/4.webp',
+  },
+];
+---
+
+<section id="howworks" class="howit">
+  <div class="howit__container">
+    <div class="howit__head">
+      <div>
+        <h2 class="howit__title">HOW XHAVIC WORKS?</h2>
+        <p class="howit__subtitle">Xhavic is built on optimistic rollup architecture. Transactions are processed off-chain by the Xhavic network and periodically submitted to Ethereum for final settlement.</p>
+      </div>
+      <a class="howit__btn" href="/developers">Get started</a>
+    </div>
+    <div class="howit__main">
+      <div class="howit__left">
+        <div id="howAccordion" class="howit__accordion">
+          {steps.map((step, i) => (
+            <div class="acc-item" data-i={String(i)} data-preview={step.preview}>
+              <div class="acc-row" role="button" tabindex="0" aria-expanded={i === 0 ? 'true' : 'false'}>
+                <div class="acc-ic"><img src={step.icon} alt="" /></div>
+                <div class="acc-title">{step.title}</div>
+                <div class="acc-toggle" aria-hidden="true">{i === 0 ? '\u2212' : '+'}</div>
+              </div>
+              <div class="acc-body">
+                <p class="acc-desc">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="howit__right">
+        <div class="howit__preview">
+          <img id="howPreviewImg" src="/images/how/1.webp" alt="Preview" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initHowItWorks() {
+    const accordion = document.getElementById('howAccordion');
+    const previewImg = document.getElementById('howPreviewImg') as HTMLImageElement | null;
+    if (!accordion) return;
+
+    const items = accordion.querySelectorAll<HTMLElement>('.acc-item');
+
+    function openItem(index: number) {
+      items.forEach((item, i) => {
+        const body = item.querySelector<HTMLElement>('.acc-body');
+        const toggle = item.querySelector<HTMLElement>('.acc-toggle');
+        const row = item.querySelector<HTMLElement>('.acc-row');
+        const isOpen = i === index;
+
+        item.classList.toggle('is-open', isOpen);
+
+        if (row) {
+          row.setAttribute('aria-expanded', String(isOpen));
+        }
+
+        if (toggle) {
+          toggle.textContent = isOpen ? '\u2212' : '+';
+        }
+
+        if (body) {
+          if (isOpen) {
+            body.style.maxHeight = body.scrollHeight + 'px';
+          } else {
+            body.style.maxHeight = '0px';
+          }
+        }
+      });
+
+      // Swap preview image with fade animation
+      if (previewImg) {
+        const targetItem = items[index];
+        const nextSrc = targetItem?.dataset.preview;
+        if (nextSrc && !previewImg.src.endsWith(nextSrc)) {
+          previewImg.classList.add('is-out');
+          previewImg.classList.remove('is-in');
+          setTimeout(() => {
+            previewImg.src = nextSrc;
+            previewImg.classList.remove('is-out');
+            previewImg.classList.add('is-in');
+            setTimeout(() => {
+              previewImg.classList.remove('is-in');
+            }, 300);
+          }, 200);
+        }
+      }
+    }
+
+    // Initialize: open first item
+    openItem(0);
+
+    // Click handler
+    accordion.addEventListener('click', (e) => {
+      const item = (e.target as HTMLElement).closest<HTMLElement>('.acc-item');
+      if (!item) return;
+      const i = Number(item.dataset.i);
+      if (!isNaN(i)) openItem(i);
+    });
+
+    // Keyboard handler
+    accordion.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        const item = (e.target as HTMLElement).closest<HTMLElement>('.acc-item');
+        if (!item) return;
+        e.preventDefault();
+        const i = Number(item.dataset.i);
+        if (!isNaN(i)) openItem(i);
+      }
+    });
+  }
+
+  initHowItWorks();
+  document.addEventListener('astro:after-swap', initHowItWorks);
+</script>

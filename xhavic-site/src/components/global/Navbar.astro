@@ -1,0 +1,708 @@
+---
+/**
+ * Navbar.astro
+ * ---
+ * Premium mega-menu navigation.
+ * Desktop: Full-width mega-dropdown for Protocol, compact dropdowns for audience pages.
+ * Mobile: Full-screen overlay with staggered animations.
+ * Transparent → solid on scroll via nav-scroll.ts.
+ */
+
+interface NavDropdownItem {
+  label: string;
+  href: string;
+  desc: string;
+  icon: string;
+}
+
+interface NavItem {
+  label: string;
+  href: string;
+  mega?: NavDropdownItem[];
+  dropdown?: NavDropdownItem[];
+}
+
+const navItems: NavItem[] = [
+  {
+    label: 'Protocol',
+    href: '/protocol',
+    mega: [
+      {
+        label: 'Overview',
+        href: '/protocol',
+        desc: 'How Xhavic works and why it exists',
+        icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+      },
+      {
+        label: 'Architecture',
+        href: '/protocol/architecture',
+        desc: '6-layer modular system design',
+        icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
+      },
+      {
+        label: 'Dual Wallet System',
+        href: '/protocol/dual-wallet',
+        desc: 'Two execution paths, one network',
+        icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+      },
+      {
+        label: 'Performance',
+        href: '/protocol/performance',
+        desc: '2,000+ TPS, $0.04, <200ms finality',
+        icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+      },
+      {
+        label: 'Security',
+        href: '/protocol/security',
+        desc: 'Fraud proofs and defense-in-depth',
+        icon: 'M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z',
+      },
+    ],
+  },
+  {
+    label: 'Developers',
+    href: '/developers',
+    dropdown: [
+      { label: 'Developer Hub', href: '/developers', desc: 'EVM tools, SDKs, and guides', icon: 'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4' },
+      { label: 'Documentation', href: '/docs', desc: 'API reference and tutorials', icon: 'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253' },
+    ],
+  },
+  {
+    label: 'Ecosystem',
+    href: '/ecosystem',
+    dropdown: [
+      { label: 'Applications', href: '/ecosystem', desc: 'DeFi, NFT, and tooling projects', icon: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4' },
+      { label: 'For Users', href: '/users', desc: 'Wallet setup, bridging, and dApps', icon: 'M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' },
+      { label: 'For Enterprises', href: '/enterprises', desc: 'Institutional-grade infrastructure', icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+    ],
+  },
+  { label: 'Governance', href: '/governance' },
+  { label: 'Community', href: '/community' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<div class="nav-wrap">
+  <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-hidden="true" />
+
+  <header class="navbar" role="banner">
+    <!-- Logo -->
+    <a class="brand" href="/" aria-label="Xhavic home">
+      <span class="sr-only">Xhavic home</span>
+      <img
+        style="width: 160px;"
+        src="/images/logo-white.png"
+        alt="Xhavic"
+        width="160"
+        height="36"
+        loading="eager"
+      />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="nav-center" aria-label="Main navigation">
+      <ul class="nav-links">
+        {navItems.map((item) => (
+          <li class:list={[
+            'nav-item',
+            { 'has-mega': !!item.mega },
+            { 'has-dropdown': !!item.dropdown },
+          ]}>
+            {item.mega ? (
+              <>
+                <button
+                  class:list={[
+                    'nav-link dropdown-trigger',
+                    { 'is-active': currentPath.startsWith(item.href) },
+                  ]}
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {item.label}
+                  <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="mega-panel">
+                  <div class="mega-inner">
+                    <div class="mega-left">
+                      <div class="mega-label">Protocol</div>
+                      <h3 class="mega-headline">Explore the Xhavic protocol architecture</h3>
+                      <p class="mega-desc">
+                        Risk-differentiated execution, 6-layer modular design,
+                        native oracle infrastructure.
+                      </p>
+                      <a href="/whitepaper" class="mega-cta">
+                        Read Whitepaper
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                          <path d="M1 7h12m0 0L8 2m5 5L8 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="mega-right">
+                      {item.mega.map((sub) => (
+                        <a
+                          href={sub.href}
+                          class:list={['mega-card', { 'is-active': currentPath === sub.href }]}
+                        >
+                          <div class="mega-card-icon">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={sub.icon} />
+                            </svg>
+                          </div>
+                          <div>
+                            <div class="mega-card-title">{sub.label}</div>
+                            <div class="mega-card-desc">{sub.desc}</div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </>
+            ) : item.dropdown ? (
+              <>
+                <button
+                  class:list={[
+                    'nav-link dropdown-trigger',
+                    { 'is-active': currentPath.startsWith(item.href) || (item.label === 'Ecosystem' && ['/users', '/enterprises', '/ecosystem'].some(p => currentPath.startsWith(p))) },
+                  ]}
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  {item.label}
+                  <svg class="nav-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </button>
+                <div class="compact-dropdown">
+                  {item.dropdown.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class:list={['compact-item', { 'is-active': currentPath === sub.href }]}
+                    >
+                      <div class="compact-icon">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d={sub.icon} />
+                        </svg>
+                      </div>
+                      <div>
+                        <div class="compact-title">{sub.label}</div>
+                        <div class="compact-desc">{sub.desc}</div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <a
+                href={item.href}
+                class:list={[
+                  'nav-link',
+                  { 'is-active': currentPath === item.href || currentPath.startsWith(item.href + '/') },
+                ]}
+              >
+                {item.label}
+              </a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="nav-actions">
+      <a class="docs-btn" href="/docs">
+        Docs
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M3 9L9 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M4.5 3H9V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+
+      <label class="hamburger" for="nav-toggle" aria-label="Toggle mobile menu">
+        <span class="sr-only">Menu</span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+    </div>
+  </header>
+
+  <slot name="mobile-menu" />
+</div>
+
+<script>
+  import '../../scripts/nav-scroll.ts';
+
+  function initNavDropdowns() {
+    const triggers = document.querySelectorAll('.dropdown-trigger');
+    triggers.forEach((trigger) => {
+      const parent = trigger.closest('.nav-item');
+      if (!parent) return;
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = parent.classList.contains('is-open');
+        document.querySelectorAll('.nav-item.is-open').forEach((item) => {
+          if (item !== parent) {
+            item.classList.remove('is-open');
+            item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+          }
+        });
+        parent.classList.toggle('is-open', !isOpen);
+        trigger.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+    document.addEventListener('click', (e) => {
+      if (!(e.target as HTMLElement).closest('.nav-item')) {
+        document.querySelectorAll('.nav-item.is-open').forEach((item) => {
+          item.classList.remove('is-open');
+          item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.nav-item.is-open').forEach((item) => {
+          item.classList.remove('is-open');
+          item.querySelector('.dropdown-trigger')?.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
+  }
+
+  initNavDropdowns();
+  document.addEventListener('astro:after-swap', initNavDropdowns);
+</script>
+
+<style>
+  /* ========== NAV WRAP ========== */
+  .nav-wrap {
+    position: relative;
+    z-index: 100;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  /* ========== NAVBAR ========== */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    z-index: 111;
+    width: 100%;
+    padding: 12px 44px;
+    transition: background 0.35s ease, border-color 0.35s ease;
+  }
+
+  .navbar.is-scrolled {
+    background: rgba(0, 0, 0, 0.92);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* ========== LOGO ========== */
+  .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+    min-width: 140px;
+    flex-shrink: 0;
+  }
+
+  .brand img {
+    display: block;
+    height: auto;
+  }
+
+  /* ========== CENTER NAV ========== */
+  .nav-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    transition: color 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .nav-link.is-active {
+    color: #fff;
+  }
+
+  /* Active indicator dot */
+  .nav-link.is-active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #2262ff;
+  }
+
+  .nav-chevron {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.5;
+  }
+
+  .nav-item.is-open .nav-chevron,
+  .nav-item:hover .nav-chevron {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  /* ========== MEGA PANEL (Protocol) ========== */
+  .mega-panel {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: rgba(3, 8, 20, 0.96);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.3s ease;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  }
+
+  .has-mega:hover .mega-panel,
+  .has-mega.is-open .mega-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mega-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 44px;
+  }
+
+  .mega-left {
+    padding-right: 44px;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mega-label {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #2262ff;
+    margin-bottom: 14px;
+  }
+
+  .mega-headline {
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+
+  .mega-desc {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin: 0 0 24px;
+  }
+
+  .mega-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2262ff;
+    text-decoration: none;
+    transition: gap 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: auto;
+  }
+
+  .mega-cta:hover {
+    gap: 12px;
+  }
+
+  .mega-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    padding-left: 44px;
+    align-content: start;
+  }
+
+  .mega-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    border-radius: 14px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .mega-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .mega-card.is-active {
+    background: rgba(34, 98, 255, 0.08);
+  }
+
+  .mega-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(34, 98, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #2262ff;
+    transition: background 0.2s ease;
+  }
+
+  .mega-card:hover .mega-card-icon {
+    background: rgba(34, 98, 255, 0.18);
+  }
+
+  .mega-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+
+  .mega-card-desc {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.35;
+  }
+
+  /* ========== COMPACT DROPDOWN ========== */
+  .compact-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    min-width: 300px;
+    background: rgba(3, 8, 20, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.25s ease;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .has-dropdown:hover .compact-dropdown,
+  .has-dropdown.is-open .compact-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .compact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.15s ease;
+  }
+
+  .compact-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .compact-item.is-active {
+    background: rgba(34, 98, 255, 0.08);
+  }
+
+  .compact-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: rgba(34, 98, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #2262ff;
+    transition: background 0.2s ease;
+  }
+
+  .compact-item:hover .compact-icon {
+    background: rgba(34, 98, 255, 0.18);
+  }
+
+  .compact-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+
+  .compact-desc {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.3;
+  }
+
+  /* ========== RIGHT ACTIONS ========== */
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    min-width: 120px;
+  }
+
+  .docs-btn {
+    height: 38px;
+    padding: 0 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(34, 98, 255, 0.3);
+    background: rgba(34, 98, 255, 0.1);
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+  }
+
+  .docs-btn:hover {
+    background: rgba(34, 98, 255, 0.2);
+    border-color: rgba(34, 98, 255, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(34, 98, 255, 0.2);
+  }
+
+  /* ========== HAMBURGER ========== */
+  .hamburger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    cursor: pointer;
+    place-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    transition: background 0.2s ease;
+  }
+
+  .hamburger:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .hamburger span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease;
+    position: relative;
+  }
+
+  :global(#nav-toggle:checked) + .navbar .hamburger span:nth-child(2) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  :global(#nav-toggle:checked) + .navbar .hamburger span:nth-child(3) {
+    opacity: 0;
+  }
+  :global(#nav-toggle:checked) + .navbar .hamburger span:nth-child(4) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 980px) {
+    .nav-actions { min-width: auto; }
+    .brand { min-width: auto; }
+    .navbar { padding: 10px 18px; }
+    .mega-inner { padding: 30px 18px; grid-template-columns: 1fr; }
+    .mega-left { padding-right: 0; border-right: none; padding-bottom: 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); margin-bottom: 24px; }
+    .mega-right { padding-left: 0; }
+  }
+
+  @media (max-width: 860px) {
+    .nav-center { display: none; }
+    .hamburger { display: flex; }
+    .docs-btn { display: none; }
+  }
+</style>

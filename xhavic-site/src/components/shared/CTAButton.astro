@@ -1,0 +1,38 @@
+---
+/**
+ * CTAButton — Styled link button
+ * Props:
+ *   href     — URL destination
+ *   variant  — 'primary' | 'secondary' | 'dark'
+ *   external — open in new tab (default false)
+ */
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'dark';
+  external?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  external = false,
+  class: className = '',
+} = Astro.props;
+
+const variantClasses: Record<string, string> = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  dark: 'btn-dark',
+};
+
+const cls = `${variantClasses[variant]} ${className}`.trim();
+---
+
+<a
+  href={href}
+  class={cls}
+  {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+>
+  <slot />
+</a>
