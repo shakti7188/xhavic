@@ -40,49 +40,89 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </div>
         </div>
 
-        <!-- Right: Abstract Shield Icon -->
-        <div class="hidden lg:flex items-center justify-center">
-          <svg
-            width="200"
-            height="200"
-            viewBox="0 0 200 200"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="opacity-[0.12]"
-          >
-            <path
-              d="M100 10L180 50V110C180 155 145 185 100 195C55 185 20 155 20 110V50L100 10Z"
-              stroke="url(#shield-gradient)"
-              stroke-width="2"
-              fill="none"
-            />
-            <path
-              d="M100 30L160 60V108C160 143 133 168 100 176C67 168 40 143 40 108V60L100 30Z"
-              stroke="url(#shield-gradient)"
-              stroke-width="1.5"
-              fill="none"
-              opacity="0.6"
-            />
-            <path
-              d="M100 50L140 70V106C140 131 121 151 100 157C79 151 60 131 60 106V70L100 50Z"
-              fill="url(#shield-gradient)"
-              opacity="0.08"
-            />
-            <path
-              d="M85 105L95 115L118 88"
-              stroke="url(#shield-gradient)"
-              stroke-width="3"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              opacity="0.5"
-            />
-            <defs>
-              <linearGradient id="shield-gradient" x1="20" y1="10" x2="180" y2="195" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#c4a35a" />
-                <stop offset="1" stop-color="#2262ff" />
-              </linearGradient>
-            </defs>
-          </svg>
+        <!-- Right: Enterprise Transaction Flow Graphic -->
+        <div class="ent-hero-graphic">
+          <!-- Outer frame -->
+          <div class="ent-frame">
+            <!-- Shield badge -->
+            <div class="ent-shield-badge">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+
+            <!-- Transaction flow cards -->
+            <div class="ent-flow">
+              <!-- Step 1: Initiate -->
+              <div class="ent-flow-card" style="--delay: 0.1s;">
+                <div class="ent-flow-num">01</div>
+                <div class="ent-flow-label">Transaction Initiated</div>
+                <div class="ent-flow-meta">Secured Wallet · Multi-sig</div>
+                <div class="ent-flow-bar">
+                  <div class="ent-flow-bar-fill" style="width: 100%;"></div>
+                </div>
+              </div>
+
+              <!-- Connector -->
+              <div class="ent-connector">
+                <svg width="2" height="20" viewBox="0 0 2 20">
+                  <line x1="1" y1="0" x2="1" y2="20" stroke="rgba(196,163,90,0.3)" stroke-width="1" stroke-dasharray="3 3" />
+                </svg>
+              </div>
+
+              <!-- Step 2: Escrow -->
+              <div class="ent-flow-card ent-flow-active" style="--delay: 0.3s;">
+                <div class="ent-flow-num">02</div>
+                <div class="ent-flow-label">24h Escrow Period</div>
+                <div class="ent-flow-meta">Reversible · Provisional state</div>
+                <div class="ent-flow-bar">
+                  <div class="ent-flow-bar-fill ent-bar-animate" style="width: 65%;"></div>
+                </div>
+                <div class="ent-flow-timer">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>15h 42m remaining</span>
+                </div>
+              </div>
+
+              <!-- Connector -->
+              <div class="ent-connector">
+                <svg width="2" height="20" viewBox="0 0 2 20">
+                  <line x1="1" y1="0" x2="1" y2="20" stroke="rgba(196,163,90,0.15)" stroke-width="1" stroke-dasharray="3 3" />
+                </svg>
+              </div>
+
+              <!-- Step 3: Settled -->
+              <div class="ent-flow-card ent-flow-pending" style="--delay: 0.5s;">
+                <div class="ent-flow-num">03</div>
+                <div class="ent-flow-label">Settled to Ethereum</div>
+                <div class="ent-flow-meta">Immutable · L1 finality</div>
+                <div class="ent-flow-bar">
+                  <div class="ent-flow-bar-fill" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats strip -->
+            <div class="ent-stats">
+              <div class="ent-stat">
+                <div class="ent-stat-val">$2.4M</div>
+                <div class="ent-stat-label">Protected Value</div>
+              </div>
+              <div class="ent-stat-divider"></div>
+              <div class="ent-stat">
+                <div class="ent-stat-val">3/5</div>
+                <div class="ent-stat-label">Signers Approved</div>
+              </div>
+              <div class="ent-stat-divider"></div>
+              <div class="ent-stat">
+                <div class="ent-stat-val">0</div>
+                <div class="ent-stat-label">Reversals</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -454,4 +494,212 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     import '../scripts/reveal.ts';
     import '../scripts/counter.ts';
   </script>
+
+  <style>
+    /* ========== Enterprise Hero Graphic ========== */
+    .ent-hero-graphic {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .ent-hero-graphic {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .ent-frame {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 32px 28px 24px;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Shield badge — top-right corner */
+    .ent-shield-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      background: rgba(196, 163, 90, 0.12);
+      border: 1px solid rgba(196, 163, 90, 0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c4a35a;
+    }
+
+    /* Transaction flow */
+    .ent-flow {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .ent-connector {
+      display: flex;
+      justify-content: center;
+      padding: 2px 0;
+    }
+
+    .ent-flow-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 16px 18px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: ent-card-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: var(--delay, 0s);
+    }
+
+    @keyframes ent-card-in {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .ent-flow-card.ent-flow-active {
+      border-color: rgba(196, 163, 90, 0.25);
+      background: rgba(196, 163, 90, 0.05);
+    }
+
+    .ent-flow-card.ent-flow-pending {
+      opacity: 0;
+      animation: ent-card-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .ent-flow-card.ent-flow-pending .ent-flow-label,
+    .ent-flow-card.ent-flow-pending .ent-flow-meta {
+      opacity: 0.35;
+    }
+
+    .ent-flow-num {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.25);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .ent-flow-active .ent-flow-num {
+      color: #c4a35a;
+    }
+
+    .ent-flow-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .ent-flow-meta {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 10px;
+    }
+
+    /* Progress bar */
+    .ent-flow-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .ent-flow-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.15);
+      transition: width 0.6s ease;
+    }
+
+    .ent-flow-active .ent-flow-bar-fill {
+      background: linear-gradient(90deg, #c4a35a, rgba(196, 163, 90, 0.5));
+    }
+
+    .ent-bar-animate {
+      animation: ent-bar-grow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes ent-bar-grow {
+      from { width: 55%; }
+      to { width: 72%; }
+    }
+
+    /* Timer badge */
+    .ent-flow-timer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 11px;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      color: #c4a35a;
+      letter-spacing: 0.02em;
+    }
+
+    .ent-flow-timer svg {
+      opacity: 0.6;
+    }
+
+    /* Stats strip */
+    .ent-stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .ent-stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .ent-stat-val {
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .ent-stat-label {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    .ent-stat-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .ent-flow-card {
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+      .ent-bar-animate {
+        animation: none;
+      }
+    }
+  </style>
 </BaseLayout>
