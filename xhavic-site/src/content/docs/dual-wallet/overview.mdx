@@ -1,0 +1,63 @@
+---
+title: "Dual Wallet System"
+description: "Xhavic's core innovation — protocol-level separation of fast DeFi and institutional safety."
+section: "dual-wallet"
+sortOrder: 0
+lastUpdated: 2026-02-10
+---
+
+The Dual Wallet System is Xhavic's core protocol-level innovation. It separates transactions into two execution paths at the sequencer level, giving developers and users the ability to choose between speed and safety for every transaction.
+
+## The Problem
+
+Every existing Layer 2 forces a single finality model on all transactions. A $5 token swap and a $5 million treasury transfer receive identical security guarantees. This is a false choice:
+
+- **Speed-optimized chains** sacrifice safety — transactions are irreversible immediately.
+- **Safety-optimized chains** sacrifice speed — all transactions wait for extended confirmations.
+
+## Two Execution Paths
+
+### Instant Wallet
+
+| Property | Value |
+|---|---|
+| Soft finality | < 200 milliseconds |
+| Composability | Full — atomic execution with other contracts |
+| Reversibility | None — irreversible by design |
+| Settlement | ~13 minutes (Ethereum confirmation) |
+| Best for | DeFi, trading, AI agents, automation |
+
+The Instant Wallet is the default execution path. Transactions execute immediately, are composable with other on-chain state, and cannot be reversed. This is equivalent to the finality model on Arbitrum, Optimism, and other L2s.
+
+### Secured Wallet
+
+| Property | Value |
+|---|---|
+| Escrow period | 24 hours |
+| Composability | None — isolated until finalized |
+| Reversibility | Yes — multi-sig reversal within escrow window |
+| Settlement | After 24-hour escrow closes |
+| Best for | Treasury, institutional, RWA, high-value |
+
+The Secured Wallet routes transactions through a 24-hour cryptographic escrow. During this window, authorized signers can reverse the transaction. Once the escrow expires, the transaction finalizes.
+
+## Why Composability and Reversibility Are Mutually Exclusive
+
+This is an architectural constraint, not a design choice:
+
+- **Composable transactions** execute atomically with other contracts in the same block. Reversing one would require reversing all dependent transactions.
+- **Reversible transactions** must be isolated. No downstream contract can depend on a transaction that might be reversed.
+
+Xhavic is the first L2 to support both by implementing two parallel execution paths at the sequencer level.
+
+## For Developers
+
+The Dual Wallet System is transparent to smart contracts. Your contract code does not change. The routing happens at the sequencer level based on the wallet address.
+
+```typescript
+// Detect wallet type from frontend/backend
+const walletType = await provider.send("xhv_getWalletType", [userAddress]);
+// Returns: "instant" or "secured"
+```
+
+[Full Integration Guide →](/docs/dual-wallet/integration)

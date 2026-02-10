@@ -1,0 +1,72 @@
+---
+title: "Protocol Parameters"
+description: "Every protocol parameter in one place — block production, performance, validators, oracle, and network IDs."
+section: "reference"
+sortOrder: 2
+lastUpdated: 2026-02-10
+---
+
+## Block Production
+
+| Parameter | Value |
+|---|---|
+| Block time | 2 seconds |
+| Max block size | 5 MB (compressed) |
+| Batch window | 60 seconds |
+| Transaction timeout | 24 hours |
+
+## Performance
+
+| Parameter | Value |
+|---|---|
+| Peak TPS | 2,000+ (testnet, Jan 2026) |
+| Average latency | 200ms (soft confirmation) |
+| Average fee | $0.04 |
+| Soft finality | 2-5 seconds |
+| Ethereum finality | ~13 minutes |
+
+## Settlement
+
+| Parameter | Value |
+|---|---|
+| Settlement chain | Ethereum Mainnet |
+| Challenge period | 7 days |
+| Fraud proof type | Interactive bisection |
+| State encoding | RLP |
+
+## Dual Wallet System
+
+| Parameter | Value |
+|---|---|
+| Instant Wallet finality | < 200ms (soft) |
+| Secured Wallet escrow | 24 hours |
+| Instant composability | Full |
+| Secured composability | None (until finalized) |
+
+## Validators
+
+| Parameter | Value |
+|---|---|
+| Active set size | Top 100 by stake |
+| Minimum uptime | 95% (30-day rolling) |
+| Epoch duration | 2 hours |
+| Offline slashing | 5% of stake |
+| Invalid fraud proof | 25% of stake |
+| Double-signing | 100% of stake |
+
+## Network Identifiers
+
+| Parameter | Mainnet | Testnet |
+|---|---|---|
+| Chain ID | 7849 | 7850 |
+| Chain ID (hex) | 0x1EA9 | 0x1EAA |
+| RPC endpoint | https://rpc.xhavic.io | https://testnet-rpc.xhavic.io |
+| Explorer | https://explorer.xhavic.io | https://testnet-explorer.xhavic.io |
+
+## Infrastructure Requirements
+
+| Node Type | CPU | RAM | Storage | Monthly Cost |
+|---|---|---|---|---|
+| Full node (sequencer) | 16 cores, 3.5+ GHz | 64 GB | 2 TB NVMe | $800-$1,200 |
+| Archive node (validator) | 8 cores, 2.5+ GHz | 32 GB | 4 TB HDD | $200-$400 |
+| Light client (RPC) | 4 cores | 8 GB | 100 GB | $50-$100 |

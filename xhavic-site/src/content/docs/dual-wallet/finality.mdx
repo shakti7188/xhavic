@@ -1,0 +1,47 @@
+---
+title: "Finality Model"
+description: "Understanding soft finality, Ethereum finality, escrow finality, and the 7-day challenge period."
+section: "dual-wallet"
+sortOrder: 4
+lastUpdated: 2026-02-10
+---
+
+Xhavic has multiple finality states. Understanding these is essential for building applications that correctly handle transaction confirmation.
+
+## Finality States
+
+| State | Time | Description |
+|---|---|---|
+| Sequenced (soft finality) | ~200ms | Sequencer has ordered the transaction |
+| Batch posted | ~60 seconds | Calldata posted to Ethereum |
+| L1 confirmed | ~13 minutes | Ethereum block confirmed |
+| Challenge period closed | 7 days | Full finality — no fraud proof submitted |
+
+## By Wallet Type
+
+### Instant Wallet
+
+For Instant Wallet transactions, **soft finality (200ms)** is sufficient for most DeFi applications. The transaction is practically irreversible because the sequencer has committed to the ordering — re-ordering would trigger fraud proofs.
+
+### Secured Wallet
+
+For Secured Wallet transactions, **no action should be taken until the 24-hour escrow closes.** During the escrow window, authorized signers can reverse the transaction.
+
+| State | Time | Safe to act on? |
+|---|---|---|
+| Escrowed | Immediate | No — can be reversed |
+| Escrow closed | 24 hours | Yes — finalized |
+| Batch posted | 24h + ~60s | Yes |
+| Challenge closed | 24h + 7 days | Maximum security |
+
+## Application Guidelines
+
+| Application Type | Minimum Finality | Recommended Wallet |
+|---|---|---|
+| DEX trades | Soft (200ms) | Instant |
+| Token transfers (small) | Soft (200ms) | Instant |
+| NFT minting | Soft (200ms) | Instant |
+| AI agent operations | Soft (200ms) | Instant |
+| Treasury transfers | Escrow closed (24h) | Secured |
+| RWA settlement | L1 confirmed + escrow | Secured |
+| L2 → L1 withdrawals | Challenge closed (7d) | Either |

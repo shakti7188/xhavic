@@ -1,0 +1,82 @@
+---
+title: "Quickstart — Foundry"
+description: "Deploy your first smart contract to Xhavic Testnet using Foundry in under 10 minutes."
+section: "getting-started"
+sortOrder: 5
+lastUpdated: 2026-02-10
+---
+
+Deploy your first smart contract to Xhavic Testnet using Foundry. This guide takes approximately 10 minutes.
+
+## Prerequisites
+
+- Foundry installed (`curl -L https://foundry.paradigm.xyz | bash && foundryup`)
+- A wallet with testnet ETH (get from [faucet.xhavic.io](https://faucet.xhavic.io))
+
+## 1. Create a New Project
+
+```bash
+forge init my-xhavic-project && cd my-xhavic-project
+```
+
+## 2. Write a Contract
+
+Replace `src/Counter.sol`:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+contract HelloXhavic {
+    string public greeting = "Hello from Xhavic L2!";
+    uint256 public count;
+
+    event Counted(address indexed sender, uint256 newCount);
+
+    function increment() external {
+        count++;
+        emit Counted(msg.sender, count);
+    }
+
+    function setGreeting(string calldata _greeting) external {
+        greeting = _greeting;
+    }
+}
+```
+
+## 3. Compile
+
+```bash
+forge build
+```
+
+## 4. Deploy to Testnet
+
+```bash
+forge create src/HelloXhavic.sol:HelloXhavic \
+  --rpc-url https://testnet-rpc.xhavic.io \
+  --private-key $DEPLOYER_KEY
+```
+
+## 5. Interact
+
+```bash
+# Read greeting
+cast call DEPLOYED_ADDRESS "greeting()" \
+  --rpc-url https://testnet-rpc.xhavic.io
+
+# Increment counter
+cast send DEPLOYED_ADDRESS "increment()" \
+  --rpc-url https://testnet-rpc.xhavic.io \
+  --private-key $DEPLOYER_KEY
+
+# Read count
+cast call DEPLOYED_ADDRESS "count()" \
+  --rpc-url https://testnet-rpc.xhavic.io
+```
+
+## What's Next?
+
+- [Read Oracle Price Data →](/docs/oracle/precompiles)
+- [Integrate the Dual Wallet System →](/docs/dual-wallet/integration)
+- [Network Information →](/docs/getting-started/network-info)

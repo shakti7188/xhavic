@@ -1,0 +1,59 @@
+---
+title: "Architecture Overview"
+description: "Xhavic's 6-layer modular architecture — execution, sequencing, settlement, DA, oracle, and governance."
+section: "protocol"
+sortOrder: 0
+lastUpdated: 2026-02-10
+---
+
+Xhavic is built as a modular stack of six independent layers. Each layer handles a specific responsibility and can be upgraded independently.
+
+## Six-Layer Architecture
+
+### Layer 1: Execution
+
+Full EVM bytecode compatibility. Processes transactions and updates state. All Ethereum opcodes, 256-bit word size, 1024 stack depth.
+
+### Layer 2: Sequencer
+
+Orders transactions with MEV protection via threshold encryption and time-weighted ordering. 2-second block time, 60-second batch window.
+
+- **Phase I:** Permissioned single sequencer
+- **Phase II:** Multi-sequencer stake-based model
+
+### Layer 3: Settlement
+
+State roots committed to Ethereum via the CanonicalTransactionChain contract. Every Xhavic state transition is anchored to Ethereum L1.
+
+### Layer 4: Data Availability
+
+Compressed transaction data posted to Ethereum calldata. Validators maintain redundant off-chain copies. Full state can be reconstructed from L1 in 5-10 minutes.
+
+### Layer 5: Oracle & AI
+
+Native oracle precompiles at addresses `0x00...F0-FF`. Multi-source aggregation with outlier detection. First-class AI agent execution support.
+
+### Layer 6: Governance
+
+DAO-controlled upgrades across four domains: protocol upgrades, sequencer policies, oracle parameters, and treasury allocation. On-chain execution with no off-chain multisig backdoors.
+
+## Key Protocol Parameters
+
+| Parameter | Value |
+|---|---|
+| Block time | 2 seconds |
+| Batch window | 60 seconds |
+| Challenge period | 7 days |
+| Peak TPS | 2,000+ (testnet, Jan 2026) |
+| Average fee | $0.04 |
+| Soft finality | 200ms |
+
+## Deep Dives
+
+- [Execution Layer →](/docs/protocol/execution)
+- [Sequencer →](/docs/protocol/sequencer)
+- [Settlement →](/docs/protocol/settlement)
+- [Data Availability →](/docs/protocol/data-availability)
+- [Fraud Proofs →](/docs/protocol/fraud-proofs)
+- [Transaction Lifecycle →](/docs/protocol/transaction-lifecycle)
+- [Fees & Gas →](/docs/protocol/fees)

@@ -1,0 +1,49 @@
+---
+title: "Fees & Gas"
+description: "How Xhavic's two-component fee model works — L2 execution fees and L1 data fees."
+section: "protocol"
+sortOrder: 7
+lastUpdated: 2026-02-10
+---
+
+## Fee Model
+
+Xhavic transaction fees have two components:
+
+**L2 Execution Fee** — The cost of executing your transaction on the Xhavic EVM. Significantly cheaper than Ethereum.
+
+**L1 Data Fee** — The cost of posting your transaction's calldata to Ethereum for data availability. This is the primary cost driver.
+
+```
+Total Fee = L2 Execution Fee + L1 Data Fee
+```
+
+## Cost Comparison
+
+### Xhavic vs Ethereum L1
+
+| Operation | Ethereum L1 | Xhavic L2 | Savings |
+|---|---|---|---|
+| Simple ETH transfer | ~$5.00 | ~$0.04 | 125x |
+| ERC-20 transfer | ~$8.00 | ~$0.04 | 200x |
+| Token swap (DEX) | ~$15.00 | ~$0.12 | 125x |
+| NFT mint | ~$25.00 | ~$0.08 | 312x |
+| Contract deployment | ~$50.00 | ~$1.50 | 33x |
+
+*Costs based on testnet benchmarks, January 2026. L1 costs assume ~30 gwei gas price.*
+
+### Gas Cost Table (L2 vs L1)
+
+| EVM Opcode | Ethereum L1 | Xhavic L2 | Reduction |
+|---|---|---|---|
+| SSTORE (new) | 20,000 | 500 | 40x |
+| SLOAD | 2,100 | 50 | 42x |
+| Transaction base | 21,000 | 300 | 70x |
+| CREATE2 | 32,000 | 800 | 40x |
+
+## Fee Optimization Tips
+
+1. **Minimize calldata** — L1 data fees scale with transaction size.
+2. **Batch operations** — Combine multiple operations to share the base fee.
+3. **Use events for off-chain data** — Emit logs instead of writing to storage.
+4. **Avoid storage writes when possible** — SSTORE remains the most expensive operation.

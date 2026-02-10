@@ -27,6 +27,8 @@ const sections: MobileSection[] = [
     links: [
       { label: 'Developers', href: '/developers' },
       { label: 'Documentation', href: '/docs' },
+      { label: 'Whitepaper', href: '/whitepaper' },
+      { label: 'Explorer', href: 'https://xhaviscan.com' },
     ],
   },
   {
@@ -35,6 +37,7 @@ const sections: MobileSection[] = [
       { label: 'Users', href: '/users' },
       { label: 'Enterprises', href: '/enterprises' },
       { label: 'Ecosystem', href: '/ecosystem' },
+      { label: 'Bridge', href: '/bridge' },
       { label: 'Governance', href: '/governance' },
       { label: 'Community', href: '/community' },
     ],
@@ -66,11 +69,19 @@ const currentPath = Astro.url.pathname;
                   'mobile-link',
                   { 'is-active': currentPath === link.href },
                 ]}
+                {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {})}
               >
                 {link.label}
-                <svg class="mobile-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                {link.href.startsWith('http') ? (
+                  <svg class="mobile-link-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 11L11 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M5 3H11V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                ) : (
+                  <svg class="mobile-link-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                )}
               </a>
             </li>
           ))}
@@ -80,7 +91,7 @@ const currentPath = Astro.url.pathname;
 
     <!-- Docs CTA -->
     <div class="mobile-docs" style="--stagger: 3">
-      <a href="/docs" class="mobile-docs-btn">
+      <a href="/docs" class="mobile-docs-btn" target="_blank" rel="noopener">
         Documentation
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
           <path d="M3 11L11 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />

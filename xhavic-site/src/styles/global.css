@@ -82,6 +82,19 @@
            hover:bg-gray-50 active:scale-[0.98];
   }
 
+  .btn-outline {
+    @apply btn px-6 py-3 md:px-8 md:py-3.5 active:scale-[0.98];
+    color: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+    gap: 0.5rem;
+  }
+  .btn-outline:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+
   /* Pill badge */
   .pill {
     @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-pill

@@ -1,0 +1,71 @@
+---
+title: "Network Information"
+description: "Chain IDs, RPC URLs, explorer links, contract addresses — everything you need to connect."
+section: "getting-started"
+sortOrder: 3
+lastUpdated: 2026-02-10
+---
+
+## Mainnet
+
+| Property | Value |
+|---|---|
+| Network Name | Xhavic Mainnet |
+| Chain ID | `7849` |
+| Currency Symbol | ETH |
+| RPC URL (HTTPS) | `https://rpc.xhavic.io` |
+| Block Explorer | `https://explorer.xhavic.io` |
+| Bridge | `https://bridge.xhavic.io` |
+| Block Time | 2 seconds |
+| Average Fee | $0.04 |
+
+## Testnet
+
+| Property | Value |
+|---|---|
+| Network Name | Xhavic Testnet |
+| Chain ID | `7850` |
+| Currency Symbol | ETH |
+| RPC URL (HTTPS) | `https://testnet-rpc.xhavic.io` |
+| Block Explorer | `https://testnet-explorer.xhavic.io` |
+| Bridge | `https://testnet-bridge.xhavic.io` |
+| Faucet | `https://faucet.xhavic.io` |
+| Block Time | 2 seconds |
+
+## Add to MetaMask
+
+```javascript
+// Add Xhavic Mainnet to MetaMask
+await window.ethereum.request({
+  method: 'wallet_addEthereumChain',
+  params: [{
+    chainId: '0x1EA9',
+    chainName: 'Xhavic Mainnet',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://rpc.xhavic.io'],
+    blockExplorerUrls: ['https://explorer.xhavic.io'],
+  }],
+});
+```
+
+```javascript
+// Add Xhavic Testnet to MetaMask
+await window.ethereum.request({
+  method: 'wallet_addEthereumChain',
+  params: [{
+    chainId: '0x1EAA',
+    chainName: 'Xhavic Testnet',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://testnet-rpc.xhavic.io'],
+    blockExplorerUrls: ['https://testnet-explorer.xhavic.io'],
+  }],
+});
+```
+
+## Oracle Precompiles (L2)
+
+| Address | Function |
+|---|---|
+| `0x00...00F0` | Price feeds (ETH/USD, BTC/USD, etc.) |
+| `0x00...00F4` | Randomness |
+| `0x00...00F8` | AI Compute |

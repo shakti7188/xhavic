@@ -1,0 +1,140 @@
+---
+title: "Quickstart — Hardhat"
+description: "Deploy your first smart contract to Xhavic Testnet using Hardhat in under 10 minutes."
+section: "getting-started"
+sortOrder: 4
+lastUpdated: 2026-02-10
+---
+
+Deploy your first smart contract to Xhavic Testnet using Hardhat. This guide takes approximately 10 minutes.
+
+## Prerequisites
+
+- Node.js 18+ installed
+- A wallet with testnet ETH (get from [faucet.xhavic.io](https://faucet.xhavic.io))
+
+## 1. Create a New Project
+
+```bash
+mkdir my-xhavic-project && cd my-xhavic-project
+npx hardhat init
+```
+
+Select "Create a TypeScript project" when prompted.
+
+## 2. Configure the Network
+
+Open `hardhat.config.ts` and add the Xhavic networks:
+
+```typescript
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomicfoundation/hardhat-toolbox";
+import * as dotenv from "dotenv";
+dotenv.config();
+
+const config: HardhatUserConfig = {
+  solidity: "0.8.24",
+  networks: {
+    xhavic: {
+      url: "https://rpc.xhavic.io",
+      chainId: 7849,
+      accounts: [process.env.DEPLOYER_KEY!],
+    },
+    "xhavic-testnet": {
+      url: "https://testnet-rpc.xhavic.io",
+      chainId: 7850,
+      accounts: [process.env.DEPLOYER_KEY!],
+    },
+  },
+};
+
+export default config;
+```
+
+## 3. Set Up Environment Variables
+
+Create a `.env` file:
+
+```bash
+DEPLOYER_KEY=your_private_key_here
+```
+
+> **Security:** Never commit your `.env` file. Add it to `.gitignore`.
+
+## 4. Write a Contract
+
+Create `contracts/HelloXhavic.sol`:
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+contract HelloXhavic {
+    string public greeting = "Hello from Xhavic L2!";
+    uint256 public count;
+
+    event Counted(address indexed sender, uint256 newCount);
+
+    function increment() external {
+        count++;
+        emit Counted(msg.sender, count);
+    }
+
+    function setGreeting(string calldata _greeting) external {
+        greeting = _greeting;
+    }
+}
+```
+
+## 5. Write a Deploy Script
+
+Create `scripts/deploy.ts`:
+
+```typescript
+import { ethers } from "hardhat";
+
+async function main() {
+  const HelloXhavic = await ethers.getContractFactory("HelloXhavic");
+  const contract = await HelloXhavic.deploy();
+  await contract.waitForDeployment();
+
+  const address = await contract.getAddress();
+  console.log(`HelloXhavic deployed to: ${address}`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
+```
+
+## 6. Deploy to Testnet
+
+```bash
+npx hardhat run scripts/deploy.ts --network xhavic-testnet
+```
+
+Expected output:
+
+```
+HelloXhavic deployed to: 0x1234...abcd
+```
+
+## 7. Interact with Your Contract
+
+```bash
+npx hardhat console --network xhavic-testnet
+```
+
+```javascript
+const contract = await ethers.getContractAt("HelloXhavic", "DEPLOYED_ADDRESS");
+await contract.greeting();    // "Hello from Xhavic L2!"
+await contract.increment();   // Costs ~$0.001 on testnet
+await contract.count();       // 1n
+```
+
+## What's Next?
+
+- [Read Oracle Price Data →](/docs/oracle/precompiles) — Access native oracle precompiles
+- [Integrate the Dual Wallet System →](/docs/dual-wallet/integration) — Handle Instant and Secured wallets
+- [Deploy with Foundry →](/docs/getting-started/quickstart-foundry) — Alternative tooling

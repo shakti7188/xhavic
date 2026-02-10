@@ -1,0 +1,92 @@
+---
+title: "Integration Guide"
+description: "How to detect wallet types, handle escrow states, and build dApps supporting both wallets."
+section: "dual-wallet"
+sortOrder: 3
+lastUpdated: 2026-02-10
+---
+
+This guide covers how to detect wallet types, handle escrow states, and build applications that support both Instant and Secured wallets.
+
+## Detecting Wallet Type
+
+```typescript
+import { ethers } from "ethers";
+
+const provider = new ethers.JsonRpcProvider("https://rpc.xhavic.io");
+
+async function getWalletType(address: string): Promise<"instant" | "secured"> {
+  return await provider.send("xhv_getWalletType", [address]);
+}
+
+const type = await getWalletType("0x1234...abcd");
+
+if (type === "instant") {
+  // Finality: <200ms | Composable | Irreversible
+} else {
+  // Finality: 24h escrow | Non-composable | Reversible
+}
+```
+
+## Checking Escrow Status
+
+For Secured Wallet transactions:
+
+```typescript
+async function checkEscrow(txHash: string) {
+  const status = await provider.send("xhv_getEscrowStatus", [txHash]);
+  return status;
+  // {
+  //   status: "pending" | "finalized" | "reversed",
+  //   expiresIn: "21h 43m",
+  //   reversible: true,
+  //   finalizedAt: null
+  // }
+}
+```
+
+## UI Pattern: Transaction Preview
+
+```typescript
+async function showTransactionPreview(userAddress: string) {
+  const type = await getWalletType(userAddress);
+
+  if (type === "secured") {
+    return {
+      message: "This transaction enters a 24-hour escrow. You can reverse it within that window.",
+      finality: "24 hours",
+      reversible: true,
+    };
+  }
+
+  return {
+    message: "This transaction finalizes immediately and cannot be reversed.",
+    finality: "< 200ms",
+    reversible: false,
+  };
+}
+```
+
+## Waiting for Escrow Finalization
+
+```typescript
+async function waitForFinalization(txHash: string): Promise<void> {
+  let status = await provider.send("xhv_getEscrowStatus", [txHash]);
+
+  while (status.status === "pending") {
+    await new Promise(resolve => setTimeout(resolve, 60_000));
+    status = await provider.send("xhv_getEscrowStatus", [txHash]);
+  }
+
+  if (status.status === "reversed") {
+    throw new Error("Transaction was reversed during escrow period");
+  }
+  // status === "finalized" — safe to proceed
+}
+```
+
+## Smart Contract Considerations
+
+1. **No contract changes needed.** Routing is handled by the sequencer.
+2. **Secured Wallet transactions are non-composable** until escrow finalizes.
+3. **Events emit at execution time**, not at finalization. Your indexer should check escrow status before treating events as final.

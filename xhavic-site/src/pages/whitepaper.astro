@@ -931,6 +931,113 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       border-left: 2px solid var(--color-primary, #2262ff);
       font-weight: 600;
     }
+
+    /* ── Print / PDF styles ── */
+    @media print {
+      /* Hide site navbar, footer, and all fixed elements */
+      .nav-wrap, .xh-footer,
+      nav, footer, header,
+      .navbar, .site-footer,
+      .mobile-panel, .brand {
+        display: none !important;
+        visibility: hidden !important;
+        position: static !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+      /* Force hide all fixed-position elements */
+      *[style*="position:fixed"],
+      *[style*="position: fixed"] {
+        display: none !important;
+      }
+      /* Hide sidebar TOC */
+      #wp-toc, aside {
+        display: none !important;
+      }
+      /* Hide hero section (dark bg with buttons) */
+      .bg-dark {
+        display: none !important;
+      }
+      /* Hide all download links */
+      a[download] {
+        display: none !important;
+      }
+      /* Hide skip-to-content */
+      .sr-only {
+        display: none !important;
+      }
+      /* Remove section borders and extra padding */
+      .section-bordered {
+        border: none !important;
+        padding: 1rem 0 !important;
+      }
+      /* Reset grid to single column for print */
+      .lg\:grid {
+        display: block !important;
+      }
+      /* Clean body */
+      body {
+        background: #fff !important;
+        color: #1a1a1a !important;
+        margin: 0 !important;
+        padding: 0 2rem !important;
+        font-size: 11pt !important;
+      }
+      .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      /* Print title header */
+      #content::before {
+        content: "XHAVIC — Technical Whitepaper v1.0";
+        display: block;
+        font-size: 28pt;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #000;
+        padding-top: 0.5in;
+        margin-bottom: 0.25in;
+      }
+      #content::after {
+        content: "January 2026 · Xhavic Protocol Foundation";
+        display: block;
+        font-size: 10pt;
+        color: #888;
+        margin-top: -1rem;
+        margin-bottom: 2rem;
+      }
+      /* Typography cleanup */
+      .wp-content p {
+        color: #1a1a1a !important;
+        font-size: 11pt !important;
+        line-height: 1.7 !important;
+      }
+      .wp-content h2 {
+        font-size: 18pt !important;
+        page-break-after: avoid !important;
+        margin-top: 2rem !important;
+        color: #000 !important;
+      }
+      .wp-content h3 {
+        font-size: 14pt !important;
+        page-break-after: avoid !important;
+        color: #111 !important;
+      }
+      .wp-table {
+        page-break-inside: avoid !important;
+      }
+      .wp-section {
+        page-break-inside: avoid !important;
+      }
+      /* Hide the footer "Download PDF version" row */
+      .border-t {
+        border: none !important;
+      }
+      .border-t a {
+        display: none !important;
+      }
+    }
   </style>
 
   <script>

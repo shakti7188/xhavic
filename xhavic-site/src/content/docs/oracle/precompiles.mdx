@@ -1,0 +1,68 @@
+---
+title: "Oracle Precompiles"
+description: "How to read price data from Xhavic's native oracle precompiles — addresses, interfaces, and code examples."
+section: "oracle"
+sortOrder: 1
+lastUpdated: 2026-02-10
+---
+
+## Reading Price Data
+
+### From Solidity
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+
+interface IXhavicOracle {
+    function getPrice(bytes32 pair) external view returns (
+        uint256 price,
+        uint256 timestamp,
+        uint8 decimals
+    );
+    function getAvailableFeeds() external view returns (bytes32[] memory);
+}
+
+contract PriceConsumer {
+    IXhavicOracle constant ORACLE = IXhavicOracle(
+        0x00000000000000000000000000000000000000F0
+    );
+
+    function getEthUsdPrice() external view returns (uint256) {
+        (uint256 price, , ) = ORACLE.getPrice(keccak256("ETH/USD"));
+        return price;
+    }
+}
+```
+
+### From ethers.js
+
+```typescript
+const provider = new ethers.JsonRpcProvider("https://rpc.xhavic.io");
+
+async function getPrice(pair: string) {
+  const result = await provider.send("xhv_getOraclePrice", [pair]);
+  return {
+    price: result.price,
+    timestamp: result.timestamp,
+    decimals: result.decimals,
+  };
+}
+
+const ethPrice = await getPrice("ETH/USD");
+console.log(`ETH/USD: $${ethPrice.price}`);
+```
+
+## Chainlink Relay Architecture
+
+For data feeds originating from Chainlink on L1, Xhavic uses a relay architecture:
+
+```
+L1 (Ethereum/Sepolia)          L2 (Xhavic)
+┌────────────────────┐         ┌────────────────────┐
+│ MultiPriceOracleL1 │────────▶│ MultiPriceOracleL2 │
+│ (AggregatorV3)     │ Relayer │ (Price storage)    │
+└────────────────────┘         └────────────────────┘
+```
+
+The relayer bridges L1 oracle data to L2, making it available through both the precompile interface and direct contract reads.

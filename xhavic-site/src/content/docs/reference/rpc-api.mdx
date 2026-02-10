@@ -1,0 +1,88 @@
+---
+title: "JSON-RPC API"
+description: "Complete reference for standard eth_* and Xhavic xhv_* RPC methods."
+section: "reference"
+sortOrder: 0
+lastUpdated: 2026-02-10
+---
+
+Xhavic supports all standard Ethereum JSON-RPC methods plus custom `xhv_*` extensions.
+
+## Endpoints
+
+| Network | HTTP | WebSocket |
+|---|---|---|
+| Mainnet | `https://rpc.xhavic.io` | `wss://ws.xhavic.io` |
+| Testnet | `https://testnet-rpc.xhavic.io` | `wss://testnet-ws.xhavic.io` |
+
+## Xhavic Extension Methods
+
+### xhv_getWalletType
+
+Returns the wallet type for an address.
+
+**Parameters:** `[address]`
+**Returns:** `"instant"` or `"secured"`
+
+```json
+{ "method": "xhv_getWalletType", "params": ["0x1234..."], "id": 1 }
+// → { "result": "instant" }
+```
+
+### xhv_getEscrowStatus
+
+Returns escrow status for a Secured Wallet transaction.
+
+**Parameters:** `[txHash]`
+**Returns:** `{ status, expiresIn, reversible, finalizedAt }`
+
+```json
+{ "method": "xhv_getEscrowStatus", "params": ["0xabcd..."], "id": 1 }
+// → { "result": { "status": "pending", "expiresIn": "21h 43m", "reversible": true } }
+```
+
+### xhv_getOraclePrice
+
+Returns price data from the native oracle layer.
+
+**Parameters:** `[pair]`
+**Returns:** `{ price, timestamp, decimals }`
+
+```json
+{ "method": "xhv_getOraclePrice", "params": ["ETH/USD"], "id": 1 }
+// → { "result": { "price": "2534.87000000", "timestamp": 1708012800, "decimals": 8 } }
+```
+
+### xhv_getOracleFeeds
+
+Returns all available oracle price feeds. No parameters.
+
+### xhv_getAgentState
+
+Returns AI agent execution state.
+
+**Parameters:** `[agentId]`
+
+### xhv_getDepositStatus
+
+Returns L1 → L2 deposit status.
+
+**Parameters:** `[l1TxHash]`
+
+### xhv_getWithdrawalProof
+
+Generates Merkle inclusion proof for L2 → L1 withdrawal.
+
+**Parameters:** `[l2TxHash]`
+**Returns:** `{ proof, stateRoot, index, challengePeriodEnds }`
+
+## Standard Ethereum Methods
+
+All standard `eth_*`, `net_*`, and `web3_*` methods are supported including:
+
+- `eth_getBalance`, `eth_getTransactionCount`, `eth_getCode`
+- `eth_sendRawTransaction`, `eth_getTransactionReceipt`
+- `eth_blockNumber`, `eth_getBlockByNumber`, `eth_getBlockByHash`
+- `eth_call`, `eth_estimateGas`, `eth_gasPrice`
+- `eth_getLogs`, `eth_subscribe`, `eth_unsubscribe`
+- `eth_chainId` — Returns `0x1EA9` (mainnet) or `0x1EAA` (testnet)

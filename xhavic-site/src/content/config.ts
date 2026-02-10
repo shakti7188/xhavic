@@ -99,10 +99,48 @@ const whitepaper = defineCollection({
   }),
 });
 
+// ---- Docs ----
+
+const docs = defineCollection({
+  type: "content",
+  schema: z.object({
+    /** Page title displayed in sidebar and page header */
+    title: z.string(),
+    /** Short description for SEO and page header */
+    description: z.string(),
+    /** Sidebar section grouping */
+    section: z
+      .enum([
+        "getting-started",
+        "dual-wallet",
+        "oracle",
+        "bridge",
+        "protocol",
+        "security",
+        "nodes",
+        "governance",
+        "tools",
+        "tutorials",
+        "reference",
+        "migrate",
+        "notices",
+      ]),
+    /** Sort order within section (lower = first) */
+    sortOrder: z.number().default(0),
+    /** Icon for sidebar section header (emoji) */
+    icon: z.string().optional(),
+    /** Draft pages are excluded from production builds */
+    draft: z.boolean().default(false),
+    /** Last updated date */
+    lastUpdated: z.coerce.date().optional(),
+  }),
+});
+
 // ---- Export all collections ----
 
 export const collections = {
   blog,
   glossary,
   whitepaper,
+  docs,
 };

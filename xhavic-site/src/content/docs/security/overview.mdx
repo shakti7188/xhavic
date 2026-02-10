@@ -1,0 +1,57 @@
+---
+title: "Security Model"
+description: "Defense-in-depth security architecture — 5 concentric layers from cryptographic primitives to Ethereum settlement."
+section: "security"
+sortOrder: 0
+lastUpdated: 2026-02-10
+---
+
+Xhavic implements a defense-in-depth security architecture with five concentric layers. Every state transition ultimately settles on Ethereum, inheriting its security guarantees.
+
+## Five Security Layers
+
+### Layer 1: Cryptographic Primitives (Innermost)
+
+| Primitive | Algorithm | Purpose |
+|---|---|---|
+| Hashing | Keccak-256 | State hashing, Merkle trees |
+| Signatures | ECDSA (secp256k1) | Transaction signing |
+| Encryption | ChaCha20-Poly1305 | MEV protection |
+| State commitment | Merkle-Patricia Trie | Inclusion proofs |
+
+### Layer 2: Deterministic Execution
+
+Full EVM compatibility ensures identical outputs given identical inputs. Essential for fraud proof verification.
+
+### Layer 3: Validator Oversight
+
+| Parameter | Value |
+|---|---|
+| Active set | Top 100 by stake |
+| Minimum uptime | 95% (30-day rolling) |
+| Offline slashing | 5% of stake |
+| Invalid fraud proof | 25% of stake |
+| Double-signing | 100% of stake |
+
+### Layer 4: Fraud Proofs
+
+Interactive bisection protocol narrows disputes to a single EVM instruction, verified on Ethereum. **Only one honest validator needed** to secure the entire network.
+
+Challenge period: 7 days for all L2 → L1 operations.
+
+### Layer 5: Ethereum Settlement (Outermost)
+
+Every state root commits to Ethereum via the CanonicalTransactionChain.
+
+- Xhavic cannot forge state
+- Xhavic cannot censor permanently (users can force-include via L1)
+- Xhavic cannot withhold data (calldata posted to Ethereum)
+
+## Censorship Resistance
+
+| Threat | Mitigation |
+|---|---|
+| Sequencer censors transaction | Force-include via L1 (~10x normal cost) |
+| Sequencer delays transaction | 24-hour timeout guarantees inclusion |
+| Sequencer goes offline | Rotation and slashing |
+| Data withholding | All data on Ethereum calldata |

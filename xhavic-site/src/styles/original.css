@@ -3123,3 +3123,18 @@ body {
   }
   .robotSec__left{ min-height: 260px; }
 }
+
+/* ── Print: hide fixed navbar ── */
+@media print {
+  .navbar {
+    display: none !important;
+    position: static !important;
+    visibility: hidden !important;
+  }
+  .nav-wrap {
+    display: none !important;
+  }
+  .mobile-panel {
+    display: none !important;
+  }
+}

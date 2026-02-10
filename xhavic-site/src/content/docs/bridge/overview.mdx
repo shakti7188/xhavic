@@ -1,0 +1,46 @@
+---
+title: "Bridge Overview"
+description: "How the Xhavic bridge works — deposits, withdrawals, supported assets, and architecture."
+section: "bridge"
+sortOrder: 0
+lastUpdated: 2026-02-10
+---
+
+The Xhavic bridge enables asset transfers between Ethereum (L1) and Xhavic (L2). It uses a lock-and-mint mechanism secured by Ethereum's settlement layer.
+
+## Deposits (L1 → L2)
+
+1. Send ETH or ERC-20 tokens to the bridge contract on Ethereum
+2. The bridge contract locks the assets and emits a deposit event
+3. The relayer detects the deposit and queues a minting instruction on L2
+4. WETH or the L2 token equivalent is minted on Xhavic
+5. Deposit typically completes within minutes
+
+> **Note:** ETH becomes WETH (an ERC-20 token) on Xhavic for replay protection.
+
+[Deposit Guide →](/docs/bridge/deposits)
+
+## Withdrawals (L2 → L1)
+
+### Standard Withdrawal (7-day)
+
+1. Initiate withdrawal on L2 — tokens are burned
+2. Wait for the L2 batch to post on Ethereum
+3. Generate a Merkle inclusion proof (`xhv_getWithdrawalProof`)
+4. Wait the 7-day challenge period
+5. Execute the withdrawal on L1 to claim your assets
+
+### Fast Exit (via Liquidity Provider)
+
+For users who need immediate L1 liquidity:
+1. Initiate withdrawal on L2
+2. A liquidity provider pays you on L1 immediately (minus a fee)
+3. The LP claims the standard withdrawal after the 7-day period
+
+[Withdrawal Guide →](/docs/bridge/withdrawals)
+
+## Cross-Chain Messaging
+
+Beyond asset transfers, the bridge supports arbitrary message passing between L1 and L2 for cross-chain contract calls and governance actions.
+
+[Cross-Chain Messaging →](/docs/bridge/messaging)

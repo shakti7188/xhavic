@@ -1,0 +1,55 @@
+---
+/**
+ * [...slug].astro
+ * ---
+ * Dynamic docs page route. Reads from the docs content collection
+ * and renders each MDX page with the DocsLayout.
+ *
+ * Engineers: To update docs, edit the .mdx files in src/content/docs/.
+ * The site will automatically rebuild with the new content.
+ */
+import { getCollection, render } from 'astro:content';
+import DocsLayout from '@/layouts/DocsLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs', ({ data }) => !data.draft);
+  return docs.map((doc) => {
+    // Astro 5: doc.id may include extension — strip it for clean URL slug
+    const slug = doc.id.replace(/\.(mdx?|md)$/, '');
+    return {
+      params: { slug },
+      props: { doc },
+    };
+  });
+}
+
+const { doc } = Astro.props;
+const { Content } = await render(doc);
+
+// Section labels for breadcrumb
+const sectionLabels: Record<string, string> = {
+  'getting-started': 'Getting Started',
+  'dual-wallet': 'Dual Wallet System',
+  'oracle': 'Oracle & AI Layer',
+  'bridge': 'Bridging',
+  'protocol': 'How Xhavic Works',
+  'security': 'Security',
+  'nodes': 'Node Operators',
+  'governance': 'Governance',
+  'tools': 'Tools & Infrastructure',
+  'tutorials': 'Tutorials',
+  'reference': 'Reference',
+  'migrate': 'Migration Guides',
+  'notices': 'Notices',
+};
+---
+
+<DocsLayout
+  title={doc.data.title}
+  description={doc.data.description}
+  section={sectionLabels[doc.data.section] || doc.data.section}
+  currentSlug={doc.id}
+  lastUpdated={doc.data.lastUpdated}
+>
+  <Content />
+</DocsLayout>

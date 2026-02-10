@@ -1,0 +1,194 @@
+---
+/**
+ * DocsSidebar.astro
+ * ---
+ * Left sidebar navigation for docs pages.
+ * Reads all docs content collection entries and groups by section.
+ * Highlights the current page.
+ */
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug?: string;
+}
+
+const { currentSlug } = Astro.props;
+
+const allDocs = await getCollection('docs', ({ data }) => !data.draft);
+
+// Section metadata for ordering and display
+const sections = [
+  { id: 'getting-started', label: 'Getting Started', icon: '🏠' },
+  { id: 'dual-wallet', label: 'Dual Wallet System', icon: '🔀' },
+  { id: 'oracle', label: 'Oracle & AI Layer', icon: '🔮' },
+  { id: 'bridge', label: 'Bridging', icon: '🌉' },
+  { id: 'protocol', label: 'How Xhavic Works', icon: '⚙️' },
+  { id: 'security', label: 'Security', icon: '🛡️' },
+  { id: 'nodes', label: 'Node Operators', icon: '🖥️' },
+  { id: 'governance', label: 'Governance', icon: '🏛️' },
+  { id: 'tools', label: 'Tools & Infrastructure', icon: '🧰' },
+  { id: 'tutorials', label: 'Tutorials', icon: '📖' },
+  { id: 'reference', label: 'Reference', icon: '📚' },
+  { id: 'migrate', label: 'Migration Guides', icon: '🔄' },
+  { id: 'notices', label: 'Notices', icon: '📋' },
+] as const;
+
+// Group docs by section
+const docsBySection = new Map<string, typeof allDocs>();
+for (const section of sections) {
+  const sectionDocs = allDocs
+    .filter((doc) => doc.data.section === section.id)
+    .sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+  if (sectionDocs.length > 0) {
+    docsBySection.set(section.id, sectionDocs);
+  }
+}
+---
+
+<aside class="docs-sidebar" id="docs-sidebar">
+  <div class="docs-sidebar-inner">
+    <!-- Logo / brand link -->
+    <a href="/docs" class="docs-sidebar-brand">
+      <svg width="20" height="24" viewBox="0 0 723.61 887.08" fill="#2262ff" aria-hidden="true">
+        <polygon points="201.43 0 0 0 104.78 493.89 252.75 258.16 201.43 0"/>
+        <polygon points="723.61 0 487.53 0 272.15 355.73 123.21 580.75 263.35 580.75 66.4 887.08 688.97 306.33 472.31 306.33 723.61 0"/>
+      </svg>
+      <span>Xhavic Docs</span>
+    </a>
+
+    <nav class="docs-sidebar-nav" aria-label="Documentation navigation">
+      {sections.map((section) => {
+        const sectionDocs = docsBySection.get(section.id);
+        if (!sectionDocs || sectionDocs.length === 0) return null;
+
+        return (
+          <div class="docs-nav-section">
+            <div class="docs-nav-section-header">
+              <span class="docs-nav-icon">{section.icon}</span>
+              <span class="docs-nav-label">{section.label}</span>
+            </div>
+            <ul class="docs-nav-list">
+              {sectionDocs.map((doc) => {
+                const slug = doc.id.replace(/\.(mdx?|md)$/, '');
+                const isActive = currentSlug === doc.id;
+                return (
+                  <li>
+                    <a
+                      href={`/docs/${slug}`}
+                      class:list={['docs-nav-link', { active: isActive }]}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {doc.data.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        );
+      })}
+    </nav>
+  </div>
+</aside>
+
+<style>
+  .docs-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background: #fafafa;
+    border-right: 1px solid #e5e5e5;
+    z-index: 40;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: transform 0.3s ease;
+  }
+
+  .docs-sidebar-inner {
+    padding: 1.25rem 0 3rem;
+  }
+
+  .docs-sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0 1.25rem 1.25rem;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: #171717;
+    text-decoration: none;
+  }
+
+  .docs-sidebar-brand img {
+    border-radius: 4px;
+  }
+
+  .docs-sidebar-nav {
+    padding: 0 0.75rem;
+  }
+
+  .docs-nav-section {
+    margin-bottom: 0.5rem;
+  }
+
+  .docs-nav-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #737373;
+    user-select: none;
+  }
+
+  .docs-nav-icon {
+    font-size: 0.875rem;
+    line-height: 1;
+  }
+
+  .docs-nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .docs-nav-link {
+    display: block;
+    padding: 0.375rem 0.5rem 0.375rem 1.75rem;
+    font-size: 0.8125rem;
+    color: #525252;
+    text-decoration: none;
+    border-radius: 6px;
+    line-height: 1.5;
+    transition: all 0.15s ease;
+  }
+
+  .docs-nav-link:hover {
+    color: #171717;
+    background: #f0f0f0;
+  }
+
+  .docs-nav-link.active {
+    color: #2262ff;
+    background: rgba(34, 98, 255, 0.08);
+    font-weight: 600;
+  }
+
+  /* Mobile: hidden by default, shown via toggle */
+  @media (max-width: 1023px) {
+    .docs-sidebar {
+      transform: translateX(-100%);
+    }
+
+    .docs-sidebar.open {
+      transform: translateX(0);
+    }
+  }
+</style>

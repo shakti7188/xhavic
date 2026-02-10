@@ -853,6 +853,12 @@
   border-color: rgba(255, 255, 255, 0.12);
 }
 
+/* When inside section-inset, blend into the dark bg */
+.section-inset .card-dark-solid {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 /* Feature card with mono number */
 .card-feature {
   background: #fafafa;
@@ -1076,5 +1082,21 @@
 @media (max-width: 980px) {
   .token-hero__title {
     letter-spacing: -0.02em;
+  }
+}
+
+/* ========== GLOBAL PRINT STYLES ========== */
+@media print {
+  .navbar,
+  .nav-wrap,
+  .mobile-panel,
+  .xh-footer {
+    display: none !important;
+    visibility: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
   }
 }

@@ -1,0 +1,76 @@
+---
+title: "Differences from Ethereum"
+description: "What changes when deploying to Xhavic vs Ethereum — gas, finality, opcodes, and new capabilities."
+section: "getting-started"
+sortOrder: 2
+lastUpdated: 2026-02-10
+---
+
+Xhavic is EVM-compatible at the bytecode level. Solidity, Vyper, and all standard development tools work without modification. This page documents the specific differences you should be aware of.
+
+## Gas Costs
+
+Xhavic transaction fees have two components:
+
+1. **L2 execution fee** — Gas consumed by EVM execution on Xhavic. Significantly cheaper than Ethereum.
+2. **L1 data fee** — Cost of posting transaction calldata to Ethereum for data availability.
+
+| Operation | Ethereum L1 Gas | Xhavic L2 Gas | Reduction |
+|---|---|---|---|
+| SSTORE (new slot) | 20,000 | 500 | 40x |
+| SLOAD | 2,100 | 50 | 42x |
+| Transaction base | 21,000 | 300 | 70x |
+| CREATE2 | 32,000 | 800 | 40x |
+
+## Finality
+
+| Finality Type | Time | Meaning |
+|---|---|---|
+| Soft finality | 2-5 seconds | Sequencer has ordered the transaction. Practically final. |
+| Ethereum finality | ~13 minutes | State root committed and confirmed on Ethereum L1. |
+| Challenge period | 7 days | Required waiting period for L2 → L1 withdrawals. |
+
+Soft finality is sufficient for most application logic. The 7-day challenge period only affects withdrawals from L2 to L1.
+
+## Block Production
+
+| Parameter | Ethereum | Xhavic |
+|---|---|---|
+| Block time | ~12 seconds | 2 seconds |
+| Block size limit | 30M gas | 5 MB compressed |
+| Block producer | Distributed validators | Single sequencer (Phase I) |
+| MEV protection | None (PBS) | Threshold encryption + time-weighted ordering |
+
+## New Capabilities
+
+### xhv_* RPC Methods
+
+Xhavic extends the standard Ethereum JSON-RPC with custom methods:
+
+| Method | Description |
+|---|---|
+| `xhv_getWalletType(address)` | Returns `"instant"` or `"secured"` |
+| `xhv_getEscrowStatus(txHash)` | Returns escrow status for Secured Wallet transactions |
+| `xhv_getOraclePrice(pair)` | Returns price data from native oracle |
+| `xhv_getOracleFeeds()` | Lists available oracle price feeds |
+| `xhv_getAgentState(agentId)` | Returns AI agent execution state |
+| `xhv_getDepositStatus(txHash)` | Returns L1→L2 deposit status |
+| `xhv_getWithdrawalProof(txHash)` | Generates withdrawal Merkle proof |
+
+### Oracle Precompiles
+
+Native oracle contracts are available at fixed addresses `0x00...F0` through `0x00...FF`. These are EVM precompiles, not deployed contracts — they execute at native speed with minimal gas overhead.
+
+### Dual Wallet System
+
+Transactions are routed at the sequencer level based on the originating wallet type. This is transparent to smart contracts — your contract code does not change. See [Dual Wallet System →](/docs/dual-wallet/overview).
+
+## What Does NOT Change
+
+- Solidity and Vyper compile identically
+- All standard ERC standards work (ERC-20, ERC-721, ERC-1155)
+- Hardhat, Foundry, Remix, and ethers.js work without modification
+- Contract addresses are deterministic (same CREATE2 behavior)
+- ABI encoding is identical
+- Account model is identical (EOA + contract accounts)
+- Nonce management is identical

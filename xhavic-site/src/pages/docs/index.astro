@@ -1,0 +1,35 @@
+---
+/**
+ * /docs — Docs landing page
+ * Renders the "Welcome to Xhavic" page from the docs content collection.
+ * If no welcome page exists yet, shows a fallback.
+ */
+import { getCollection, render } from 'astro:content';
+import DocsLayout from '@/layouts/DocsLayout.astro';
+
+const allDocs = await getCollection('docs', ({ data }) => !data.draft);
+// Astro 5: doc.id includes extension e.g. "getting-started/welcome.mdx"
+const welcomeDoc = allDocs.find(doc => doc.id.replace(/\.(mdx?|md)$/, '') === 'getting-started/welcome');
+
+let Content: any = null;
+if (welcomeDoc) {
+  const rendered = await render(welcomeDoc);
+  Content = rendered.Content;
+}
+---
+
+<DocsLayout
+  title="Welcome to Xhavic"
+  description="Xhavic developer documentation — deploy contracts, integrate the Dual Wallet System, and build on the oracle layer."
+  section="Getting Started"
+  currentSlug="getting-started/welcome"
+>
+  {Content ? (
+    <Content />
+  ) : (
+    <div>
+      <h2>Documentation</h2>
+      <p>Documentation pages are being loaded. Check back shortly.</p>
+    </div>
+  )}
+</DocsLayout>

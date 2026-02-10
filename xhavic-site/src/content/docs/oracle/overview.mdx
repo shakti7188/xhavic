@@ -1,0 +1,45 @@
+---
+title: "Oracle Overview"
+description: "Xhavic's native oracle layer — built-in precompiles for price feeds, randomness, and AI compute."
+section: "oracle"
+sortOrder: 0
+lastUpdated: 2026-02-10
+---
+
+Xhavic's oracle layer is built directly into the protocol as EVM precompiles. Unlike external oracle networks that require contract calls and bridge latency, Xhavic oracles execute at native speed with minimal gas overhead.
+
+## Why Native Oracles?
+
+| Feature | Xhavic (Native) | External Oracles |
+|---|---|---|
+| Execution | EVM precompile | Contract call |
+| Gas cost | Minimal | ~50,000 gas |
+| Latency | Native speed | Cross-contract |
+| Dependencies | None | External network |
+| Data sources | Multi-source aggregated | Single provider |
+
+## Architecture
+
+The oracle layer aggregates data from multiple sources — exchange APIs, Chainlink, Band Protocol, and custom feeds — applying outlier detection and reliability-weighted averages before exposing data through precompiles.
+
+## Precompile Addresses
+
+| Address | Function |
+|---|---|
+| `0x00...00F0` | Price feeds (ETH/USD, BTC/USD, etc.) |
+| `0x00...00F4` | Verifiable randomness |
+| `0x00...00F8` | AI compute cycles |
+
+[Oracle Precompiles Reference →](/docs/oracle/precompiles)
+
+## AI Agent Support
+
+Xhavic provides first-class protocol support for autonomous AI agents:
+
+- **Deterministic execution ordering** — Predictable multi-step strategies
+- **Programmatic wallet control** — Both Instant and Secured wallet types
+- **Native oracle access** — Direct precompile reads, no external dependencies
+- **Gas-metered compute** — Predictable operation budgets
+- **Sub-200ms latency** — Real-time decision loops
+
+[AI Agent Execution →](/docs/oracle/ai-agents)

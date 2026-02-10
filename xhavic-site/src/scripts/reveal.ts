@@ -35,8 +35,8 @@ function initReveal() {
     },
     {
       root: null,
-      threshold: 0.12,
-      rootMargin: '0px 0px -8% 0px',
+      threshold: 0.05,
+      rootMargin: '50px 0px 0px 0px',
     }
   );
 
