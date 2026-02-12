@@ -3,7 +3,7 @@ title: "Architecture Overview"
 description: "Xhavic's 6-layer modular architecture — execution, sequencing, settlement, DA, oracle, and governance."
 section: "protocol"
 sortOrder: 0
-lastUpdated: 2026-02-10
+lastUpdated: 2026-02-12
 ---
 
 Xhavic is built as a modular stack of six independent layers. Each layer handles a specific responsibility and can be upgraded independently.
@@ -12,30 +12,50 @@ Xhavic is built as a modular stack of six independent layers. Each layer handles
 
 ### Layer 1: Execution
 
-Full EVM bytecode compatibility. Processes transactions and updates state. All Ethereum opcodes, 256-bit word size, 1024 stack depth.
+Full EVM bytecode compatibility. Processes transactions and updates state. All Ethereum opcodes, 256-bit word size, 1024 stack depth. Uses **Keccak-256** for all hashing operations (identical to Ethereum, not NIST SHA-3).
 
 ### Layer 2: Sequencer
 
 Orders transactions with MEV protection via threshold encryption and time-weighted ordering. 2-second block time, 60-second batch window.
 
-- **Phase I:** Permissioned single sequencer
-- **Phase II:** Multi-sequencer stake-based model
+- **Alpha Phase (v1):** Single centralized sequencer managed by the Xhavic Foundation — maximizes throughput, reduces complexity, enables faster iteration
+- **Future Phase:** Decentralized multi-sequencer architecture with stake-weighted rotation among validators
 
 ### Layer 3: Settlement
 
-State roots committed to Ethereum via the CanonicalTransactionChain contract. Every Xhavic state transition is anchored to Ethereum L1.
+State roots committed to Ethereum via the CanonicalTransactionChain contract. Every Xhavic state transition is anchored to Ethereum L1. State roots are assumed valid by default with a **7-day fraud-proof challenge window**. During this window, any participant can submit a fraud proof; if it demonstrates incorrect execution, the faulty batch is reverted and the sequencer is economically penalized.
 
 ### Layer 4: Data Availability
 
 Compressed transaction data posted to Ethereum calldata. Validators maintain redundant off-chain copies. Full state can be reconstructed from L1 in 5-10 minutes.
 
+**State management:** Xhavic uses a pruned state + snapshot architecture:
+- Only recent blocks are stored in full
+- Old historical state is archived
+- Periodic global state snapshots are generated
+- New nodes sync from the latest snapshot (no genesis replay required)
+
 ### Layer 5: Oracle & AI
 
-Native oracle precompiles at addresses `0x00...F0-FF`. Multi-source aggregation with outlier detection. First-class AI agent execution support.
+Native oracle precompiles at addresses `0x00...F0-FF`. Push-based update model with signed oracle outputs for deterministic consensus. Multi-source aggregation with outlier detection. First-class AI agent execution support with custom floating-point precompiles (audited independently as part of the core protocol audit).
 
 ### Layer 6: Governance
 
 DAO-controlled upgrades across four domains: protocol upgrades, sequencer policies, oracle parameters, and treasury allocation. On-chain execution with no off-chain multisig backdoors.
+
+## Sequencer Decentralization Roadmap
+
+| Phase | Architecture | Status |
+|---|---|---|
+| Alpha (v1) | Single centralized sequencer (Xhavic Foundation) | Current |
+| Beta | Multi-sequencer with stake-weighted rotation | Planned |
+| Production | Fully decentralized sequencer set from validator pool | Planned |
+
+The decentralization roadmap includes:
+- Sequencers selected from the validator set
+- Sequencing rights rotate based on stake, uptime, and performance
+- Economic incentives and slashing mechanisms enforce honest behavior
+- MEV mitigation and censorship resistance layers
 
 ## Key Protocol Parameters
 
@@ -47,6 +67,10 @@ DAO-controlled upgrades across four domains: protocol upgrades, sequencer polici
 | Peak TPS | 2,000+ (testnet, Jan 2026) |
 | Average fee | $0.04 |
 | Soft finality | 200ms |
+| Native token | XHAV |
+| Validator set | Top 100 by stake |
+| Proof complexity | O(log n) |
+| Hashing | Keccak-256 |
 
 ## Deep Dives
 

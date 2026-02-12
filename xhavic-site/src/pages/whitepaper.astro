@@ -210,7 +210,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               <p class="text-sm text-gray-500 italic text-center mt-3">Table 2 — Sequencer configuration parameters</p>
             </div>
 
-            <p>During Phase I, sequencers are permissioned for stability. Phase II transitions to a stake-based multi-sequencer model with governance-controlled admission.</p>
+            <p>During the Alpha phase, a single centralized sequencer is operated by the Xhavic Foundation for stability. Future phases transition to a decentralized, stake-weighted multi-sequencer model with governance-controlled admission.</p>
 
             <h3 class="text-xl font-bold text-ink mt-8 mb-4">5.3 Validators</h3>
             <p>Validators watch the sequencer. They independently execute transactions, compare results, and challenge any discrepancies through fraud proofs. The top 100 by stake are eligible, provided they maintain 95% uptime over a rolling 30-day window.</p>
@@ -458,7 +458,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <section id="s12" class="wp-section scroll-mt-24">
             <h2 class="text-3xl font-extrabold text-ink mb-6">12. Oracle & AI Agent Infrastructure</h2>
 
-            <h3 class="text-xl font-bold text-ink mt-8 mb-4">12.1 Hybrid Oracle Architecture</h3>
+            <h3 class="text-xl font-bold text-ink mt-8 mb-4">12.1 Push-Based Oracle Architecture</h3>
             <p>The oracle layer isn't bolted on — it's built into the protocol. Oracle nodes pull data from multiple external sources (exchange APIs, Chainlink, Band Protocol, custom feeds), normalize the formats, run outlier detection, and compute weighted averages based on reliability scores. The aggregated data lives on-chain through precompile addresses (<code>0x00...00F0-0xFF</code>). Smart contracts read it directly. No external contract calls, no additional gas overhead.</p>
 
             <h3 class="text-xl font-bold text-ink mt-8 mb-4">12.2 AI Agent Execution</h3>
@@ -743,7 +743,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <h2 class="text-3xl font-extrabold text-ink mb-6">20. Challenges and Limitations</h2>
             <p><strong>Data availability costs.</strong> Ethereum calldata is our main cost bottleneck. When Ethereum ships EIP-4844 and danksharding, we'll integrate those improvements and costs will drop further. Until then, calldata fees set the floor.</p>
             <p><strong>Withdrawal latency.</strong> The 7-day challenge period isn't a design flaw. It's the security mechanism that makes optimistic rollups work. LP-backed fast exits handle most use cases, and a future move to validity proofs (ZK) could eventually eliminate the delay.</p>
-            <p><strong>Sequencer centralization in Phase I.</strong> We run a permissioned sequencer at launch. If it goes down, block production stops. Users can still force-include through L1, so funds aren't at risk, but it's a liveness dependency we're upfront about. Phase II fixes this with multi-sequencer design.</p>
+            <p><strong>Sequencer centralization in Alpha phase.</strong> We run a single centralized sequencer (Xhavic Foundation) at launch. If it goes down, block production stops. Users can still force-include through L1, so funds aren't at risk, but it's a liveness dependency we're upfront about. Future phases fix this with decentralized multi-sequencer design.</p>
             <p><strong>Bridge complexity.</strong> Moving assets between L1 and L2 is more complicated than transacting on a single chain. We're investing heavily in wallet integration and bridge abstraction to make this invisible to end users, but it's not there yet.</p>
           </section>
 

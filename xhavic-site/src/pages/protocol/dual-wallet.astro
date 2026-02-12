@@ -4,7 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Dual Wallet System — Xhavic"
-  description="Two execution paths at the sequencer level. Instant Wallet for composable DeFi. Secured Wallet with 24-hour reversal for institutional operations."
+  description="Two execution paths at the sequencer level. Instant Wallet for composable DeFi. Secure Wallet with 24-hour escrow, email alerts, and one-click revert."
 >
 
   <!-- ============================================================
@@ -23,12 +23,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <!-- Left: Headline block -->
         <div data-reveal>
           <h1 class="heading-display mb-6 gradient-text-static leading-[0.95]">
-            Two Execution Paths.<br/>One Network.
+            The Security of a Cold Wallet.<br/>The Safety of an Undo Button.
           </h1>
           <p class="prose-editorial-dark mb-10 max-w-2xl">
-            The Dual Wallet System separates transaction execution at the sequencer level,
-            giving every user the choice between instant composability and 24-hour reversibility
-            &mdash; within a single chain.
+            Introducing Secure Wallet on the Xhavic Blockchain &mdash; the ultimate vault
+            for your long-term holdings. Choose between instant composability and 24-hour
+            reversibility within a single chain.
           </p>
 
           <!-- CTAs -->
@@ -60,7 +60,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             </p>
           </div>
 
-          <!-- Secured card -->
+          <!-- Secure card -->
           <div class="card-dark-solid p-6" style="border-color: rgba(196, 163, 90, 0.2);">
             <div class="flex items-center gap-4 mb-4">
               <div class="w-12 h-12 rounded-lg flex items-center justify-center border" style="background: rgba(196, 163, 90, 0.15); border-color: rgba(196, 163, 90, 0.3);">
@@ -69,12 +69,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
                 </svg>
               </div>
               <div>
-                <h3 class="text-lg font-bold text-white">Secured Wallet</h3>
-                <p class="text-sm font-semibold" style="color: #c4a35a;">24-hour escrow window</p>
+                <h3 class="text-lg font-bold text-white">Secure Wallet</h3>
+                <p class="text-sm font-semibold" style="color: #c4a35a;">24-hour protection window</p>
               </div>
             </div>
             <p class="text-sm text-gray-400 leading-relaxed">
-              Reversible, escrowed, designed for institutional safety. Treasury moves and high-value transfers get the protection they require.
+              Cold-wallet grade security with a built-in safety net. Revert unauthorized transactions with a single click from your email.
             </p>
           </div>
         </div>
@@ -90,29 +90,31 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     <div class="section-compact container">
       <span class="label-mono">THE PROBLEM</span>
       <h2 class="heading-section text-ink mt-4 mb-8">
-        A financial system that treats every<br class="hidden md:block"/> transaction the same is broken.
+        Your crypto shouldn't disappear<br class="hidden md:block"/> the moment it leaves your wallet.
       </h2>
 
       <!-- Pull quote -->
-      <blockquote class="border-l-4 border-primary pl-6 py-2 my-10">
+      <blockquote class="border-l-4 pl-6 py-2 my-10" style="border-color: #c4a35a;">
         <p class="text-xl md:text-2xl font-semibold text-ink leading-snug italic">
-          "Every existing L2 treats every transaction identically &mdash; same execution pipeline, same finality model, same risk profile."
+          "Imagine a wallet that watches your back &mdash; one that gives you a chance to undo mistakes, stop theft, and protect your assets before it's too late."
         </p>
       </blockquote>
 
       <div class="prose-editorial">
         <p class="mb-4">
-          A $50 token swap and a $5 million treasury transfer go through the exact same process.
-          They share the same confirmation time, the same reversibility constraints, and the same
-          composability model. This forces users to choose between speed and safety &mdash; a false
-          choice that no well-designed financial system would impose.
+          Once a crypto transaction is sent, it's gone. There's no customer support to call,
+          no bank to reverse the charge, no way to get it back. Whether it's an honest
+          mistake or a malicious attack, the result is the same &mdash; your assets vanish instantly
+          and irreversibly.
         </p>
         <p class="mb-4">
-          These transactions have fundamentally different risk profiles, different stakeholders, and
-          different requirements. The architecture should reflect that reality.
+          Xhavic's Secure Wallet changes this. It places a 24-hour safety net between your
+          assets and the outside world. Every outgoing transaction is held in escrow, and
+          you're notified by email immediately. If something looks wrong, one click reverts
+          the transaction &mdash; no private keys needed, no panic required.
         </p>
-        <p class="text-primary font-semibold">
-          Xhavic solves this with protocol-level transaction risk routing.
+        <p class="font-semibold" style="color: #c4a35a;">
+          It's like having a cold wallet with a built-in undo button.
         </p>
       </div>
     </div>
@@ -120,113 +122,174 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ============================================================
-       3. HOW IT WORKS — section-bordered, flow diagram
+       3. THE MECHANISM — 4-step flow with email/escrow
        ============================================================ -->
   <section class="section-bordered" data-reveal>
     <div class="container">
-      <div class="grid-40-60 items-start">
-        <!-- Left: Explanation -->
-        <div>
-          <span class="label-mono">MECHANISM</span>
-          <h2 class="heading-section text-ink mt-4 mb-6">
-            How It Works
-          </h2>
-          <div class="prose-editorial">
-            <p class="mb-4">
-              The Dual Wallet System operates at the sequencer level. It is a protocol mechanism,
-              not a user interface feature. When a transaction is submitted, the originating wallet
-              type determines which execution path the sequencer uses.
-            </p>
-            <p class="mb-4">
-              Instant Wallets route transactions through the fast-finality pipeline &mdash; composable
-              with all DeFi protocols, confirmed in under 200 milliseconds, and irreversible by design.
-            </p>
-            <p>
-              Secured Wallets route transactions through the escrow pipeline &mdash; held for 24 hours
-              with multi-sig reversal capability, non-composable until finalized, and settled to Ethereum
-              only after the escrow window closes.
-            </p>
+      <div class="text-center mb-16">
+        <span class="label-mono">THE MECHANISM</span>
+        <h2 class="heading-section text-ink mt-4 mb-4">
+          How Secure Wallet Protects You
+        </h2>
+        <p class="prose-editorial mx-auto" style="text-align: center; max-width: 640px;">
+          Four simple steps between your assets and the outside world.
+          No hardware wallet needed. No complex multi-sig setup.
+        </p>
+      </div>
+
+      <!-- 4-Step Flow -->
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-start">
+
+        <!-- Left: Steps 1-4 -->
+        <div class="space-y-0" data-reveal-stagger>
+          <!-- Step 1 — Setup -->
+          <div class="relative pl-16 pb-10">
+            <!-- Connector line -->
+            <div class="absolute left-[1.375rem] top-12 w-px h-full" style="background: rgba(196, 163, 90, 0.2);"></div>
+            <!-- Number circle -->
+            <div class="absolute left-0 top-0 w-11 h-11 rounded-full flex items-center justify-center border-2" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.3);">
+              <span class="text-sm font-bold" style="color: #c4a35a;">01</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-ink mb-2">Setup</h3>
+              <p class="text-muted text-sm leading-relaxed">
+                Create a Secure Wallet in the Xhavic Wallet App and link your email address.
+                That's it &mdash; your safety net is active from the first transaction.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 2 — The Safety Net -->
+          <div class="relative pl-16 pb-10">
+            <div class="absolute left-[1.375rem] top-12 w-px h-full" style="background: rgba(196, 163, 90, 0.2);"></div>
+            <div class="absolute left-0 top-0 w-11 h-11 rounded-full flex items-center justify-center border-2" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.3);">
+              <span class="text-sm font-bold" style="color: #c4a35a;">02</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-ink mb-2">The Safety Net</h3>
+              <p class="text-muted text-sm leading-relaxed">
+                When assets leave your Secure Wallet, they aren't transferred immediately.
+                Instead, they're held in a transparent on-chain escrow for 24 hours.
+                No one can touch them during this window.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 3 — Instant Notification -->
+          <div class="relative pl-16 pb-10">
+            <div class="absolute left-[1.375rem] top-12 w-px h-full" style="background: rgba(196, 163, 90, 0.2);"></div>
+            <div class="absolute left-0 top-0 w-11 h-11 rounded-full flex items-center justify-center border-2" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.3);">
+              <span class="text-sm font-bold" style="color: #c4a35a;">03</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-ink mb-2">Instant Notification</h3>
+              <p class="text-muted text-sm leading-relaxed">
+                You receive an email alert the moment any transaction is initiated from your
+                Secure Wallet. The email includes full transaction details and a
+                <strong class="text-ink">Revert Transaction</strong> link.
+              </p>
+            </div>
+          </div>
+
+          <!-- Step 4 — You Decide -->
+          <div class="relative pl-16">
+            <div class="absolute left-0 top-0 w-11 h-11 rounded-full flex items-center justify-center border-2" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.3);">
+              <span class="text-sm font-bold" style="color: #c4a35a;">04</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-ink mb-2">You Decide</h3>
+              <p class="text-muted text-sm leading-relaxed">
+                If everything looks right, do nothing &mdash; the funds release automatically after 24 hours.
+                If something is wrong, click the revert link in your email and the transaction is
+                cancelled immediately. Your assets return to your wallet.
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Right: CSS Flow Diagram -->
+        <!-- Right: Flow Diagram -->
         <div class="flex justify-center">
-          <div class="w-full max-w-md">
-            <!-- Transaction origin -->
-            <div class="flex justify-center mb-6">
-              <div class="card-arch px-6 py-3 text-center">
-                <p class="text-xs text-muted uppercase tracking-wider font-semibold mb-1">Origin</p>
-                <p class="text-base font-bold text-ink">Transaction Submitted</p>
+          <div class="w-full max-w-sm">
+            <!-- Wallet -->
+            <div class="flex justify-center mb-5">
+              <div class="card-arch px-6 py-4 text-center w-full" style="border-color: rgba(196, 163, 90, 0.25);">
+                <div class="w-10 h-10 rounded-full mx-auto mb-2 flex items-center justify-center" style="background: rgba(196, 163, 90, 0.12);">
+                  <svg class="w-5 h-5" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-ink">Secure Wallet</p>
+                <p class="text-xs text-muted">Outgoing transaction initiated</p>
               </div>
             </div>
 
-            <!-- Connector line down -->
-            <div class="flex justify-center mb-6">
-              <div class="w-px h-8 bg-gray-200"></div>
+            <!-- Connector -->
+            <div class="flex justify-center mb-5">
+              <div class="flex flex-col items-center">
+                <div class="w-px h-6" style="background: rgba(196, 163, 90, 0.3);"></div>
+                <svg class="w-3 h-3" style="color: rgba(196, 163, 90, 0.4);" fill="currentColor" viewBox="0 0 12 12">
+                  <path d="M6 9L1 4h10L6 9z"/>
+                </svg>
+              </div>
             </div>
 
-            <!-- Sequencer box -->
-            <div class="flex justify-center mb-6">
-              <div class="bg-dark rounded-lg px-8 py-3 text-center border border-white/10">
-                <p class="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-1">Xhavic</p>
-                <p class="text-base font-bold text-white">Sequencer</p>
+            <!-- Escrow -->
+            <div class="flex justify-center mb-5">
+              <div class="w-full rounded-xl p-5 text-center border-2 border-dashed" style="border-color: rgba(196, 163, 90, 0.3); background: rgba(196, 163, 90, 0.04);">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-3" style="background: rgba(196, 163, 90, 0.15); color: #c4a35a;">
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  24-HOUR ESCROW
+                </div>
+                <p class="text-sm font-bold text-ink mb-1">Funds Held Securely</p>
+                <p class="text-xs text-muted">On-chain escrow &bull; Transparent &bull; Immutable</p>
+              </div>
+            </div>
+
+            <!-- Email notification branch -->
+            <div class="flex justify-center mb-5">
+              <div class="card-arch px-5 py-3 text-center w-full" style="border-color: rgba(34, 98, 255, 0.2);">
+                <div class="flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                  <p class="text-sm font-bold text-ink">Email Alert Sent</p>
+                </div>
+                <p class="text-xs text-muted mt-1">Includes "Revert Transaction" link</p>
               </div>
             </div>
 
             <!-- Branch connector -->
-            <div class="relative h-10 mb-6">
-              <!-- Vertical stem -->
-              <div class="absolute left-1/2 top-0 w-px h-4 bg-ink/20 -translate-x-px"></div>
-              <!-- Horizontal bar -->
-              <div class="absolute top-4 left-[20%] right-[20%] h-px bg-ink/20"></div>
-              <!-- Left drop -->
-              <div class="absolute left-[20%] top-4 w-px h-6 bg-primary/60"></div>
-              <!-- Right drop -->
-              <div class="absolute right-[20%] top-4 w-px h-6" style="background: rgba(196, 163, 90, 0.6);"></div>
+            <div class="relative h-8 mb-5">
+              <div class="absolute left-1/2 top-0 w-px h-3 -translate-x-px" style="background: rgba(196, 163, 90, 0.3);"></div>
+              <div class="absolute top-3 left-[15%] right-[15%] h-px" style="background: rgba(196, 163, 90, 0.2);"></div>
+              <div class="absolute left-[15%] top-3 w-px h-5 bg-emerald-400/50"></div>
+              <div class="absolute right-[15%] top-3 w-px h-5 bg-red-400/50"></div>
             </div>
 
-            <!-- Two paths -->
-            <div class="grid grid-cols-2 gap-4">
-              <!-- Instant path -->
-              <div class="rounded-lg border-2 border-primary/30 bg-primary/5 p-4 text-center">
-                <div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-2">
-                  <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            <!-- Two outcomes -->
+            <div class="grid grid-cols-2 gap-3">
+              <!-- Do nothing -->
+              <div class="rounded-lg border p-4 text-center bg-emerald-50/50" style="border-color: rgba(16, 185, 129, 0.2);">
+                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-2">
+                  <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                   </svg>
                 </div>
-                <p class="text-sm font-bold text-primary mb-1">Instant Path</p>
-                <p class="text-xs text-muted">&lt;200ms finality</p>
-                <p class="text-xs text-muted">Composable</p>
-                <p class="text-xs text-muted">Irreversible</p>
+                <p class="text-xs font-bold text-emerald-700 mb-1">Do Nothing</p>
+                <p class="text-[10px] text-muted leading-tight">Funds release automatically after 24h</p>
               </div>
 
-              <!-- Secured path -->
-              <div class="rounded-lg border-2 p-4 text-center" style="border-color: rgba(196, 163, 90, 0.3); background: rgba(196, 163, 90, 0.05);">
-                <div class="w-8 h-8 rounded-full flex items-center justify-center mx-auto mb-2" style="background: rgba(196, 163, 90, 0.2);">
-                  <svg class="w-4 h-4" style="color: #c4a35a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              <!-- Click revert -->
+              <div class="rounded-lg border p-4 text-center bg-red-50/50" style="border-color: rgba(239, 68, 68, 0.2);">
+                <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-2">
+                  <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"/>
                   </svg>
                 </div>
-                <p class="text-sm font-bold" style="color: #c4a35a;">Secured Path</p>
-                <p class="text-xs text-muted">24h escrow</p>
-                <p class="text-xs text-muted">Non-composable</p>
-                <p class="text-xs text-muted">Reversible</p>
-              </div>
-            </div>
-
-            <!-- Settlement row -->
-            <div class="flex justify-center mt-6">
-              <div class="relative h-8 w-full">
-                <div class="absolute left-[20%] top-0 w-px h-4 bg-primary/40"></div>
-                <div class="absolute right-[20%] top-0 w-px h-4" style="background: rgba(196, 163, 90, 0.4);"></div>
-                <div class="absolute top-4 left-[20%] right-[20%] h-px bg-ink/15"></div>
-                <div class="absolute left-1/2 top-4 w-px h-4 bg-ink/20 -translate-x-px"></div>
-              </div>
-            </div>
-            <div class="flex justify-center">
-              <div class="card-arch px-6 py-3 text-center">
-                <p class="text-xs text-muted uppercase tracking-wider font-semibold mb-1">L1</p>
-                <p class="text-sm font-bold text-ink">Ethereum Settlement</p>
+                <p class="text-xs font-bold text-red-700 mb-1">Click Revert</p>
+                <p class="text-[10px] text-muted leading-tight">Transaction cancelled, assets returned</p>
               </div>
             </div>
           </div>
@@ -321,7 +384,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 
   <!-- ============================================================
-       5. SECURED WALLET — section-bordered + heading-accent-gold
+       5. SECURE WALLET — section-bordered + heading-accent-gold
        ============================================================ -->
   <section class="section-bordered" data-reveal>
     <div class="container">
@@ -341,15 +404,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </div>
               <div class="flex justify-between items-center pb-4 border-b border-gray-100">
                 <span class="text-muted text-sm">Reversible</span>
-                <span class="text-emerald-600 font-bold">Yes</span>
+                <span class="text-emerald-600 font-bold">Yes &mdash; via email link</span>
               </div>
               <div class="flex justify-between items-center pb-4 border-b border-gray-100">
-                <span class="text-muted text-sm">L1 Settlement</span>
-                <span class="text-ink font-bold">After escrow</span>
+                <span class="text-muted text-sm">Notification</span>
+                <span class="text-ink font-bold">Email alert</span>
               </div>
               <div class="flex justify-between items-center">
-                <span class="text-muted text-sm">Reversal Method</span>
-                <span class="text-ink font-bold">Multi-sig</span>
+                <span class="text-muted text-sm">Security Model</span>
+                <span class="text-ink font-bold">Cold-wallet grade</span>
               </div>
             </div>
           </div>
@@ -357,44 +420,44 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
         <!-- Right: Content -->
         <div>
-          <span class="label-mono">SECURED WALLET</span>
+          <span class="label-mono">SECURE WALLET</span>
           <div class="heading-accent-gold mt-4">
-            <h2 class="heading-section text-ink">Secured Wallet</h2>
+            <h2 class="heading-section text-ink">Why Move Your Assets to Secure Wallet</h2>
           </div>
 
           <p class="prose-editorial mt-6 mb-8">
-            The Secured Wallet is designed for high-value operations where reversibility
-            is critical. Transactions enter a 24-hour escrow period during which they can
-            be reversed via multi-signature or threshold signature authorization.
+            Secure Wallet gives you the robust security of a cold wallet without the hardware,
+            the complexity, or the risk of losing a device. Your long-term holdings stay
+            protected by a 24-hour escrow and real-time email alerts &mdash; all on-chain.
           </p>
 
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
               <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
               <div>
-                <p class="text-ink font-semibold">24-hour reversal window</p>
-                <p class="text-muted text-sm">Authorized signers can reverse a transaction during the escrow period.</p>
+                <p class="text-ink font-semibold">Cold Storage Security</p>
+                <p class="text-muted text-sm">The robust security of a cold wallet without a hardware device. Your assets are protected at the protocol level.</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
               <div>
-                <p class="text-ink font-semibold">Non-composable until finalized</p>
-                <p class="text-muted text-sm">Transaction outputs cannot be used by other contracts during escrow.</p>
+                <p class="text-ink font-semibold">24-Hour Revert Window</p>
+                <p class="text-muted text-sm">Stop any outgoing transaction within 24 hours. One click from your email is all it takes to cancel and recover your funds.</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
               <div>
-                <p class="text-ink font-semibold">Multi-sig reversal mechanism</p>
-                <p class="text-muted text-sm">Threshold signature scheme prevents unilateral reversal actions.</p>
+                <p class="text-ink font-semibold">Escrow Protection</p>
+                <p class="text-muted text-sm">Funds are held in a transparent on-chain escrow stage. No quick getaway for attackers &mdash; there is always time to act.</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
               <div>
-                <p class="text-ink font-semibold">Built for treasuries, RWA, and institutions</p>
-                <p class="text-muted text-sm">Disbursements, settlements, and cross-chain movements at enterprise scale.</p>
+                <p class="text-ink font-semibold">Real-Time Alerts</p>
+                <p class="text-muted text-sm">Immediate email notifications for any movement from your Secure Wallet. You're always in the loop, always in control.</p>
               </div>
             </li>
           </ul>
@@ -424,7 +487,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <p class="text-sm font-bold text-primary uppercase tracking-wider">Instant Wallet</p>
         </div>
         <div class="py-3 px-4 text-center rounded-t-lg border-t-2" style="background: rgba(196, 163, 90, 0.1); border-color: #c4a35a;">
-          <p class="text-sm font-bold uppercase tracking-wider" style="color: #c4a35a;">Secured Wallet</p>
+          <p class="text-sm font-bold uppercase tracking-wider" style="color: #c4a35a;">Secure Wallet</p>
         </div>
       </div>
 
@@ -469,6 +532,19 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </div>
         </div>
 
+        <!-- Reversal Method -->
+        <div class="grid grid-cols-3 gap-3 items-center">
+          <div class="bg-white/5 rounded-lg py-4 px-5">
+            <p class="text-sm font-semibold text-white">Reversal Method</p>
+          </div>
+          <div class="bg-primary/10 rounded-lg py-4 px-5 text-center border border-primary/20">
+            <p class="text-sm font-bold text-red-400">N/A &mdash; irreversible</p>
+          </div>
+          <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.2);">
+            <p class="text-sm font-bold" style="color: #c4a35a;">Email revert link</p>
+          </div>
+        </div>
+
         <!-- Settlement -->
         <div class="grid grid-cols-3 gap-3 items-center">
           <div class="bg-white/5 rounded-lg py-4 px-5">
@@ -491,7 +567,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <p class="text-sm font-bold text-white">Trades, swaps, liquidations</p>
           </div>
           <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.2);">
-            <p class="text-sm font-bold text-white">Treasury, RWA, settlements</p>
+            <p class="text-sm font-bold text-white">Long-term holdings, savings, security</p>
           </div>
         </div>
       </div>
@@ -519,9 +595,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </p>
           <p class="text-muted text-sm leading-relaxed mb-8">
             Use <code class="text-primary font-mono bg-gray-100 px-1.5 py-0.5 rounded">xhv_getWalletType</code> to determine
-            whether a transaction originated from an Instant or Secured wallet.
+            whether a transaction originated from an Instant or Secure wallet.
             Use <code class="text-primary font-mono bg-gray-100 px-1.5 py-0.5 rounded">xhv_getEscrowStatus</code> to check
-            the escrow state of Secured Wallet transactions.
+            the escrow state of Secure Wallet transactions.
           </p>
           <a href="/docs" class="btn-primary">Integration Guide &rarr;</a>
         </div>
@@ -562,7 +638,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
                 </p>
               </div>
               <div class="border-t border-white/5 pt-5">
-                <p class="text-gray-500 text-xs mb-2"># Check escrow status (Secured Wallet only)</p>
+                <p class="text-gray-500 text-xs mb-2"># Check escrow status (Secure Wallet only)</p>
                 <p>
                   <span style="color: #7ee787;">curl</span>
                   <span class="text-gray-400"> -X POST </span>

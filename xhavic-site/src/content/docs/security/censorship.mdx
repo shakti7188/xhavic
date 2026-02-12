@@ -1,0 +1,58 @@
+---
+title: "Censorship Resistance"
+description: "How Xhavic prevents transaction censorship — force-include via L1, sequencer penalties, and data availability guarantees."
+section: "security"
+sortOrder: 2
+lastUpdated: 2026-02-12
+---
+
+Xhavic implements multiple mechanisms to ensure no single entity can permanently censor transactions, even during the Alpha phase when a single centralized sequencer operates the network.
+
+## Threat Model
+
+| Threat | Mitigation |
+|---|---|
+| Sequencer censors transaction | Force-include via L1 |
+| Sequencer ignores forced inclusion | Stake slashing + reward loss + suspension |
+| Sequencer goes offline | Rotation and slashing |
+| Data withholding | All data posted to Ethereum calldata |
+
+## Force-Include via L1
+
+If the sequencer censors a transaction, users can submit it directly to the Ethereum L1 **CanonicalTransactionChain** contract. This bypasses the sequencer entirely.
+
+The sequencer is contractually obligated to include force-included transactions within the allowed time window. If the sequencer fails to include a force-included transaction:
+
+1. **Stake slashing** — Economic penalty applied to sequencer's staked XHAV
+2. **Loss of sequencing rewards** — Revenue from block production is forfeited
+3. **Temporary suspension** — Removed from the sequencing role for a defined period
+4. **Permanent removal** (future phases) — Removed from the validator set entirely
+
+## Data Availability
+
+Transaction data is posted to Ethereum calldata, ensuring:
+
+- **Full state reconstruction** — Anyone can reconstruct the complete Xhavic state from L1 data in 5-10 minutes
+- **No data withholding** — The sequencer cannot hide transactions or state changes
+- **Validator redundancy** — Multiple validator nodes maintain independent off-chain copies
+
+## Fraud Proof Protection
+
+Any participant can submit a fraud proof within the **7-day challenge window** if they detect incorrect execution:
+
+- If the proof demonstrates incorrect execution, the faulty batch is reverted
+- The correct state is restored
+- The sequencer is economically penalized (slashing)
+- Only **one honest validator** is needed to secure the entire network
+
+## Current Sequencer Model
+
+During the Alpha phase (v1), the sequencer is a single centralized system operated by the **Xhavic Foundation**. This maximizes throughput and reduces complexity during early network development.
+
+The decentralization roadmap progresses through:
+
+| Phase | Architecture | Status |
+|---|---|---|
+| Alpha (v1) | Single centralized sequencer (Xhavic Foundation) | Current |
+| Beta | Multi-sequencer with stake-weighted rotation | Planned |
+| Production | Fully decentralized sequencer set from validator pool | Planned |

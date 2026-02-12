@@ -1,0 +1,80 @@
+---
+title: "Validators"
+description: "Validator selection, staking, delegation, slashing, downtime handling, and tie-breaking rules."
+section: "security"
+sortOrder: 1
+lastUpdated: 2026-02-12
+---
+
+Validators provide economic security for the Xhavic network by verifying state transitions, resolving disputes, and ensuring protocol integrity through staking and oversight.
+
+## Becoming a Validator
+
+Anyone can become a validator candidate by staking XHAV tokens. The active validator set consists of the **top 100 candidates by total stake**. Validators are ranked by:
+
+1. Total stake (own stake + delegated stake)
+2. Historical uptime
+3. Performance metrics (latency, response time)
+
+## Validator Parameters
+
+| Parameter | Value |
+|---|---|
+| Active set size | Top 100 by stake |
+| Selection model | Stake-weighted (XHAV token) |
+| Delegation | Supported |
+| Minimum uptime | 95% (30-day rolling) |
+| Epoch duration | 2 hours |
+
+## Delegation
+
+Token holders who do not wish to run validator infrastructure can **delegate** their XHAV stake to an existing validator. Delegators share proportionally in both rewards and slashing penalties.
+
+## Slashing
+
+Validators face economic penalties for misbehavior:
+
+| Violation | Penalty |
+|---|---|
+| Extended downtime (below 95% uptime) | 5% of stake |
+| Submitting invalid fraud proof | 25% of stake |
+| Double-signing | 100% of stake (full slash) |
+
+## Downtime Handling
+
+If a validator's uptime drops below the 95% threshold (measured on a 30-day rolling basis):
+
+1. The validator is **jailed** (removed from the active set)
+2. Block rewards are **paused**
+3. Staked funds may be **partially slashed** (5%)
+4. The validator must complete a **recovery period** before rejoining the active set
+
+## Tie-Breaking
+
+When multiple validators have identical stake and uptime, the protocol uses deterministic tie-breaking:
+
+1. **Higher historical uptime** (longer track record)
+2. **Longer continuous staking duration**
+3. **Better performance metrics** (latency, response time)
+4. **Deterministic hash-based lottery** (final fallback)
+
+This prevents randomness manipulation and gaming of the validator selection process.
+
+## Sequencer vs Validator Roles
+
+| | Current (v1 Alpha) | Future Architecture |
+|---|---|---|
+| **Sequencer** | Separate system role (Xhavic Foundation) | Rotates among validators |
+| **Validators** | Verify state transitions, resolve disputes | Jointly perform sequencing and settlement |
+
+In the current Alpha phase, the sequencer and validators are separate roles. In future phases, sequencing rights will rotate among validators based on stake, uptime, and performance.
+
+## New Validator Synchronization
+
+New validators joining the network do not need to replay from genesis:
+
+1. Download the latest global state snapshot
+2. Verify the state root against L1 (Ethereum)
+3. Begin validating from the latest block
+
+This is similar to Ethereum's fast-sync mechanism and significantly reduces synchronization time and storage requirements.

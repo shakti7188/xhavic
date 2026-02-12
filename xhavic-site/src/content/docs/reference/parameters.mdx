@@ -3,7 +3,7 @@ title: "Protocol Parameters"
 description: "Every protocol parameter in one place — block production, performance, validators, oracle, and network IDs."
 section: "reference"
 sortOrder: 2
-lastUpdated: 2026-02-10
+lastUpdated: 2026-02-12
 ---
 
 ## Block Production
@@ -24,6 +24,7 @@ lastUpdated: 2026-02-10
 | Average fee | $0.04 |
 | Soft finality | 2-5 seconds |
 | Ethereum finality | ~13 minutes |
+| Proof generation | O(log n) complexity |
 
 ## Settlement
 
@@ -33,6 +34,7 @@ lastUpdated: 2026-02-10
 | Challenge period | 7 days |
 | Fraud proof type | Interactive bisection |
 | State encoding | RLP |
+| Future upgrade | ZK validity proofs (planned) |
 
 ## Dual Wallet System
 
@@ -48,11 +50,62 @@ lastUpdated: 2026-02-10
 | Parameter | Value |
 |---|---|
 | Active set size | Top 100 by stake |
+| Selection model | Stake-weighted (XHAV token) |
+| Delegation | Supported |
 | Minimum uptime | 95% (30-day rolling) |
 | Epoch duration | 2 hours |
 | Offline slashing | 5% of stake |
 | Invalid fraud proof | 25% of stake |
 | Double-signing | 100% of stake |
+| Downtime action | Jailed, rewards paused, recovery period |
+| Tie-breaking | Uptime → Staking duration → Performance → Hash lottery |
+
+## Sequencer
+
+| Parameter | Value |
+|---|---|
+| Current model | Single centralized (Alpha phase) |
+| Operated by | Xhavic Foundation |
+| Future model | Decentralized, stake-weighted rotation |
+| Censorship penalty | Slashing + reward loss + suspension |
+
+## Oracle
+
+| Parameter | Value |
+|---|---|
+| Update model | Push-based (asynchronous) |
+| Precompile range | `0x00...00F0` through `0x00...00FF` |
+| Data determinism | Signed outputs only in state root |
+| Staleness control | Maximum staleness threshold enforced |
+| Hashing | Keccak-256 (Ethereum-compatible) |
+
+## Gas & Fees
+
+| Parameter | Value |
+|---|---|
+| Native token | XHAV |
+| L2 gas currency | XHAV |
+| L1 settlement cost | Amortized across batch (less than 1% of user fees) |
+| Fee savings vs L1 | 50-100x lower than Ethereum mainnet |
+
+## State Management
+
+| Parameter | Value |
+|---|---|
+| State model | Pruned state + snapshots |
+| Historical state | Archived |
+| New node sync | From latest snapshot (no genesis replay) |
+| State root verification | Against L1 |
+
+## Cryptographic Primitives
+
+| Primitive | Algorithm |
+|---|---|
+| Hashing | Keccak-256 (not NIST SHA-3) |
+| Signatures | ECDSA (secp256k1) |
+| Encryption | ChaCha20-Poly1305 |
+| State commitment | Merkle-Patricia Trie |
+| Global nonce | Batch versioning + replay protection |
 
 ## Network Identifiers
 
@@ -61,7 +114,7 @@ lastUpdated: 2026-02-10
 | Chain ID | 7849 | 7850 |
 | Chain ID (hex) | 0x1EA9 | 0x1EAA |
 | RPC endpoint | https://rpc.xhavic.io | https://testnet-rpc.xhavic.io |
-| Explorer | https://explorer.xhavic.io | https://testnet-explorer.xhavic.io |
+| Explorer | https://xhaviscan.com | https://testnet-explorer.xhavic.io |
 
 ## Infrastructure Requirements
 

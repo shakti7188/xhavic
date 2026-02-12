@@ -1,9 +1,9 @@
 ---
 title: "Oracle Overview"
-description: "Xhavic's native oracle layer — built-in precompiles for price feeds, randomness, and AI compute."
+description: "Xhavic's native oracle layer — push-based precompiles for price feeds, randomness, and AI compute with deterministic consensus."
 section: "oracle"
 sortOrder: 0
-lastUpdated: 2026-02-10
+lastUpdated: 2026-02-12
 ---
 
 Xhavic's oracle layer is built directly into the protocol as EVM precompiles. Unlike external oracle networks that require contract calls and bridge latency, Xhavic oracles execute at native speed with minimal gas overhead.
@@ -17,10 +17,44 @@ Xhavic's oracle layer is built directly into the protocol as EVM precompiles. Un
 | Latency | Native speed | Cross-contract |
 | Dependencies | None | External network |
 | Data sources | Multi-source aggregated | Single provider |
+| Determinism | Signed outputs only | Depends on implementation |
 
-## Architecture
+## Push-Based Oracle Architecture
 
-The oracle layer aggregates data from multiple sources — exchange APIs, Chainlink, Band Protocol, and custom feeds — applying outlier detection and reliability-weighted averages before exposing data through precompiles.
+Xhavic uses a **push-based oracle mechanism** — oracle data is not updated on every block by default:
+
+1. **External oracle providers** monitor off-chain data sources (price feeds, system parameters)
+2. **When a meaningful change occurs**, the provider pushes a signed update to the network
+3. **Updates are batched** and included in the next available L2 batch produced by the sequencer
+4. **Only signed oracle outputs** are consumed by the protocol, ensuring determinism
+
+This design avoids unnecessary state transitions and significantly reduces computational and gas overhead.
+
+### Update Frequency Controls
+
+For critical system feeds (price data, risk parameters), Xhavic enforces:
+
+| Control | Description |
+|---|---|
+| Minimum update frequency | Updates at least every N blocks or T seconds |
+| Maximum staleness threshold | Feeds must refresh before the threshold expires |
+| Deviation triggers | Updates pushed when price deviates beyond a threshold |
+
+### Why This Matters
+
+- **Prevents excessive state churn** — No wasted computation on unchanged data
+- **Keeps gas costs predictable** — Updates only when meaningful changes occur
+- **Ensures deterministic oracle values** — All nodes consume identical signed outputs, maintaining full consensus safety
+
+## Oracle Determinism & Consensus
+
+Only final signed oracle outputs are included in the State Root. Nodes:
+
+- **Do not fetch off-chain data** independently
+- **Only consume deterministic oracle outputs** from signed provider updates
+- **Maintain full state determinism** across all validators
+
+This separation ensures oracle integration does not break consensus safety. Every node produces identical state given identical inputs.
 
 ## Precompile Addresses
 

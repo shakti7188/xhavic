@@ -3,7 +3,7 @@ title: "Differences from Ethereum"
 description: "What changes when deploying to Xhavic vs Ethereum — gas, finality, opcodes, and new capabilities."
 section: "getting-started"
 sortOrder: 2
-lastUpdated: 2026-02-10
+lastUpdated: 2026-02-12
 ---
 
 Xhavic is EVM-compatible at the bytecode level. Solidity, Vyper, and all standard development tools work without modification. This page documents the specific differences you should be aware of.
@@ -12,8 +12,8 @@ Xhavic is EVM-compatible at the bytecode level. Solidity, Vyper, and all standar
 
 Xhavic transaction fees have two components:
 
-1. **L2 execution fee** — Gas consumed by EVM execution on Xhavic. Significantly cheaper than Ethereum.
-2. **L1 data fee** — Cost of posting transaction calldata to Ethereum for data availability.
+1. **L2 execution fee** — Gas consumed by EVM execution on Xhavic, paid in **XHAV** (native token). Significantly cheaper than Ethereum.
+2. **L1 data fee** — Cost of posting transaction calldata to Ethereum for data availability. Amortized across all transactions in a batch.
 
 | Operation | Ethereum L1 Gas | Xhavic L2 Gas | Reduction |
 |---|---|---|---|
@@ -38,7 +38,7 @@ Soft finality is sufficient for most application logic. The 7-day challenge peri
 |---|---|---|
 | Block time | ~12 seconds | 2 seconds |
 | Block size limit | 30M gas | 5 MB compressed |
-| Block producer | Distributed validators | Single sequencer (Phase I) |
+| Block producer | Distributed validators | Single sequencer (Alpha phase, Xhavic Foundation) |
 | MEV protection | None (PBS) | Threshold encryption + time-weighted ordering |
 
 ## New Capabilities

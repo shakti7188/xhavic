@@ -1,22 +1,31 @@
 ---
 title: "Fees & Gas"
-description: "How Xhavic's two-component fee model works — L2 execution fees and L1 data fees."
+description: "How Xhavic's two-component fee model works — L2 execution fees paid in XHAV and L1 data fees."
 section: "protocol"
 sortOrder: 7
-lastUpdated: 2026-02-10
+lastUpdated: 2026-02-12
 ---
 
 ## Fee Model
 
 Xhavic transaction fees have two components:
 
-**L2 Execution Fee** — The cost of executing your transaction on the Xhavic EVM. Significantly cheaper than Ethereum.
+**L2 Execution Fee** — The cost of executing your transaction on the Xhavic EVM. Paid in **XHAV** (native token). Significantly cheaper than Ethereum.
 
-**L1 Data Fee** — The cost of posting your transaction's calldata to Ethereum for data availability. This is the primary cost driver.
+**L1 Data Fee** — The cost of posting your transaction's calldata to Ethereum for data availability. L1 costs are amortized across all transactions in a batch, so the effective per-user L1 cost is very low (typically less than 1% of total fees).
 
 ```
-Total Fee = L2 Execution Fee + L1 Data Fee
+Total Fee = L2 Execution Fee (paid in XHAV) + L1 Data Fee (amortized)
 ```
+
+## Cross-Chain Gas
+
+| Layer | Token | Description |
+|---|---|---|
+| L2 gas | XHAV | Paid by users for transaction execution |
+| L1 gas | ETH | Paid only for settlement (state root commitments) |
+
+Users experience **50-100x lower fees** compared to Ethereum mainnet. This fee model is identical to Optimism and Arbitrum.
 
 ## Cost Comparison
 

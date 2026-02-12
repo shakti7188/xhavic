@@ -3,7 +3,7 @@ title: "Security Model"
 description: "Defense-in-depth security architecture — 5 concentric layers from cryptographic primitives to Ethereum settlement."
 section: "security"
 sortOrder: 0
-lastUpdated: 2026-02-10
+lastUpdated: 2026-02-12
 ---
 
 Xhavic implements a defense-in-depth security architecture with five concentric layers. Every state transition ultimately settles on Ethereum, inheriting its security guarantees.
@@ -19,25 +19,45 @@ Xhavic implements a defense-in-depth security architecture with five concentric 
 | Encryption | ChaCha20-Poly1305 | MEV protection |
 | State commitment | Merkle-Patricia Trie | Inclusion proofs |
 
+> **Note:** Xhavic uses Keccak-256, identical to Ethereum. The term "SHA-3" appears only conceptually in some documentation — the actual implementation uses Keccak-256 to maintain MetaMask compatibility, Ethereum tooling compatibility, and full cryptographic consistency.
+
 ### Layer 2: Deterministic Execution
 
-Full EVM compatibility ensures identical outputs given identical inputs. Essential for fraud proof verification.
+Full EVM compatibility ensures identical outputs given identical inputs. Essential for fraud proof verification. Floating-point precompiles are non-standard EVM extensions implemented as system-level native contracts, audited independently as part of the core protocol audit. From a developer perspective, they behave like standard external contract calls and maintain deterministic execution semantics.
 
 ### Layer 3: Validator Oversight
 
 | Parameter | Value |
 |---|---|
 | Active set | Top 100 by stake |
+| Selection model | Stake-weighted (XHAV token) |
+| Delegation | Supported |
 | Minimum uptime | 95% (30-day rolling) |
 | Offline slashing | 5% of stake |
 | Invalid fraud proof | 25% of stake |
 | Double-signing | 100% of stake |
 
+**Validator entry:** Anyone can become a validator candidate by staking XHAV. Validators are ranked by total stake, historical uptime, and performance metrics.
+
+**Downtime handling:** If uptime drops below 95%, the validator is jailed, block rewards are paused, staked funds may be partially slashed, and the validator must complete a recovery period before rejoining.
+
+**Tie-breaking:** When validators have identical stake and uptime, deterministic tie-breaking applies: higher historical uptime, longer continuous staking duration, better performance metrics (latency, response time), and finally a deterministic hash-based lottery. This prevents randomness manipulation and gaming.
+
 ### Layer 4: Fraud Proofs
 
 Interactive bisection protocol narrows disputes to a single EVM instruction, verified on Ethereum. **Only one honest validator needed** to secure the entire network.
 
-Challenge period: 7 days for all L2 → L1 operations.
+**Challenge window:** 7 days for all L2 → L1 operations.
+
+During the challenge window:
+- Any participant can submit a fraud proof
+- If the proof demonstrates incorrect execution, the faulty batch is reverted
+- The correct state is restored
+- The sequencer is economically penalized
+
+**Proof generation:** O(log n) complexity. The sequencer builds Merkle structures incrementally during transaction execution and performs proof construction in parallel — no user-facing latency or throughput degradation.
+
+**Future roadmap:** Zero-Knowledge validity proofs (ZK-rollups) are planned as a future upgrade but are not part of v1.
 
 ### Layer 5: Ethereum Settlement (Outermost)
 
@@ -51,7 +71,30 @@ Every state root commits to Ethereum via the CanonicalTransactionChain.
 
 | Threat | Mitigation |
 |---|---|
-| Sequencer censors transaction | Force-include via L1 (~10x normal cost) |
-| Sequencer delays transaction | 24-hour timeout guarantees inclusion |
+| Sequencer censors transaction | Force-include via L1 |
+| Sequencer ignores forced inclusion | Stake slashing + reward loss + suspension |
 | Sequencer goes offline | Rotation and slashing |
 | Data withholding | All data on Ethereum calldata |
+
+**Censorship penalties:** If a user submits transaction data directly to L1 (forced inclusion mechanism) and the sequencer fails to include it within the allowed time window, the sequencer faces:
+
+- Stake slashing
+- Loss of sequencing rewards
+- Temporary suspension from sequencing role
+- In future phases: permanent removal from the validator set
+
+## Sequencer vs Validator Roles
+
+| | Current (v1) | Future Architecture |
+|---|---|---|
+| **Sequencer** | Separate system role (Xhavic Foundation) | Rotates among validators |
+| **Validators** | Verify state transitions, resolve disputes | Jointly perform sequencing and settlement |
+
+## New Validator Synchronization
+
+New validators joining the network:
+1. Download the latest global state snapshot
+2. Verify the state root from L1
+3. Begin validating from the latest block
+
+Validators do not replay from genesis (similar to Ethereum fast-sync), significantly reducing synchronization time and storage requirements.

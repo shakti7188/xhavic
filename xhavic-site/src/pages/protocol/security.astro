@@ -105,7 +105,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     <div class="container max-w-5xl">
       <span class="label-mono-dark">FRAUD PROOFS</span>
       <h2 class="heading-section mt-4 mb-4">Interactive Fraud Proofs</h2>
-      <p class="prose-editorial-dark mb-10">Bisection protocol narrows disputes to a single EVM instruction.</p>
+      <p class="prose-editorial-dark mb-10">Bisection protocol narrows disputes to a single EVM instruction. O(log n) proof generation complexity.</p>
 
       <div class="grid-40-60">
         <!-- Left: explanation -->
@@ -211,7 +211,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       <span class="label-mono">VALIDATORS</span>
       <h2 class="heading-section text-ink mt-4 mb-4">Validator System</h2>
       <p class="prose-editorial mb-10">
-        Economic security through staking, slashing, and performance requirements.
+        Economic security through XHAV staking, slashing, and performance requirements. Anyone can become a validator by staking XHAV tokens.
       </p>
 
       <div class="overflow-x-auto mb-8">
@@ -227,12 +227,22 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <tr class="highlighted">
               <td class="font-semibold text-ink">Active Set</td>
               <td class="font-extrabold text-primary">Top 100</td>
-              <td>Selected by stake weight. Ensures high economic commitment to protocol integrity.</td>
+              <td>Selected by stake weight (XHAV token). Anyone can become a validator candidate by staking.</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Selection Model</td>
+              <td class="font-bold">Stake-weighted</td>
+              <td>Validators ranked by total stake, historical uptime, and performance metrics.</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Delegation</td>
+              <td class="font-bold">Supported</td>
+              <td>Token holders can delegate stake to validators. Delegators share in rewards and slashing.</td>
             </tr>
             <tr>
               <td class="font-semibold">Uptime Requirement</td>
               <td class="font-bold">95%</td>
-              <td>Minimum uptime to remain in the active validator set. Enforced per epoch.</td>
+              <td>30-day rolling. Below threshold: jailed, rewards paused, recovery period required.</td>
             </tr>
             <tr>
               <td class="font-semibold">Challenge Window</td>
@@ -253,6 +263,16 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               <td class="font-semibold text-red-600">Double-Signing</td>
               <td class="font-bold text-red-600">100%</td>
               <td>Full stake slashed. Maximum penalty for the most severe protocol violation.</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Epoch Duration</td>
+              <td class="font-bold">2 hours</td>
+              <td>Validator set recomputed each epoch based on stake and performance.</td>
+            </tr>
+            <tr>
+              <td class="font-semibold">Tie-Breaking</td>
+              <td class="font-bold">Deterministic</td>
+              <td>Uptime → Staking duration → Performance metrics → Hash-based lottery.</td>
             </tr>
           </tbody>
         </table>
@@ -366,8 +386,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <div class="card-dark-solid p-5">
             <h4 class="font-bold text-white mb-2">Sequencer Censorship</h4>
             <p class="text-sm text-gray-400">
-              Force-include mechanism via L1. Users can submit transactions directly to Ethereum at 10x cost,
-              bypassing the sequencer entirely.
+              Force-include mechanism via L1. Users can submit transactions directly to Ethereum,
+              bypassing the sequencer entirely. Penalties: stake slashing + reward loss + suspension.
             </p>
           </div>
           <div class="card-dark-solid p-5">
