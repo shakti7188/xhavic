@@ -12,7 +12,7 @@ lastUpdated: 2026-02-12
 |---|---|
 | Network Name | Xhavic Mainnet |
 | Chain ID | `7849` |
-| Currency Symbol | XHAV |
+| Currency Symbol | XVC |
 | RPC URL (HTTPS) | `https://rpc.xhavic.io` |
 | Block Explorer | `https://xhaviscan.com` |
 | Bridge | `https://bridge.xhavic.io` |
@@ -25,12 +25,15 @@ lastUpdated: 2026-02-12
 |---|---|
 | Network Name | Xhavic Testnet |
 | Chain ID | `7850` |
-| Currency Symbol | XHAV |
-| RPC URL (HTTPS) | `https://testnet-rpc.xhavic.io` |
-| Block Explorer | `https://testnet-explorer.xhavic.io` |
+| Currency Symbol | XVC |
+| RPC URL (HTTPS) | `https://testrpc.xhaviscan.com` |
+| WebSocket | `wss://xhaviscan.com/socket/v2/websocket?vsn=2.0.0` |
+| Block Explorer | `https://xhaviscan.com` |
 | Bridge | `https://testnet-bridge.xhavic.io` |
-| Faucet | `https://faucet.xhavic.io` |
+| Faucet | 0.5 XVC per request, 24-hour cooldown |
 | Block Time | 2 seconds |
+| RPC Rate Limits | None currently |
+| Contract Verification API | `https://xhaviscan.com/api/v2/smart-contracts` |
 
 ## Add to MetaMask
 
@@ -41,7 +44,7 @@ await window.ethereum.request({
   params: [{
     chainId: '0x1EA9',
     chainName: 'Xhavic Mainnet',
-    nativeCurrency: { name: 'XHAV', symbol: 'XHAV', decimals: 18 },
+    nativeCurrency: { name: 'XVC', symbol: 'XVC', decimals: 18 },
     rpcUrls: ['https://rpc.xhavic.io'],
     blockExplorerUrls: ['https://xhaviscan.com'],
   }],
@@ -55,9 +58,9 @@ await window.ethereum.request({
   params: [{
     chainId: '0x1EAA',
     chainName: 'Xhavic Testnet',
-    nativeCurrency: { name: 'XHAV', symbol: 'XHAV', decimals: 18 },
-    rpcUrls: ['https://testnet-rpc.xhavic.io'],
-    blockExplorerUrls: ['https://testnet-explorer.xhavic.io'],
+    nativeCurrency: { name: 'XVC', symbol: 'XVC', decimals: 18 },
+    rpcUrls: ['https://testrpc.xhaviscan.com'],
+    blockExplorerUrls: ['https://xhaviscan.com'],
   }],
 });
 ```

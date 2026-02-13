@@ -17,7 +17,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         <p class="prose-editorial-dark" style="margin-bottom:2.5rem;">
           The Xhavic governance layer is a DAO structure with on-chain proposal execution.
           No multisig can override governance decisions. No off-chain committee can veto
-          on-chain votes. The protocol is governed by XHAV token holders.
+          on-chain votes. The protocol uses token-weighted voting (1 XHV = 1 vote), and only
+          XHV holders can create proposals. Quorum rules ensure minimum participation.
+          Delegation is planned for a future release. Quadratic voting is not supported.
         </p>
         <a href="/docs" class="btn-primary">Read Governance Docs</a>
       </div>
@@ -40,10 +42,9 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <h3 style="font-weight:700;font-size:18px;margin-bottom:1.5rem;">Proposal Lifecycle</h3>
           <div style="display:flex;flex-direction:column;gap:1.25rem;">
             {[
-              { step: '01', label: 'Submission', desc: 'Any token holder meeting the proposal threshold can submit a governance proposal on-chain.' },
-              { step: '02', label: 'Discussion Period', desc: 'A fixed period for community review and analysis before voting begins.' },
-              { step: '03', label: 'Voting', desc: 'Token-weighted voting. One token, one vote. No delegation to off-chain entities.' },
-              { step: '04', label: 'Execution', desc: 'Approved proposals execute on-chain automatically. No manual intervention required.' },
+              { step: '01', label: 'Submission', desc: 'Only XHV holders can submit a governance proposal on-chain. Proposals are submitted directly to the chain.' },
+              { step: '02', label: 'Voting Period', desc: 'Token-weighted voting begins: 1 XHV = 1 vote. Quorum rules ensure minimum participation. Delegation is planned for a future release. Quadratic voting is not supported.' },
+              { step: '03', label: 'Execution', desc: 'Approved proposals are executed via smart contract automatically. No manual intervention required. What is voted on is exactly what executes.' },
             ].map((item) => (
               <div style="display:flex;gap:0.75rem;">
                 <span class="label-mono" style="flex-shrink:0;margin-top:2px;">{item.step}</span>
@@ -60,11 +61,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           <h3 style="font-weight:700;font-size:18px;margin-bottom:1.5rem;">Design Principles</h3>
           <div style="display:flex;flex-direction:column;gap:1rem;">
             {[
-              'All governance actions execute on-chain. No off-chain multisig can override a passed proposal.',
+              'All governance actions execute on-chain via smart contract. No off-chain multisig can override a passed proposal.',
               'Proposal code is the proposal. What is voted on is what executes — no interpretation layer.',
-              'Voting power is proportional to token holdings. No special classes of votes or veto rights.',
-              'Timelock delays between approval and execution allow the community to respond to malicious proposals.',
-              'The governance contract itself is upgradeable only through governance.',
+              'Token-weighted voting: 1 XHV = 1 vote. No special classes of votes or veto rights. Quadratic voting is not supported.',
+              'Only XHV holders can create proposals. Quorum rules ensure minimum participation for valid outcomes.',
+              'Delegation is planned for a future release. The governance contract itself is upgradeable only through governance.',
             ].map((item) => (
               <div style="display:flex;align-items:flex-start;gap:0.625rem;">
                 <span style="width:5px;height:5px;border-radius:50%;background:#000;margin-top:8px;flex-shrink:0;"></span>
@@ -145,7 +146,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               'Single centralized sequencer operated by the Xhavic Foundation',
               'Governance contracts deployed but with limited scope',
               'Community feedback channels active',
-              'XHAV token distribution and initial staking',
+              'XHV token distribution and initial staking',
             ].map((item) => (
               <li style="display:flex;align-items:flex-start;gap:0.5rem;font-size:14px;color:rgba(255,255,255,0.6);">
                 <span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);margin-top:7px;flex-shrink:0;"></span>

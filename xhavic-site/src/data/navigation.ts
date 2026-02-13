@@ -66,7 +66,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
       { label: "Documentation", href: "/docs", external: true },
       { label: "RPC Endpoints", href: "/docs", external: true },
       { label: "GitHub", href: "https://github.com/xhavic", external: true },
-      { label: "Testnet Faucet", href: "https://faucet.xhavic.io", external: true },
+      { label: "Testnet Faucet (Coming Soon)", href: "#", external: false },
       { label: "Block Explorer", href: "https://xhaviscan.com", external: true },
       { label: "Bridge", href: "https://bridge.xhavic.io", external: true },
     ],

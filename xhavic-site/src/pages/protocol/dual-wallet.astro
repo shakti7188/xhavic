@@ -26,9 +26,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             The Security of a Cold Wallet.<br/>The Safety of an Undo Button.
           </h1>
           <p class="prose-editorial-dark mb-10 max-w-2xl">
-            Introducing Secure Wallet on the Xhavic Blockchain &mdash; the ultimate vault
-            for your long-term holdings. Choose between instant composability and 24-hour
-            reversibility within a single chain.
+            Every user starts with an Instant Wallet. When you're ready to protect long-term
+            holdings, create a Secured Wallet from the app and switch between them via toggle
+            with password authentication. Each wallet has its own blockchain address and
+            private keys &mdash; complete state isolation, no shared contracts.
           </p>
 
           <!-- CTAs -->
@@ -74,7 +75,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </div>
             </div>
             <p class="text-sm text-gray-400 leading-relaxed">
-              Cold-wallet grade security with a built-in safety net. Revert unauthorized transactions with a single click from your email.
+              Cold-wallet grade security with a built-in safety net. Funds are locked in an escrow smart contract for 24 hours. Reversal requires multi-factor auth (email + Google Auth/OTP) with 2-3 verifications quorum.
             </p>
           </div>
         </div>
@@ -108,10 +109,13 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           and irreversibly.
         </p>
         <p class="mb-4">
-          Xhavic's Secure Wallet changes this. It places a 24-hour safety net between your
-          assets and the outside world. Every outgoing transaction is held in escrow, and
-          you're notified by email immediately. If something looks wrong, one click reverts
-          the transaction &mdash; no private keys needed, no panic required.
+          Xhavic's Secured Wallet changes this. It places a 24-hour safety net between your
+          assets and the outside world. Every outgoing transaction locks funds in a standard
+          deployed escrow smart contract &mdash; escrowed funds belong to the contract address, not
+          your balance. Events are emitted at both stages: <code>EscrowCreated</code> at entry and
+          <code>EscrowReleased</code> or <code>EscrowReversed</code> at finalization. If something looks wrong,
+          initiate a reversal with multi-factor authentication (email + Google Auth/OTP,
+          2-3 verifications quorum).
         </p>
         <p class="font-semibold" style="color: #c4a35a;">
           It's like having a cold wallet with a built-in undo button.
@@ -153,8 +157,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div>
               <h3 class="text-lg font-bold text-ink mb-2">Setup</h3>
               <p class="text-muted text-sm leading-relaxed">
-                Create a Secure Wallet in the Xhavic Wallet App and link your email address.
-                That's it &mdash; your safety net is active from the first transaction.
+                Users initially create an Instant Wallet. To activate protection, manually create
+                a Secured Wallet from the app. Each wallet gets its own blockchain address and private
+                keys &mdash; wallet type is permanently bound to its address. Switch between wallets via
+                toggle with password authentication.
               </p>
             </div>
           </div>
@@ -168,9 +174,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div>
               <h3 class="text-lg font-bold text-ink mb-2">The Safety Net</h3>
               <p class="text-muted text-sm leading-relaxed">
-                When assets leave your Secure Wallet, they aren't transferred immediately.
-                Instead, they're held in a transparent on-chain escrow for 24 hours.
-                No one can touch them during this window.
+                When assets leave your Secured Wallet, they are locked in a standard deployed
+                escrow smart contract (not a system/privileged contract) for 24 hours. Escrowed
+                funds are not in your user balance &mdash; they belong to the smart contract address.
+                An <code>EscrowCreated</code> event is emitted at this stage.
               </p>
             </div>
           </div>
@@ -199,9 +206,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <div>
               <h3 class="text-lg font-bold text-ink mb-2">You Decide</h3>
               <p class="text-muted text-sm leading-relaxed">
-                If everything looks right, do nothing &mdash; the funds release automatically after 24 hours.
-                If something is wrong, click the revert link in your email and the transaction is
-                cancelled immediately. Your assets return to your wallet.
+                If everything looks right, do nothing &mdash; the funds release automatically after 24 hours
+                and an <code>EscrowReleased</code> event is emitted. If something is wrong, initiate a reversal
+                with multi-factor authentication (email + Google Auth/OTP, 2-3 verifications quorum).
+                The transaction is cancelled, an <code>EscrowReversed</code> event is emitted, and your assets
+                return to your wallet.
               </p>
             </div>
           </div>
@@ -242,8 +251,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
                   </svg>
                   24-HOUR ESCROW
                 </div>
-                <p class="text-sm font-bold text-ink mb-1">Funds Held Securely</p>
-                <p class="text-xs text-muted">On-chain escrow &bull; Transparent &bull; Immutable</p>
+                <p class="text-sm font-bold text-ink mb-1">Funds Held in Smart Contract</p>
+                <p class="text-xs text-muted">Standard escrow contract &bull; Funds belong to contract address &bull; EscrowCreated event emitted</p>
               </div>
             </div>
 
@@ -404,7 +413,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               </div>
               <div class="flex justify-between items-center pb-4 border-b border-gray-100">
                 <span class="text-muted text-sm">Reversible</span>
-                <span class="text-emerald-600 font-bold">Yes &mdash; via email link</span>
+                <span class="text-emerald-600 font-bold">Yes &mdash; via MFA</span>
               </div>
               <div class="flex justify-between items-center pb-4 border-b border-gray-100">
                 <span class="text-muted text-sm">Notification</span>
@@ -426,9 +435,11 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </div>
 
           <p class="prose-editorial mt-6 mb-8">
-            Secure Wallet gives you the robust security of a cold wallet without the hardware,
+            Secured Wallet gives you the robust security of a cold wallet without the hardware,
             the complexity, or the risk of losing a device. Your long-term holdings stay
-            protected by a 24-hour escrow and real-time email alerts &mdash; all on-chain.
+            protected by a 24-hour escrow smart contract and multi-factor authentication for
+            reversals &mdash; all on-chain. Instant and Secured wallets have complete state
+            isolation with no shared contracts.
           </p>
 
           <ul class="space-y-4">
@@ -443,14 +454,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
               <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
               <div>
                 <p class="text-ink font-semibold">24-Hour Revert Window</p>
-                <p class="text-muted text-sm">Stop any outgoing transaction within 24 hours. One click from your email is all it takes to cancel and recover your funds.</p>
+                <p class="text-muted text-sm">Stop any outgoing transaction within 24 hours. Reversal requires multi-factor authentication (email + Google Auth/OTP) with 2-3 verifications quorum to cancel and recover your funds.</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
               <span class="w-2 h-2 rounded-full mt-2 flex-shrink-0" style="background: #c4a35a;"></span>
               <div>
                 <p class="text-ink font-semibold">Escrow Protection</p>
-                <p class="text-muted text-sm">Funds are held in a transparent on-chain escrow stage. No quick getaway for attackers &mdash; there is always time to act.</p>
+                <p class="text-muted text-sm">Funds are locked in a standard deployed escrow smart contract. Escrowed funds belong to the contract address, not your balance. Events emitted at both stages: <code>EscrowCreated</code> and <code>EscrowReleased</code>/<code>EscrowReversed</code>.</p>
               </div>
             </li>
             <li class="flex items-start gap-3">
@@ -541,7 +552,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             <p class="text-sm font-bold text-red-400">N/A &mdash; irreversible</p>
           </div>
           <div class="rounded-lg py-4 px-5 text-center border" style="background: rgba(196, 163, 90, 0.1); border-color: rgba(196, 163, 90, 0.2);">
-            <p class="text-sm font-bold" style="color: #c4a35a;">Email revert link</p>
+            <p class="text-sm font-bold" style="color: #c4a35a;">MFA (email + Google Auth/OTP)</p>
           </div>
         </div>
 

@@ -17,7 +17,7 @@ export const USE_CASES: readonly UseCase[] = [
     description:
       "Lending, swapping, stablecoins, derivatives, and structured products benefit from predictable, low-cost execution. High throughput enables real-time trading and automated strategies on Layer 2.",
     image: "/images/use-cases/defi.webp",
-    href: "/use-cases/defi",
+    href: "/ecosystem",
   },
   {
     tag: "Tokenized Assets",
@@ -25,7 +25,7 @@ export const USE_CASES: readonly UseCase[] = [
     description:
       "Real estate, commodities, identity systems, and digital securities require secure settlement with fast execution. Xhavic provides the compliant, auditable infrastructure for tokenizing real-world assets.",
     image: "/images/use-cases/tokenized-assets.avif",
-    href: "/use-cases/tokenized-assets",
+    href: "/enterprises",
   },
   {
     tag: "AI Agent Applications",
@@ -33,7 +33,7 @@ export const USE_CASES: readonly UseCase[] = [
     description:
       "Autonomous AI agents can monitor on-chain conditions and trigger trades, payments, rebalancing, and verification. Xhavic's low fees and fast execution make it ideal for high-frequency agentic workloads powered by MCP-style multi-chain execution.",
     image: "/images/use-cases/ai-agents.webp",
-    href: "/use-cases/ai-agents",
+    href: "/developers",
   },
   {
     tag: "Institutional & RWA",
@@ -41,7 +41,7 @@ export const USE_CASES: readonly UseCase[] = [
     description:
       "Enterprise and institutional participants can build compliance-driven products with audit trails, on-ramp / off-ramp connectivity, and institutional-grade workflows for digital securities, commodities, and real estate on Ethereum-secured infrastructure.",
     image: "/images/use-cases/institutional-rwa.webp",
-    href: "/use-cases/institutional-rwa",
+    href: "/enterprises",
   },
   {
     tag: "Gaming & NFTs",
@@ -49,6 +49,6 @@ export const USE_CASES: readonly UseCase[] = [
     description:
       "On-chain games, NFT marketplaces, and digital collectibles demand instant transactions at minimal cost. Xhavic's sub-second soft finality and $0.04 fees enable real-time in-game economies and seamless NFT minting, trading, and staking.",
     image: "/images/use-cases/gaming-nfts.webp",
-    href: "/use-cases/gaming-nfts",
+    href: "/ecosystem",
   },
 ] as const;

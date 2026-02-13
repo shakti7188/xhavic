@@ -385,7 +385,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       <span class="text-white">accounts</span><span class="text-gray-500">:</span> <span class="text-gray-500">[</span><span class="text-white">process</span><span class="text-gray-500">.</span><span class="text-white">env</span><span class="text-gray-500">.</span><span class="text-white">DEPLOYER_KEY</span><span class="text-gray-500">!],</span>
     <span class="text-gray-500">&#125;,</span>
     <span class="text-amber-300">"xhavic-testnet"</span><span class="text-gray-500">:</span> <span class="text-gray-500">&#123;</span>
-      <span class="text-white">url</span><span class="text-gray-500">:</span> <span class="text-amber-300">"https://testnet-rpc.xhavic.io"</span><span class="text-gray-500">,</span>
+      <span class="text-white">url</span><span class="text-gray-500">:</span> <span class="text-amber-300">"https://testrpc.xhaviscan.com"</span><span class="text-gray-500">,</span>
       <span class="text-white">chainId</span><span class="text-gray-500">:</span> <span class="text-blue-400">7850</span><span class="text-gray-500">,</span>
       <span class="text-white">accounts</span><span class="text-gray-500">:</span> <span class="text-gray-500">[</span><span class="text-white">process</span><span class="text-gray-500">.</span><span class="text-white">env</span><span class="text-gray-500">.</span><span class="text-white">DEPLOYER_KEY</span><span class="text-gray-500">!],</span>
     <span class="text-gray-500">&#125;,</span>
@@ -510,18 +510,18 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </span>
         </a>
 
-        <a href="https://faucet.xhavic.io" class="card-arch group cursor-pointer block" target="_blank" rel="noopener">
+        <div class="card-arch group block" style="opacity:0.7;cursor:default;">
           <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
             <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
             </svg>
           </div>
-          <h3 class="font-bold text-lg mb-2 text-ink group-hover:text-primary transition-colors">Testnet Faucet</h3>
-          <p class="text-muted text-sm leading-relaxed">Get testnet XHV tokens for development</p>
-          <span class="inline-flex items-center gap-1 text-primary text-sm font-semibold mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-            Explore <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          <h3 class="font-bold text-lg mb-2 text-ink">Testnet Faucet</h3>
+          <p class="text-muted text-sm leading-relaxed">Get testnet XVC tokens for development</p>
+          <span class="inline-flex items-center gap-1 text-amber-500 text-sm font-semibold mt-4">
+            Coming Soon
           </span>
-        </a>
+        </div>
 
         <a href="https://xhaviscan.com" class="card-arch group cursor-pointer block" target="_blank" rel="noopener">
           <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 transition-all duration-300">
@@ -563,7 +563,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
             </div>
             <div class="flex items-center gap-3 p-2.5 rounded-lg bg-surface">
               <span class="w-2 h-2 rounded-full bg-yellow-500 flex-shrink-0"></span>
-              <code class="text-xs font-mono text-muted">https://testnet-rpc.xhavic.io</code>
+              <code class="text-xs font-mono text-muted">https://testrpc.xhaviscan.com</code>
             </div>
           </div>
         </div>

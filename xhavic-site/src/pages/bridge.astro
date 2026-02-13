@@ -4,7 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Bridge — Xhavic"
-  description="Bridge assets between Ethereum L1 and the Xhavic execution network. Deposit ETH and ERC-20 tokens to Xhavic, or withdraw back to Ethereum mainnet."
+  description="Bridge the native Xhavic token (XVC) between Ethereum L1 and the Xhavic execution network. No minimum deposit or withdrawal amounts. Fast exit is native to the protocol."
 >
   <!-- Hero -->
   <section class="bg-dark text-white" style="padding:6rem 0 5rem;" data-reveal>
@@ -15,8 +15,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           Xhavic Bridge
         </h1>
         <p class="prose-editorial-dark" style="margin-bottom:2.5rem;">
-          Transfer assets between Ethereum L1 and the Xhavic execution network.
-          Deposit ETH and ERC-20 tokens, or withdraw back to Ethereum mainnet.
+          Transfer the native Xhavic token (XVC) between Ethereum L1 and the Xhavic execution
+          network. The bridge currently supports only the native XVC token &mdash; no ERC-20 tokens
+          at this time. No minimum deposit or withdrawal amounts. Fast exit is native to the
+          protocol with no third-party services required.
         </p>
       </div>
     </div>
@@ -34,31 +36,49 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
           </svg>
         </div>
 
-        <h2 class="heading-section" style="margin-bottom:1rem;">Coming Soon</h2>
+        <h2 class="heading-section" style="margin-bottom:1rem;">Bridge Details</h2>
         <p class="prose-editorial" style="margin-left:auto;margin-right:auto;margin-bottom:2rem;">
-          The Xhavic Bridge is currently under development. It will support native ETH deposits,
-          ERC-20 token transfers, and cross-chain messaging between Ethereum L1 and Xhavic L2.
+          The Xhavic Bridge currently supports only the native XVC token. No ERC-20 tokens
+          are supported at this time. There are no minimum deposit or withdrawal amounts.
+          Fast exit is native to the protocol &mdash; no third-party services required.
+          There is no official Bridge SDK yet; use the API or mobile wallet to interact with the bridge.
         </p>
 
         <!-- Feature preview -->
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:3rem;text-align:left;">
           <div class="card-arch" style="text-align:center;">
-            <p style="font-size:14px;font-weight:700;margin-bottom:0.25rem;">Deposits</p>
-            <p style="font-size:13px;color:#737373;">~10 min confirmation</p>
+            <p style="font-size:14px;font-weight:700;margin-bottom:0.25rem;">Supported Token</p>
+            <p style="font-size:13px;color:#737373;">Native XVC only</p>
           </div>
           <div class="card-arch" style="text-align:center;">
-            <p style="font-size:14px;font-weight:700;margin-bottom:0.25rem;">Withdrawals</p>
-            <p style="font-size:13px;color:#737373;">7-day challenge period</p>
+            <p style="font-size:14px;font-weight:700;margin-bottom:0.25rem;">Minimums</p>
+            <p style="font-size:13px;color:#737373;">No minimum amounts</p>
           </div>
           <div class="card-arch" style="text-align:center;">
-            <p style="font-size:14px;font-weight:700;margin-bottom:0.25rem;">Tokens</p>
-            <p style="font-size:13px;color:#737373;">ETH + ERC-20 support</p>
+            <p style="font-size:14px;font-weight:700;margin-bottom:0.25rem;">Fast Exit</p>
+            <p style="font-size:13px;color:#737373;">Native to protocol</p>
           </div>
         </div>
 
+        <!-- Contract addresses -->
+        <div style="text-align:left;max-width:560px;margin:0 auto 2rem;">
+          <p style="font-size:14px;font-weight:700;margin-bottom:1rem;">Testnet Bridge Contracts</p>
+          <div style="display:flex;flex-direction:column;gap:0.75rem;">
+            <div style="padding:0.75rem 1rem;border-radius:8px;background:#fafafa;border:1px solid #e5e5e5;">
+              <p style="font-size:12px;color:#737373;margin-bottom:0.25rem;">L1 Bridge Gateway</p>
+              <code style="font-size:12px;word-break:break-all;">0x9efd6ea3d18dee98698150c7df369fcd2efea3be</code>
+            </div>
+            <div style="padding:0.75rem 1rem;border-radius:8px;background:#fafafa;border:1px solid #e5e5e5;">
+              <p style="font-size:12px;color:#737373;margin-bottom:0.25rem;">L1 Standard Token Bridge</p>
+              <code style="font-size:12px;word-break:break-all;">0xe7c9ba625ab8589657bc0e67090694fe141cbda7</code>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#a3a3a3;margin-top:0.75rem;font-style:italic;">Mainnet bridge contracts are under deployment.</p>
+        </div>
+
         <p style="font-size:14px;color:#a3a3a3;margin-bottom:2.5rem;">
-          In the meantime, review the bridge architecture and deposit/withdrawal flows
-          in the protocol documentation.
+          No official Bridge SDK is available yet. Use the API or mobile wallet to interact
+          with the bridge. Review the bridge architecture in the protocol documentation.
         </p>
 
         <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;">
