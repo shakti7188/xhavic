@@ -27,7 +27,7 @@ export const MAIN_NAV: readonly NavItem[] = [
     items: [
       { label: "Overview", href: "/protocol" },
       { label: "Architecture", href: "/protocol/architecture" },
-      { label: "Dual Wallet System", href: "/protocol/dual-wallet-system" },
+      { label: "Dual Wallet System", href: "/protocol/dual-wallet" },
       { label: "Performance", href: "/protocol/performance" },
       { label: "Security", href: "/protocol/security" },
     ],
@@ -54,7 +54,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     links: [
       { label: "Overview", href: "/protocol" },
       { label: "Architecture", href: "/protocol/architecture" },
-      { label: "Dual Wallet System", href: "/protocol/dual-wallet-system" },
+      { label: "Dual Wallet System", href: "/protocol/dual-wallet" },
       { label: "Performance", href: "/protocol/performance" },
       { label: "Security", href: "/protocol/security" },
       { label: "Whitepaper", href: "/whitepaper", external: false },
@@ -64,7 +64,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     title: "Build",
     links: [
       { label: "Documentation", href: "/docs", external: true },
-      { label: "RPC Endpoints", href: "/docs/rpc", external: true },
+      { label: "RPC Endpoints", href: "/docs", external: true },
       { label: "GitHub", href: "https://github.com/xhavic", external: true },
       { label: "Testnet Faucet", href: "https://faucet.xhavic.io", external: true },
       { label: "Block Explorer", href: "https://xhaviscan.com", external: true },
@@ -75,7 +75,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     title: "Ecosystem",
     links: [
       { label: "Applications", href: "/ecosystem" },
-      { label: "Partners", href: "/ecosystem/partners" },
+      { label: "Partners", href: "/ecosystem" },
       { label: "Community", href: "/community" },
     ],
   },
@@ -84,8 +84,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     links: [
       { label: "Blog", href: "/blog" },
       { label: "Governance", href: "/governance" },
-      { label: "Media Kit", href: "/media-kit" },
-      { label: "Contact", href: "/contact" },
+      { label: "Media Kit", href: "/media" },
     ],
   },
 ] as const;
@@ -93,9 +92,9 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
 // ---- Legal links (footer bottom) ----
 
 export const LEGAL_LINKS: readonly NavLink[] = [
-  { label: "Terms of Use", href: "/legal/terms" },
-  { label: "Privacy Policy", href: "/legal/privacy" },
-  { label: "Risk Disclosure", href: "/legal/risk-disclosure" },
+  { label: "Terms of Use", href: "/terms" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Risk Disclosure", href: "/risk-disclosure" },
 ] as const;
 
 // ---- Social footer links (extracted from index.html) ----

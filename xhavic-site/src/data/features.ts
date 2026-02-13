@@ -21,7 +21,7 @@ export const FEATURE_CARDS: readonly FeatureCard[] = [
       "The Instant Wallet handles real-time transactions in seconds, while the Funding Wallet provides a 24-hour safety window to cancel or reverse transfers in case of errors or suspicious activity.",
     icon: "/images/features/i-1.webp",
     preview: "/images/features/img-1.webp",
-    href: "/protocol/dual-wallet-system",
+    href: "/protocol/dual-wallet",
   },
   {
     id: "on-off-ramp",
@@ -30,7 +30,7 @@ export const FEATURE_CARDS: readonly FeatureCard[] = [
       "Enable end-users and institutional participants to move between fiat and digital assets with integrated ramp solutions, simplifying deposits and withdrawals.",
     icon: "/images/features/i-2.webp",
     preview: "/images/features/img-2.webp",
-    href: "/use-cases/institutional-rwa",
+    href: "/enterprises",
   },
   {
     id: "evm-compatible",
@@ -63,7 +63,7 @@ export const SLIDER_BENEFITS: readonly SliderBenefit[] = [
     title: "Built-in wallet",
     icon: "/images/slider/icon1.png",
     image: "/images/slider/1.png",
-    href: "/protocol/dual-wallet-system",
+    href: "/protocol/dual-wallet",
   },
   {
     title: "Visualize your performance",
@@ -280,7 +280,7 @@ export const GET_STARTED_ITEMS: readonly GetStartedItem[] = [
     title: "Enterprises",
     description: "Contact the team for integration support.",
     ctaText: "Contact team",
-    href: "/contact",
+    href: "/enterprises",
     image: "/images/get-started/1.jpg",
   },
 ] as const;
