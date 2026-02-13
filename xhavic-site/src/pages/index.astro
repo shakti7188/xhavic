@@ -1266,7 +1266,7 @@ const capRows = [
   .l3-community {
     padding: 80px 0 0;
     background: #f1f2f3;
-    overflow: hidden;
+    /* overflow must NOT be hidden/clip — it breaks position:sticky on stickyPanel */
   }
 
   .l3-community__header { text-align: center; max-width: 620px; margin: 0 auto; padding: 0 1.5rem; }
@@ -1293,9 +1293,10 @@ const capRows = [
     transform: translateY(-1px);
   }
 
-  /* Orbit wrapper */
+  /* Orbit wrapper — exact copy from original styles.css */
   .l3-community__orbit {
-    height: 250vh; position: relative; overflow: clip;
+    height: 350vh; position: relative;
+    overflow: clip;
     background: #f1f2f3;
   }
 
@@ -1311,22 +1312,9 @@ const capRows = [
     margin: 0 auto;
   }
 
-  /* Rings */
+  /* Rings — hidden; bg.png already provides the ring circles */
   .l3-community__rings {
-    position: absolute; inset: -30%; pointer-events: none; opacity: 0.95;
-    transform: rotate(calc(var(--p, 0) * 30deg)); transition: transform 0.08s linear;
-  }
-  .l3-community__rings::before {
-    content: ""; position: absolute; inset: 0; border-radius: 50%;
-    background: radial-gradient(
-      circle at 50% 50%,
-      rgba(255,255,255,0) 0%, rgba(255,255,255,0) 35%,
-      rgba(0,0,0,0.03) 36%, rgba(255,255,255,0) 37%,
-      rgba(255,255,255,0) 55%, rgba(0,0,0,0.03) 56%, rgba(255,255,255,0) 57%,
-      rgba(255,255,255,0) 73%, rgba(0,0,0,0.05) 74%, rgba(255,255,255,0) 75%,
-      rgba(255,255,255,0) 100%
-    );
-    filter: blur(0.2px);
+    display: none;
   }
 
   /* Center logo */
@@ -1335,7 +1323,7 @@ const capRows = [
     text-align: center; z-index: 2; padding: 16px;
   }
   .l3-community__centerInner {
-    width: min(180px, 40%);
+    width: min(420px, 90%);
     transform: scale(calc(0.1 + (var(--p, 0) * 0.9)));
     opacity: calc(0.1 + (var(--p, 0) * 0.9));
     filter: blur(calc((1 - var(--p, 0)) * 3px));
@@ -1347,8 +1335,6 @@ const capRows = [
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    height: 100%;
-    width: 100%;
   }
   .l3-community__logo { width: 150px; }
 
@@ -1364,8 +1350,8 @@ const capRows = [
     --baseScale: 1; --w: 112px; --h: 112px; --rad: 20px;
     position: absolute; width: var(--w); height: var(--h);
     border-radius: var(--rad);
-    background: #fff; border: 1px solid rgba(0,0,0,0.06);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+    background: #ffffff; border: 1px solid rgba(16,24,40,0.1);
+    box-shadow: 0 20px 60px rgba(16,24,40,0.12);
     padding: 6px; z-index: 3;
     transform: translate(
       calc((var(--tx) * var(--p, 0)) + (1 - var(--p, 0)) * var(--cx)),
@@ -1380,7 +1366,7 @@ const capRows = [
     object-fit: cover; display: block;
   }
 
-  /* Per-avatar orbital coordinates */
+  /* Per-avatar orbital coordinates (exact match to original) */
   .l3-av-1 { --tx: -327px; --ty: -203px; --cx: -55px; --cy: -115px; --baseScale: 1.06; --w: 160px; --h: 160px; --rad: 22px; }
   .l3-av-2 { --tx: 0px; --ty: -235px; --cx: -55px; --cy: -115px; --baseScale: 1; --w: 102px; --h: 102px; --rad: 18px; }
   .l3-av-3 { --tx: 218px; --ty: -173px; --cx: -55px; --cy: -115px; --baseScale: 0.98; --w: 140px; --h: 140px; --rad: 20px; }
@@ -1400,9 +1386,10 @@ const capRows = [
   .l3-community__avatar[data-layer="7"] { z-index: 3; }
   .l3-community__avatar[data-layer="8"] { z-index: 2; }
 
-  /* Community orbit responsive */
+  /* Community orbit responsive — exact copy from original */
   @media (max-width: 780px) {
-    .l3-community__scene { width: 95%; background-size: cover; }
+    .l3-community__scene { width: 100%; }
+    .l3-community__bg { background-size: cover; }
     .l3-community__avatar { padding: 5px; }
     .l3-av-1 { --tx: -185px; --ty: -338px; --w: 160px; --h: 160px; }
     .l3-av-2 { --tx: 0px; --ty: -235px; --w: 102px; --h: 102px; }
@@ -1415,7 +1402,6 @@ const capRows = [
   }
   @media (max-width: 520px) {
     .l3-community__avatar { width: clamp(64px, var(--w), 96px); height: clamp(64px, var(--h), 96px); }
-    .l3-community__orbit { height: 200vh; }
     .l3-community__logo { width: 80px; }
   }
 </style>
