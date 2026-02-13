@@ -368,7 +368,7 @@ const capRows = [
 
       <div class="l3-uc__grid" data-reveal>
         <!-- Card 1 — DeFi & Trading (large, spans 2 cols) -->
-        <a href="/use-cases/defi" class="l3-uc__card l3-uc__card--wide l3-uc__card--defi">
+        <div class="l3-uc__card l3-uc__card--wide l3-uc__card--defi">
           <div class="l3-uc__cardGlow"></div>
           <div class="l3-uc__cardInner">
             <div class="l3-uc__cardIcon l3-uc__cardIcon--blue">
@@ -392,14 +392,11 @@ const capRows = [
                 <span class="l3-uc__statLabel">Finality</span>
               </div>
             </div>
-            <span class="l3-uc__cardArrow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </span>
           </div>
-        </a>
+        </div>
 
         <!-- Card 2 — Tokenized Assets -->
-        <a href="/use-cases/tokenized-assets" class="l3-uc__card l3-uc__card--rwa">
+        <div class="l3-uc__card l3-uc__card--rwa">
           <div class="l3-uc__cardGlow"></div>
           <div class="l3-uc__cardInner">
             <div class="l3-uc__cardIcon l3-uc__cardIcon--gold">
@@ -407,14 +404,11 @@ const capRows = [
             </div>
             <h3 class="l3-uc__cardTitle">Tokenized Assets</h3>
             <p class="l3-uc__cardDesc">Real estate, commodities, and digital securities on auditable, compliant infrastructure.</p>
-            <span class="l3-uc__cardArrow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </span>
           </div>
-        </a>
+        </div>
 
         <!-- Card 3 — AI Agents -->
-        <a href="/use-cases/ai-agents" class="l3-uc__card l3-uc__card--ai">
+        <div class="l3-uc__card l3-uc__card--ai">
           <div class="l3-uc__cardGlow"></div>
           <div class="l3-uc__cardInner">
             <div class="l3-uc__cardIcon l3-uc__cardIcon--green">
@@ -422,14 +416,11 @@ const capRows = [
             </div>
             <h3 class="l3-uc__cardTitle">AI Agents</h3>
             <p class="l3-uc__cardDesc">Autonomous on-chain execution — trades, payments, rebalancing, and verification powered by MCP.</p>
-            <span class="l3-uc__cardArrow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </span>
           </div>
-        </a>
+        </div>
 
         <!-- Card 4 — Institutional & RWA -->
-        <a href="/use-cases/institutional-rwa" class="l3-uc__card l3-uc__card--inst">
+        <div class="l3-uc__card l3-uc__card--inst">
           <div class="l3-uc__cardGlow"></div>
           <div class="l3-uc__cardInner">
             <div class="l3-uc__cardIcon l3-uc__cardIcon--purple">
@@ -437,14 +428,11 @@ const capRows = [
             </div>
             <h3 class="l3-uc__cardTitle">Institutional & RWA</h3>
             <p class="l3-uc__cardDesc">Enterprise-grade compliance, audit trails, and institutional workflows for digital securities.</p>
-            <span class="l3-uc__cardArrow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </span>
           </div>
-        </a>
+        </div>
 
         <!-- Card 5 — Gaming & NFTs -->
-        <a href="/use-cases/gaming-nfts" class="l3-uc__card l3-uc__card--game">
+        <div class="l3-uc__card l3-uc__card--game">
           <div class="l3-uc__cardGlow"></div>
           <div class="l3-uc__cardInner">
             <div class="l3-uc__cardIcon l3-uc__cardIcon--pink">
@@ -452,11 +440,8 @@ const capRows = [
             </div>
             <h3 class="l3-uc__cardTitle">Gaming & NFTs</h3>
             <p class="l3-uc__cardDesc">In-game economies, NFT marketplaces, and real-time digital collectibles with instant finality.</p>
-            <span class="l3-uc__cardArrow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
-            </span>
           </div>
-        </a>
+        </div>
       </div>
     </div>
   </section>
@@ -1024,8 +1009,6 @@ const capRows = [
     background: #fff;
     border: 1px solid rgba(226,232,240,0.8);
     overflow: hidden;
-    text-decoration: none;
-    color: inherit;
     transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s cubic-bezier(0.22,1,0.36,1), border-color 0.32s ease;
     will-change: transform;
   }
@@ -1063,8 +1046,7 @@ const capRows = [
   .l3-uc__cardIcon--pink { background: rgba(236,72,153,0.08); color: #ec4899; border: 1px solid rgba(236,72,153,0.12); }
 
   /* Title + Desc */
-  .l3-uc__cardTitle { font-size: 20px; font-weight: 700; color: #0f172a; margin: 0; line-height: 1.25; transition: color 0.25s ease; }
-  .l3-uc__card:hover .l3-uc__cardTitle { color: #2262ff; }
+  .l3-uc__cardTitle { font-size: 20px; font-weight: 700; color: #0f172a; margin: 0; line-height: 1.25; }
   .l3-uc__cardDesc { font-size: 14.5px; color: #64748b; line-height: 1.6; margin: 0; }
 
   /* Stats row (wide card only) */
@@ -1072,10 +1054,6 @@ const capRows = [
   .l3-uc__stat { display: flex; flex-direction: column; gap: 2px; }
   .l3-uc__statVal { font-size: 22px; font-weight: 800; color: #0f172a; font-family: var(--font-mono, monospace); letter-spacing: -0.02em; }
   .l3-uc__statLabel { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
-
-  /* Arrow icon */
-  .l3-uc__cardArrow { position: absolute; top: 24px; right: 24px; width: 36px; height: 36px; border-radius: 50%; background: #f8fafc; border: 1px solid #e2e8f0; display: grid; place-items: center; color: #94a3b8; transition: all 0.28s cubic-bezier(0.22,1,0.36,1); }
-  .l3-uc__card:hover .l3-uc__cardArrow { background: #2262ff; border-color: #2262ff; color: #fff; transform: translate(2px, -2px); }
 
   /* Staggered reveal */
   .l3-uc__grid .l3-uc__card { opacity: 0; transform: translateY(28px) scale(0.97); }
