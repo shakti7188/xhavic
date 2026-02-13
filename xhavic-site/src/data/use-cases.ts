@@ -43,4 +43,12 @@ export const USE_CASES: readonly UseCase[] = [
     image: "/images/use-cases/institutional-rwa.webp",
     href: "/use-cases/institutional-rwa",
   },
+  {
+    tag: "Gaming & NFTs",
+    title: "Gaming & NFTs",
+    description:
+      "On-chain games, NFT marketplaces, and digital collectibles demand instant transactions at minimal cost. Xhavic's sub-second soft finality and $0.04 fees enable real-time in-game economies and seamless NFT minting, trading, and staking.",
+    image: "/images/use-cases/gaming-nfts.webp",
+    href: "/use-cases/gaming-nfts",
+  },
 ] as const;

@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+
+/* Community numbers are dummy for now — flip to true when real data is available */
+const showCommunityNumbers = false;
 ---
 
 <BaseLayout
@@ -150,7 +153,8 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     </div>
   </div>
 
-  <!-- Stats -->
+  {/* Stats — hidden for now, dummy numbers. Set showCommunityNumbers = true to activate */}
+  {showCommunityNumbers && (
   <div class="section-inset" data-reveal>
     <div class="container" style="max-width:960px;">
       <p class="label-mono-dark" style="text-align:center;margin-bottom:1rem;">Growth</p>
@@ -172,6 +176,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       </div>
     </div>
   </div>
+  )}
 
   <!-- Newsletter -->
   <div class="section-bordered" data-reveal>

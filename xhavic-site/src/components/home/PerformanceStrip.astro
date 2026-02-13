@@ -1,67 +1,189 @@
 ---
 /**
- * PerformanceStrip — Bridging and Interoperability section
- * Maps to the original "integrate" section from index.html
+ * PerformanceStrip — Network Performance section
+ * Showcases Xhavic's key metrics: TPS, fees, finality, and compatibility.
+ * Replaces the previous Bridging & Interoperability section.
+ * Bridging is now covered in the capabilities slider (DualWalletPreview).
  */
 ---
 
-<section id="bridging" class="integrate" data-reveal>
-  <div class="integrate__container">
-    <div class="integrate__spark" aria-hidden="true"></div>
-    <h2 class="why__title">BRIDGING AND INTEROPERABILITY</h2>
-    <p class="why__subtitle">Xhavic enables seamless bridging so users can move assets between Ethereum and Xhavic for faster, lower-cost transactions.</p>
-    <p class="why__subtitle">Its interoperability supports cross-chain messaging, letting dApps connect liquidity and trigger actions across multiple networks while staying anchored to Ethereum security</p>
-    <div class="integrate__stage">
-      <div class="integrate__glow" aria-hidden="true"></div>
-      <div class="integrate__rail">
-        <div id="integrateLeft" class="integrate__icons"></div>
-        <div class="integrate__phoneWrap" aria-hidden="true">
-          <img class="integrate__phone" src="/images/bridging/center-image.png" alt="Xhavic bridge interface">
-        </div>
-        <div id="integrateRight" class="integrate__icons"></div>
+<section id="performance" class="perf" data-reveal>
+  <div class="perf__container">
+    <div class="perf__header">
+      <h2 class="why__title">Network Performance</h2>
+      <p class="why__subtitle">Built on Ethereum. Faster, cheaper, and safer than any L1.</p>
+    </div>
+
+    <div class="perf__grid">
+      <!-- TPS -->
+      <div class="perf__card">
+        <div class="perf__number" data-counter="2000">2,000+</div>
+        <div class="perf__label">Transactions per second</div>
+        <div class="perf__detail">Optimistic rollup throughput with batch compression</div>
+      </div>
+
+      <!-- Avg Fee -->
+      <div class="perf__card">
+        <div class="perf__number">$0.04</div>
+        <div class="perf__label">Average transaction fee</div>
+        <div class="perf__detail">Up to 70x cheaper than Ethereum L1</div>
+      </div>
+
+      <!-- Finality -->
+      <div class="perf__card">
+        <div class="perf__number">&lt;2s</div>
+        <div class="perf__label">Soft finality</div>
+        <div class="perf__detail">Instant Wallet confirms in under 200ms</div>
+      </div>
+
+      <!-- Compatibility -->
+      <div class="perf__card">
+        <div class="perf__number">100%</div>
+        <div class="perf__label">EVM compatible</div>
+        <div class="perf__detail">Deploy existing Solidity contracts without changes</div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="perf__footer">
+      <div class="perf__footerItem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <span>Ethereum-settled security</span>
+      </div>
+      <div class="perf__footerItem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+        <span>7-day fraud proof window</span>
+      </div>
+      <div class="perf__footerItem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span>Full data availability on L1</span>
       </div>
     </div>
   </div>
 </section>
 
-<script>
-  function initIntegrate() {
-    const ICONS = [
-      { src: '/images/bridging/1.png', alt: 'Bridge partner' },
-      { src: '/images/bridging/2.png', alt: 'Bridge partner' },
-      { src: '/images/bridging/3.png', alt: 'Bridge partner' },
-      { src: '/images/bridging/4.png', alt: 'Bridge partner' },
-      { src: '/images/bridging/5.png', alt: 'Bridge partner' },
-      { src: '/images/bridging/6.png', alt: 'Bridge partner' },
-    ];
-
-    const leftEl = document.getElementById('integrateLeft');
-    const rightEl = document.getElementById('integrateRight');
-    const section = document.querySelector('.integrate');
-    if (!leftEl || !rightEl || !section) return;
-
-    const render = (arr: { src: string; alt: string }[]) =>
-      arr.map((it) => `<div class="appIcon"><div class="appIcon__inner"><img src="${it.src}" alt="${it.alt}" /></div></div>`).join('');
-
-    leftEl.innerHTML = render(ICONS.slice(0, 3));
-    rightEl.innerHTML = render(ICONS.slice(3, 6));
-
-    // Staggered reveal on scroll
-    const leftIcons = Array.from(leftEl.querySelectorAll('.appIcon'));
-    const rightIcons = Array.from(rightEl.querySelectorAll('.appIcon'));
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        leftIcons.forEach((el, i) => { setTimeout(() => el.classList.add('is-visible'), i * 140); });
-        rightIcons.forEach((el, i) => { setTimeout(() => el.classList.add('is-visible'), 160 + i * 140); });
-        observer.disconnect();
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -20% 0px' });
-
-    observer.observe(section);
+<style>
+  .perf {
+    padding: 5rem 0;
+    background: #000;
+    color: #fff;
   }
 
-  initIntegrate();
-  document.addEventListener('astro:after-swap', initIntegrate);
-</script>
+  .perf__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .perf__header {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+
+  .perf__header .why__title {
+    color: #fff;
+  }
+
+  .perf__header .why__subtitle {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .perf__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+  }
+
+  .perf__card {
+    background: #0a0a0a;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .perf__card:hover {
+    background: #111;
+  }
+
+  .perf__number {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .perf__label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .perf__detail {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.4;
+  }
+
+  .perf__footer {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .perf__footerItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+  }
+
+  .perf__footerItem svg {
+    color: #2262ff;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .perf__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .perf__card {
+      padding: 2rem 1.25rem;
+    }
+
+    .perf__footer {
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .perf__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .perf__footer {
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+</style>

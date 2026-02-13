@@ -1,0 +1,115 @@
+---
+/**
+ * index.astro — Homepage
+ * Assembles all 12 homepage sections in order.
+ * JSON-LD schemas (FAQPage, HowTo) are declared here — not in child components.
+ */
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/global/JsonLd.astro';
+import Hero from '@/components/home/Hero.astro';
+import AsSeenIn from '@/components/home/AsSeenIn.astro';
+import WhatXhavicDoes from '@/components/home/WhatXhavicDoes.astro';
+import DualWalletPreview from '@/components/home/DualWalletPreview.astro';
+import PerformanceStrip from '@/components/home/PerformanceStrip.astro';
+import HowItWorks from '@/components/home/HowItWorks.astro';
+import SecurityGrid from '@/components/home/SecurityGrid.astro';
+import UseCaseCards from '@/components/home/UseCaseCards.astro';
+import DevQuickStart from '@/components/home/DevQuickStart.astro';
+import GetStarted from '@/components/home/GetStarted.astro';
+import CommunityOrbit from '@/components/home/CommunityOrbit.astro';
+import FAQ from '@/components/home/FAQ.astro';
+import { FAQ_ITEMS } from '@/data/faq';
+---
+
+<BaseLayout
+  title="Xhavic — Ethereum Layer-2 Execution Network"
+  description="Ethereum L2 with protocol-level risk routing. Dual Wallet System, 2,000+ TPS, $0.04 avg fee. Full EVM compatibility. Ethereum-settled security."
+>
+  <!-- 1. Hero -->
+  <Hero />
+
+  <!-- 2. As Seen In -->
+  <AsSeenIn />
+
+  <!-- 3. Key Benefits -->
+  <WhatXhavicDoes />
+
+  <!-- 4. Platform Capabilities Slider -->
+  <DualWalletPreview />
+
+  <!-- 5. Network Performance -->
+  <PerformanceStrip />
+
+  <!-- 6. Security Model -->
+  <SecurityGrid />
+
+  <!-- 7. How It Works -->
+  <HowItWorks />
+
+  <!-- 8. Use Cases -->
+  <UseCaseCards />
+
+  <!-- 9. AI Agent Section -->
+  <DevQuickStart />
+
+  <!-- 10. Community -->
+  <CommunityOrbit />
+
+  <!-- 11. Get Started -->
+  <GetStarted />
+
+  <!-- 12. FAQ -->
+  <FAQ />
+
+  <!-- FAQPage JSON-LD (single source — FAQ.astro renders the UI, this handles SEO) -->
+  <JsonLd
+    type="FAQPage"
+    data={{
+      mainEntity: FAQ_ITEMS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
+        },
+      })),
+    }}
+  />
+
+  <!-- HowTo JSON-LD -->
+  <JsonLd
+    type="HowTo"
+    data={{
+      name: 'How to use Xhavic',
+      description: 'Get started with Xhavic Layer-2 execution network in four steps.',
+      step: [
+        {
+          '@type': 'HowToStep',
+          name: 'Transact on Xhavic',
+          text: 'Users submit transactions through an EVM-compatible wallet. The Xhavic RPC endpoint accepts standard Ethereum JSON-RPC calls.',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Execute and bundle',
+          text: 'The sequencer orders transactions, executes them on the EVM, and bundles results into batches every 60 seconds.',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Anchor to Ethereum',
+          text: 'Batch state roots are committed to Ethereum L1 via the CanonicalTransactionChain contract.',
+        },
+        {
+          '@type': 'HowToStep',
+          name: 'Secure finality',
+          text: 'After the 7-day challenge window passes without a successful fraud proof, the state is considered final on Ethereum.',
+        },
+      ],
+    }}
+  />
+
+  <!-- Global scroll-reveal observer for [data-reveal] elements -->
+  <script>
+    import '../scripts/reveal.ts';
+    import '../scripts/counter.ts';
+  </script>
+</BaseLayout>

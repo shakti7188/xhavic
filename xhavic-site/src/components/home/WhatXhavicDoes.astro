@@ -7,17 +7,19 @@
 const FEATURES = [
   {
     title: 'Dual-wallet security architecture',
-    desc: 'The Instant Wallet handles real-time transactions in seconds, while the Funding Wallet provides a 24-hour safety window to cancel or reverse transfers in case of errors or suspicious activity.',
+    desc: 'The Instant Wallet handles real-time transactions in seconds, while the Secure Wallet provides a 24-hour safety window to cancel or reverse transfers in case of errors or suspicious activity.',
     icon: '/images/key_benefits/i-1.webp',
     preview: '/images/key_benefits/img-1.webp',
     href: '/protocol/dual-wallet',
+    inlinePreview: false,
   },
   {
     title: 'On-Ramp and Off-Ramp Connectivity',
-    desc: 'Enable end-users and institutional participants to move between fiat and digital assets.',
+    desc: 'Enable end-users and institutional participants to move between fiat and digital assets seamlessly through integrated payment partners.',
     icon: '/images/key_benefits/i-2.webp',
-    preview: '/images/key_benefits/img-2.webp',
+    preview: '',
     href: '/users',
+    inlinePreview: true,
   },
 ];
 ---
@@ -50,7 +52,68 @@ const FEATURES = [
                 </div>
               </div>
               <div class="feature__previewBox" aria-hidden="true">
-                <img class="feature__previewImg" src={f.preview} alt="" />
+                {f.inlinePreview ? (
+                  <!-- On-Ramp/Off-Ramp visual: fiat ↔ crypto flow -->
+                  <div class="onramp-preview">
+                    <div class="onramp-preview__card">
+                      <!-- Fiat side -->
+                      <div class="onramp-preview__row">
+                        <div class="onramp-preview__label">From</div>
+                        <div class="onramp-preview__asset">
+                          <div class="onramp-preview__icon onramp-preview__icon--fiat">$</div>
+                          <span class="onramp-preview__name">USD</span>
+                        </div>
+                        <div class="onramp-preview__amount">1,000.00</div>
+                      </div>
+
+                      <!-- Arrow -->
+                      <div class="onramp-preview__arrow">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 5v14M12 19l-4-4m4 4l4-4" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </div>
+
+                      <!-- Crypto side -->
+                      <div class="onramp-preview__row">
+                        <div class="onramp-preview__label">To</div>
+                        <div class="onramp-preview__asset">
+                          <div class="onramp-preview__icon onramp-preview__icon--xhav">
+                            <svg width="12" height="14" viewBox="0 0 723.61 887.08" fill="#fff">
+                              <polygon points="201.43 0 0 0 104.78 493.89 252.75 258.16 201.43 0"/>
+                              <polygon points="723.61 0 487.53 0 272.15 355.73 123.21 580.75 263.35 580.75 66.4 887.08 688.97 306.33 472.31 306.33 723.61 0"/>
+                            </svg>
+                          </div>
+                          <span class="onramp-preview__name">XHAV</span>
+                        </div>
+                        <div class="onramp-preview__amount">24,390</div>
+                      </div>
+
+                      <!-- Methods -->
+                      <div class="onramp-preview__methods">
+                        <div class="onramp-preview__method">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                          </svg>
+                          <span>Card</span>
+                        </div>
+                        <div class="onramp-preview__method">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 12V7H5a2 2 0 010-4h14v4"/><path d="M3 5v14a2 2 0 002 2h16v-5"/><path d="M18 12a2 2 0 000 4h4v-4h-4z"/>
+                          </svg>
+                          <span>Bank</span>
+                        </div>
+                        <div class="onramp-preview__method">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 014 10 15 15 0 01-4 10 15 15 0 01-4-10 15 15 0 014-10z"/>
+                          </svg>
+                          <span>Wire</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <img class="feature__previewImg" src={f.preview} alt="" />
+                )}
               </div>
             </div>
           </article>
@@ -79,3 +142,125 @@ const FEATURES = [
   initFeatureReveal();
   document.addEventListener('astro:after-swap', initFeatureReveal);
 </script>
+
+<style>
+  /* On-Ramp/Off-Ramp preview card */
+  .onramp-preview {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .onramp-preview__card {
+    width: 100%;
+    max-width: 280px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  }
+
+  .onramp-preview__row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .onramp-preview__label {
+    font-size: 11px;
+    color: #a3a3a3;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    min-width: 32px;
+  }
+
+  .onramp-preview__asset {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .onramp-preview__icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .onramp-preview__icon--fiat {
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1.5px solid #bbf7d0;
+  }
+
+  .onramp-preview__icon--xhav {
+    background: #2262ff;
+    color: #fff;
+    border: 1.5px solid #2262ff;
+  }
+
+  .onramp-preview__name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #171717;
+  }
+
+  .onramp-preview__amount {
+    font-weight: 800;
+    font-size: 18px;
+    color: #171717;
+    font-variant-numeric: tabular-nums;
+    margin-left: auto;
+  }
+
+  .onramp-preview__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0;
+  }
+
+  .onramp-preview__methods {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .onramp-preview__method {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 8px;
+    background: #f9fafb;
+    border: 1px solid #e5e5e5;
+    font-size: 11px;
+    font-weight: 600;
+    color: #525252;
+    transition: border-color 0.15s;
+  }
+
+  .onramp-preview__method:hover {
+    border-color: #2262ff;
+    color: #2262ff;
+  }
+
+  .onramp-preview__method svg {
+    opacity: 0.6;
+  }
+</style>

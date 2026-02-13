@@ -1,13 +1,43 @@
 ---
 /**
- * DualWalletPreview — Key Benefits Slider section
- * Horizontal card slider with drag support, navigation arrows, and snapping.
+ * DualWalletPreview — Platform Capabilities Slider
+ * Horizontal card slider showcasing Xhavic's core capabilities:
+ * DApps & DeFi, Real-World Assets, Data Oracle, Cross-Chain Bridge
+ * Drag support, navigation arrows, and snapping.
  */
 const slides = [
-  { title: 'Bulletproof security', icon: '/images/slider/icon4.png', image: '/images/slider/4.webp' },
-  { title: 'Built-in wallet', icon: '/images/slider/icon1.png', image: '/images/slider/1.png' },
-  { title: 'Visualize your performance', icon: '/images/slider/icon3.png', image: '/images/slider/3.webp' },
-  { title: 'Insta crypto transfer', icon: '/images/slider/icon2.png', image: '/images/slider/2.png' },
+  {
+    title: 'DApps & DeFi',
+    subtitle: 'Full EVM compatibility',
+    desc: 'Deploy Solidity and Vyper contracts without modification. Sub-200ms finality for swaps, lending, and liquidations.',
+    icon: 'code',
+    color: '#2262ff',
+    href: '/developers',
+  },
+  {
+    title: 'Real-World Assets',
+    subtitle: 'Tokenized & compliant',
+    desc: 'Secure Wallet\'s 24-hour escrow and reversal window make Xhavic natively suited for tokenized real-world assets.',
+    icon: 'building',
+    color: '#c4a35a',
+    href: '/enterprises',
+  },
+  {
+    title: 'Data Oracle',
+    subtitle: 'Native price feeds',
+    desc: 'Push-based oracle with multi-source aggregation at precompile addresses. No external dependencies, minimal gas.',
+    icon: 'oracle',
+    color: '#16a34a',
+    href: '/protocol/architecture',
+  },
+  {
+    title: 'Cross-Chain Bridge',
+    subtitle: 'Ethereum anchored',
+    desc: 'Move assets between Ethereum and Xhavic seamlessly. L1 data availability and 7-day fraud proof security.',
+    icon: 'bridge',
+    color: '#8b5cf6',
+    href: '/protocol',
+  },
 ];
 ---
 
@@ -15,8 +45,8 @@ const slides = [
   <div class="kb__container">
     <div class="kb__head">
       <div class="kb__copy">
-        <h2 class="why__title">Built for Real Dapps - EVM compatible</h2>
-        <p class="why__subtitle">Developers can deploy Ethereum smart contracts without modification using familiar tools and languages such as Solidity, Vyper, Hardhat, and Foundry</p>
+        <h2 class="why__title">The Xhavic Advantage</h2>
+        <p class="why__subtitle">More than an EVM chain. Xhavic combines DeFi infrastructure, real-world asset support, native oracles, and cross-chain bridging in a single protocol.</p>
       </div>
       <a class="kb__btn" href="/developers">Get started</a>
     </div>
@@ -25,7 +55,7 @@ const slides = [
       <div class="kb__viewport" id="kbViewport">
         <div class="kb__track" id="kbTrack">
           {slides.map((slide) => (
-            <a class="kbCard" href="/protocol">
+            <a class="kbCard" href={slide.href}>
               <div class="kbCard__top">
                 <div class="kbCard__corner" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none">
@@ -33,15 +63,67 @@ const slides = [
                     <path d="M10 7h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                 </div>
-                <div class="kbCard__imgWrap">
-                  <img class="kbCard__img" src={slide.image} alt={slide.title} />
+                <div class="kbCard__visual">
+                  {slide.icon === 'code' && (
+                    <div class="kbVisual">
+                      <div class="kbVisual__iconCircle" style={`background: ${slide.color}15; border-color: ${slide.color}30;`}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={slide.color} stroke-width="1.5">
+                          <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                      </div>
+                      <div class="kbVisual__label" style={`color: ${slide.color};`}>EVM</div>
+                      <div class="kbVisual__tools">
+                        <span>Solidity</span><span>Vyper</span><span>Hardhat</span><span>Foundry</span>
+                      </div>
+                    </div>
+                  )}
+                  {slide.icon === 'building' && (
+                    <div class="kbVisual">
+                      <div class="kbVisual__iconCircle" style={`background: ${slide.color}15; border-color: ${slide.color}30;`}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={slide.color} stroke-width="1.5">
+                          <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/>
+                        </svg>
+                      </div>
+                      <div class="kbVisual__label" style={`color: ${slide.color};`}>RWA</div>
+                      <div class="kbVisual__tools">
+                        <span>Tokenization</span><span>Escrow</span><span>Compliance</span>
+                      </div>
+                    </div>
+                  )}
+                  {slide.icon === 'oracle' && (
+                    <div class="kbVisual">
+                      <div class="kbVisual__iconCircle" style={`background: ${slide.color}15; border-color: ${slide.color}30;`}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={slide.color} stroke-width="1.5">
+                          <circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                      </div>
+                      <div class="kbVisual__label" style={`color: ${slide.color};`}>ORACLE</div>
+                      <div class="kbVisual__tools">
+                        <span>Push-based</span><span>Multi-source</span><span>Precompile</span>
+                      </div>
+                    </div>
+                  )}
+                  {slide.icon === 'bridge' && (
+                    <div class="kbVisual">
+                      <div class="kbVisual__iconCircle" style={`background: ${slide.color}15; border-color: ${slide.color}30;`}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={slide.color} stroke-width="1.5">
+                          <path d="M2 18h2M20 18h2M4 18c0-3 2-6 8-6s8 3 8 6"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M12 12V6M8 8l4-4 4 4"/>
+                        </svg>
+                      </div>
+                      <div class="kbVisual__label" style={`color: ${slide.color};`}>BRIDGE</div>
+                      <div class="kbVisual__tools">
+                        <span>L1 ↔ L2</span><span>Fraud proofs</span><span>7-day window</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div class="kbCard__bottom">
-                <div class="kbCard__label">
-                  <span class="kbCard__icon"><img src={slide.icon} alt="" /></span>
-                  <span>{slide.title}</span>
+                <div class="kbCard__info">
+                  <span class="kbCard__title">{slide.title}</span>
+                  <span class="kbCard__subtitle">{slide.subtitle}</span>
                 </div>
+                <p class="kbCard__desc">{slide.desc}</p>
               </div>
             </a>
           ))}
@@ -51,6 +133,97 @@ const slides = [
     </div>
   </div>
 </section>
+
+<style>
+  .kbCard__visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    padding: 1.5rem;
+  }
+
+  .kbVisual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .kbVisual__iconCircle {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    border: 1.5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kbVisual__label {
+    font-family: var(--font-mono, 'SF Mono', monospace);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .kbVisual__tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: center;
+  }
+
+  .kbVisual__tools span {
+    font-size: 10px;
+    font-weight: 600;
+    color: #737373;
+    background: #f5f5f5;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    padding: 0.15rem 0.45rem;
+    white-space: nowrap;
+  }
+
+  .kbCard__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .kbCard__title {
+    font-weight: 700;
+    font-size: 14px;
+    color: #171717;
+  }
+
+  .kbCard__subtitle {
+    font-size: 11px;
+    color: #a3a3a3;
+    font-weight: 500;
+  }
+
+  .kbCard__desc {
+    font-size: 12px;
+    color: #737373;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Override the kbCard__bottom to accommodate more content */
+  :global(.kbCard__bottom) {
+    padding: 1rem 1.25rem 1.25rem !important;
+  }
+
+  :global(.kbCard__label) {
+    display: none !important;
+  }
+</style>
 
 <script>
 (function () {
