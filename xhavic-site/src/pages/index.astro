@@ -175,87 +175,90 @@ const capRows = [
                     </div>
                   </div>
                 ) : row.inlineOracle ? (
-                  <!-- Oracle network topology graphic -->
+                  <!-- Oracle pipeline flow graphic -->
                   <div class="l3-oracle-anim">
                     <div class="l3-oracle-anim__grid"></div>
 
-                    <!-- SVG connection lines (draw-in animation) -->
-                    <svg class="l3-oracle-anim__svg" viewBox="0 0 600 400" preserveAspectRatio="none" fill="none">
-                      <!-- Binance → Aggregator (len≈155) -->
-                      <line x1="80" y1="55" x2="175" y2="190" stroke="rgba(34,98,255,0.30)" stroke-width="1.5" style="--len:155" class="l3-oracle-anim__line l3-oracle-anim__line--1" />
-                      <!-- Binance → Validator cross (len≈395) -->
-                      <line x1="80" y1="55" x2="425" y2="190" stroke="rgba(34,98,255,0.12)" stroke-width="1" style="--len:380" class="l3-oracle-anim__line l3-oracle-anim__line--2" />
-                      <!-- Coinbase → Aggregator (len≈150) -->
-                      <line x1="230" y1="55" x2="175" y2="190" stroke="rgba(196,163,90,0.30)" stroke-width="1.5" style="--len:145" class="l3-oracle-anim__line l3-oracle-anim__line--3" />
-                      <!-- Chainlink → Aggregator cross (len≈240) -->
-                      <line x1="370" y1="55" x2="175" y2="190" stroke="rgba(34,98,255,0.12)" stroke-width="1" style="--len:235" class="l3-oracle-anim__line l3-oracle-anim__line--4" />
-                      <!-- Chainlink → Validator (len≈145) -->
-                      <line x1="370" y1="55" x2="425" y2="190" stroke="rgba(34,197,94,0.30)" stroke-width="1.5" style="--len:145" class="l3-oracle-anim__line l3-oracle-anim__line--5" />
-                      <!-- Uniswap → Validator (len≈160) -->
-                      <line x1="525" y1="55" x2="425" y2="190" stroke="rgba(34,98,255,0.30)" stroke-width="1.5" style="--len:160" class="l3-oracle-anim__line l3-oracle-anim__line--6" />
-                      <!-- Aggregator ↔ Validator (len≈250) -->
-                      <line x1="220" y1="200" x2="380" y2="200" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" style="--len:160" class="l3-oracle-anim__line l3-oracle-anim__line--7" />
-                      <!-- Aggregator → ETH/USD (len≈120) -->
-                      <line x1="175" y1="220" x2="155" y2="325" stroke="rgba(34,98,255,0.25)" stroke-width="1.5" style="--len:110" class="l3-oracle-anim__line l3-oracle-anim__line--8" />
-                      <!-- Validator → BTC/USD (len≈120) -->
-                      <line x1="425" y1="220" x2="445" y2="325" stroke="rgba(196,163,90,0.25)" stroke-width="1.5" style="--len:110" class="l3-oracle-anim__line l3-oracle-anim__line--9" />
-                    </svg>
+                    <!-- Pipeline stages -->
+                    <div class="l3-oracle-pipe">
+                      <!-- Stage 1: Chainlink Data Feeds -->
+                      <div class="l3-oracle-pipe__stage l3-oracle-pipe__stage--1">
+                        <div class="l3-oracle-pipe__icon l3-oracle-pipe__icon--blue">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <div class="l3-oracle-pipe__text">
+                          <span class="l3-oracle-pipe__label">Chainlink Data Feeds</span>
+                          <span class="l3-oracle-pipe__sub">External price oracles</span>
+                        </div>
+                      </div>
 
-                    <!-- Tier 1: Data source nodes (bigger boxes) -->
-                    <div class="l3-oracle-anim__node l3-oracle-anim__node--1">
-                      <div class="l3-oracle-anim__nodeDot"></div>
-                      <div class="l3-oracle-anim__nodeInfo">
-                        <span class="l3-oracle-anim__nodeName">Binance</span>
-                        <span class="l3-oracle-anim__nodeVal">$97,218</span>
+                      <!-- Arrow connector 1 -->
+                      <div class="l3-oracle-pipe__arrow l3-oracle-pipe__arrow--1">
+                        <svg width="16" height="28" viewBox="0 0 16 28" fill="none"><line x1="8" y1="0" x2="8" y2="20" stroke="rgba(34,98,255,0.4)" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M3 17l5 8 5-8" fill="none" stroke="rgba(34,98,255,0.5)" stroke-width="1.5"/></svg>
                       </div>
-                    </div>
-                    <div class="l3-oracle-anim__node l3-oracle-anim__node--2">
-                      <div class="l3-oracle-anim__nodeDot l3-oracle-anim__nodeDot--gold"></div>
-                      <div class="l3-oracle-anim__nodeInfo">
-                        <span class="l3-oracle-anim__nodeName">Coinbase</span>
-                        <span class="l3-oracle-anim__nodeVal">$97,215</span>
+
+                      <!-- Stage 2: L1 Oracle Contract -->
+                      <div class="l3-oracle-pipe__stage l3-oracle-pipe__stage--2">
+                        <div class="l3-oracle-pipe__icon l3-oracle-pipe__icon--purple">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+                        </div>
+                        <div class="l3-oracle-pipe__text">
+                          <span class="l3-oracle-pipe__label">L1 Oracle Contract</span>
+                          <span class="l3-oracle-pipe__sub">Sepolia (Ethereum L1)</span>
+                        </div>
                       </div>
-                    </div>
-                    <div class="l3-oracle-anim__node l3-oracle-anim__node--3">
-                      <div class="l3-oracle-anim__nodeDot l3-oracle-anim__nodeDot--green"></div>
-                      <div class="l3-oracle-anim__nodeInfo">
-                        <span class="l3-oracle-anim__nodeName">Chainlink</span>
-                        <span class="l3-oracle-anim__nodeVal">$97,220</span>
+
+                      <!-- Arrow connector 2 -->
+                      <div class="l3-oracle-pipe__arrow l3-oracle-pipe__arrow--2">
+                        <svg width="16" height="28" viewBox="0 0 16 28" fill="none"><line x1="8" y1="0" x2="8" y2="20" stroke="rgba(196,163,90,0.4)" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M3 17l5 8 5-8" fill="none" stroke="rgba(196,163,90,0.5)" stroke-width="1.5"/></svg>
                       </div>
-                    </div>
-                    <div class="l3-oracle-anim__node l3-oracle-anim__node--4">
-                      <div class="l3-oracle-anim__nodeDot"></div>
-                      <div class="l3-oracle-anim__nodeInfo">
-                        <span class="l3-oracle-anim__nodeName">Uniswap</span>
-                        <span class="l3-oracle-anim__nodeVal">$97,211</span>
+
+                      <!-- Stage 3: Relayer Script -->
+                      <div class="l3-oracle-pipe__stage l3-oracle-pipe__stage--3">
+                        <div class="l3-oracle-pipe__icon l3-oracle-pipe__icon--gold">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c4a35a" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <div class="l3-oracle-pipe__text">
+                          <span class="l3-oracle-pipe__label">Relayer Script</span>
+                          <span class="l3-oracle-pipe__sub">Cross-chain data bridge</span>
+                        </div>
+                      </div>
+
+                      <!-- Arrow connector 3 -->
+                      <div class="l3-oracle-pipe__arrow l3-oracle-pipe__arrow--3">
+                        <svg width="16" height="28" viewBox="0 0 16 28" fill="none"><line x1="8" y1="0" x2="8" y2="20" stroke="rgba(34,197,94,0.4)" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M3 17l5 8 5-8" fill="none" stroke="rgba(34,197,94,0.5)" stroke-width="1.5"/></svg>
+                      </div>
+
+                      <!-- Stage 4: L2 Oracle Contract -->
+                      <div class="l3-oracle-pipe__stage l3-oracle-pipe__stage--4">
+                        <div class="l3-oracle-pipe__icon l3-oracle-pipe__icon--green">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M9 12l2 2 4-4"/></svg>
+                        </div>
+                        <div class="l3-oracle-pipe__text">
+                          <span class="l3-oracle-pipe__label">L2 Oracle Contract</span>
+                          <span class="l3-oracle-pipe__sub">Xhavic Blockchain</span>
+                        </div>
+                      </div>
+
+                      <!-- Arrow connector 4 -->
+                      <div class="l3-oracle-pipe__arrow l3-oracle-pipe__arrow--4">
+                        <svg width="16" height="28" viewBox="0 0 16 28" fill="none"><line x1="8" y1="0" x2="8" y2="20" stroke="rgba(34,98,255,0.4)" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M3 17l5 8 5-8" fill="none" stroke="rgba(34,98,255,0.5)" stroke-width="1.5"/></svg>
+                      </div>
+
+                      <!-- Stage 5: DeFi / Trading Applications -->
+                      <div class="l3-oracle-pipe__stage l3-oracle-pipe__stage--5">
+                        <div class="l3-oracle-pipe__icon l3-oracle-pipe__icon--cyan">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
+                        </div>
+                        <div class="l3-oracle-pipe__text">
+                          <span class="l3-oracle-pipe__label">DeFi / Trading Apps</span>
+                          <span class="l3-oracle-pipe__sub">End-user applications</span>
+                        </div>
                       </div>
                     </div>
 
-                    <!-- Tier 2: Aggregation nodes (bigger) -->
-                    <div class="l3-oracle-anim__node l3-oracle-anim__node--agg l3-oracle-anim__node--agg1">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>
-                      <div class="l3-oracle-anim__nodeInfo">
-                        <span class="l3-oracle-anim__nodeName">Aggregator</span>
-                        <span class="l3-oracle-anim__nodeVal">Median</span>
-                      </div>
-                    </div>
-                    <div class="l3-oracle-anim__node l3-oracle-anim__node--agg l3-oracle-anim__node--agg2">
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c4a35a" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                      <div class="l3-oracle-anim__nodeInfo">
-                        <span class="l3-oracle-anim__nodeName">Validator</span>
-                        <span class="l3-oracle-anim__nodeVal">Quorum</span>
-                      </div>
-                    </div>
-
-                    <!-- Tier 3: Output feed nodes -->
-                    <div class="l3-oracle-anim__feed l3-oracle-anim__feed--1">
-                      <span class="l3-oracle-anim__feedLabel">ETH / USD</span>
-                      <span class="l3-oracle-anim__feedPrice">$3,842.50</span>
-                    </div>
-                    <div class="l3-oracle-anim__feed l3-oracle-anim__feed--2">
-                      <span class="l3-oracle-anim__feedLabel">BTC / USD</span>
-                      <span class="l3-oracle-anim__feedPrice">$97,218</span>
-                    </div>
+                    <!-- Animated data pulse traveling down -->
+                    <div class="l3-oracle-pipe__pulse"></div>
 
                     <!-- Glows -->
                     <div class="l3-oracle-anim__glow l3-oracle-anim__glow--blue"></div>
@@ -325,79 +328,135 @@ const capRows = [
         <img class="l3-ai__robot" src="/images/robot/1.png" alt="AI Agent" width="600" height="803" loading="lazy" />
       </div>
       <div class="l3-ai__right" data-reveal-direction="right" data-reveal>
-        <h2 class="l3-ai__heading">Unlocking the AI Advantage</h2>
-        <div class="l3-ai__cards">
-          <div class="l3-ai__card">
-            <div class="l3-ai__cardIcon"><img src="/images/key_benefits/i-2.webp" alt="" loading="lazy" /></div>
-            <div><h4>Seamless AI-Agent Integration</h4><p>Connect any AI agent and run workflows without friction.</p></div>
-          </div>
-          <div class="l3-ai__card">
-            <div class="l3-ai__cardIcon"><img src="/images/key_benefits/i-3.webp" alt="" loading="lazy" /></div>
-            <div><h4>Automated On-Chain Actions</h4><p>Agents trigger trades, payments, and rebalancing on-chain.</p></div>
-          </div>
-          <div class="l3-ai__card">
-            <div class="l3-ai__cardIcon"><img src="/images/key_benefits/i-1.webp" alt="" loading="lazy" /></div>
-            <div><h4>Built for AI-Native dApps</h4><p>Scalable infrastructure for real-world AI + Web3 products.</p></div>
-          </div>
-        </div>
+        <h2 class="l3-ai__heading">Unlocking the AI advantage <br/>with XHAVIC</h2>
+        <ul class="l3-ai__list">
+          <li class="l3-ai__item">
+            <span class="l3-ai__check" aria-hidden="true">&#10003;</span>
+            <div>
+              <h4>Seamless AI-Agent Integration</h4>
+              <p>Connect any AI agent and run workflows on Xhavic without friction.</p>
+            </div>
+          </li>
+          <li class="l3-ai__item">
+            <span class="l3-ai__check" aria-hidden="true">&#10003;</span>
+            <div>
+              <h4>Automated On-Chain Actions</h4>
+              <p>Agents can monitor conditions and trigger trades, payments, rebalancing, and verification — fast on L2, secured by Ethereum.</p>
+            </div>
+          </li>
+          <li class="l3-ai__item">
+            <span class="l3-ai__check" aria-hidden="true">&#10003;</span>
+            <div>
+              <h4>Built for AI-Native dApps</h4>
+              <p>EVM-compatible, scalable infrastructure designed for real-world AI + Web3 products.</p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ════════════════════════════════════════════════════════════ -->
-  <!-- S5: USE CASES — bento grid                                  -->
+  <!-- S5: USE CASES — premium bento grid                          -->
   <!-- ════════════════════════════════════════════════════════════ -->
-  <section class="l3-usecases">
-    <div class="l3-usecases__container">
-      <div class="l3-usecases__header" data-reveal>
-        <h2 class="l3-usecases__heading">Use Cases</h2>
+  <section class="l3-uc">
+    <div class="l3-uc__container">
+      <div class="l3-uc__header" data-reveal>
+        <h2 class="l3-uc__heading">Built for every<br/>use case</h2>
+        <p class="l3-uc__sub">From DeFi protocols to AI-powered agents — Xhavic provides the infrastructure for the next generation of on-chain applications.</p>
       </div>
-      <div class="l3-usecases__orbit" data-reveal>
-        <!-- Center hub -->
-        <div class="l3-ucOrbit__hub">
-          <span class="l3-ucOrbit__hubLabel">Xhavic</span>
-        </div>
-        <!-- SVG connector ring -->
-        <svg class="l3-ucOrbit__ring" viewBox="0 0 500 500" fill="none">
-          <circle cx="250" cy="250" r="180" stroke="rgba(34,98,255,0.12)" stroke-width="1" stroke-dasharray="6 4"/>
-          <circle cx="250" cy="250" r="120" stroke="rgba(34,98,255,0.06)" stroke-width="1" stroke-dasharray="4 6"/>
-        </svg>
-        <!-- 5 orbital nodes -->
-        <div class="l3-ucOrbit__node">
-          <div class="l3-ucOrbit__circle l3-ucOrbit__circle--blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2"><polyline points="17 1 21 5 17 9"/><line x1="3" y1="5" x2="21" y2="5"/><polyline points="7 23 3 19 7 15"/><line x1="21" y1="19" x2="3" y2="19"/></svg>
+
+      <div class="l3-uc__grid" data-reveal>
+        <!-- Card 1 — DeFi & Trading (large, spans 2 cols) -->
+        <a href="/use-cases/defi" class="l3-uc__card l3-uc__card--wide l3-uc__card--defi">
+          <div class="l3-uc__cardGlow"></div>
+          <div class="l3-uc__cardInner">
+            <div class="l3-uc__cardIcon l3-uc__cardIcon--blue">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
+            </div>
+            <div class="l3-uc__cardContent">
+              <h3 class="l3-uc__cardTitle">DeFi & Trading</h3>
+              <p class="l3-uc__cardDesc">Lending, swaps, stablecoins, derivatives, and automated strategies — powered by predictable low-cost execution and high throughput.</p>
+            </div>
+            <div class="l3-uc__cardStats">
+              <div class="l3-uc__stat">
+                <span class="l3-uc__statVal">2,000+</span>
+                <span class="l3-uc__statLabel">TPS</span>
+              </div>
+              <div class="l3-uc__stat">
+                <span class="l3-uc__statVal">$0.04</span>
+                <span class="l3-uc__statLabel">Avg fee</span>
+              </div>
+              <div class="l3-uc__stat">
+                <span class="l3-uc__statVal">&lt;200ms</span>
+                <span class="l3-uc__statLabel">Finality</span>
+              </div>
+            </div>
+            <span class="l3-uc__cardArrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </span>
           </div>
-          <div class="l3-ucOrbit__label">DeFi & Trading</div>
-          <p class="l3-ucOrbit__desc">Lending, swaps, stablecoins, and automated strategies</p>
-        </div>
-        <div class="l3-ucOrbit__node">
-          <div class="l3-ucOrbit__circle l3-ucOrbit__circle--gold">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c4a35a" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </a>
+
+        <!-- Card 2 — Tokenized Assets -->
+        <a href="/use-cases/tokenized-assets" class="l3-uc__card l3-uc__card--rwa">
+          <div class="l3-uc__cardGlow"></div>
+          <div class="l3-uc__cardInner">
+            <div class="l3-uc__cardIcon l3-uc__cardIcon--gold">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3 class="l3-uc__cardTitle">Tokenized Assets</h3>
+            <p class="l3-uc__cardDesc">Real estate, commodities, and digital securities on auditable, compliant infrastructure.</p>
+            <span class="l3-uc__cardArrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </span>
           </div>
-          <div class="l3-ucOrbit__label">Tokenized Assets</div>
-          <p class="l3-ucOrbit__desc">Real estate, commodities, and digital securities</p>
-        </div>
-        <div class="l3-ucOrbit__node">
-          <div class="l3-ucOrbit__circle l3-ucOrbit__circle--green">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+        </a>
+
+        <!-- Card 3 — AI Agents -->
+        <a href="/use-cases/ai-agents" class="l3-uc__card l3-uc__card--ai">
+          <div class="l3-uc__cardGlow"></div>
+          <div class="l3-uc__cardInner">
+            <div class="l3-uc__cardIcon l3-uc__cardIcon--green">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 014 4v2a4 4 0 01-8 0V6a4 4 0 014-4z"/><path d="M6 10v1a6 6 0 0012 0v-1"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/></svg>
+            </div>
+            <h3 class="l3-uc__cardTitle">AI Agents</h3>
+            <p class="l3-uc__cardDesc">Autonomous on-chain execution — trades, payments, rebalancing, and verification powered by MCP.</p>
+            <span class="l3-uc__cardArrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </span>
           </div>
-          <div class="l3-ucOrbit__label">AI Agents</div>
-          <p class="l3-ucOrbit__desc">Autonomous on-chain execution and workflows</p>
-        </div>
-        <div class="l3-ucOrbit__node">
-          <div class="l3-ucOrbit__circle l3-ucOrbit__circle--blue">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        </a>
+
+        <!-- Card 4 — Institutional & RWA -->
+        <a href="/use-cases/institutional-rwa" class="l3-uc__card l3-uc__card--inst">
+          <div class="l3-uc__cardGlow"></div>
+          <div class="l3-uc__cardInner">
+            <div class="l3-uc__cardIcon l3-uc__cardIcon--purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="l3-uc__cardTitle">Institutional & RWA</h3>
+            <p class="l3-uc__cardDesc">Enterprise-grade compliance, audit trails, and institutional workflows for digital securities.</p>
+            <span class="l3-uc__cardArrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </span>
           </div>
-          <div class="l3-ucOrbit__label">Institutional & RWA</div>
-          <p class="l3-ucOrbit__desc">Compliance-driven products with audit trails</p>
-        </div>
-        <div class="l3-ucOrbit__node">
-          <div class="l3-ucOrbit__circle l3-ucOrbit__circle--gold">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c4a35a" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </a>
+
+        <!-- Card 5 — Gaming & NFTs -->
+        <a href="/use-cases/gaming-nfts" class="l3-uc__card l3-uc__card--game">
+          <div class="l3-uc__cardGlow"></div>
+          <div class="l3-uc__cardInner">
+            <div class="l3-uc__cardIcon l3-uc__cardIcon--pink">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <h3 class="l3-uc__cardTitle">Gaming & NFTs</h3>
+            <p class="l3-uc__cardDesc">In-game economies, NFT marketplaces, and real-time digital collectibles with instant finality.</p>
+            <span class="l3-uc__cardArrow">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </span>
           </div>
-          <div class="l3-ucOrbit__label">Gaming & NFTs</div>
-          <p class="l3-ucOrbit__desc">In-game economies with instant transactions</p>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -846,74 +905,73 @@ const capRows = [
   @keyframes bar-fill-gold { 0% { width: 0; opacity: 0.5; } 70% { width: 60%; opacity: 1; } 100% { width: 60%; opacity: 1; } }
   @media (max-width: 768px) { .l3-dualwallet { max-width: 380px; } }
 
-  /* ─── Oracle network topology graphic ─────────────────────────── */
-  .l3-oracle-anim { position: relative; width: 100%; min-height: 400px; background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2d 50%, #0a1628 100%); overflow: hidden; border-radius: 20px; }
+  /* ─── Oracle pipeline flow graphic ─────────────────────────── */
+  .l3-oracle-anim { position: relative; width: 100%; min-height: 420px; background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2d 50%, #0a1628 100%); overflow: hidden; border-radius: 20px; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; }
   .l3-oracle-anim__grid { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(34,98,255,0.08) 1px, transparent 1px); background-size: 28px 28px; animation: defi-grid-drift 20s linear infinite; }
 
-  /* SVG connection lines — draw-in animation */
-  .l3-oracle-anim__svg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-  .l3-oracle-anim__line {
-    stroke-dasharray: var(--len);
-    stroke-dashoffset: var(--len);
-    animation: oracle-line-draw 1.8s ease-out forwards, oracle-line-glow 4s ease-in-out 2s infinite;
+  /* Pipeline container — vertical flow */
+  .l3-oracle-pipe { position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%; max-width: 320px; }
+
+  /* Stage nodes */
+  .l3-oracle-pipe__stage { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,0.06); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 14px 20px; width: 100%; z-index: 3; opacity: 0; transform: translateY(12px); animation: oracle-pipe-in 0.5s ease-out forwards; }
+  .l3-oracle-pipe__stage--1 { animation-delay: 0.15s; border-color: rgba(34,98,255,0.25); }
+  .l3-oracle-pipe__stage--2 { animation-delay: 0.35s; border-color: rgba(139,92,246,0.25); }
+  .l3-oracle-pipe__stage--3 { animation-delay: 0.55s; border-color: rgba(196,163,90,0.25); }
+  .l3-oracle-pipe__stage--4 { animation-delay: 0.75s; border-color: rgba(34,197,94,0.25); }
+  .l3-oracle-pipe__stage--5 { animation-delay: 0.95s; border-color: rgba(6,182,212,0.25); }
+
+  /* Icon circles */
+  .l3-oracle-pipe__icon { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; flex-shrink: 0; }
+  .l3-oracle-pipe__icon--blue { background: rgba(34,98,255,0.12); border: 1px solid rgba(34,98,255,0.22); }
+  .l3-oracle-pipe__icon--purple { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.22); }
+  .l3-oracle-pipe__icon--gold { background: rgba(196,163,90,0.12); border: 1px solid rgba(196,163,90,0.22); }
+  .l3-oracle-pipe__icon--green { background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.22); }
+  .l3-oracle-pipe__icon--cyan { background: rgba(6,182,212,0.12); border: 1px solid rgba(6,182,212,0.22); }
+
+  /* Text */
+  .l3-oracle-pipe__text { display: flex; flex-direction: column; gap: 2px; }
+  .l3-oracle-pipe__label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.88); font-family: var(--font-mono, monospace); letter-spacing: -0.01em; }
+  .l3-oracle-pipe__sub { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.35); font-family: var(--font-mono, monospace); }
+
+  /* Arrow connectors between stages */
+  .l3-oracle-pipe__arrow { display: flex; align-items: center; justify-content: center; height: 28px; opacity: 0; animation: oracle-arrow-in 0.4s ease-out forwards; }
+  .l3-oracle-pipe__arrow--1 { animation-delay: 0.25s; }
+  .l3-oracle-pipe__arrow--2 { animation-delay: 0.45s; }
+  .l3-oracle-pipe__arrow--3 { animation-delay: 0.65s; }
+  .l3-oracle-pipe__arrow--4 { animation-delay: 0.85s; }
+
+  /* Animated data pulse traveling down the pipeline */
+  .l3-oracle-pipe__pulse { position: absolute; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #2262ff; box-shadow: 0 0 12px rgba(34,98,255,0.6), 0 0 24px rgba(34,98,255,0.3); z-index: 4; opacity: 0; animation: oracle-pulse-travel 3.5s ease-in-out 1.5s infinite; transform: translateX(-50%); }
+
+  /* Keyframes */
+  @keyframes oracle-pipe-in {
+    0% { opacity: 0; transform: translateY(12px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
   }
-  .l3-oracle-anim__line--1 { animation-delay: 0.2s, 2.2s; }
-  .l3-oracle-anim__line--2 { animation-delay: 0.8s, 2.8s; }
-  .l3-oracle-anim__line--3 { animation-delay: 0.4s, 2.4s; }
-  .l3-oracle-anim__line--4 { animation-delay: 1.0s, 3.0s; }
-  .l3-oracle-anim__line--5 { animation-delay: 0.6s, 2.6s; }
-  .l3-oracle-anim__line--6 { animation-delay: 0.5s, 2.5s; }
-  .l3-oracle-anim__line--7 { animation-delay: 1.2s, 3.2s; }
-  .l3-oracle-anim__line--8 { animation-delay: 1.5s, 3.5s; }
-  .l3-oracle-anim__line--9 { animation-delay: 1.6s, 3.6s; }
-  @keyframes oracle-line-draw { 0% { stroke-dashoffset: var(--len); } 100% { stroke-dashoffset: 0; } }
-  @keyframes oracle-line-glow { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  /* Bigger rectangular box nodes */
-  .l3-oracle-anim__node { position: absolute; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.07); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 10px 16px; z-index: 3; opacity: 0; animation: oracle-node-appear 0.6s ease-out forwards, oracle-node-bob 3.5s ease-in-out 2s infinite; }
-  .l3-oracle-anim__nodeDot { width: 10px; height: 10px; border-radius: 50%; background: #2262ff; box-shadow: 0 0 8px rgba(34,98,255,0.5); flex-shrink: 0; }
-  .l3-oracle-anim__nodeDot--gold { background: #c4a35a; box-shadow: 0 0 8px rgba(196,163,90,0.5); }
-  .l3-oracle-anim__nodeDot--green { background: #22c55e; box-shadow: 0 0 8px rgba(34,197,94,0.5); }
-  .l3-oracle-anim__nodeInfo { display: flex; flex-direction: column; gap: 1px; }
-  .l3-oracle-anim__nodeName { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.6); font-family: var(--font-mono, monospace); }
-  .l3-oracle-anim__nodeVal { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.3); font-family: var(--font-mono, monospace); }
-  @keyframes oracle-node-appear { 0% { opacity: 0; transform: scale(0.85) translateY(8px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
-  @keyframes oracle-node-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-
-  /* Tier 1: source node positions */
-  .l3-oracle-anim__node--1 { top: 18px; left: 16px; animation-delay: 0.1s, 2.1s; }
-  .l3-oracle-anim__node--2 { top: 18px; left: 26%; animation-delay: 0.25s, 2.25s; }
-  .l3-oracle-anim__node--3 { top: 18px; right: 26%; animation-delay: 0.4s, 2.4s; }
-  .l3-oracle-anim__node--4 { top: 18px; right: 16px; animation-delay: 0.55s, 2.55s; }
-
-  /* Tier 2: aggregation node positions */
-  .l3-oracle-anim__node--agg { background: rgba(255,255,255,0.09); border-radius: 12px; padding: 12px 20px; }
-  .l3-oracle-anim__node--agg1 { top: 44%; left: 14%; border-color: rgba(34,98,255,0.25); animation-delay: 0.8s, 2.8s; }
-  .l3-oracle-anim__node--agg2 { top: 44%; right: 14%; border-color: rgba(196,163,90,0.22); animation-delay: 0.95s, 2.95s; }
-
-  /* Output feed nodes */
-  .l3-oracle-anim__feed { position: absolute; bottom: 18px; display: flex; align-items: center; gap: 10px; background: rgba(34,197,94,0.06); backdrop-filter: blur(10px); border: 1px solid rgba(34,197,94,0.22); border-radius: 10px; padding: 10px 16px; z-index: 3; opacity: 0; animation: oracle-node-appear 0.6s ease-out forwards, ticker-float 3s ease-in-out 2.5s infinite; }
-  .l3-oracle-anim__feed--1 { left: 10%; animation-delay: 1.4s, 3.4s; }
-  .l3-oracle-anim__feed--2 { right: 10%; animation-delay: 1.6s, 3.6s; }
-  .l3-oracle-anim__feedLabel { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.4); font-family: var(--font-mono, monospace); }
-  .l3-oracle-anim__feedPrice { font-size: 14px; font-weight: 700; color: #22c55e; font-family: var(--font-mono, monospace); }
+  @keyframes oracle-arrow-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes oracle-pulse-travel {
+    0% { top: 8%; opacity: 0; }
+    8% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 92%; opacity: 0; }
+  }
 
   /* Glows */
   .l3-oracle-anim__glow { position: absolute; border-radius: 50%; filter: blur(40px); pointer-events: none; }
-  .l3-oracle-anim__glow--blue { width: 140px; height: 140px; background: rgba(34,98,255,0.15); top: 20%; left: 20%; animation: defi-glow-drift 6s ease-in-out infinite; }
-  .l3-oracle-anim__glow--gold { width: 120px; height: 120px; background: rgba(196,163,90,0.12); bottom: 15%; right: 15%; animation: defi-glow-drift 6s ease-in-out infinite 2s; }
+  .l3-oracle-anim__glow--blue { width: 140px; height: 140px; background: rgba(34,98,255,0.15); top: 10%; left: 15%; animation: defi-glow-drift 6s ease-in-out infinite; }
+  .l3-oracle-anim__glow--gold { width: 120px; height: 120px; background: rgba(196,163,90,0.12); bottom: 10%; right: 15%; animation: defi-glow-drift 6s ease-in-out infinite 2s; }
 
   @media (max-width: 768px) {
-    .l3-oracle-anim { min-height: 320px; }
-    .l3-oracle-anim__node { padding: 6px 10px; gap: 6px; }
-    .l3-oracle-anim__nodeName { font-size: 10px; }
-    .l3-oracle-anim__nodeVal { font-size: 8px; }
-    .l3-oracle-anim__node--1 { left: 4px; }
-    .l3-oracle-anim__node--4 { right: 4px; }
-    .l3-oracle-anim__node--agg { padding: 8px 12px; }
-    .l3-oracle-anim__feed { padding: 6px 10px; }
-    .l3-oracle-anim__feedLabel { font-size: 9px; }
-    .l3-oracle-anim__feedPrice { font-size: 11px; }
+    .l3-oracle-anim { min-height: 380px; padding: 1.5rem 1rem; }
+    .l3-oracle-pipe__stage { padding: 10px 14px; gap: 10px; }
+    .l3-oracle-pipe__icon { width: 34px; height: 34px; border-radius: 10px; }
+    .l3-oracle-pipe__icon svg { width: 16px; height: 16px; }
+    .l3-oracle-pipe__label { font-size: 11.5px; }
+    .l3-oracle-pipe__sub { font-size: 10px; }
+    .l3-oracle-pipe__arrow { height: 22px; }
   }
 
   /* ─── RWA animated graphic ──────────────────────────────────── */
@@ -942,62 +1000,104 @@ const capRows = [
 
   @media (max-width: 768px) { .l3-rwa-anim { min-height: 300px; } .l3-rwa-anim__token { width: 220px; padding: 12px 16px; } }
 
-  /* ─── S5: USE CASES (orbital circle layout — animated) ────────── */
-  .l3-usecases { background: #fafafa; padding: 4rem 0 5rem; }
-  .l3-usecases__container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
-  .l3-usecases__header { margin-bottom: 2.5rem; text-align: center; }
-  .l3-usecases__heading { font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 800; color: #171717; letter-spacing: -0.03em; margin: 0; }
+  /* ─── S5: USE CASES — premium bento grid ─────────────────────── */
+  .l3-uc { background: #f8f9fc; padding: 5rem 0 6rem; position: relative; overflow: hidden; }
+  .l3-uc::before { content: ''; position: absolute; top: -200px; right: -200px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(34,98,255,0.04) 0%, transparent 70%); pointer-events: none; }
+  .l3-uc__container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
 
-  .l3-usecases__orbit { position: relative; width: 100%; max-width: 580px; aspect-ratio: 1; margin: 0 auto; }
+  /* Header */
+  .l3-uc__header { text-align: center; margin-bottom: 3.5rem; }
+  .l3-uc__heading { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: #0f172a; letter-spacing: -0.03em; margin: 0 0 1rem; line-height: 1.15; }
+  .l3-uc__sub { font-size: 16px; color: #64748b; line-height: 1.65; margin: 0 auto; max-width: 560px; }
 
-  /* Hub — pulse glow */
-  .l3-ucOrbit__hub { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80px; height: 80px; border-radius: 50%; background: #171717; display: flex; align-items: center; justify-content: center; z-index: 3; box-shadow: 0 8px 32px rgba(0,0,0,0.18); animation: uc-hub-pulse 3s ease-in-out infinite; }
-  .l3-ucOrbit__hubLabel { font-size: 11px; font-weight: 800; color: #fff; letter-spacing: 0.06em; text-transform: uppercase; }
-  @keyframes uc-hub-pulse { 0%,100% { box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 0 0 rgba(34,98,255,0.15); } 50% { box-shadow: 0 8px 32px rgba(0,0,0,0.18), 0 0 0 18px rgba(34,98,255,0); } }
+  /* Bento grid — 1 wide card + 4 standard */
+  .l3-uc__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
 
-  /* Ring — slow spin + dash animation */
-  .l3-ucOrbit__ring { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; animation: uc-ring-spin 60s linear infinite; }
-  .l3-ucOrbit__ring circle { stroke-dasharray: 12 8; animation: uc-dash-flow 20s linear infinite; }
-  @keyframes uc-ring-spin { to { transform: rotate(360deg); } }
-  @keyframes uc-dash-flow { to { stroke-dashoffset: -200; } }
+  /* ── Card base ── */
+  .l3-uc__card {
+    position: relative;
+    border-radius: 24px;
+    background: #fff;
+    border: 1px solid rgba(226,232,240,0.8);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.32s cubic-bezier(0.22,1,0.36,1), box-shadow 0.32s cubic-bezier(0.22,1,0.36,1), border-color 0.32s ease;
+    will-change: transform;
+  }
+  .l3-uc__card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(15,23,42,0.10), 0 8px 16px rgba(15,23,42,0.04);
+    border-color: rgba(34,98,255,0.2);
+  }
 
-  /* Nodes — staggered entrance + float */
-  .l3-ucOrbit__node { position: absolute; transform: translate(-50%, -50%); text-align: center; z-index: 2; width: 140px; opacity: 0; animation: uc-node-in 0.7s cubic-bezier(0.2,0.8,0.2,1) forwards; }
-  .l3-ucOrbit__node:nth-child(3) { top: 8%; left: 50%; animation-delay: 0.1s; }
-  .l3-ucOrbit__node:nth-child(4) { top: 36%; left: 88%; animation-delay: 0.25s; }
-  .l3-ucOrbit__node:nth-child(5) { top: 80%; left: 74%; animation-delay: 0.4s; }
-  .l3-ucOrbit__node:nth-child(6) { top: 80%; left: 26%; animation-delay: 0.55s; }
-  .l3-ucOrbit__node:nth-child(7) { top: 36%; left: 12%; animation-delay: 0.7s; }
-  @keyframes uc-node-in { from { opacity: 0; transform: translate(-50%, -50%) scale(0.5) translateY(20px); } to { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); } }
+  /* Gradient glow on hover — per-card accent */
+  .l3-uc__cardGlow {
+    position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s ease; pointer-events: none; z-index: 0;
+  }
+  .l3-uc__card:hover .l3-uc__cardGlow { opacity: 1; }
+  .l3-uc__card--defi .l3-uc__cardGlow { background: linear-gradient(135deg, rgba(34,98,255,0.04) 0%, transparent 60%); }
+  .l3-uc__card--rwa .l3-uc__cardGlow { background: linear-gradient(135deg, rgba(196,163,90,0.05) 0%, transparent 60%); }
+  .l3-uc__card--ai .l3-uc__cardGlow { background: linear-gradient(135deg, rgba(34,197,94,0.04) 0%, transparent 60%); }
+  .l3-uc__card--inst .l3-uc__cardGlow { background: linear-gradient(135deg, rgba(139,92,246,0.04) 0%, transparent 60%); }
+  .l3-uc__card--game .l3-uc__cardGlow { background: linear-gradient(135deg, rgba(236,72,153,0.04) 0%, transparent 60%); }
 
-  /* Floating after entrance */
-  .l3-ucOrbit__circle { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px; border: 2px solid #e5e5e5; background: #fff; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; animation: uc-float 4s ease-in-out infinite; }
-  .l3-ucOrbit__node:nth-child(3) .l3-ucOrbit__circle { animation-delay: 0s; }
-  .l3-ucOrbit__node:nth-child(4) .l3-ucOrbit__circle { animation-delay: 0.8s; }
-  .l3-ucOrbit__node:nth-child(5) .l3-ucOrbit__circle { animation-delay: 1.6s; }
-  .l3-ucOrbit__node:nth-child(6) .l3-ucOrbit__circle { animation-delay: 2.4s; }
-  .l3-ucOrbit__node:nth-child(7) .l3-ucOrbit__circle { animation-delay: 3.2s; }
-  @keyframes uc-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  /* Inner */
+  .l3-uc__cardInner { position: relative; z-index: 1; padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 14px; height: 100%; }
 
-  .l3-ucOrbit__circle--blue { border-color: rgba(34,98,255,0.3); }
-  .l3-ucOrbit__circle--gold { border-color: rgba(196,163,90,0.3); }
-  .l3-ucOrbit__circle--green { border-color: rgba(34,197,94,0.3); }
-  .l3-ucOrbit__node:hover .l3-ucOrbit__circle { transform: scale(1.18) translateY(-4px); animation-play-state: paused; }
-  .l3-ucOrbit__node:hover .l3-ucOrbit__circle--blue { border-color: #2262ff; box-shadow: 0 8px 28px rgba(34,98,255,0.22); }
-  .l3-ucOrbit__node:hover .l3-ucOrbit__circle--gold { border-color: #c4a35a; box-shadow: 0 8px 28px rgba(196,163,90,0.22); }
-  .l3-ucOrbit__node:hover .l3-ucOrbit__circle--green { border-color: #22c55e; box-shadow: 0 8px 28px rgba(34,197,94,0.22); }
+  /* Wide card — spans 2 cols, horizontal layout */
+  .l3-uc__card--wide { grid-column: span 2; }
+  .l3-uc__card--wide .l3-uc__cardInner { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 20px; }
+  .l3-uc__card--wide .l3-uc__cardContent { flex: 1; min-width: 260px; }
 
-  .l3-ucOrbit__label { font-size: 13px; font-weight: 700; color: #171717; margin: 0 0 3px; line-height: 1.3; }
-  .l3-ucOrbit__desc { font-size: 11px; color: #737373; margin: 0; line-height: 1.4; opacity: 0; transform: translateY(4px); transition: opacity 0.3s, transform 0.3s; }
-  .l3-ucOrbit__node:hover .l3-ucOrbit__desc { opacity: 1; transform: translateY(0); }
+  /* Icon */
+  .l3-uc__cardIcon { width: 52px; height: 52px; border-radius: 16px; display: grid; place-items: center; flex-shrink: 0; }
+  .l3-uc__cardIcon--blue { background: rgba(34,98,255,0.08); color: #2262ff; border: 1px solid rgba(34,98,255,0.12); }
+  .l3-uc__cardIcon--gold { background: rgba(196,163,90,0.08); color: #c4a35a; border: 1px solid rgba(196,163,90,0.12); }
+  .l3-uc__cardIcon--green { background: rgba(34,197,94,0.08); color: #22c55e; border: 1px solid rgba(34,197,94,0.12); }
+  .l3-uc__cardIcon--purple { background: rgba(139,92,246,0.08); color: #8b5cf6; border: 1px solid rgba(139,92,246,0.12); }
+  .l3-uc__cardIcon--pink { background: rgba(236,72,153,0.08); color: #ec4899; border: 1px solid rgba(236,72,153,0.12); }
 
+  /* Title + Desc */
+  .l3-uc__cardTitle { font-size: 20px; font-weight: 700; color: #0f172a; margin: 0; line-height: 1.25; transition: color 0.25s ease; }
+  .l3-uc__card:hover .l3-uc__cardTitle { color: #2262ff; }
+  .l3-uc__cardDesc { font-size: 14.5px; color: #64748b; line-height: 1.6; margin: 0; }
+
+  /* Stats row (wide card only) */
+  .l3-uc__cardStats { display: flex; gap: 24px; width: 100%; padding-top: 8px; border-top: 1px solid #f1f5f9; margin-top: auto; }
+  .l3-uc__stat { display: flex; flex-direction: column; gap: 2px; }
+  .l3-uc__statVal { font-size: 22px; font-weight: 800; color: #0f172a; font-family: var(--font-mono, monospace); letter-spacing: -0.02em; }
+  .l3-uc__statLabel { font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* Arrow icon */
+  .l3-uc__cardArrow { position: absolute; top: 24px; right: 24px; width: 36px; height: 36px; border-radius: 50%; background: #f8fafc; border: 1px solid #e2e8f0; display: grid; place-items: center; color: #94a3b8; transition: all 0.28s cubic-bezier(0.22,1,0.36,1); }
+  .l3-uc__card:hover .l3-uc__cardArrow { background: #2262ff; border-color: #2262ff; color: #fff; transform: translate(2px, -2px); }
+
+  /* Staggered reveal */
+  .l3-uc__grid .l3-uc__card { opacity: 0; transform: translateY(28px) scale(0.97); }
+  .l3-uc__grid.is-visible .l3-uc__card { transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); opacity: 1; transform: translateY(0) scale(1); }
+  .l3-uc__grid.is-visible .l3-uc__card:nth-child(1) { transition-delay: 0.05s; }
+  .l3-uc__grid.is-visible .l3-uc__card:nth-child(2) { transition-delay: 0.12s; }
+  .l3-uc__grid.is-visible .l3-uc__card:nth-child(3) { transition-delay: 0.19s; }
+  .l3-uc__grid.is-visible .l3-uc__card:nth-child(4) { transition-delay: 0.26s; }
+  .l3-uc__grid.is-visible .l3-uc__card:nth-child(5) { transition-delay: 0.33s; }
+
+  /* Responsive */
   @media (max-width: 768px) {
-    .l3-usecases__orbit { aspect-ratio: auto; max-width: 100%; display: flex; flex-direction: column; gap: 12px; }
-    .l3-ucOrbit__hub { display: none; }
-    .l3-ucOrbit__ring { display: none; }
-    .l3-ucOrbit__node { position: static; transform: none; width: 100%; display: flex; align-items: center; gap: 14px; background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 1rem 1.25rem; text-align: left; opacity: 1; animation: none; }
-    .l3-ucOrbit__circle { margin: 0; width: 48px; height: 48px; flex-shrink: 0; animation: none; }
-    .l3-ucOrbit__desc { opacity: 1; display: block; transform: none; }
+    .l3-uc { padding: 3.5rem 0 4rem; }
+    .l3-uc__header { margin-bottom: 2.5rem; }
+    .l3-uc__grid { grid-template-columns: 1fr; }
+    .l3-uc__card--wide { grid-column: span 1; }
+    .l3-uc__card--wide .l3-uc__cardInner { flex-direction: column; }
+    .l3-uc__cardInner { padding: 22px; }
+    .l3-uc__cardStats { gap: 16px; }
+    .l3-uc__statVal { font-size: 18px; }
+    .l3-uc__cardIcon { width: 44px; height: 44px; border-radius: 12px; }
+    .l3-uc__cardArrow { top: 18px; right: 18px; width: 32px; height: 32px; }
   }
 
   /* ─── HOW XHAVIC WORKS ──────────────────────────────────────── */
@@ -1063,15 +1163,16 @@ const capRows = [
   .l3-ai__robot { max-width: 380px; width: 100%; filter: drop-shadow(0 26px 60px rgba(0,0,0,.35)); position: relative; z-index: 2; opacity: 0; transform: translateX(-90px) scale(.98); }
   .l3-ai.is-in .l3-ai__robot { animation: robotSlideIn 3500ms cubic-bezier(.22,1,.36,1) both; }
   .l3-ai__heading { font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 800; color: #fff; letter-spacing: -0.02em; margin: 0 0 2rem; }
-  .l3-ai__cards { display: flex; flex-direction: column; gap: 12px; }
-  .l3-ai__card { display: flex; gap: 16px; align-items: flex-start; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1.25rem 1.5rem; transition: box-shadow 0.3s, transform 0.3s; }
-  .l3-ai__card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.2); transform: translateX(8px); }
-  .l3-ai__cardIcon { width: 44px; height: 44px; flex-shrink: 0; background: transparent; border-radius: 12px; overflow: hidden; }
-  .l3-ai__cardIcon img { width: 100%; height: 100%; object-fit: contain; filter: brightness(1.8); mix-blend-mode: screen; animation: subtle-float 6s ease-in-out infinite; }
-  .l3-ai__card:nth-child(2) .l3-ai__cardIcon img { animation-delay: 0.6s; }
-  .l3-ai__card:nth-child(3) .l3-ai__cardIcon img { animation-delay: 1.2s; }
-  .l3-ai__card h4 { font-size: 15px; font-weight: 700; color: #fff; margin: 0 0 0.35rem; }
-  .l3-ai__card p { font-size: 14px; color: rgba(255,255,255,.70); line-height: 1.5; margin: 0; }
+  .l3-ai__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .l3-ai__item { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; opacity: 0; transform: translateY(16px); }
+  .l3-ai__check { width: 20px; height: 20px; border-radius: 999px; background: rgba(59,109,255,0.18); border: 1px solid rgba(59,109,255,0.35); color: #cfe1ff; font-size: 12px; display: grid; place-items: center; margin-top: 2px; flex-shrink: 0; }
+  .l3-ai__item h4 { font-size: 16px; font-weight: 800; color: #fff; margin: 0 0 4px; }
+  .l3-ai__item p { font-size: 14.5px; color: rgba(255,255,255,0.70); line-height: 1.6; margin: 0; max-width: 520px; }
+  .l3-ai.is-in .l3-ai__item { animation: ai-item-in 0.6s ease forwards; }
+  .l3-ai.is-in .l3-ai__item:nth-child(1) { animation-delay: 0.3s; }
+  .l3-ai.is-in .l3-ai__item:nth-child(2) { animation-delay: 0.6s; }
+  .l3-ai.is-in .l3-ai__item:nth-child(3) { animation-delay: 0.9s; }
+  @keyframes ai-item-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
   @media (max-width: 768px) { .l3-ai__container { grid-template-columns: 1fr; } .l3-ai__robot { max-width: 260px; } .l3-ai__left { min-height: 240px; } }
 
   /* ─── S9: GET STARTED (tabbed interface) ──────────────────── */
@@ -1281,8 +1382,8 @@ const capRows = [
         'Xhavic Labs incubator: architecture reviews, audits, and SDKs',
         'Apply to Xhavic Labs for hands-on launch support',
       ],
-      ctaText: 'Apply to Xhavic Labs \u2192',
-      ctaHref: '/contact',
+      ctaText: 'Build with Xhavic \u2192',
+      ctaHref: '/developers',
       image: '/images/get_started/2.jpg',
     },
     {
