@@ -851,7 +851,7 @@ const capRows = [
   }
 
   /* ─── S3: WHAT XHAVIC DOES ──────────────────────────────────────── */
-  .l3-cap { background: #fff; padding: 5rem 0; }
+  .l3-cap { background: #fff; padding: 5rem 0; overflow-x: clip; }
   .l3-cap__container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
   .l3-cap__header { text-align: center; margin-bottom: 3.5rem; }
   .l3-cap__heading { font-size: clamp(2.25rem, 4.5vw, 3.5rem); font-weight: 800; color: #171717; letter-spacing: -0.03em; margin: 0 0 1rem; }
@@ -884,10 +884,18 @@ const capRows = [
     .l3-capRow, .l3-capRow--imgLeft { grid-template-columns: 1fr; }
     .l3-capRow--imgLeft .l3-capRow__visual { order: 0; }
     .l3-capRow__text { text-align: center; }
-    .l3-capRow__visual { justify-content: center; }
+    .l3-capRow__visual { justify-content: center; overflow: hidden; }
     .l3-capRow__link { display: inline-block; }
-    .l3-capRow__imgFull { min-height: 260px; }
+    .l3-capRow__imgFull { min-height: 260px; overflow: hidden; }
     .l3-capRow__dualImg { max-width: 320px; margin: 0 auto; }
+    /* Centre all feature animations on mobile */
+    .l3-dualwallet { max-width: 100%; margin: 0 auto; }
+    .l3-onramp { padding: 0.5rem; }
+    .l3-onramp__card { max-width: 100%; }
+    .l3-oracle-anim { max-width: 100%; border-radius: 16px; min-height: 360px; padding: 1.5rem 1rem; }
+    .l3-oracle-pipe { max-width: 100%; }
+    .l3-rwa-anim { max-width: 100%; border-radius: 16px; min-height: 280px; padding: 1.5rem 0.75rem; }
+    .l3-rwa-anim__token { width: 200px; }
   }
 
   /* On-ramp preview card (inline) */
@@ -1400,7 +1408,7 @@ const capRows = [
 
   /* Community orbit responsive — exact copy from original */
   @media (max-width: 780px) {
-    .l3-community__scene { width: 100%; }
+    .l3-community__scene { width: 100%; overflow: clip; }
     .l3-community__bg { background-size: cover; }
     .l3-community__avatar { padding: 5px; }
     .l3-av-1 { --tx: -185px; --ty: -338px; --w: 160px; --h: 160px; }
