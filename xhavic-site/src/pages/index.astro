@@ -881,21 +881,25 @@ const capRows = [
   .l3-capRow__dualImg img { width: 100%; border-radius: 16px; box-shadow: 0 12px 36px rgba(0,0,0,0.08); }
 
   @media (max-width: 768px) {
-    .l3-capRow, .l3-capRow--imgLeft { grid-template-columns: 1fr; }
+    .l3-cap__container { padding: 0 1rem; }
+    .l3-capRow, .l3-capRow--imgLeft { grid-template-columns: 1fr; gap: 1.5rem; }
     .l3-capRow--imgLeft .l3-capRow__visual { order: 0; }
     .l3-capRow__text { text-align: center; }
-    .l3-capRow__visual { justify-content: center; align-items: center; overflow: hidden; }
+    .l3-capRow__visual { justify-content: center; align-items: center; width: 100%; }
     .l3-capRow__link { display: inline-block; }
     .l3-capRow__imgFull { min-height: 260px; overflow: hidden; }
-    .l3-capRow__dualImg { max-width: 320px; margin: 0 auto; }
-    /* Override width:100% so flex centering + margin:auto works */
-    .l3-dualwallet { width: auto; max-width: 300px; margin: 0 auto; }
-    .l3-onramp { width: auto; padding: 0.5rem; }
-    .l3-onramp__card { width: auto; max-width: 300px; margin: 0 auto; }
-    .l3-oracle-anim { width: auto; max-width: 300px; margin: 0 auto; border-radius: 16px; min-height: 360px; padding: 1.5rem 1rem; }
+    .l3-capRow__dualImg { max-width: 100%; margin: 0 auto; }
+    /* Full-width centered visuals on mobile */
+    .l3-dualwallet { width: 100%; max-width: 100%; margin: 0 auto; padding: 1rem; }
+    .l3-dualwallet__card { padding: 1.5rem 1rem; }
+    .l3-onramp { width: 100%; padding: 0; }
+    .l3-onramp__card { width: 100%; max-width: 100%; margin: 0 auto; }
+    .l3-oracle-anim { width: 100%; max-width: 100%; margin: 0 auto; border-radius: 16px; min-height: 380px; padding: 1.5rem 1rem; }
     .l3-oracle-pipe { max-width: 100%; }
-    .l3-rwa-anim { width: auto; max-width: 300px; margin: 0 auto; border-radius: 16px; min-height: 280px; padding: 1.5rem 0.75rem; }
-    .l3-rwa-anim__token { width: 200px; }
+    .l3-oracle-pipe__stage { width: 100%; }
+    .l3-rwa-anim { width: 100%; max-width: 100%; margin: 0 auto; border-radius: 16px; min-height: 320px; padding: 1.5rem 1rem; }
+    .l3-rwa-anim__token { width: 100%; padding: 14px 18px; }
+    .l3-rwa-anim__escrow { margin-top: 0.5rem; }
   }
 
   /* On-ramp preview card (inline) */
@@ -937,7 +941,7 @@ const capRows = [
   .l3-dualwallet__barFill--gold { width: 60%; background: #c4a35a; animation: bar-fill-gold 3s ease-out infinite; }
   @keyframes bar-fill-blue { 0% { width: 0; opacity: 0.5; } 60% { width: 90%; opacity: 1; } 100% { width: 90%; opacity: 1; } }
   @keyframes bar-fill-gold { 0% { width: 0; opacity: 0.5; } 70% { width: 60%; opacity: 1; } 100% { width: 60%; opacity: 1; } }
-  @media (max-width: 768px) { .l3-dualwallet { width: auto; max-width: 300px; margin: 0 auto; } }
+  @media (max-width: 768px) { .l3-dualwallet { width: 100%; max-width: 100%; margin: 0 auto; padding: 1rem; } }
 
   /* ─── Oracle pipeline flow graphic ─────────────────────────── */
   .l3-oracle-anim { position: relative; width: 100%; min-height: 420px; background: linear-gradient(135deg, #0a0f1e 0%, #0d1a2d 50%, #0a1628 100%); overflow: hidden; border-radius: 20px; display: flex; align-items: center; justify-content: center; padding: 2rem 1.5rem; }
@@ -999,12 +1003,13 @@ const capRows = [
   .l3-oracle-anim__glow--gold { width: 120px; height: 120px; background: rgba(196,163,90,0.12); bottom: 10%; right: 15%; animation: defi-glow-drift 6s ease-in-out infinite 2s; }
 
   @media (max-width: 768px) {
-    .l3-oracle-anim { width: auto; max-width: 300px; margin: 0 auto; min-height: 380px; padding: 1.5rem 1rem; }
-    .l3-oracle-pipe__stage { padding: 10px 14px; gap: 10px; }
-    .l3-oracle-pipe__icon { width: 34px; height: 34px; border-radius: 10px; }
-    .l3-oracle-pipe__icon svg { width: 16px; height: 16px; }
-    .l3-oracle-pipe__label { font-size: 11.5px; }
-    .l3-oracle-pipe__sub { font-size: 10px; }
+    .l3-oracle-anim { width: 100%; max-width: 100%; margin: 0 auto; min-height: 380px; padding: 1.5rem 1rem; }
+    .l3-oracle-pipe { max-width: 100%; width: 100%; }
+    .l3-oracle-pipe__stage { padding: 12px 16px; gap: 12px; width: 100%; }
+    .l3-oracle-pipe__icon { width: 36px; height: 36px; border-radius: 10px; }
+    .l3-oracle-pipe__icon svg { width: 18px; height: 18px; }
+    .l3-oracle-pipe__label { font-size: 13px; }
+    .l3-oracle-pipe__sub { font-size: 11px; }
     .l3-oracle-pipe__arrow { height: 22px; }
   }
 
@@ -1032,7 +1037,7 @@ const capRows = [
   .l3-rwa-anim__glow--gold { width: 160px; height: 160px; background: rgba(196,163,90,0.14); top: 10%; right: 10%; animation: defi-glow-drift 6s ease-in-out infinite; }
   .l3-rwa-anim__glow--blue { width: 120px; height: 120px; background: rgba(34,98,255,0.10); bottom: 10%; left: 15%; animation: defi-glow-drift 6s ease-in-out infinite 2s; }
 
-  @media (max-width: 768px) { .l3-rwa-anim { width: auto; max-width: 300px; margin: 0 auto; min-height: 300px; } .l3-rwa-anim__token { width: 220px; padding: 12px 16px; } }
+  @media (max-width: 768px) { .l3-rwa-anim { width: 100%; max-width: 100%; margin: 0 auto; min-height: 320px; } .l3-rwa-anim__token { width: 100%; padding: 14px 18px; } }
 
   /* ─── S5: USE CASES — premium bento grid ─────────────────────── */
   .l3-uc { background: #f8f9fc; padding: 5rem 0 6rem; position: relative; overflow: hidden; }
