@@ -1317,11 +1317,26 @@ const capRows = [
     display: none;
   }
 
-  /* Center logo */
+  /* Center — exact copy from original .center */
   .l3-community__center {
-    position: absolute; left: 0; right: 0; top: 0; height: 100vh;
-    display: grid; place-items: center;
-    text-align: center; z-index: 2; padding: 16px;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    z-index: 2;
+    padding: 16px;
+  }
+  /* .bg overrides on same element — exact copy from original .scene .bg */
+  .l3-community__bg {
+    background-image: url(/images/bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100vh;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 98px;
+    background-position: center;
   }
   .l3-community__centerInner {
     width: min(420px, 90%);
@@ -1331,17 +1346,11 @@ const capRows = [
     transition: transform 0.06s linear, opacity 0.06s linear, filter 0.06s linear;
     will-change: transform, opacity, filter;
   }
-  .l3-community__bg {
-    background-image: url(/images/bg.png);
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    background-position: center center;
-  }
   .l3-community__logo { width: 150px; }
 
-  /* Avatars anchor — use 50vh (viewport center) instead of 50% (scene center, which is 62vh) */
+  /* Avatars anchor — exact copy from original .anchor */
   .l3-community__anchor {
-    position: absolute; left: 50%; top: 50vh;
+    position: absolute; left: 50%; top: 50%;
     transform: translate(-50%, -50%); z-index: 3;
   }
 
