@@ -397,14 +397,14 @@
 
 /* Direction variants */
 [data-reveal-direction="left"] {
-  transform: translateX(-40px) !important;
+  /* transform: translateX(-40px) !important; */
 }
 [data-reveal-direction="left"].is-visible {
   transform: translateX(0) !important;
 }
 
 [data-reveal-direction="right"] {
-  transform: translateX(40px) !important;
+  /* transform: translateX(40px) !important; */
 }
 [data-reveal-direction="right"].is-visible {
   transform: translateX(0) !important;
