@@ -1327,15 +1327,11 @@ const capRows = [
     z-index: 2;
     padding: 16px;
   }
-  /* .bg overrides on same element — exact copy from original .scene .bg */
+  /* bg.png rings — background only, no size/margin overrides that break inset:0 centering */
   .l3-community__bg {
     background-image: url(/images/bg.png);
     background-repeat: no-repeat;
     background-size: contain;
-    height: 100vh;
-    margin: 0 auto;
-    width: 100%;
-    margin-top: 98px;
     background-position: center;
   }
   .l3-community__centerInner {
