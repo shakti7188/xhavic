@@ -883,8 +883,11 @@ const capRows = [
   @media (max-width: 768px) {
     .l3-capRow, .l3-capRow--imgLeft { grid-template-columns: 1fr; }
     .l3-capRow--imgLeft .l3-capRow__visual { order: 0; }
+    .l3-capRow__text { text-align: center; }
+    .l3-capRow__visual { justify-content: center; }
+    .l3-capRow__link { display: inline-block; }
     .l3-capRow__imgFull { min-height: 260px; }
-    .l3-capRow__dualImg { max-width: 320px; }
+    .l3-capRow__dualImg { max-width: 320px; margin: 0 auto; }
   }
 
   /* On-ramp preview card (inline) */
