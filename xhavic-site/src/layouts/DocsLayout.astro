@@ -89,9 +89,9 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.io'
           xhavic.io
         </a>
         <div class="docs-topbar-right">
-          <a href="https://github.com/xhavic" target="_blank" rel="noopener" class="docs-topbar-link">
-            GitHub
-          </a>
+          <span class="docs-topbar-link" style="opacity:0.5;cursor:default;">
+            GitHub (Coming Soon)
+          </span>
           <a href="/whitepaper" class="docs-topbar-link">
             Whitepaper
           </a>
@@ -135,9 +135,9 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.io'
               Last updated: {lastUpdated.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
             </p>
           )}
-          <a href="https://github.com/xhavic" target="_blank" rel="noopener" class="docs-edit-link">
-            Edit this page on GitHub →
-          </a>
+          <span class="docs-edit-link" style="opacity:0.5;cursor:default;">
+            Edit this page on GitHub (Coming Soon)
+          </span>
         </footer>
       </article>
     </main>

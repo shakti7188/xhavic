@@ -65,7 +65,7 @@ export const FOOTER_COLUMNS: readonly FooterColumn[] = [
     links: [
       { label: "Documentation", href: "/docs", external: true },
       { label: "RPC Endpoints", href: "/docs", external: true },
-      { label: "GitHub", href: "https://github.com/xhavic", external: true },
+      { label: "GitHub (Coming Soon)", href: "#", external: false },
       { label: "Testnet Faucet (Coming Soon)", href: "#", external: false },
       { label: "Block Explorer", href: "https://xhaviscan.com", external: true },
       { label: "Bridge", href: "https://bridge.xhavic.io", external: true },
@@ -100,9 +100,11 @@ export const LEGAL_LINKS: readonly NavLink[] = [
 // ---- Social footer links (extracted from index.html) ----
 
 export const SOCIAL_FOOTER_LINKS: readonly NavLink[] = [
-  { label: "Twitter / X", href: "https://x.com/xhavic", external: true },
-  { label: "Discord", href: "https://discord.gg/xhavic", external: true },
-  { label: "Telegram", href: "https://t.me/xhavic", external: true },
-  { label: "GitHub", href: "https://github.com/xhavic", external: true },
-  { label: "LinkedIn", href: "https://linkedin.com/company/xhavic", external: true },
+  { label: "Twitter / X", href: "https://x.com/Xhavicofficial", external: true },
+  { label: "Instagram", href: "https://www.instagram.com/xhavicofficial/", external: true },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61587340254751", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/xhavic/", external: true },
+  { label: "Discord", href: "#", external: false },
+  { label: "Telegram", href: "#", external: false },
+  { label: "GitHub", href: "#", external: false },
 ] as const;
