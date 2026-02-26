@@ -37,6 +37,15 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.io'
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0WPVF5B4PS" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0WPVF5B4PS');
+    </script>
+
     <!-- SEO -->
     <SEOHead
       title={title}
