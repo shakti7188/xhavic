@@ -309,22 +309,17 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    background: transparent;
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    border-bottom: 1px solid transparent;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     z-index: 111;
     width: 100%;
     padding: 14px 44px;
     transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
   }
 
-  .navbar.is-scrolled {
-    background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom-color: rgba(255, 255, 255, 0.06);
-  }
+  /* is-scrolled class no longer needed — navbar is always dark */
 
   /* ========== LOGO ========== */
   .brand {

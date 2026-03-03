@@ -105,6 +105,6 @@ export const SOCIAL_FOOTER_LINKS: readonly NavLink[] = [
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61587340254751", external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/xhavic/", external: true },
   { label: "Discord", href: "#", external: false },
-  { label: "Telegram", href: "#", external: false },
+  { label: "Telegram", href: "https://t.me/Xhaviccommunity", external: true },
   { label: "GitHub", href: "#", external: false },
 ] as const;

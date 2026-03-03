@@ -63,7 +63,7 @@ export const SITE_CONFIG = {
     {
       platform: "telegram",
       label: "Telegram",
-      url: "#",
+      url: "https://t.me/Xhaviccommunity",
       icon: "telegram",
     },
     {
