@@ -24,7 +24,7 @@ export const SITE_CONFIG = {
   tagline: "Build and Scale DApps With Ease",
   description:
     "Xhavic is an Ethereum Layer 2 execution environment offering scalable, low-cost, and EVM-compatible infrastructure for DeFi, RWA, AI, NFTs, and enterprise digital asset applications.",
-  url: "https://xhavic.io",
+  url: "https://xhavic.com",
   docsUrl: "/docs",
   locale: "en",
   themeColor: "#0A0A0A",

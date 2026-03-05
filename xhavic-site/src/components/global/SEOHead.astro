@@ -17,7 +17,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.io';
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? 'https://xhavic.com';
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
 const resolvedOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 const fullTitle = title.includes('Xhavic') ? title : `${title} | Xhavic`;

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://xhavic.io',
+  site: 'https://xhavic.com',
   integrations: [
     tailwind(),
     mdx(),

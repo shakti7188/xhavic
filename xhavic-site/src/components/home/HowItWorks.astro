@@ -42,7 +42,7 @@ const steps = [
           {steps.map((step, i) => (
             <div class="acc-item" data-i={String(i)} data-preview={step.preview}>
               <div class="acc-row" role="button" tabindex="0" aria-expanded={i === 0 ? 'true' : 'false'}>
-                <div class="acc-ic"><img src={step.icon} alt="" /></div>
+                <div class="acc-ic"><img src={step.icon} alt={`${step.title} icon`} /></div>
                 <div class="acc-title">{step.title}</div>
                 <div class="acc-toggle" aria-hidden="true">{i === 0 ? '\u2212' : '+'}</div>
               </div>
@@ -55,7 +55,7 @@ const steps = [
       </div>
       <div class="howit__right">
         <div class="howit__preview">
-          <img id="howPreviewImg" src="/images/how/1.webp" alt="Preview" />
+          <img id="howPreviewImg" src="/images/how/1.webp" alt="Diagram showing how transactions flow through the Xhavic network" />
         </div>
       </div>
     </div>

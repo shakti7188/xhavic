@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://xhavic.io/sitemap-index.xml
+Sitemap: https://xhavic.com/sitemap-index.xml
