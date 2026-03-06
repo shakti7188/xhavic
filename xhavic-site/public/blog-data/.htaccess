@@ -1,0 +1,9 @@
+# Protect blog data directory — deny direct access to JSON files
+<FilesMatch "\.json$">
+  Require all denied
+</FilesMatch>
+
+# Protect config file
+<Files "config.json">
+  Require all denied
+</Files>

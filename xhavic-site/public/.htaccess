@@ -10,6 +10,11 @@ RewriteRule ^(.*)$ https://xhavic.com/$1 [L,R=301]
 # Redirect /sitemap.xml to Astro's generated sitemap-index.xml
 RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L,R=301]
 
+# Dynamic blog posts — route to PHP renderer if no static file/directory exists
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^blog/([a-z0-9-]+)/?$ /blog/post.php?slug=$1 [L,QSA]
+
 # HSTS - Strict Transport Security (1 year)
 <IfModule mod_headers.c>
   Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

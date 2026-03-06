@@ -186,4 +186,51 @@ const placeholderPosts = [
   <script>
     import '../../scripts/reveal.ts';
   </script>
+
+  <!-- Load dynamic posts from admin panel -->
+  <script is:inline>
+  (function() {
+    function formatDate(d) {
+      return new Date(d + 'T00:00:00').toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+    }
+    function createCard(p) {
+      var a = document.createElement('a');
+      a.href = '/blog/' + p.slug + '/';
+      a.className = 'card-arch blog-card-link';
+      var html = '';
+      if (p.image) {
+        html += '<div class="blog-card-img"><img src="' + p.image + '" alt="' + (p.imageAlt || p.title).replace(/"/g,'&quot;') + '" class="blog-card-img__el" loading="lazy"></div>';
+      }
+      html += '<div class="blog-card-meta">';
+      html += '<span class="label-mono blog-card-cat">' + (p.category || 'Article') + '</span>';
+      html += '<time datetime="' + p.publishedAt + '" class="label-mono">' + formatDate(p.publishedAt) + '</time>';
+      html += '</div>';
+      html += '<h2 class="blog-card-title">' + p.title + '</h2>';
+      html += '<p class="blog-card-desc">' + (p.description || '') + '</p>';
+      html += '<span class="blog-card-cta">Read more <svg class="blog-card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></span>';
+      a.innerHTML = html;
+      return a;
+    }
+
+    fetch('/admin/api.php?action=posts_public')
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(data) {
+        if (!data || !data.posts || !data.posts.length) return;
+        var grid = document.querySelector('[data-reveal-stagger]');
+        if (!grid) return;
+        // Get existing static post slugs to avoid duplicates
+        var existing = {};
+        grid.querySelectorAll('a[href^="/blog/"]').forEach(function(el) {
+          var m = el.getAttribute('href').match(/\/blog\/([^/]+)/);
+          if (m) existing[m[1]] = true;
+        });
+        data.posts.forEach(function(p) {
+          if (!existing[p.slug]) {
+            grid.appendChild(createCard(p));
+          }
+        });
+      })
+      .catch(function() { /* silently fail if API not available */ });
+  })();
+  </script>
 </BaseLayout>
