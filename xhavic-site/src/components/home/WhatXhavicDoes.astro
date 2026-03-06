@@ -39,7 +39,7 @@ const FEATURES = [
                   <p class="feature__desc">{f.desc}</p>
                   <div class="feature__iconRow">
                     <div class="feature__iconWrap" aria-hidden="true">
-                      <img src={f.icon} alt="" />
+                      <img src={f.icon} alt={`${f.title} icon`} />
                     </div>
                     <a class="arrowBtn" href={f.href} aria-label={`Learn about ${f.title}`}>
                       <span class="sr-only">Learn about {f.title}</span>
@@ -112,7 +112,7 @@ const FEATURES = [
                     </div>
                   </div>
                 ) : (
-                  <img class="feature__previewImg" src={f.preview} alt="" />
+                  <img class="feature__previewImg" src={f.preview} alt={`${f.title} preview`} />
                 )}
               </div>
             </div>

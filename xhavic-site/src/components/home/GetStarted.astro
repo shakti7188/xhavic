@@ -52,7 +52,7 @@ const tabs = [
         <div id="getstartTabs" class="getstart__tabs">
           {tabs.map((tab, i) => (
             <div class={`tabCard${i === 0 ? ' is-active' : ''}`} data-i={String(i)}>
-              <div class="tabCard__icon"><img src={tab.icon} alt="" /></div>
+              <div class="tabCard__icon"><img src={tab.icon} alt={`${tab.tabLabel} icon`} /></div>
               <div class="tabCard__label">{tab.tabLabel}</div>
             </div>
           ))}
