@@ -22,6 +22,23 @@ RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L,R=301]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
+# Disable server signature
+ServerSignature Off
+<IfModule mod_headers.c>
+  Header unset Server
+  Header always unset X-Powered-By
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+  <FilesMatch "\.(ico|jpg|jpeg|png|gif|svg|webp|woff2|woff|css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "public, max-age=3600, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
 # Enable compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml

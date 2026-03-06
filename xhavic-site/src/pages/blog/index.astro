@@ -30,11 +30,11 @@ const placeholderPosts = [
   description="Protocol updates, engineering deep-dives, ecosystem news, and governance proposals from the Xhavic team."
 >
   <!-- Hero -->
-  <section class="bg-dark text-white" style="padding:6rem 0 5rem;" data-reveal>
+  <section class="blog-hero bg-dark text-white" data-reveal>
     <div class="container">
-      <div style="max-width:720px;">
-        <p class="label-mono-dark" style="margin-bottom:1.5rem;">Blog</p>
-        <h1 class="heading-display" style="margin-bottom:1.5rem;">Blog</h1>
+      <div class="blog-hero__inner">
+        <p class="label-mono-dark blog-mb-lg">Blog</p>
+        <h1 class="heading-display blog-mb-lg">Blog</h1>
         <p class="prose-editorial-dark">
           Protocol updates, engineering notes, and ecosystem developments.
         </p>
@@ -47,25 +47,23 @@ const placeholderPosts = [
     <div class="container">
       {posts.length === 0 ? (
         <div>
-          <p class="label-mono" style="margin-bottom:1rem;">Coming Soon</p>
-          <h2 class="heading-section" style="margin-bottom:0.75rem;">Posts are on the way</h2>
-          <p class="prose-editorial" style="margin-bottom:3rem;">
+          <p class="label-mono blog-mb-sm">Coming Soon</p>
+          <h2 class="heading-section blog-mb-sm">Posts are on the way</h2>
+          <p class="prose-editorial blog-mb-xl">
             We are preparing our first articles. In the meantime, explore the topics we will cover.
           </p>
           <div class="grid-3" data-reveal-stagger>
             {placeholderPosts.map((post) => (
-              <div class="card-arch" style="display:flex;flex-direction:column;">
-                <div style="aspect-ratio:16/9;border-radius:8px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;border:1px solid #e5e5e5;">
-                  <svg style="width:32px;height:32px;color:#d4d4d4;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="card-arch blog-card-placeholder">
+                <div class="blog-placeholder-thumb">
+                  <svg class="blog-placeholder-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                   </svg>
                 </div>
-                <span class="label-mono" style="margin-bottom:0.75rem;">{post.category}</span>
-                <h3 style="font-size:18px;font-weight:700;margin-bottom:0.5rem;">{post.title}</h3>
-                <p style="font-size:14px;color:#737373;line-height:1.7;flex:1;">{post.desc}</p>
-                <span style="font-size:13px;color:#a3a3a3;font-weight:600;margin-top:1rem;display:block;">
-                  Coming soon
-                </span>
+                <span class="label-mono blog-mb-sm">{post.category}</span>
+                <h3 class="blog-card-title">{post.title}</h3>
+                <p class="blog-card-desc">{post.desc}</p>
+                <span class="blog-card-soon">Coming soon</span>
               </div>
             ))}
           </div>
@@ -73,23 +71,19 @@ const placeholderPosts = [
       ) : (
         <div class="grid-3" data-reveal-stagger>
           {posts.map((post) => (
-            <a
-              href={`/blog/${post.slug}`}
-              class="card-arch"
-              style="text-decoration:none;color:inherit;display:flex;flex-direction:column;"
-            >
+            <a href={`/blog/${post.slug}`} class="card-arch blog-card-link">
               {post.data.image && (
-                <div style="aspect-ratio:16/9;border-radius:12px 12px 0 0;overflow:hidden;margin:-2rem -2rem 1.25rem -2rem;">
+                <div class="blog-card-img">
                   <img
                     src={post.data.image}
                     alt={post.data.imageAlt ?? post.data.title}
-                    style="width:100%;height:100%;object-fit:cover;"
+                    class="blog-card-img__el"
                     loading="lazy"
                   />
                 </div>
               )}
-              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;">
-                <span class="label-mono" style="color:#2262ff;">{post.data.category}</span>
+              <div class="blog-card-meta">
+                <span class="label-mono blog-card-cat">{post.data.category}</span>
                 <time
                   datetime={post.data.publishedAt.toISOString()}
                   class="label-mono"
@@ -97,15 +91,11 @@ const placeholderPosts = [
                   {formatDate(post.data.publishedAt)}
                 </time>
               </div>
-              <h2 style="font-size:18px;font-weight:700;margin-bottom:0.5rem;">
-                {post.data.title}
-              </h2>
-              <p style="font-size:14px;color:#737373;line-height:1.7;flex:1;">
-                {post.data.description}
-              </p>
-              <span style="color:#2262ff;font-size:14px;font-weight:600;margin-top:1rem;display:inline-flex;align-items:center;gap:4px;">
+              <h2 class="blog-card-title">{post.data.title}</h2>
+              <p class="blog-card-desc">{post.data.description}</p>
+              <span class="blog-card-cta">
                 Read more
-                <svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                <svg class="blog-card-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </span>
             </a>
           ))}
@@ -113,6 +103,85 @@ const placeholderPosts = [
       )}
     </div>
   </div>
+
+  <style>
+    /* Blog Hero */
+    .blog-hero { padding: 6rem 0 5rem; }
+    .blog-hero__inner { max-width: 720px; }
+
+    /* Spacing helpers */
+    .blog-mb-sm { margin-bottom: 0.75rem; }
+    .blog-mb-lg { margin-bottom: 1.5rem; }
+    .blog-mb-xl { margin-bottom: 3rem; }
+
+    /* Placeholder cards */
+    .blog-card-placeholder { display: flex; flex-direction: column; }
+    .blog-placeholder-thumb {
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      border: 1px solid #e5e5e5;
+    }
+    .blog-placeholder-icon { width: 32px; height: 32px; color: #d4d4d4; }
+
+    /* Live post cards */
+    .blog-card-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .blog-card-img {
+      aspect-ratio: 16/9;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      margin: -2rem -2rem 1.25rem -2rem;
+    }
+    .blog-card-img__el {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .blog-card-cat { color: #2262ff; }
+    .blog-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .blog-card-desc {
+      font-size: 14px;
+      color: #737373;
+      line-height: 1.7;
+      flex: 1;
+    }
+    .blog-card-cta {
+      color: #2262ff;
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .blog-card-arrow { width: 16px; height: 16px; }
+    .blog-card-soon {
+      font-size: 13px;
+      color: #a3a3a3;
+      font-weight: 600;
+      margin-top: 1rem;
+      display: block;
+    }
+  </style>
 
   <script>
     import '../../scripts/reveal.ts';

@@ -1,0 +1,74 @@
+# Xhavic
+
+> Xhavic is an Ethereum Layer 2 execution network. It delivers 2,000+ TPS with ~$0.04 average fees and sub-200ms finality. All state settles on Ethereum. Fully EVM-compatible.
+
+## Key Features
+
+- **Dual Wallet System**: Instant Wallet (irreversible, sub-200ms finality for DeFi) and Secure Wallet (reversible transactions with 24-hour escrow window for institutional operations).
+- **Native Oracle Layer**: Price feeds and data services as EVM precompiles. No external oracle dependencies.
+- **AI Agent Execution**: Deterministic ordering, floating-point precompiles, and predictable gas costs for autonomous on-chain agents.
+- **Real World Assets**: 24-hour escrow enables tokenized real estate, commodities, and digital securities with institutional-grade compliance.
+
+## Network
+
+- Mainnet Chain ID: 7849
+- Testnet Chain ID: 7850
+- Mainnet RPC: https://rpc.xhavic.io
+- Testnet RPC: https://testnet-rpc.xhavic.io
+- Block time: 2 seconds
+
+## Documentation
+
+- [Getting Started](https://xhavic.com/docs/getting-started/welcome)
+- [Quickstart (Hardhat)](https://xhavic.com/docs/getting-started/quickstart-hardhat)
+- [Quickstart (Foundry)](https://xhavic.com/docs/getting-started/quickstart-foundry)
+- [Network Info](https://xhavic.com/docs/getting-started/network-info)
+- [Differences from L1](https://xhavic.com/docs/getting-started/differences)
+
+### Dual Wallet
+- [Overview](https://xhavic.com/docs/dual-wallet/overview)
+- [Integration Guide](https://xhavic.com/docs/dual-wallet/integration)
+- [Finality Model](https://xhavic.com/docs/dual-wallet/finality)
+
+### Oracle
+- [Overview](https://xhavic.com/docs/oracle/overview)
+- [Precompiles](https://xhavic.com/docs/oracle/precompiles)
+- [AI Agent Execution](https://xhavic.com/docs/oracle/ai-agents)
+
+### Protocol
+- [Overview](https://xhavic.com/docs/protocol/overview)
+- [Execution Layer](https://xhavic.com/docs/protocol/execution)
+- [Sequencer](https://xhavic.com/docs/protocol/sequencer)
+- [Settlement](https://xhavic.com/docs/protocol/settlement)
+- [Data Availability](https://xhavic.com/docs/protocol/data-availability)
+- [Fraud Proofs](https://xhavic.com/docs/protocol/fraud-proofs)
+- [Transaction Lifecycle](https://xhavic.com/docs/protocol/transaction-lifecycle)
+- [Fees & Gas](https://xhavic.com/docs/protocol/fees)
+
+### Bridge
+- [Overview](https://xhavic.com/docs/bridge/overview)
+- [Deposits (L1 to L2)](https://xhavic.com/docs/bridge/deposits)
+- [Withdrawals (L2 to L1)](https://xhavic.com/docs/bridge/withdrawals)
+- [Cross-Chain Messaging](https://xhavic.com/docs/bridge/messaging)
+
+### Nodes
+- [Node Operators](https://xhavic.com/docs/nodes/overview)
+
+### Security
+- [Overview](https://xhavic.com/docs/security/overview)
+- [Validators](https://xhavic.com/docs/security/validators)
+- [Censorship Resistance](https://xhavic.com/docs/security/censorship-resistance)
+
+### Reference
+- [RPC API](https://xhavic.com/docs/reference/rpc-api)
+- [Network Parameters](https://xhavic.com/docs/reference/parameters)
+
+## Pages
+
+- [Homepage](https://xhavic.com/)
+- [Protocol](https://xhavic.com/protocol)
+- [Dual Wallet](https://xhavic.com/protocol/dual-wallet)
+- [Users](https://xhavic.com/users)
+- [Enterprises](https://xhavic.com/enterprises)
+- [Blog](https://xhavic.com/blog)
+- [Whitepaper](https://xhavic.com/whitepaper)
