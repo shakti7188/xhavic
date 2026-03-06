@@ -1,0 +1,89 @@
+---
+title: "Transaction Lifecycle"
+description: "The complete journey of a transaction on Xhavic — from submission to Ethereum-secured finality."
+section: "protocol"
+sortOrder: 6
+lastUpdated: 2026-03-05
+---
+
+Every transaction on Xhavic follows a deterministic path from user submission to Ethereum-anchored finality. This page traces that journey end-to-end.
+
+## Lifecycle Overview
+
+```
+User submits tx → Sequencer mempool → Ordering → Block inclusion
+→ Soft finality (< 200ms) → Batch compression → L1 submission
+→ Challenge period (7 days) → Hard finality
+```
+
+## Step-by-Step
+
+### 1. Submission
+
+The user signs a transaction and sends it to the sequencer via JSON-RPC (`eth_sendRawTransaction`). The transaction enters the sequencer's mempool.
+
+### 2. Ordering
+
+The sequencer applies MEV-protection ordering:
+- Transactions are encrypted until ordering is finalized
+- Time-weighted ordering (first-come, first-served) with optional priority fees
+- Transactions from the same account respect nonce order
+
+### 3. Block Inclusion
+
+The transaction is included in the next L2 block (every 2 seconds). At this point, the sequencer returns a transaction receipt with:
+- Transaction hash
+- Block number and position
+- Gas used
+- Logs emitted
+- Execution status (success/revert)
+
+### 4. Soft Finality (< 200ms)
+
+The user receives confirmation in under 200 milliseconds. The transaction's ordering and result are now deterministic — given the same inputs, any node would produce the same output.
+
+> **Soft finality is sufficient for most use cases.** DeFi swaps, token transfers, and dApp interactions can safely proceed at this stage.
+
+### 5. Batch Compression
+
+Every ~60 seconds, the sequencer groups recent blocks into a batch and compresses the transaction data using zlib encoding.
+
+### 6. L1 Submission
+
+The compressed batch is posted to Ethereum via the `CanonicalTransactionChain` contract. The batch includes:
+- All transaction payloads
+- The resulting state root
+- Batch metadata
+
+### 7. Challenge Period (7 days)
+
+The posted state root enters a 7-day challenge window. During this period, anyone can submit a fraud proof if they detect incorrect execution.
+
+### 8. Hard Finality
+
+After 7 days with no valid challenge, the state root is finalized on Ethereum. The transaction is now irreversible and secured by Ethereum's consensus.
+
+## Finality Timeline
+
+| Event | Time | Description |
+|---|---|---|
+| Sequencer receipt | < 200ms | Transaction ordered, result known |
+| L2 block confirmation | 2 seconds | Included in an L2 block |
+| L1 data posted | ~1–5 minutes | Batch submitted to Ethereum calldata |
+| Ethereum block finality | ~15 minutes | L1 block containing batch is finalized |
+| Hard finality | 7 days | Challenge window closes |
+
+## Dual Wallet Differences
+
+The lifecycle differs slightly depending on the wallet type:
+
+- **Instant Wallet** — Standard lifecycle as described above. Transactions are irreversible from the moment of soft finality.
+- **Secured Wallet** — Adds a 24-hour escrow window after soft finality. During this window, the user (or designated guardian) can cancel or reverse the transaction.
+
+See [Dual Wallet System →](/docs/dual-wallet/overview) for details.
+
+## Related
+
+- [Execution Layer →](/docs/protocol/execution) — How the EVM processes transactions
+- [Sequencer →](/docs/protocol/sequencer) — Transaction ordering and block production
+- [Settlement →](/docs/protocol/settlement) — State root commitments to Ethereum

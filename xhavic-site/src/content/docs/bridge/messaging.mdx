@@ -1,0 +1,99 @@
+---
+title: "Cross-Chain Messaging"
+description: "How to send arbitrary messages between Ethereum and Xhavic for cross-chain contract calls."
+section: "bridge"
+sortOrder: 3
+lastUpdated: 2026-03-05
+---
+
+Beyond asset transfers, the Xhavic bridge supports **arbitrary message passing** between Ethereum (L1) and Xhavic (L2). This enables cross-chain contract calls, governance execution, and multi-chain application logic.
+
+## How Messaging Works
+
+### L1 → L2 Messages
+
+1. Call the `L1CrossDomainMessenger` contract on Ethereum with your message
+2. The message is included in the next deposit batch
+3. The `L2CrossDomainMessenger` on Xhavic relays the message to the target contract
+4. The target contract executes with the original L1 sender as `msg.sender` (via `xDomainMessageSender`)
+
+### L2 → L1 Messages
+
+1. Call the `L2CrossDomainMessenger` contract on Xhavic
+2. The message is included in the next state root batch posted to L1
+3. After the 7-day challenge period, the message can be relayed on L1
+4. The `L1CrossDomainMessenger` delivers the message to the target contract
+
+## Message Parameters
+
+| Direction | Latency | Security |
+|---|---|---|
+| L1 → L2 | ~5-15 minutes | Inherits L1 finality |
+| L2 → L1 | ~7 days | Requires challenge period |
+
+## Sending a Message (L1 → L2)
+
+```solidity
+// On Ethereum
+IL1CrossDomainMessenger messenger = IL1CrossDomainMessenger(messengerAddress);
+
+messenger.sendMessage(
+    l2TargetContract,    // Target contract on Xhavic
+    abi.encodeCall(       // Encoded function call
+        ITarget.doSomething,
+        (param1, param2)
+    ),
+    500_000              // L2 gas limit
+);
+```
+
+## Sending a Message (L2 → L1)
+
+```solidity
+// On Xhavic
+IL2CrossDomainMessenger messenger = IL2CrossDomainMessenger(messengerAddress);
+
+messenger.sendMessage(
+    l1TargetContract,    // Target contract on Ethereum
+    abi.encodeCall(
+        ITarget.executeAction,
+        (param1)
+    ),
+    200_000              // L1 gas limit
+);
+```
+
+## Receiving Messages
+
+Target contracts verify the message origin using the messenger's `xDomainMessageSender()`:
+
+```solidity
+function onlyFromL1() external {
+    require(
+        msg.sender == address(crossDomainMessenger),
+        "Not from messenger"
+    );
+    require(
+        crossDomainMessenger.xDomainMessageSender() == trustedL1Contract,
+        "Not from trusted L1 contract"
+    );
+    // Process message...
+}
+```
+
+## Use Cases
+
+- **Governance** — DAO votes on L1 trigger parameter changes on L2
+- **Token bridging** — Custom token bridges with application-specific logic
+- **Oracle relaying** — Push L1 data (block hashes, prices) to L2 contracts
+- **Multi-chain dApps** — Coordinate state between L1 and L2 deployments
+
+## Message Replay Protection
+
+Each message includes a unique nonce to prevent replay attacks. Messages can only be relayed once and are marked as completed after execution.
+
+## Related
+
+- [Bridge Overview →](/docs/bridge/overview) — Asset bridging architecture
+- [Deposits →](/docs/bridge/deposits) — L1 → L2 asset transfers
+- [Withdrawals →](/docs/bridge/withdrawals) — L2 → L1 asset transfers

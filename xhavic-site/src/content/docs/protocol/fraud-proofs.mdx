@@ -1,0 +1,79 @@
+---
+title: "Fraud Proofs"
+description: "How Xhavic's interactive fraud proof system secures L2 state transitions against invalid execution."
+section: "protocol"
+sortOrder: 5
+lastUpdated: 2026-03-05
+---
+
+Fraud proofs are the mechanism that secures Xhavic's state transitions. They allow anyone to challenge an invalid state root posted by the sequencer, ensuring that only correctly executed transactions are finalized.
+
+## Optimistic Model
+
+Xhavic uses an **optimistic rollup** design:
+
+1. State roots posted by the sequencer are **assumed valid** by default
+2. A **7-day challenge window** allows anyone to dispute a state root
+3. If a valid fraud proof is submitted, the faulty batch is **reverted** and the sequencer is **slashed**
+4. If no fraud proof is submitted within 7 days, the state root is **finalized**
+
+This model is called "optimistic" because it optimistically assumes correctness and only does verification work when a dispute arises.
+
+## How Fraud Proofs Work
+
+Xhavic uses an **interactive fraud proof** protocol (similar to Arbitrum's approach):
+
+### Step 1: Challenge Initiation
+
+A challenger identifies a state root they believe is incorrect and posts a bond (in XHAV) to the dispute contract on L1.
+
+### Step 2: Bisection
+
+The challenger and sequencer engage in a binary search over the execution trace:
+
+1. The sequencer posts the midpoint state hash of the disputed batch
+2. The challenger identifies which half contains the error
+3. This process repeats, halving the dispute range each round
+4. After ~40 rounds of bisection, the dispute is narrowed to a single EVM instruction
+
+### Step 3: Single-Step Verification
+
+The disputed instruction is executed on-chain (on Ethereum L1) using an EVM-in-EVM verifier. The L1 contract determines whether the sequencer's execution was correct.
+
+### Step 4: Resolution
+
+- **Sequencer was wrong** → Batch is reverted, sequencer's stake is slashed, challenger receives reward
+- **Challenger was wrong** → Challenger loses their bond, state root stands
+
+## Challenge Parameters
+
+| Parameter | Value |
+|---|---|
+| Challenge period | 7 days |
+| Challenger bond | 1,000 XHAV |
+| Bisection rounds | ~40 (log₂ of execution steps) |
+| Response timeout | 6 hours per round |
+| Proof complexity | O(log n) |
+
+## Who Can Challenge?
+
+Anyone can submit a fraud proof. The system is **permissionless** — you do not need to be a validator or staker. You only need:
+
+1. Access to the batch's transaction data (available on Ethereum calldata)
+2. The ability to re-execute the transactions locally
+3. Enough XHAV to post the challenger bond
+
+## Security Guarantees
+
+The fraud proof system ensures:
+
+- **1-of-N honesty** — Only one honest challenger is needed to catch invalid state roots
+- **Economic security** — Sequencer slashing makes cheating unprofitable
+- **Permissionless verification** — No trusted parties required
+- **Deterministic resolution** — Single-step EVM execution on L1 produces an objectively verifiable result
+
+## Related
+
+- [Settlement →](/docs/protocol/settlement) — How state roots are committed
+- [Data Availability →](/docs/protocol/data-availability) — DA ensures challengers can verify execution
+- [Validators →](/docs/security/validators) — Validator roles in the dispute process

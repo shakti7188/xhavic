@@ -1,0 +1,65 @@
+---
+title: "Settlement"
+description: "How Xhavic settles state on Ethereum — state root commitments, the challenge period, and finality model."
+section: "protocol"
+sortOrder: 3
+lastUpdated: 2026-03-05
+---
+
+Settlement is the process by which Xhavic's state transitions are anchored to Ethereum. Every L2 state change is ultimately secured by Ethereum's consensus.
+
+## How Settlement Works
+
+1. **Batch creation** — The sequencer groups L2 blocks into batches (every ~60 seconds)
+2. **State root computation** — A Merkle-Patricia trie root is computed representing the entire L2 state after the batch
+3. **L1 submission** — The state root and compressed transaction data are posted to the `CanonicalTransactionChain` contract on Ethereum
+4. **Challenge period** — The state root is assumed valid for 7 days
+5. **Finalization** — After 7 days without a valid fraud proof, the state root is finalized
+
+## Finality Model
+
+Xhavic has a layered finality model:
+
+| Finality Type | Time | Guarantee |
+|---|---|---|
+| Soft finality | < 200ms | Sequencer confirms ordering; deterministic but revocable |
+| L1 inclusion | ~15 minutes | Batch posted to Ethereum; data available on L1 |
+| Hard finality | 7 days | Challenge period expires; state is irreversible |
+
+For most applications, **soft finality is sufficient** — the sequencer's ordering is deterministic and the probability of a valid fraud proof is extremely low for honestly executed transactions.
+
+## CanonicalTransactionChain Contract
+
+The CTC is the L1 smart contract that anchors Xhavic's state to Ethereum:
+
+- Stores ordered state root commitments
+- Accepts compressed transaction batch data
+- Enforces the challenge period timeline
+- Processes fraud proof disputes
+- Handles forced-inclusion transactions from L1
+
+## State Root Structure
+
+Each state root commitment contains:
+
+```
+{
+  batchIndex:       uint256,
+  stateRoot:        bytes32,
+  timestamp:        uint256,
+  prevStateRoot:    bytes32,
+  transactionCount: uint256
+}
+```
+
+The chain of state roots forms a verifiable history of every state transition on Xhavic, anchored to Ethereum.
+
+## Reorg Protection
+
+Xhavic batches are submitted to Ethereum and inherit Ethereum's reorg resistance. Once an Ethereum block containing a Xhavic batch reaches finality (~15 minutes with Ethereum's Casper FFG), the batch data cannot be reverted even if the L2 state root is later challenged.
+
+## Related
+
+- [Fraud Proofs →](/docs/protocol/fraud-proofs) — What happens when a state root is challenged
+- [Data Availability →](/docs/protocol/data-availability) — How transaction data is stored on L1
+- [Fees & Gas →](/docs/protocol/fees) — Cost of settlement operations

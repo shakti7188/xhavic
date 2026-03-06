@@ -1,0 +1,72 @@
+---
+title: "Sequencer"
+description: "How Xhavic's sequencer orders transactions with MEV protection and 2-second block times."
+section: "protocol"
+sortOrder: 2
+lastUpdated: 2026-03-05
+---
+
+The sequencer is responsible for ordering transactions, producing blocks, and submitting batches to Ethereum for settlement. It is the second layer of Xhavic's modular stack.
+
+## Role of the Sequencer
+
+1. **Accept transactions** — Receives signed transactions from users via JSON-RPC
+2. **Order transactions** — Applies MEV-protection ordering rules
+3. **Produce blocks** — Creates L2 blocks every 2 seconds
+4. **Batch and compress** — Groups blocks into batches (60-second window)
+5. **Submit to L1** — Posts compressed batch data to Ethereum calldata
+
+## Block Production
+
+| Parameter | Value |
+|---|---|
+| Block time | 2 seconds |
+| Batch window | 60 seconds |
+| Blocks per batch | ~30 |
+| Soft finality | < 200ms |
+| Hard finality | After L1 confirmation + 7-day challenge period |
+
+When a user submits a transaction, the sequencer provides **soft finality** in under 200 milliseconds — the transaction is ordered and its result is deterministic. Hard finality (irreversible) occurs after the batch is posted to Ethereum and the 7-day challenge window passes without a fraud proof.
+
+## MEV Protection
+
+Xhavic uses **threshold encryption** to prevent front-running and sandwich attacks:
+
+1. Users encrypt transactions with a threshold public key before submission
+2. The sequencer orders encrypted transactions using time-weighted ordering (first-come, first-served with priority fees)
+3. Transactions are decrypted only after ordering is finalized
+4. No single party can see transaction content before ordering
+
+This ensures fair ordering without the value extraction that plagues Ethereum's public mempool.
+
+## Transaction Priority
+
+Within each block, transactions are ordered by:
+
+1. **Arrival time** — Earlier submissions are processed first
+2. **Priority fee** — Optional tip to the sequencer for faster inclusion
+3. **Nonce order** — Transactions from the same account respect nonce sequence
+
+## Decentralization Roadmap
+
+| Phase | Architecture | Status |
+|---|---|---|
+| Alpha (v1) | Single centralized sequencer (Xhavic Foundation) | Current |
+| Beta | Multi-sequencer with stake-weighted rotation | Planned |
+| Production | Fully decentralized sequencer set from validator pool | Planned |
+
+The current centralized sequencer model maximizes throughput and simplifies early development. The planned decentralization path includes:
+
+- **Sequencer rotation** — Sequencing rights rotate among validators based on stake weight and uptime
+- **Slashing** — Dishonest or offline sequencers are economically penalized
+- **Censorship resistance** — Forced inclusion mechanism via L1 allows users to bypass a censoring sequencer
+
+## Sequencer Downtime
+
+If the sequencer goes offline:
+
+- Pending transactions queue on the L1 forced-inclusion contract
+- Users can submit transactions directly to L1 (higher gas cost, but censorship-resistant)
+- When the sequencer resumes, it must include all forced-inclusion transactions
+
+See [Censorship Resistance →](/docs/security/censorship) for more details.

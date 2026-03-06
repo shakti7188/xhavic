@@ -1,0 +1,70 @@
+---
+title: "Data Availability"
+description: "How Xhavic ensures transaction data is always available for verification and fraud proofs."
+section: "protocol"
+sortOrder: 4
+lastUpdated: 2026-03-05
+---
+
+Data availability (DA) ensures that all transaction data needed to verify Xhavic's state transitions is publicly accessible. Without DA, fraud proofs cannot function and the network's security guarantees break down.
+
+## DA Strategy
+
+Xhavic posts all transaction data to **Ethereum calldata**. This is the most secure DA approach because it inherits Ethereum's full consensus guarantees.
+
+| Property | Value |
+|---|---|
+| DA layer | Ethereum L1 calldata |
+| Compression | zlib + custom encoding |
+| Compression ratio | ~10:1 average |
+| Redundancy | Validators maintain off-chain copies |
+| State reconstruction | 5-10 minutes from L1 data |
+
+## How Data is Posted
+
+1. **Transaction batching** — The sequencer groups ~30 blocks of transactions into a single batch
+2. **Compression** — Batch data is compressed using zlib with a custom encoding scheme optimized for EVM transactions
+3. **L1 calldata** — Compressed data is included in the calldata of a transaction to the `CanonicalTransactionChain` contract
+4. **Verification** — Anyone can decompress the calldata and reconstruct the full L2 state
+
+## What Data is Posted
+
+Each batch includes:
+
+- All transaction payloads (to, from, value, data, gas)
+- Transaction ordering within each block
+- Block metadata (timestamp, block number)
+- State diff summaries
+
+This is everything needed to independently re-execute every transaction and verify the posted state root.
+
+## State Management
+
+Xhavic uses a **pruned state + snapshot** architecture:
+
+- **Recent blocks** — Stored in full by all nodes
+- **Historical state** — Archived after a configurable retention period
+- **Periodic snapshots** — Global state snapshots generated at regular intervals
+- **Node sync** — New nodes sync from the latest snapshot rather than replaying from genesis
+
+This architecture keeps node requirements manageable while maintaining full verifiability through L1 data.
+
+## Reconstruction
+
+If all Xhavic nodes went offline, the full network state could be reconstructed from Ethereum calldata alone:
+
+1. Read all batch transactions from the CTC contract on Ethereum
+2. Decompress each batch
+3. Re-execute all transactions in order
+4. Verify the resulting state root matches the posted commitment
+
+Reconstruction takes approximately 5-10 minutes for the current state size.
+
+## Future: EIP-4844 (Proto-Danksharding)
+
+Xhavic's DA layer is designed to migrate to EIP-4844 blob transactions when available, which will reduce L1 data costs by an estimated 10-50x while maintaining the same security guarantees.
+
+## Related
+
+- [Settlement →](/docs/protocol/settlement) — How state roots are committed to L1
+- [Fraud Proofs →](/docs/protocol/fraud-proofs) — How DA enables dispute resolution

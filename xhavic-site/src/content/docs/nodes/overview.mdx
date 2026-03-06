@@ -1,0 +1,137 @@
+---
+title: "Node Operators"
+description: "How to run a Xhavic node — hardware requirements, setup, and validator participation."
+section: "nodes"
+sortOrder: 0
+lastUpdated: 2026-03-05
+---
+
+Running a Xhavic node allows you to independently verify all L2 transactions, serve RPC requests, and participate in the validator set.
+
+## Node Types
+
+| Type | Purpose | Requirements |
+|---|---|---|
+| **Full Node** | Verifies all transactions, serves RPC | Moderate hardware |
+| **Archive Node** | Full node + complete historical state | High storage |
+| **Validator Node** | Full node + participates in fraud proof challenges | Staking requirement |
+
+## Hardware Requirements
+
+### Full Node
+
+| Resource | Minimum | Recommended |
+|---|---|---|
+| CPU | 4 cores | 8 cores |
+| RAM | 8 GB | 16 GB |
+| Storage | 200 GB SSD | 500 GB NVMe |
+| Network | 25 Mbps | 100 Mbps |
+| OS | Ubuntu 22.04+ / Debian 12+ | Ubuntu 24.04 |
+
+### Archive Node
+
+| Resource | Minimum | Recommended |
+|---|---|---|
+| CPU | 8 cores | 16 cores |
+| RAM | 16 GB | 32 GB |
+| Storage | 1 TB NVMe | 2 TB NVMe |
+| Network | 50 Mbps | 100 Mbps |
+
+## Running a Full Node
+
+### 1. Install Dependencies
+
+```bash
+# Install Go 1.21+
+sudo apt update && sudo apt install -y golang-go
+
+# Install xhavic-node
+git clone https://github.com/xhavic/xhavic-node.git
+cd xhavic-node
+make build
+```
+
+### 2. Initialize
+
+```bash
+./xhavic-node init --network mainnet --datadir /data/xhavic
+```
+
+### 3. Configure
+
+Edit the configuration file at `/data/xhavic/config.toml`:
+
+```toml
+[network]
+chain_id = 7849
+l1_rpc = "https://your-ethereum-rpc-url"
+
+[p2p]
+listen_addr = "0.0.0.0:30303"
+max_peers = 50
+
+[rpc]
+http_addr = "0.0.0.0"
+http_port = 8545
+ws_addr = "0.0.0.0"
+ws_port = 8546
+```
+
+### 4. Start
+
+```bash
+./xhavic-node start --datadir /data/xhavic
+```
+
+The node will sync from the latest snapshot and begin verifying new blocks.
+
+## Sync Modes
+
+| Mode | Description | Sync Time |
+|---|---|---|
+| **Snap sync** | Downloads latest snapshot, verifies from there | ~30 minutes |
+| **Full sync** | Replays all transactions from genesis | ~6-12 hours |
+
+Snap sync is recommended for most operators. Full sync is only needed for archive nodes or operators who want to independently verify the complete chain history.
+
+## Becoming a Validator
+
+Validators participate in the fraud proof system by monitoring state roots and submitting challenges when invalid state is detected.
+
+### Requirements
+
+1. Run a full node synced to the latest block
+2. Stake a minimum of **10,000 XHAV** to the validator contract
+3. Maintain 99.5% uptime
+
+### Validator Rewards
+
+| Source | Description |
+|---|---|
+| Staking rewards | Proportional to stake weight |
+| Challenge rewards | Earned for submitting valid fraud proofs |
+| Transaction tips | Share of priority fees from users |
+
+### Validator Set
+
+| Parameter | Value |
+|---|---|
+| Maximum validators | 100 |
+| Selection method | Top 100 by stake |
+| Unbonding period | 14 days |
+| Slashing conditions | Downtime, invalid fraud proof submission |
+
+## Monitoring
+
+Recommended monitoring setup:
+
+- **Prometheus + Grafana** — Node metrics (block height, peer count, sync status)
+- **Alerting** — Block production delays, peer disconnections, disk usage
+
+The node exposes Prometheus metrics at `http://localhost:9090/metrics` by default.
+
+## Related
+
+- [Network Information →](/docs/getting-started/network-info) — Chain IDs, RPC URLs, explorers
+- [Validators →](/docs/security/validators) — Validator security model
+- [Architecture Overview →](/docs/protocol/overview) — How the node fits in the protocol stack

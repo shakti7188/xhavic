@@ -1,0 +1,105 @@
+---
+title: "AI Agent Execution"
+description: "How autonomous AI agents operate on-chain with deterministic execution, native oracle access, and gas-metered compute."
+section: "oracle"
+sortOrder: 2
+lastUpdated: 2026-03-05
+---
+
+Xhavic provides first-class protocol support for autonomous AI agents operating on-chain. Unlike other L2s that treat AI integration as an application-layer concern, Xhavic builds agent support directly into the execution environment.
+
+## Why AI Agents Need a Different Chain
+
+Standard EVM chains create friction for AI agents:
+
+- **Non-deterministic ordering** — MEV and gas auctions make multi-step strategies unpredictable
+- **External oracle dependencies** — Agents need real-time data but must rely on third-party oracle networks
+- **Unpredictable costs** — Gas price volatility makes budgeting impossible for autonomous systems
+- **High latency** — 12-second block times on Ethereum are too slow for real-time decision loops
+
+Xhavic solves each of these at the protocol level.
+
+## Agent-Friendly Features
+
+### Deterministic Execution Ordering
+
+The sequencer's threshold encryption and time-weighted ordering ensure that multi-step agent strategies execute in the intended order without front-running or sandwich attacks.
+
+### Native Oracle Access
+
+AI agents read price feeds and data directly from EVM precompiles at addresses `0x00...F0` through `0x00...FF`. No external contract calls, no bridge latency, no third-party dependencies.
+
+```solidity
+// Direct precompile call — no oracle middleware needed
+(bool success, bytes memory data) = address(0xF0).staticcall(
+    abi.encode("ETH/USD")
+);
+uint256 price = abi.decode(data, (uint256));
+```
+
+### Gas-Metered Compute
+
+Fixed, low gas costs allow agents to budget their operations precisely:
+
+| Operation | Gas Cost | USD Cost |
+|---|---|---|
+| Oracle price read | 50 gas | < $0.001 |
+| Token swap | ~150,000 gas | ~$0.12 |
+| Multi-step strategy (5 ops) | ~500,000 gas | ~$0.40 |
+
+### Sub-200ms Latency
+
+With 2-second block times and sub-200ms soft finality, agents can operate in real-time decision loops — reading data, computing strategies, and executing transactions within a single cycle.
+
+## Dual Wallet for Agents
+
+AI agents can leverage both wallet types:
+
+- **Instant Wallet** — For time-sensitive DeFi operations (swaps, arbitrage, liquidations)
+- **Secured Wallet** — For high-value operations where human oversight is beneficial. The 24-hour escrow window allows a human operator to review and cancel agent actions if needed.
+
+## Agent Architecture Pattern
+
+A typical on-chain AI agent on Xhavic follows this pattern:
+
+```
+┌─────────────────────────────────┐
+│         Off-Chain Agent          │
+│  (ML model / decision engine)   │
+└─────────────┬───────────────────┘
+              │ Signed transactions
+              ▼
+┌─────────────────────────────────┐
+│      Xhavic Sequencer           │
+│  Deterministic ordering          │
+└─────────────┬───────────────────┘
+              │
+              ▼
+┌─────────────────────────────────┐
+│      On-Chain Execution          │
+│  Oracle reads + state updates    │
+└─────────────────────────────────┘
+```
+
+1. **Off-chain component** — Runs the AI model, reads on-chain state, computes actions
+2. **Transaction submission** — Sends signed transactions to the sequencer
+3. **On-chain execution** — Smart contracts execute the agent's strategy with native oracle data
+
+## Floating-Point Precompiles
+
+Xhavic includes custom precompiles for floating-point arithmetic, essential for ML inference and financial calculations:
+
+| Precompile | Operation | Gas Cost |
+|---|---|---|
+| `0x00...E0` | fp64_multiply | 30 gas |
+| `0x00...E1` | fp64_divide | 35 gas |
+| `0x00...E2` | fp64_sqrt | 40 gas |
+| `0x00...E3` | fp64_exp | 50 gas |
+
+These precompiles are audited independently as part of the core protocol audit.
+
+## Related
+
+- [Oracle Overview →](/docs/oracle/overview) — Native oracle architecture
+- [Oracle Precompiles →](/docs/oracle/precompiles) — Precompile address map and usage
+- [Dual Wallet System →](/docs/dual-wallet/overview) — Wallet types for agent operations

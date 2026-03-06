@@ -1,0 +1,91 @@
+---
+title: "Deposits (L1 → L2)"
+description: "How to deposit ETH and ERC-20 tokens from Ethereum to Xhavic via the native bridge."
+section: "bridge"
+sortOrder: 1
+lastUpdated: 2026-03-05
+---
+
+Deposits move assets from Ethereum (L1) to Xhavic (L2) using a lock-and-mint mechanism secured by Ethereum's consensus.
+
+## How Deposits Work
+
+1. **Send assets** — Call the bridge contract on Ethereum with ETH or approved ERC-20 tokens
+2. **Lock on L1** — The bridge contract locks your assets in escrow
+3. **Emit deposit event** — An event is emitted on L1 containing deposit details
+4. **Relayer detection** — The Xhavic relayer detects the deposit event
+5. **Mint on L2** — Equivalent tokens are minted on Xhavic and credited to your address
+
+## Deposit Parameters
+
+| Parameter | Value |
+|---|---|
+| Minimum deposit | No minimum |
+| Confirmation time | ~5-15 minutes |
+| L1 confirmations required | 12 blocks (~2.4 minutes) |
+| Supported assets | ETH, USDC, USDT, DAI, WBTC (more via governance) |
+
+## ETH Deposits
+
+When you deposit ETH, it is locked on L1 and you receive **WETH** (Wrapped ETH) on Xhavic. WETH is an ERC-20 token on L2 for replay protection and consistent gas accounting.
+
+```solidity
+// Deposit ETH via the bridge
+bridge.depositETH{ value: 1 ether }(
+    200_000,     // L2 gas limit
+    bytes("")    // optional data
+);
+```
+
+## ERC-20 Deposits
+
+For ERC-20 tokens, you must first approve the bridge contract to spend your tokens:
+
+```solidity
+// 1. Approve the bridge
+token.approve(bridgeAddress, amount);
+
+// 2. Deposit
+bridge.depositERC20(
+    l1TokenAddress,
+    l2TokenAddress,
+    amount,
+    200_000,     // L2 gas limit
+    bytes("")    // optional data
+);
+```
+
+## Deposit Status
+
+You can track deposit status using the bridge explorer or by querying the relayer:
+
+| Status | Meaning |
+|---|---|
+| Pending | Waiting for L1 confirmations |
+| Relayed | Detected by relayer, minting in progress |
+| Complete | Tokens available on Xhavic |
+| Failed | Deposit reverted (funds returned to L1) |
+
+## Programmatic Deposits
+
+For dApps and automated systems, use the `XhavicBridge` SDK:
+
+```javascript
+import { XhavicBridge } from '@xhavic/sdk';
+
+const bridge = new XhavicBridge({ l1Provider, l2Provider });
+
+// Deposit ETH
+const tx = await bridge.depositETH({
+  amount: ethers.parseEther("1.0"),
+  l2GasLimit: 200_000,
+});
+
+// Wait for L2 confirmation
+const receipt = await bridge.waitForDeposit(tx.hash);
+```
+
+## Related
+
+- [Bridge Overview →](/docs/bridge/overview) — Architecture and supported assets
+- [Withdrawals →](/docs/bridge/withdrawals) — Moving assets back to L1

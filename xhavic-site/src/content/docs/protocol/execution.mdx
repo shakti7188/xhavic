@@ -1,0 +1,66 @@
+---
+title: "Execution Layer"
+description: "How Xhavic's EVM-compatible execution layer processes transactions with full Ethereum opcode support."
+section: "protocol"
+sortOrder: 1
+lastUpdated: 2026-03-05
+---
+
+Xhavic's execution layer is the first layer of the modular stack. It processes every transaction, updates state, and produces execution traces used by the fraud proof system.
+
+## EVM Compatibility
+
+Xhavic runs a **fully EVM-equivalent** execution environment. Every Ethereum opcode is supported with identical semantics:
+
+| Parameter | Value |
+|---|---|
+| Word size | 256-bit |
+| Stack depth | 1024 |
+| Hashing algorithm | Keccak-256 |
+| Address format | 20-byte Ethereum addresses |
+| EIP support | Up to Shanghai (EIP-4895) |
+
+Any smart contract deployed on Ethereum can be deployed on Xhavic without modification. Solidity, Vyper, and Huff contracts all work as-is.
+
+## How Execution Works
+
+1. **Transaction arrives** — Users submit transactions to the sequencer's mempool via JSON-RPC
+2. **Ordering** — The sequencer orders transactions with MEV-protection (threshold encryption)
+3. **State transition** — The EVM processes each transaction, updating account balances, storage slots, and contract state
+4. **Receipt generation** — Execution receipts include gas used, logs emitted, and status
+5. **State root** — A Merkle-Patricia trie root is computed from the new global state
+
+## Execution Differences from Ethereum
+
+While opcodes behave identically, there are minor environmental differences:
+
+| Feature | Ethereum | Xhavic |
+|---|---|---|
+| `block.timestamp` | ~12s granularity | ~2s granularity |
+| `block.basefee` | EIP-1559 dynamic | Fixed low base fee |
+| `COINBASE` | Validator address | Sequencer address |
+| `DIFFICULTY` / `PREVRANDAO` | Beacon chain value | Deterministic pseudo-random |
+| L1 block number | `block.number` | Available via `L1Block` predeploy |
+
+For full compatibility details, see [Differences from Ethereum →](/docs/getting-started/differences).
+
+## Predeploy Contracts
+
+Xhavic includes system-level predeploy contracts at reserved addresses:
+
+| Address | Contract | Purpose |
+|---|---|---|
+| `0x42...00` | L1Block | Exposes L1 block data on L2 |
+| `0x42...10` | GasPriceOracle | L1 data fee estimation |
+| `0x42...20` | L2ToL1MessagePasser | Cross-chain message queue |
+| `0x00...F0–FF` | Oracle Precompiles | Native price feed access |
+
+## Gas Metering
+
+Gas costs on Xhavic are significantly lower than Ethereum but follow the same metering model. The L2 execution fee is denominated in XHAV and calculated as:
+
+```
+L2 Fee = gasUsed × l2BaseFee
+```
+
+See [Fees & Gas →](/docs/protocol/fees) for the full cost model and comparison tables.

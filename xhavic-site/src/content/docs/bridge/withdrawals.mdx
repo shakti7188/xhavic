@@ -1,0 +1,88 @@
+---
+title: "Withdrawals (L2 → L1)"
+description: "How to withdraw assets from Xhavic back to Ethereum — standard 7-day and fast exit options."
+section: "bridge"
+sortOrder: 2
+lastUpdated: 2026-03-05
+---
+
+Withdrawals move assets from Xhavic (L2) back to Ethereum (L1). There are two withdrawal paths: a standard 7-day withdrawal and a fast exit via liquidity providers.
+
+## Standard Withdrawal (7-day)
+
+The standard withdrawal follows the optimistic rollup security model:
+
+1. **Initiate on L2** — Call the withdrawal contract on Xhavic. Your L2 tokens are burned.
+2. **Wait for batch posting** — The sequencer includes your withdrawal in the next batch posted to L1 (~1-5 minutes)
+3. **Generate proof** — After the batch is posted, generate a Merkle inclusion proof using `xhv_getWithdrawalProof`
+4. **Wait for challenge period** — 7-day window for fraud proofs
+5. **Execute on L1** — After the challenge period, claim your assets on Ethereum
+
+### Timeline
+
+| Step | Duration |
+|---|---|
+| Initiate withdrawal | Instant |
+| Batch posting to L1 | 1-5 minutes |
+| Challenge period | 7 days |
+| L1 claim transaction | ~5 minutes |
+| **Total** | **~7 days** |
+
+### Code Example
+
+```solidity
+// Step 1: Initiate withdrawal on L2
+l2Bridge.withdraw(
+    l2TokenAddress,
+    amount,
+    100_000,     // L1 gas limit
+    bytes("")    // optional data
+);
+```
+
+```javascript
+// Step 2: Generate proof (after batch is posted)
+const proof = await provider.send('xhv_getWithdrawalProof', [txHash]);
+
+// Step 3: Execute on L1 (after 7-day challenge period)
+l1Bridge.finalizeWithdrawal(
+    proof.batchIndex,
+    proof.merkleProof,
+    proof.withdrawalData
+);
+```
+
+## Fast Exit (via Liquidity Provider)
+
+For users who need immediate L1 liquidity:
+
+1. **Initiate withdrawal on L2** — Same as standard withdrawal
+2. **LP fulfillment** — A liquidity provider pays you on L1 immediately (minus a fee)
+3. **LP claim** — The LP waits for the 7-day period and claims the standard withdrawal
+
+### Fast Exit Parameters
+
+| Parameter | Value |
+|---|---|
+| Settlement time | < 10 minutes |
+| LP fee | 0.1% - 0.3% (market-driven) |
+| Minimum amount | Varies by LP |
+| Availability | Subject to LP liquidity |
+
+> **Note:** Fast exits rely on third-party liquidity providers. The Xhavic protocol does not guarantee LP availability or fees.
+
+## Withdrawal Status
+
+| Status | Meaning |
+|---|---|
+| Initiated | Tokens burned on L2, waiting for batch |
+| Proven | Merkle proof generated, challenge period started |
+| Challenged | A fraud proof has been submitted (rare) |
+| Ready | Challenge period passed, ready to claim |
+| Finalized | Assets claimed on L1 |
+
+## Related
+
+- [Deposits →](/docs/bridge/deposits) — Moving assets from L1 to L2
+- [Bridge Overview →](/docs/bridge/overview) — Architecture and supported assets
+- [Settlement →](/docs/protocol/settlement) — How the challenge period works
