@@ -722,6 +722,50 @@ const capRows = [
     </div>
   </section>
 
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- START BUILDING — Founder / Developer chooser                -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section class="hb-section" data-reveal>
+    <div class="hb-container">
+      <div class="hb-header">
+        <span class="hb-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Open for Builders
+        </span>
+        <h2 class="hb-title">Start Building on Xhavic</h2>
+        <p class="hb-subtitle">The Xhavic ecosystem supports founders and developers with grants, credits, technical support, and a structured learning path.</p>
+      </div>
+      <div class="hb-cards">
+        <a href="/apply" class="hb-card">
+          <div class="hb-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+          </div>
+          <h3 class="hb-card__title">I'm a Founder</h3>
+          <p class="hb-card__desc">Apply for ecosystem credits, grants, and go-to-market support to launch your project on Xhavic.</p>
+          <div class="hb-card__features">
+            <span>Ecosystem Credits</span>
+            <span>Technical Support</span>
+            <span>Marketing</span>
+          </div>
+          <span class="hb-card__cta">Get in Touch &rarr;</span>
+        </a>
+        <a href="/developers#quest" class="hb-card">
+          <div class="hb-card__icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="hb-card__title">I'm a Developer</h3>
+          <p class="hb-card__desc">Join the Developer Quest — complete challenges, learn Xhavic development, and earn rewards along the way.</p>
+          <div class="hb-card__features">
+            <span>Sequential Challenges</span>
+            <span>XP &amp; Badges</span>
+            <span>Credits</span>
+          </div>
+          <span class="hb-card__cta">See Grant Options &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════════════════════════════ ACT 4 ═══════════════════════════════ -->
   <!-- ════════════════════════════════════════════════════════════ -->
   <!-- GET STARTED — tabbed interface                               -->
@@ -1428,6 +1472,108 @@ const capRows = [
   @media (max-width: 520px) {
     .l3-community__avatar { width: clamp(64px, var(--w), 96px); height: clamp(64px, var(--h), 96px); }
     .l3-community__logo { width: 80px; }
+  }
+
+  /* ======= HOME BUILDER SECTION ======= */
+  .hb-section {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #f8f9fb 0%, #ffffff 100%);
+  }
+  .hb-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+  .hb-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+  .hb-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #eef2ff;
+    color: #2262ff;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .hb-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    color: #101828;
+  }
+  .hb-subtitle {
+    font-size: 15px;
+    color: #737373;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .hb-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .hb-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 20px;
+    padding: 2.25rem;
+    text-decoration: none;
+    color: #171717;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .hb-card:hover {
+    border-color: #2262ff;
+    box-shadow: 0 8px 32px rgba(34,98,255,0.08);
+    transform: translateY(-3px);
+  }
+  .hb-card__icon {
+    color: #2262ff;
+    margin-bottom: 1rem;
+  }
+  .hb-card__title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 0.5rem;
+    color: #101828;
+  }
+  .hb-card__desc {
+    font-size: 14px;
+    color: #737373;
+    line-height: 1.6;
+    margin: 0 0 1.25rem;
+    flex: 1;
+  }
+  .hb-card__features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .hb-card__features span {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: #f0f0f0;
+    color: #374151;
+  }
+  .hb-card__cta {
+    font-size: 14px;
+    font-weight: 700;
+    color: #2262ff;
+  }
+  @media (max-width: 640px) {
+    .hb-cards { grid-template-columns: 1fr; }
   }
 </style>
 

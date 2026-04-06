@@ -1,0 +1,844 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Apply to Build on XHAVIC — Builder Program"
+  description="Apply for the XHAVIC Builder Program. Founders and developers can apply for grants, credits, and ecosystem support to build on Xhavic."
+>
+  <!-- Hero -->
+  <section class="ap-hero">
+    <div class="container ap-hero__inner">
+      <p class="ap-kicker">Builder Program</p>
+      <h1 class="ap-hero__title">Build on Xhavic</h1>
+      <p class="ap-hero__sub">
+        Whether you're a founder building your next product or a developer ready to deploy —
+        we have grants, ecosystem credits, and technical support waiting for you.
+      </p>
+      <div class="ap-paths">
+        <a href="#apply-form" class="ap-path" data-path="founder">
+          <div class="ap-path__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 12h.01"/><path d="M17 12h.01"/><path d="M7 12h.01"/></svg>
+          </div>
+          <h3 class="ap-path__title">I'm a Founder</h3>
+          <p class="ap-path__desc">Apply for ecosystem credits, grants, and go-to-market support to launch on Xhavic.</p>
+          <span class="ap-path__cta">Apply for Credits &rarr;</span>
+        </a>
+        <a href="/developers#quest" class="ap-path" data-path="developer">
+          <div class="ap-path__icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3 class="ap-path__title">I'm a Developer</h3>
+          <p class="ap-path__desc">Join the Developer Quest — learn, build, and earn rewards on the Xhavic network.</p>
+          <span class="ap-path__cta">Start Quest &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Multi-step Form -->
+  <section id="apply-form" class="ap-form-section">
+    <div class="container ap-form-wrap">
+      <p class="ap-kicker">Application</p>
+      <h2 class="ap-form-title">XHAVIC Builder Program</h2>
+      <p class="ap-form-sub">Complete the form below. We review every application and respond within 5 business days.</p>
+
+      <!-- Progress Bar -->
+      <div class="ap-progress">
+        <div class="ap-progress__bar">
+          <div class="ap-progress__fill" id="progress-fill"></div>
+        </div>
+        <div class="ap-progress__steps" id="progress-steps">
+          <button type="button" class="ap-progress__step is-active" data-step="0">
+            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__label">About You</span>
+          </button>
+          <button type="button" class="ap-progress__step" data-step="1">
+            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__label">Your Project</span>
+          </button>
+          <button type="button" class="ap-progress__step" data-step="2">
+            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__label">What You Need</span>
+          </button>
+          <button type="button" class="ap-progress__step" data-step="3">
+            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__label">Technical</span>
+          </button>
+          <button type="button" class="ap-progress__step" data-step="4">
+            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__label">Review</span>
+          </button>
+        </div>
+      </div>
+
+      <form id="apply-form-el" novalidate>
+        <!-- Step 0: About You -->
+        <div class="ap-step is-active" data-form-step="0">
+          <div class="ap-card">
+            <p class="ap-card__label">Step 1 of 5 — About You</p>
+            <div class="ap-grid-2">
+              <div class="ap-field ap-span-2">
+                <label class="ap-label">Full Name <span class="ap-req">*</span></label>
+                <input type="text" name="full_name" required placeholder="Your full name" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Email Address <span class="ap-req">*</span></label>
+                <input type="email" name="email" required placeholder="you@example.com" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Telegram ID <span class="ap-req">*</span></label>
+                <input type="text" name="telegram" required placeholder="@yourhandle" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Phone Number</label>
+                <input type="tel" name="phone" placeholder="+971 50 123 4567" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Country <span class="ap-req">*</span></label>
+                <input type="text" name="country" required placeholder="e.g. United Arab Emirates" class="ap-input" />
+              </div>
+              <div class="ap-field ap-span-2">
+                <label class="ap-label">Your Role <span class="ap-req">*</span></label>
+                <div class="ap-radio-group">
+                  <label class="ap-radio"><input type="radio" name="role" value="Founder / Startup" required /><span>Founder / Startup</span></label>
+                  <label class="ap-radio"><input type="radio" name="role" value="Developer" /><span>Developer</span></label>
+                  <label class="ap-radio"><input type="radio" name="role" value="Both" /><span>Both</span></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ap-nav">
+            <div></div>
+            <button type="button" class="ap-btn-next" data-next="1">Continue <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <!-- Step 1: Your Project -->
+        <div class="ap-step" data-form-step="1">
+          <div class="ap-card">
+            <p class="ap-card__label">Step 2 of 5 — Your Project</p>
+            <div class="ap-grid-2">
+              <div class="ap-field ap-span-2">
+                <label class="ap-label">Project Name <span class="ap-req">*</span></label>
+                <input type="text" name="project_name" required placeholder="Your project or company name" class="ap-input" />
+              </div>
+              <div class="ap-field ap-span-2">
+                <label class="ap-label">Short Project Description <span class="ap-req">*</span></label>
+                <textarea name="project_description" required rows="3" placeholder="What does your project do? (2-3 sentences)" class="ap-input ap-textarea"></textarea>
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Project Stage <span class="ap-req">*</span></label>
+                <div class="ap-radio-group">
+                  <label class="ap-radio"><input type="radio" name="stage" value="Idea" required /><span>Idea</span></label>
+                  <label class="ap-radio"><input type="radio" name="stage" value="MVP" /><span>MVP</span></label>
+                  <label class="ap-radio"><input type="radio" name="stage" value="Live Product" /><span>Live Product</span></label>
+                </div>
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Website / Landing Page</label>
+                <input type="url" name="website" placeholder="https://yourproject.io" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">GitHub / Portfolio</label>
+                <input type="url" name="github" placeholder="https://github.com/you" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Twitter / X</label>
+                <input type="url" name="twitter" placeholder="https://x.com/you" class="ap-input" />
+              </div>
+            </div>
+          </div>
+          <div class="ap-nav">
+            <button type="button" class="ap-btn-back" data-prev="0"><span>&larr;</span> Back</button>
+            <button type="button" class="ap-btn-next" data-next="2">Continue <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <!-- Step 2: What You Need -->
+        <div class="ap-step" data-form-step="2">
+          <div class="ap-card">
+            <p class="ap-card__label">Step 3 of 5 — What You Need</p>
+            <div class="ap-fields">
+              <div class="ap-field">
+                <label class="ap-label">Why are you applying? <span class="ap-req">*</span></label>
+                <p class="ap-hint">Select all that apply</p>
+                <div class="ap-check-group">
+                  <label class="ap-check"><input type="checkbox" name="purpose" value="Build dApp on XHAVIC" /><span>Build dApp on XHAVIC</span></label>
+                  <label class="ap-check"><input type="checkbox" name="purpose" value="Participate in Hackathon" /><span>Participate in Hackathon</span></label>
+                  <label class="ap-check"><input type="checkbox" name="purpose" value="Apply for Grants / Funding" /><span>Apply for Grants / Funding</span></label>
+                  <label class="ap-check"><input type="checkbox" name="purpose" value="Explore AI + Blockchain" /><span>Explore AI + Blockchain integration</span></label>
+                  <label class="ap-check"><input type="checkbox" name="purpose" value="RWA / Fintech / Payments" /><span>RWA / Fintech / Payments use case</span></label>
+                </div>
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">What support do you need from XHAVIC? <span class="ap-req">*</span></label>
+                <p class="ap-hint">Select all that apply</p>
+                <div class="ap-check-group">
+                  <label class="ap-check"><input type="checkbox" name="expectations" value="Ecosystem Credits" /><span>Ecosystem Credits</span></label>
+                  <label class="ap-check"><input type="checkbox" name="expectations" value="Technical Support" /><span>Technical Integration Support</span></label>
+                  <label class="ap-check"><input type="checkbox" name="expectations" value="Funding / Grants" /><span>Funding / Grants</span></label>
+                  <label class="ap-check"><input type="checkbox" name="expectations" value="Marketing / Exposure" /><span>Marketing / Exposure</span></label>
+                  <label class="ap-check"><input type="checkbox" name="expectations" value="Partnerships" /><span>Partnerships / Investor Connect</span></label>
+                </div>
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Expected timeline to launch</label>
+                <select name="timeline" class="ap-input ap-select">
+                  <option value="">Select timeline</option>
+                  <option value="1-3 months">1-3 months</option>
+                  <option value="3-6 months">3-6 months</option>
+                  <option value="6-12 months">6-12 months</option>
+                  <option value="Already live">Already live</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="ap-nav">
+            <button type="button" class="ap-btn-back" data-prev="1"><span>&larr;</span> Back</button>
+            <button type="button" class="ap-btn-next" data-next="3">Continue <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <!-- Step 3: Technical Details -->
+        <div class="ap-step" data-form-step="3">
+          <div class="ap-card">
+            <p class="ap-card__label">Step 4 of 5 — Technical Details</p>
+            <div class="ap-fields">
+              <div class="ap-field">
+                <label class="ap-label">Tech Stack</label>
+                <input type="text" name="tech_stack" placeholder="e.g. Solidity, React, Node.js, Hardhat" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Current chain (if migrating)</label>
+                <input type="text" name="current_chain" placeholder="e.g. Ethereum, Polygon, BSC, None" class="ap-input" />
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Will you integrate any of these?</label>
+                <div class="ap-check-group">
+                  <label class="ap-check"><input type="checkbox" name="integrations" value="AI Agents" /><span>AI Agents</span></label>
+                  <label class="ap-check"><input type="checkbox" name="integrations" value="Dual Wallet (Instant + Secured)" /><span>Dual Wallet (Instant + Secured)</span></label>
+                  <label class="ap-check"><input type="checkbox" name="integrations" value="RWA Assets" /><span>RWA Assets</span></label>
+                  <label class="ap-check"><input type="checkbox" name="integrations" value="Payments (Xcentra)" /><span>Payments (Xcentra Integration)</span></label>
+                </div>
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">Problem you're solving</label>
+                <textarea name="problem" rows="3" placeholder="What problem does your project solve?" class="ap-input ap-textarea"></textarea>
+              </div>
+              <div class="ap-field">
+                <label class="ap-label">How does blockchain add value?</label>
+                <textarea name="blockchain_value" rows="3" placeholder="Why does this need to be on-chain?" class="ap-input ap-textarea"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="ap-nav">
+            <button type="button" class="ap-btn-back" data-prev="2"><span>&larr;</span> Back</button>
+            <button type="button" class="ap-btn-next" data-next="4">Review &amp; Submit <span>&rarr;</span></button>
+          </div>
+        </div>
+
+        <!-- Step 4: Review -->
+        <div class="ap-step" data-form-step="4">
+          <div class="ap-card">
+            <p class="ap-card__label">Step 5 of 5 — Review Your Application</p>
+            <p class="ap-hint" style="margin-bottom:1.5rem;">Please review your answers before submitting. Click any section to go back and edit.</p>
+            <div id="review-container" class="ap-review"></div>
+          </div>
+          <div class="ap-nav">
+            <button type="button" class="ap-btn-back" data-prev="3"><span>&larr;</span> Back</button>
+            <button type="submit" class="ap-btn-submit">Submit Application</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Success -->
+      <div id="apply-success" class="ap-success">
+        <div class="ap-success__icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h2 class="ap-success__title">Application Received!</h2>
+        <p class="ap-success__text">
+          Our team will review your application and get back to you within 5 business days.
+          Follow us on <a href="https://x.com/Xhavicofficial" target="_blank" rel="noopener">Twitter/X</a> for program updates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('apply-form-el') as HTMLFormElement;
+    const steps = document.querySelectorAll<HTMLElement>('.ap-step');
+    const progressSteps = document.querySelectorAll<HTMLElement>('.ap-progress__step');
+    const progressFill = document.getElementById('progress-fill') as HTMLElement;
+    const successEl = document.getElementById('apply-success') as HTMLElement;
+    const reviewContainer = document.getElementById('review-container') as HTMLElement;
+    let current = 0;
+
+    function goTo(step: number) {
+      // Validate current step before moving forward
+      if (step > current) {
+        const currentStepEl = steps[current];
+        const requiredFields = currentStepEl.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>('[required]');
+        let valid = true;
+        requiredFields.forEach(f => {
+          if (f.type === 'radio') {
+            const group = currentStepEl.querySelectorAll<HTMLInputElement>(`input[name="${f.name}"]`);
+            const checked = Array.from(group).some(r => r.checked);
+            if (!checked) { valid = false; f.closest('.ap-field')?.classList.add('ap-field--error'); }
+            else { f.closest('.ap-field')?.classList.remove('ap-field--error'); }
+          } else if (!f.value.trim()) {
+            valid = false;
+            f.classList.add('ap-input--error');
+          } else {
+            f.classList.remove('ap-input--error');
+          }
+        });
+        if (!valid) return;
+      }
+
+      // Build review on last step
+      if (step === steps.length - 1) buildReview();
+
+      current = step;
+      steps.forEach((s, i) => s.classList.toggle('is-active', i === step));
+      progressSteps.forEach((s, i) => {
+        s.classList.toggle('is-active', i === step);
+        s.classList.toggle('is-done', i < step);
+      });
+      progressFill.style.width = `${(step / (steps.length - 1)) * 100}%`;
+      document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Navigation buttons
+    document.querySelectorAll<HTMLButtonElement>('[data-next]').forEach(btn =>
+      btn.addEventListener('click', () => goTo(parseInt(btn.dataset.next!)))
+    );
+    document.querySelectorAll<HTMLButtonElement>('[data-prev]').forEach(btn =>
+      btn.addEventListener('click', () => goTo(parseInt(btn.dataset.prev!)))
+    );
+    // Progress step clicks
+    progressSteps.forEach(s =>
+      s.addEventListener('click', () => {
+        const target = parseInt(s.dataset.step!);
+        if (target <= current) goTo(target);
+      })
+    );
+
+    // Clear error state on input
+    form.addEventListener('input', (e) => {
+      const t = e.target as HTMLElement;
+      t.classList.remove('ap-input--error');
+      t.closest('.ap-field')?.classList.remove('ap-field--error');
+    });
+
+    // Build review summary
+    function buildReview() {
+      const data = new FormData(form);
+      const sections = [
+        { title: 'About You', step: 0, fields: ['full_name', 'email', 'telegram', 'phone', 'country', 'role'] },
+        { title: 'Your Project', step: 1, fields: ['project_name', 'project_description', 'stage', 'website', 'github', 'twitter'] },
+        { title: 'What You Need', step: 2, fields: ['purpose', 'expectations', 'timeline'] },
+        { title: 'Technical', step: 3, fields: ['tech_stack', 'current_chain', 'integrations', 'problem', 'blockchain_value'] },
+      ];
+      const labels: Record<string, string> = {
+        full_name: 'Name', email: 'Email', telegram: 'Telegram', phone: 'Phone', country: 'Country', role: 'Role',
+        project_name: 'Project', project_description: 'Description', stage: 'Stage', website: 'Website', github: 'GitHub', twitter: 'Twitter/X',
+        purpose: 'Purpose', expectations: 'Support needed', timeline: 'Timeline',
+        tech_stack: 'Tech stack', current_chain: 'Current chain', integrations: 'Integrations', problem: 'Problem', blockchain_value: 'Blockchain value',
+      };
+
+      let html = '';
+      for (const sec of sections) {
+        html += `<div class="ap-review__section" data-goto="${sec.step}"><h4 class="ap-review__heading">${sec.title} <span class="ap-review__edit">Edit</span></h4><dl class="ap-review__dl">`;
+        for (const key of sec.fields) {
+          const vals = data.getAll(key).filter(v => v.toString().trim());
+          if (vals.length) {
+            html += `<dt>${labels[key] || key}</dt><dd>${vals.map(v => escape(v.toString())).join(', ')}</dd>`;
+          }
+        }
+        html += '</dl></div>';
+      }
+      reviewContainer.innerHTML = html;
+
+      // Click to edit
+      reviewContainer.querySelectorAll<HTMLElement>('[data-goto]').forEach(el =>
+        el.addEventListener('click', () => goTo(parseInt(el.dataset.goto!)))
+      );
+    }
+
+    function escape(s: string) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    // Submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.ap-btn-submit') as HTMLButtonElement;
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+      const data = new FormData(form);
+      data.append('_subject', 'New XHAVIC Builder Program Application');
+      data.append('_captcha', 'false');
+      try {
+        await fetch('https://formsubmit.co/ajax/press@xhavic.io', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' },
+        });
+      } catch (_) {}
+      form.style.display = 'none';
+      document.querySelector('.ap-progress')!.setAttribute('style', 'display:none');
+      successEl.classList.add('is-visible');
+      document.getElementById('apply-form')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
+  <style>
+    /* Hero */
+    .ap-hero {
+      background: #000;
+      color: #fff;
+      padding: 5rem 0 4rem;
+    }
+    .ap-hero__inner {
+      max-width: 860px;
+      text-align: center;
+    }
+    .ap-kicker {
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin: 0 0 1rem;
+    }
+    .ap-hero__title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      color: #fff;
+    }
+    .ap-hero__sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Path Cards */
+    .ap-paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .ap-path {
+      display: block;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 2rem;
+      text-decoration: none;
+      color: #fff;
+      text-align: left;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    }
+    .ap-path:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+    .ap-path__icon {
+      margin-bottom: 0.75rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .ap-path__title {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+      color: #fff;
+    }
+    .ap-path__desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin: 0 0 1rem;
+      line-height: 1.5;
+    }
+    .ap-path__cta {
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b9aff;
+    }
+
+    /* Form Section */
+    .ap-form-section {
+      padding: 5rem 0 6rem;
+      background: #f6f8fb;
+    }
+    .ap-form-section .ap-kicker {
+      color: #a3a3a3;
+    }
+    .ap-form-wrap {
+      max-width: 720px;
+    }
+    .ap-form-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.5rem;
+      color: #101828;
+    }
+    .ap-form-sub {
+      font-size: 15px;
+      color: #737373;
+      margin: 0 0 2.5rem;
+      line-height: 1.6;
+    }
+
+    /* Progress */
+    .ap-progress {
+      margin-bottom: 2rem;
+    }
+    .ap-progress__bar {
+      height: 3px;
+      background: #e5e5e5;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+    }
+    .ap-progress__fill {
+      height: 100%;
+      width: 0;
+      background: #2262ff;
+      border-radius: 3px;
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ap-progress__steps {
+      display: flex;
+      justify-content: space-between;
+    }
+    .ap-progress__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      font-family: inherit;
+    }
+    .ap-progress__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d4d4d4;
+      border: 2px solid #d4d4d4;
+      transition: all 0.2s;
+    }
+    .ap-progress__step.is-active .ap-progress__dot {
+      background: #2262ff;
+      border-color: #2262ff;
+      box-shadow: 0 0 0 3px rgba(34,98,255,0.15);
+    }
+    .ap-progress__step.is-done .ap-progress__dot {
+      background: #2262ff;
+      border-color: #2262ff;
+    }
+    .ap-progress__label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #a3a3a3;
+      transition: color 0.2s;
+    }
+    .ap-progress__step.is-active .ap-progress__label {
+      color: #2262ff;
+    }
+    .ap-progress__step.is-done .ap-progress__label {
+      color: #374151;
+    }
+
+    /* Steps */
+    .ap-step {
+      display: none;
+    }
+    .ap-step.is-active {
+      display: block;
+      animation: apFadeIn 0.35s ease-out;
+    }
+    @keyframes apFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card */
+    .ap-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .ap-card__label {
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #a3a3a3;
+      margin: 0 0 1.5rem;
+    }
+
+    /* Fields */
+    .ap-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .ap-span-2 {
+      grid-column: span 2;
+    }
+    .ap-fields {
+      display: grid;
+      gap: 1.25rem;
+    }
+    .ap-field {
+      display: flex;
+      flex-direction: column;
+    }
+    .ap-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+    .ap-req {
+      color: #ef4444;
+    }
+    .ap-hint {
+      font-size: 12px;
+      color: #a3a3a3;
+      margin: 0 0 0.75rem;
+    }
+    .ap-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: var(--font-family, sans-serif);
+      background: #fff;
+      color: #171717;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .ap-input:focus {
+      border-color: #2262ff;
+      box-shadow: 0 0 0 3px rgba(34,98,255,0.08);
+    }
+    .ap-input--error {
+      border-color: #ef4444 !important;
+      box-shadow: 0 0 0 3px rgba(239,68,68,0.08) !important;
+    }
+    .ap-field--error .ap-radio input,
+    .ap-field--error .ap-check input {
+      outline: 2px solid #ef4444;
+      outline-offset: 1px;
+    }
+    .ap-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .ap-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
+
+    /* Radio & Check */
+    .ap-radio-group, .ap-check-group {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.25rem;
+    }
+    .ap-radio, .ap-check {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 14px;
+      color: #374151;
+      cursor: pointer;
+    }
+    .ap-radio input, .ap-check input {
+      width: 16px;
+      height: 16px;
+      accent-color: #2262ff;
+      flex-shrink: 0;
+    }
+
+    /* Navigation */
+    .ap-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+    .ap-btn-next, .ap-btn-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: #2262ff;
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .ap-btn-next:hover, .ap-btn-submit:hover {
+      background: #1a4fd4;
+    }
+    .ap-btn-next:active, .ap-btn-submit:active {
+      transform: scale(0.98);
+    }
+    .ap-btn-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .ap-btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: transparent;
+      color: #737373;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid #e5e5e5;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .ap-btn-back:hover {
+      border-color: #a3a3a3;
+      color: #374151;
+    }
+
+    /* Review */
+    .ap-review__section {
+      border-bottom: 1px solid #f0f0f0;
+      padding: 1rem 0;
+      cursor: pointer;
+      transition: background 0.15s;
+      border-radius: 8px;
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    .ap-review__section:hover {
+      background: #f8f9fb;
+    }
+    .ap-review__section:last-child {
+      border-bottom: none;
+    }
+    .ap-review__heading {
+      font-size: 14px;
+      font-weight: 700;
+      color: #101828;
+      margin: 0 0 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .ap-review__edit {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2262ff;
+    }
+    .ap-review__dl {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0.25rem 1rem;
+      font-size: 13px;
+      margin: 0;
+    }
+    .ap-review__dl dt {
+      color: #a3a3a3;
+      font-weight: 500;
+    }
+    .ap-review__dl dd {
+      color: #374151;
+      margin: 0;
+      word-break: break-word;
+    }
+
+    /* Success */
+    .ap-success {
+      display: none;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .ap-success.is-visible {
+      display: block;
+      animation: apFadeIn 0.4s ease-out;
+    }
+    .ap-success__icon {
+      margin-bottom: 1.5rem;
+    }
+    .ap-success__title {
+      font-size: 28px;
+      font-weight: 800;
+      margin: 0 0 0.75rem;
+      color: #101828;
+    }
+    .ap-success__text {
+      font-size: 15px;
+      color: #737373;
+      line-height: 1.6;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .ap-success__text a {
+      color: #2262ff;
+      font-weight: 600;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .ap-paths {
+        grid-template-columns: 1fr;
+      }
+      .ap-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .ap-span-2 {
+        grid-column: span 1;
+      }
+      .ap-progress__label {
+        display: none;
+      }
+      .ap-progress__steps {
+        justify-content: center;
+        gap: 2rem;
+      }
+      .ap-review__dl {
+        grid-template-columns: 1fr;
+      }
+      .ap-review__dl dt {
+        margin-top: 0.5rem;
+      }
+      .ap-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</BaseLayout>
