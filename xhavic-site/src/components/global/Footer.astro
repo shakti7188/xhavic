@@ -127,10 +127,14 @@ const currentYear = new Date().getFullYear();
     <!-- Divider -->
     <div class="xh-footer__divider"></div>
 
-    <!-- Bottom: Copyright -->
+    <!-- Bottom: Copyright + Address -->
     <div class="xh-footer__bottom">
       <div class="xh-footer__bottomText">
         &copy; {currentYear} Xhavic Network. All rights reserved.
+      </div>
+      <div class="xh-footer__address">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Bay Square, Business Bay, Dubai, UAE
       </div>
     </div>
   </div>
@@ -252,6 +256,14 @@ const currentYear = new Date().getFullYear();
 
   .xh-footer__bottomText {
     color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+  }
+
+  .xh-footer__address {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.45);
     font-size: 12px;
   }
 
