@@ -868,6 +868,19 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       const data = new FormData(form);
       data.append('_subject', 'New Developer Quest Registration - Xhavic');
       data.append('_captcha', 'false');
+      // Save to Google Sheet (fire-and-forget GET, no CORS)
+      try {
+        const sp = new URLSearchParams({
+          type: 'Quest',
+          name: String(data.get('name') || ''),
+          email: String(data.get('email') || ''),
+          telegram: String(data.get('telegram') || ''),
+          github: String(data.get('github') || ''),
+          experience: String(data.get('experience') || ''),
+          interest: (data.getAll('interest') as string[]).join(', '),
+        });
+        new Image().src = 'https://script.google.com/macros/s/AKfycbxidxvZTlpwfSQglTyihF_jV9Jyg64ABMTwBR1o_dgyZqQFAdRhAdxJJk045-sQV1kr/exec?' + sp.toString();
+      } catch(_) {}
       try {
         await fetch('https://formsubmit.co/ajax/press@xhavic.io', {
           method: 'POST',

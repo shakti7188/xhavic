@@ -380,6 +380,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       const data = new FormData(form);
       data.append('_subject', 'New XHAVIC Builder Program Application');
       data.append('_captcha', 'false');
+      // Save to Google Sheet (fire-and-forget GET, no CORS)
+      try {
+        const sp = new URLSearchParams({ type: 'Builder' });
+        data.forEach((v, k) => { if (!k.startsWith('_')) sp.append(k, String(v)); });
+        new Image().src = 'https://script.google.com/macros/s/AKfycbxidxvZTlpwfSQglTyihF_jV9Jyg64ABMTwBR1o_dgyZqQFAdRhAdxJJk045-sQV1kr/exec?' + sp.toString();
+      } catch(_) {}
       try {
         await fetch('https://formsubmit.co/ajax/press@xhavic.io', {
           method: 'POST',
