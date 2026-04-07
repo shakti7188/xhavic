@@ -40,8 +40,28 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <section id="apply-form" class="ap-form-section">
     <div class="container ap-form-wrap">
       <p class="ap-kicker">Application</p>
-      <h2 class="ap-form-title">XHAVIC Builder Program</h2>
-      <p class="ap-form-sub">Complete the form below. We review every application and respond within 5 business days.</p>
+      <h2 class="ap-form-title">Apply to Build on Xhavic</h2>
+      <p class="ap-form-sub">Fill out the form below — takes about 5 minutes. We review every application and respond within 5 business days.</p>
+
+      <!-- Perks row -->
+      <div class="ap-perks">
+        <div class="ap-perk">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Ecosystem Grants
+        </div>
+        <div class="ap-perk">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Technical Support
+        </div>
+        <div class="ap-perk">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          Marketing & Exposure
+        </div>
+        <div class="ap-perk">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Investor Connect
+        </div>
+      </div>
 
       <!-- Progress Bar -->
       <div class="ap-progress">
@@ -50,23 +70,23 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         </div>
         <div class="ap-progress__steps" id="progress-steps">
           <button type="button" class="ap-progress__step is-active" data-step="0">
-            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__dot">1</span>
             <span class="ap-progress__label">About You</span>
           </button>
           <button type="button" class="ap-progress__step" data-step="1">
-            <span class="ap-progress__dot"></span>
-            <span class="ap-progress__label">Your Project</span>
+            <span class="ap-progress__dot">2</span>
+            <span class="ap-progress__label">Project</span>
           </button>
           <button type="button" class="ap-progress__step" data-step="2">
-            <span class="ap-progress__dot"></span>
-            <span class="ap-progress__label">What You Need</span>
+            <span class="ap-progress__dot">3</span>
+            <span class="ap-progress__label">Needs</span>
           </button>
           <button type="button" class="ap-progress__step" data-step="3">
-            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__dot">4</span>
             <span class="ap-progress__label">Technical</span>
           </button>
           <button type="button" class="ap-progress__step" data-step="4">
-            <span class="ap-progress__dot"></span>
+            <span class="ap-progress__dot">5</span>
             <span class="ap-progress__label">Review</span>
           </button>
         </div>
@@ -255,7 +275,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       <!-- Success -->
       <div id="apply-success" class="ap-success">
         <div class="ap-success__icon">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#2262ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h2 class="ap-success__title">Application Received!</h2>
         <p class="ap-success__text">
@@ -387,7 +407,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
         new Image().src = 'https://script.google.com/macros/s/AKfycbxidxvZTlpwfSQglTyihF_jV9Jyg64ABMTwBR1o_dgyZqQFAdRhAdxJJk045-sQV1kr/exec?' + sp.toString();
       } catch(_) {}
       try {
-        await fetch('https://formsubmit.co/ajax/press@xhavic.io', {
+        await fetch('https://formsubmit.co/ajax/Marketing@xhavic.com', {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' },
@@ -401,15 +421,31 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   </script>
 
   <style>
+    /* ===== GLOBAL ===== */
+    * { box-sizing: border-box; }
+
     /* Hero */
     .ap-hero {
       background: #000;
       color: #fff;
-      padding: 5rem 0 4rem;
+      padding: 6rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .ap-hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(34,98,255,0.1) 0%, transparent 65%);
+      pointer-events: none;
     }
     .ap-hero__inner {
       max-width: 860px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
     .ap-kicker {
       font-family: var(--font-mono, monospace);
@@ -445,65 +481,98 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     }
     .ap-path {
       display: block;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
       padding: 2rem;
       text-decoration: none;
       color: #fff;
       text-align: left;
-      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
     }
     .ap-path:hover {
-      background: rgba(255,255,255,0.1);
-      border-color: rgba(255,255,255,0.25);
-      transform: translateY(-2px);
+      background: rgba(34,98,255,0.08);
+      border-color: rgba(34,98,255,0.4);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(34,98,255,0.15);
     }
     .ap-path__icon {
-      margin-bottom: 0.75rem;
-      color: rgba(255,255,255,0.6);
+      width: 52px; height: 52px;
+      background: rgba(34,98,255,0.12);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: #6b9aff;
+      margin-bottom: 1rem;
+    }
+    .ap-path[data-path="developer"] .ap-path__icon {
+      background: rgba(16,185,129,0.12);
+      color: #34d399;
     }
     .ap-path__title {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0 0 0.4rem;
+      font-size: 17px;
+      font-weight: 800;
+      margin: 0 0 0.5rem;
       color: #fff;
+      letter-spacing: -0.01em;
     }
     .ap-path__desc {
       font-size: 13px;
-      color: rgba(255,255,255,0.55);
-      margin: 0 0 1rem;
-      line-height: 1.5;
+      color: rgba(255,255,255,0.5);
+      margin: 0 0 1.25rem;
+      line-height: 1.55;
     }
     .ap-path__cta {
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       color: #6b9aff;
     }
-
-    /* Form Section */
-    .ap-form-section {
-      padding: 5rem 0 6rem;
-      background: #f6f8fb;
+    .ap-path[data-path="developer"] .ap-path__cta {
+      color: #34d399;
     }
-    .ap-form-section .ap-kicker {
-      color: #a3a3a3;
+
+    /* Form Section — Centered */
+    .ap-form-section {
+      background: #f4f6fa;
+      padding: 5rem 0 7rem;
     }
     .ap-form-wrap {
       max-width: 720px;
     }
+    .ap-form-section .ap-kicker { color: #a3a3a3; }
     .ap-form-title {
-      font-size: clamp(24px, 3vw, 36px);
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 900;
+      letter-spacing: -0.03em;
       margin: 0 0 0.5rem;
       color: #101828;
     }
     .ap-form-sub {
-      font-size: 15px;
+      font-size: 14px;
       color: #737373;
-      margin: 0 0 2.5rem;
+      margin: 0 0 1.75rem;
       line-height: 1.6;
+      max-width: 560px;
+    }
+
+    /* Perks row */
+    .ap-perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      margin-bottom: 2.5rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .ap-perk {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #374151;
+      pointer-events: none;
+      user-select: none;
     }
 
     /* Progress */
@@ -512,15 +581,15 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     }
     .ap-progress__bar {
       height: 3px;
-      background: #e5e5e5;
+      background: #e5e7eb;
       border-radius: 3px;
       overflow: hidden;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
     .ap-progress__fill {
       height: 100%;
       width: 0;
-      background: #2262ff;
+      background: linear-gradient(90deg, #2262ff, #6b9aff);
       border-radius: 3px;
       transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -540,62 +609,74 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       font-family: inherit;
     }
     .ap-progress__dot {
-      width: 10px;
-      height: 10px;
+      width: 28px; height: 28px;
       border-radius: 50%;
-      background: #d4d4d4;
-      border: 2px solid #d4d4d4;
-      transition: all 0.2s;
+      background: #f0f2f5;
+      border: 2px solid #e5e7eb;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #9ca3af;
+      transition: all 0.25s;
     }
     .ap-progress__step.is-active .ap-progress__dot {
       background: #2262ff;
       border-color: #2262ff;
-      box-shadow: 0 0 0 3px rgba(34,98,255,0.15);
+      color: #fff;
+      box-shadow: 0 0 0 4px rgba(34,98,255,0.15);
     }
     .ap-progress__step.is-done .ap-progress__dot {
-      background: #2262ff;
+      background: #eff3ff;
       border-color: #2262ff;
-    }
-    .ap-progress__label {
-      font-size: 11px;
-      font-weight: 600;
-      color: #a3a3a3;
-      transition: color 0.2s;
-    }
-    .ap-progress__step.is-active .ap-progress__label {
       color: #2262ff;
     }
-    .ap-progress__step.is-done .ap-progress__label {
-      color: #374151;
+    .ap-progress__label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9ca3af;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
+    .ap-progress__step.is-active .ap-progress__label { color: #2262ff; }
+    .ap-progress__step.is-done .ap-progress__label { color: #374151; }
 
     /* Steps */
-    .ap-step {
-      display: none;
-    }
+    .ap-step { display: none; }
     .ap-step.is-active {
       display: block;
       animation: apFadeIn 0.35s ease-out;
     }
     @keyframes apFadeIn {
-      from { opacity: 0; transform: translateY(12px); }
+      from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     /* Card */
     .ap-card {
       background: #fff;
-      border: 1px solid #e5e5e5;
+      border: 1px solid #e5e7eb;
       border-radius: 16px;
       padding: 2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
     .ap-card__label {
       font-family: var(--font-mono, monospace);
-      font-size: 11px;
-      letter-spacing: 0.06em;
+      font-size: 10px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: #a3a3a3;
+      color: #9ca3af;
       margin: 0 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .ap-card__label::before {
+      content: '';
+      display: inline-block;
+      width: 20px; height: 2px;
+      background: #2262ff;
+      border-radius: 2px;
     }
 
     /* Fields */
@@ -604,89 +685,130 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
-    .ap-span-2 {
-      grid-column: span 2;
-    }
-    .ap-fields {
-      display: grid;
-      gap: 1.25rem;
-    }
-    .ap-field {
-      display: flex;
-      flex-direction: column;
-    }
+    .ap-span-2 { grid-column: span 2; }
+    .ap-fields { display: grid; gap: 1.25rem; }
+    .ap-field { display: flex; flex-direction: column; }
     .ap-label {
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
       color: #374151;
       margin-bottom: 6px;
+      letter-spacing: 0.02em;
     }
-    .ap-req {
-      color: #ef4444;
-    }
+    .ap-req { color: #2262ff; }
     .ap-hint {
       font-size: 12px;
-      color: #a3a3a3;
-      margin: 0 0 0.75rem;
+      color: #9ca3af;
+      margin: 0 0 0.6rem;
     }
     .ap-input {
       width: 100%;
-      padding: 10px 14px;
-      border: 1px solid #e5e5e5;
+      padding: 11px 14px;
+      border: 1.5px solid #e5e7eb;
       border-radius: 10px;
       font-size: 14px;
       font-family: var(--font-family, sans-serif);
       background: #fff;
-      color: #171717;
+      color: #111827;
       outline: none;
-      box-sizing: border-box;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
+    .ap-input::placeholder { color: #d1d5db; }
     .ap-input:focus {
       border-color: #2262ff;
-      box-shadow: 0 0 0 3px rgba(34,98,255,0.08);
+      box-shadow: 0 0 0 3px rgba(34,98,255,0.1);
     }
     .ap-input--error {
       border-color: #ef4444 !important;
       box-shadow: 0 0 0 3px rgba(239,68,68,0.08) !important;
     }
-    .ap-field--error .ap-radio input,
-    .ap-field--error .ap-check input {
-      outline: 2px solid #ef4444;
-      outline-offset: 1px;
-    }
-    .ap-textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+    .ap-textarea { resize: vertical; min-height: 88px; }
     .ap-select {
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239ca3af' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 36px;
-    }
-
-    /* Radio & Check */
-    .ap-radio-group, .ap-check-group {
-      display: grid;
-      gap: 0.6rem;
-      margin-top: 0.25rem;
-    }
-    .ap-radio, .ap-check {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 14px;
-      color: #374151;
+      background-position: right 14px center;
+      padding-right: 40px;
       cursor: pointer;
     }
-    .ap-radio input, .ap-check input {
-      width: 16px;
-      height: 16px;
-      accent-color: #2262ff;
-      flex-shrink: 0;
+
+    /* Radio — pill style */
+    .ap-radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
     }
+    .ap-radio { cursor: pointer; }
+    .ap-radio input { display: none; }
+    .ap-radio span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 18px;
+      border-radius: 99px;
+      border: 1.5px solid #e5e7eb;
+      background: #f9fafb;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b7280;
+      transition: all 0.18s;
+      cursor: pointer;
+    }
+    .ap-radio input:checked + span {
+      background: #eff3ff;
+      border-color: #2262ff;
+      color: #2262ff;
+    }
+    .ap-radio:hover span {
+      border-color: #9ca3af;
+      color: #374151;
+    }
+
+    /* Checkboxes — card style */
+    .ap-check-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+    .ap-check { cursor: pointer; }
+    .ap-check input { display: none; }
+    .ap-check span {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1.5px solid #e5e7eb;
+      background: #f9fafb;
+      font-size: 13px;
+      font-weight: 500;
+      color: #6b7280;
+      transition: all 0.18s;
+      cursor: pointer;
+    }
+    .ap-check span::before {
+      content: '';
+      width: 14px; height: 14px;
+      border-radius: 4px;
+      border: 1.5px solid #d1d5db;
+      flex-shrink: 0;
+      transition: all 0.18s;
+    }
+    .ap-check input:checked + span {
+      background: #eff3ff;
+      border-color: #2262ff;
+      color: #2262ff;
+    }
+    .ap-check input:checked + span::before {
+      background: #2262ff;
+      border-color: #2262ff;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='8' viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4L3.5 6.5L9 1' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .ap-check:hover span { border-color: #9ca3af; color: #374151; }
 
     /* Navigation */
     .ap-nav {
@@ -698,78 +820,64 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
     .ap-btn-next, .ap-btn-submit {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       padding: 12px 28px;
       border-radius: 999px;
       background: #2262ff;
       color: #fff;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       border: none;
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.15s, transform 0.1s;
+      box-shadow: 0 4px 14px rgba(34,98,255,0.25);
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
     }
     .ap-btn-next:hover, .ap-btn-submit:hover {
       background: #1a4fd4;
+      box-shadow: 0 6px 18px rgba(34,98,255,0.35);
     }
-    .ap-btn-next:active, .ap-btn-submit:active {
-      transform: scale(0.98);
-    }
-    .ap-btn-submit:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
+    .ap-btn-next:active, .ap-btn-submit:active { transform: scale(0.98); }
+    .ap-btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
     .ap-btn-back {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 12px 24px;
+      padding: 12px 22px;
       border-radius: 999px;
       background: transparent;
-      color: #737373;
+      color: #9ca3af;
       font-weight: 600;
       font-size: 14px;
-      border: 1px solid #e5e5e5;
+      border: 1.5px solid #e5e7eb;
       cursor: pointer;
       font-family: inherit;
       transition: border-color 0.15s, color 0.15s;
     }
-    .ap-btn-back:hover {
-      border-color: #a3a3a3;
-      color: #374151;
-    }
+    .ap-btn-back:hover { border-color: #9ca3af; color: #374151; }
 
     /* Review */
     .ap-review__section {
-      border-bottom: 1px solid #f0f0f0;
-      padding: 1rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      padding: 0.9rem 0.75rem;
       cursor: pointer;
       transition: background 0.15s;
-      border-radius: 8px;
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+      border-radius: 10px;
     }
-    .ap-review__section:hover {
-      background: #f8f9fb;
-    }
-    .ap-review__section:last-child {
-      border-bottom: none;
-    }
+    .ap-review__section:hover { background: #f9fafb; }
+    .ap-review__section:last-child { border-bottom: none; }
     .ap-review__heading {
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
-      color: #101828;
-      margin: 0 0 0.5rem;
+      color: #374151;
+      margin: 0 0 0.4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    .ap-review__edit {
-      font-size: 12px;
-      font-weight: 600;
-      color: #2262ff;
-    }
+    .ap-review__edit { font-size: 11px; font-weight: 600; color: #2262ff; text-transform: none; letter-spacing: 0; }
     .ap-review__dl {
       display: grid;
       grid-template-columns: 120px 1fr;
@@ -777,74 +885,46 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
       font-size: 13px;
       margin: 0;
     }
-    .ap-review__dl dt {
-      color: #a3a3a3;
-      font-weight: 500;
-    }
-    .ap-review__dl dd {
-      color: #374151;
-      margin: 0;
-      word-break: break-word;
-    }
+    .ap-review__dl dt { color: #9ca3af; font-weight: 500; }
+    .ap-review__dl dd { color: #374151; margin: 0; word-break: break-word; }
 
     /* Success */
     .ap-success {
       display: none;
       text-align: center;
-      padding: 5rem 2rem;
+      padding: 4rem 2rem;
     }
-    .ap-success.is-visible {
-      display: block;
-      animation: apFadeIn 0.4s ease-out;
-    }
+    .ap-success.is-visible { display: block; animation: apFadeIn 0.4s ease-out; }
     .ap-success__icon {
-      margin-bottom: 1.5rem;
+      width: 72px; height: 72px;
+      background: #eff3ff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      border: 2px solid #c7d7ff;
     }
     .ap-success__title {
-      font-size: 28px;
-      font-weight: 800;
-      margin: 0 0 0.75rem;
-      color: #101828;
+      font-size: 28px; font-weight: 900; margin: 0 0 0.75rem;
+      color: #101828; letter-spacing: -0.02em;
     }
     .ap-success__text {
-      font-size: 15px;
-      color: #737373;
-      line-height: 1.6;
-      max-width: 440px;
-      margin: 0 auto;
+      font-size: 15px; color: #737373; line-height: 1.6;
+      max-width: 420px; margin: 0 auto;
     }
-    .ap-success__text a {
-      color: #2262ff;
-      font-weight: 600;
-    }
+    .ap-success__text a { color: #2262ff; font-weight: 600; }
 
     /* Mobile */
     @media (max-width: 640px) {
-      .ap-paths {
-        grid-template-columns: 1fr;
-      }
-      .ap-grid-2 {
-        grid-template-columns: 1fr;
-      }
-      .ap-span-2 {
-        grid-column: span 1;
-      }
-      .ap-progress__label {
-        display: none;
-      }
-      .ap-progress__steps {
-        justify-content: center;
-        gap: 2rem;
-      }
-      .ap-review__dl {
-        grid-template-columns: 1fr;
-      }
-      .ap-review__dl dt {
-        margin-top: 0.5rem;
-      }
-      .ap-card {
-        padding: 1.5rem;
-      }
+      .ap-paths { grid-template-columns: 1fr; }
+      .ap-grid-2 { grid-template-columns: 1fr; }
+      .ap-span-2 { grid-column: span 1; }
+      .ap-progress__label { display: none; }
+      .ap-progress__steps { justify-content: center; gap: 1.25rem; }
+      .ap-review__dl { grid-template-columns: 1fr; }
+      .ap-review__dl dt { margin-top: 0.5rem; }
+      .ap-card { padding: 1.5rem; }
+      .ap-check-group { grid-template-columns: 1fr; }
+      .ap-perks { gap: 0.4rem; }
     }
   </style>
 </BaseLayout>
